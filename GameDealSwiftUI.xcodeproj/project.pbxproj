@@ -7,6 +7,22 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		DB92BBE52A3B602D009630E0 /* BaseURL.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB92BBE42A3B602D009630E0 /* BaseURL.swift */; };
+		DB92BBE72A3B60AF009630E0 /* Endpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB92BBE62A3B60AF009630E0 /* Endpoint.swift */; };
+		DB92BBE92A3B60F1009630E0 /* ServiceError.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB92BBE82A3B60F1009630E0 /* ServiceError.swift */; };
+		DB92BBEB2A3B610C009630E0 /* Response.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB92BBEA2A3B610C009630E0 /* Response.swift */; };
+		DB92BBEE2A3B6595009630E0 /* EndpointCasesCheapShark.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB92BBED2A3B6595009630E0 /* EndpointCasesCheapShark.swift */; };
+		DB92BBF02A3B65C0009630E0 /* WorkerCheapShark.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB92BBEF2A3B65C0009630E0 /* WorkerCheapShark.swift */; };
+		DB92BBF22A3B65E4009630E0 /* CheapSharkSortDeals.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB92BBF12A3B65E4009630E0 /* CheapSharkSortDeals.swift */; };
+		DB92BBF62A3B6732009630E0 /* FeedGameDeal.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB92BBF52A3B6732009630E0 /* FeedGameDeal.swift */; };
+		DB92BBF92A3B678A009630E0 /* StoresCheapShark.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB92BBF82A3B678A009630E0 /* StoresCheapShark.swift */; };
+		DB92BBFB2A3B67BC009630E0 /* StoreImagesCheapShark.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB92BBFA2A3B67BC009630E0 /* StoreImagesCheapShark.swift */; };
+		DB92BBFE2A3B685C009630E0 /* DealLookup.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB92BBFD2A3B685C009630E0 /* DealLookup.swift */; };
+		DB92BC002A3B686E009630E0 /* CheaperStores.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB92BBFF2A3B686E009630E0 /* CheaperStores.swift */; };
+		DB92BC022A3B6882009630E0 /* CheapestPrice.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB92BC012A3B6882009630E0 /* CheapestPrice.swift */; };
+		DB92BC052A3B6974009630E0 /* DealLookupMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB92BC042A3B6974009630E0 /* DealLookupMock.swift */; };
+		DB92BC072A3B698D009630E0 /* StoresCheapSharkMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB92BC062A3B698D009630E0 /* StoresCheapSharkMock.swift */; };
+		DB92BC092A3B69A2009630E0 /* FeedGameDealMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB92BC082A3B69A2009630E0 /* FeedGameDealMock.swift */; };
 		DBAE72EB2A3B491100AB9E5F /* GameDealSwiftUIApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBAE72EA2A3B491100AB9E5F /* GameDealSwiftUIApp.swift */; };
 		DBAE72ED2A3B491100AB9E5F /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBAE72EC2A3B491100AB9E5F /* ContentView.swift */; };
 		DBAE72EF2A3B491300AB9E5F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DBAE72EE2A3B491300AB9E5F /* Assets.xcassets */; };
@@ -34,6 +50,22 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		DB92BBE42A3B602D009630E0 /* BaseURL.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseURL.swift; sourceTree = "<group>"; };
+		DB92BBE62A3B60AF009630E0 /* Endpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Endpoint.swift; sourceTree = "<group>"; };
+		DB92BBE82A3B60F1009630E0 /* ServiceError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceError.swift; sourceTree = "<group>"; };
+		DB92BBEA2A3B610C009630E0 /* Response.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Response.swift; sourceTree = "<group>"; };
+		DB92BBED2A3B6595009630E0 /* EndpointCasesCheapShark.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndpointCasesCheapShark.swift; sourceTree = "<group>"; };
+		DB92BBEF2A3B65C0009630E0 /* WorkerCheapShark.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkerCheapShark.swift; sourceTree = "<group>"; };
+		DB92BBF12A3B65E4009630E0 /* CheapSharkSortDeals.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheapSharkSortDeals.swift; sourceTree = "<group>"; };
+		DB92BBF52A3B6732009630E0 /* FeedGameDeal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedGameDeal.swift; sourceTree = "<group>"; };
+		DB92BBF82A3B678A009630E0 /* StoresCheapShark.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoresCheapShark.swift; sourceTree = "<group>"; };
+		DB92BBFA2A3B67BC009630E0 /* StoreImagesCheapShark.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreImagesCheapShark.swift; sourceTree = "<group>"; };
+		DB92BBFD2A3B685C009630E0 /* DealLookup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DealLookup.swift; sourceTree = "<group>"; };
+		DB92BBFF2A3B686E009630E0 /* CheaperStores.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheaperStores.swift; sourceTree = "<group>"; };
+		DB92BC012A3B6882009630E0 /* CheapestPrice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheapestPrice.swift; sourceTree = "<group>"; };
+		DB92BC042A3B6974009630E0 /* DealLookupMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DealLookupMock.swift; sourceTree = "<group>"; };
+		DB92BC062A3B698D009630E0 /* StoresCheapSharkMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoresCheapSharkMock.swift; sourceTree = "<group>"; };
+		DB92BC082A3B69A2009630E0 /* FeedGameDealMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedGameDealMock.swift; sourceTree = "<group>"; };
 		DBAE72E72A3B491100AB9E5F /* GameDealSwiftUI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GameDealSwiftUI.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DBAE72EA2A3B491100AB9E5F /* GameDealSwiftUIApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameDealSwiftUIApp.swift; sourceTree = "<group>"; };
 		DBAE72EC2A3B491100AB9E5F /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -71,6 +103,85 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		DB92BBE22A3B5E82009630E0 /* BusinessLogic */ = {
+			isa = PBXGroup;
+			children = (
+				DB92BBE32A3B600B009630E0 /* Services */,
+				DB92BBF32A3B661C009630E0 /* Entities */,
+			);
+			path = BusinessLogic;
+			sourceTree = "<group>";
+		};
+		DB92BBE32A3B600B009630E0 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				DB92BBE42A3B602D009630E0 /* BaseURL.swift */,
+				DB92BBE62A3B60AF009630E0 /* Endpoint.swift */,
+				DB92BBE82A3B60F1009630E0 /* ServiceError.swift */,
+				DB92BBEA2A3B610C009630E0 /* Response.swift */,
+				DB92BBEC2A3B6583009630E0 /* CheapShark */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		DB92BBEC2A3B6583009630E0 /* CheapShark */ = {
+			isa = PBXGroup;
+			children = (
+				DB92BBED2A3B6595009630E0 /* EndpointCasesCheapShark.swift */,
+				DB92BBEF2A3B65C0009630E0 /* WorkerCheapShark.swift */,
+				DB92BBF12A3B65E4009630E0 /* CheapSharkSortDeals.swift */,
+			);
+			path = CheapShark;
+			sourceTree = "<group>";
+		};
+		DB92BBF32A3B661C009630E0 /* Entities */ = {
+			isa = PBXGroup;
+			children = (
+				DB92BBF42A3B671C009630E0 /* FeedGameDealModel */,
+				DB92BBF72A3B676C009630E0 /* StoresCheapSharkModel */,
+				DB92BBFC2A3B6834009630E0 /* DealLookupModel */,
+				DB92BC032A3B6959009630E0 /* Mock */,
+			);
+			path = Entities;
+			sourceTree = "<group>";
+		};
+		DB92BBF42A3B671C009630E0 /* FeedGameDealModel */ = {
+			isa = PBXGroup;
+			children = (
+				DB92BBF52A3B6732009630E0 /* FeedGameDeal.swift */,
+			);
+			path = FeedGameDealModel;
+			sourceTree = "<group>";
+		};
+		DB92BBF72A3B676C009630E0 /* StoresCheapSharkModel */ = {
+			isa = PBXGroup;
+			children = (
+				DB92BBF82A3B678A009630E0 /* StoresCheapShark.swift */,
+				DB92BBFA2A3B67BC009630E0 /* StoreImagesCheapShark.swift */,
+			);
+			path = StoresCheapSharkModel;
+			sourceTree = "<group>";
+		};
+		DB92BBFC2A3B6834009630E0 /* DealLookupModel */ = {
+			isa = PBXGroup;
+			children = (
+				DB92BBFD2A3B685C009630E0 /* DealLookup.swift */,
+				DB92BBFF2A3B686E009630E0 /* CheaperStores.swift */,
+				DB92BC012A3B6882009630E0 /* CheapestPrice.swift */,
+			);
+			path = DealLookupModel;
+			sourceTree = "<group>";
+		};
+		DB92BC032A3B6959009630E0 /* Mock */ = {
+			isa = PBXGroup;
+			children = (
+				DB92BC042A3B6974009630E0 /* DealLookupMock.swift */,
+				DB92BC062A3B698D009630E0 /* StoresCheapSharkMock.swift */,
+				DB92BC082A3B69A2009630E0 /* FeedGameDealMock.swift */,
+			);
+			path = Mock;
+			sourceTree = "<group>";
+		};
 		DBAE72DE2A3B491000AB9E5F = {
 			isa = PBXGroup;
 			children = (
@@ -94,6 +205,7 @@
 		DBAE72E92A3B491100AB9E5F /* GameDealSwiftUI */ = {
 			isa = PBXGroup;
 			children = (
+				DB92BBE22A3B5E82009630E0 /* BusinessLogic */,
 				DBAE72EA2A3B491100AB9E5F /* GameDealSwiftUIApp.swift */,
 				DBAE72EC2A3B491100AB9E5F /* ContentView.swift */,
 				DBAE72EE2A3B491300AB9E5F /* Assets.xcassets */,
@@ -257,8 +369,24 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DB92BBE92A3B60F1009630E0 /* ServiceError.swift in Sources */,
+				DB92BC022A3B6882009630E0 /* CheapestPrice.swift in Sources */,
+				DB92BBEE2A3B6595009630E0 /* EndpointCasesCheapShark.swift in Sources */,
+				DB92BC002A3B686E009630E0 /* CheaperStores.swift in Sources */,
+				DB92BBF22A3B65E4009630E0 /* CheapSharkSortDeals.swift in Sources */,
+				DB92BBFB2A3B67BC009630E0 /* StoreImagesCheapShark.swift in Sources */,
+				DB92BBFE2A3B685C009630E0 /* DealLookup.swift in Sources */,
+				DB92BC092A3B69A2009630E0 /* FeedGameDealMock.swift in Sources */,
+				DB92BBF92A3B678A009630E0 /* StoresCheapShark.swift in Sources */,
 				DBAE72ED2A3B491100AB9E5F /* ContentView.swift in Sources */,
+				DB92BC052A3B6974009630E0 /* DealLookupMock.swift in Sources */,
 				DBAE72EB2A3B491100AB9E5F /* GameDealSwiftUIApp.swift in Sources */,
+				DB92BBE72A3B60AF009630E0 /* Endpoint.swift in Sources */,
+				DB92BBF02A3B65C0009630E0 /* WorkerCheapShark.swift in Sources */,
+				DB92BBF62A3B6732009630E0 /* FeedGameDeal.swift in Sources */,
+				DB92BBEB2A3B610C009630E0 /* Response.swift in Sources */,
+				DB92BBE52A3B602D009630E0 /* BaseURL.swift in Sources */,
+				DB92BC072A3B698D009630E0 /* StoresCheapSharkMock.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

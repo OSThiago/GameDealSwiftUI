@@ -9,7 +9,7 @@ import Foundation
 
 class WorkerCheapShark {
     
-    func getDealsList(endpoint: Endpoint, completion: @escaping (Result<[FeedGameDeal] ,ServiceError>) -> ()) {
+    func getDealsList(endpoint: Endpoint, completion: @escaping (Result<[FeedGameDealModel] ,ServiceError>) -> ()) {
         
         let session = URLSession.shared
         
@@ -24,7 +24,7 @@ class WorkerCheapShark {
             if let data {
                 
                 do {
-                    let data = try JSONDecoder().decode([FeedGameDeal].self, from: data)
+                    let data = try JSONDecoder().decode([FeedGameDealModel].self, from: data)
                     
                     completion(.success(data))
                     
@@ -36,11 +36,11 @@ class WorkerCheapShark {
         task.resume()
     }
     
-    func getDealLookup(endpoint: Endpoint, completion: @escaping (FeedGameDeal?) -> ()) {
+    func getDealLookup(endpoint: Endpoint, completion: @escaping (FeedGameDealModel?) -> ()) {
         
     }
     
-    func getGameLookup(endpoint: Endpoint, completion: @escaping (FeedGameDeal) -> ()) {
+    func getGameLookup(endpoint: Endpoint, completion: @escaping (FeedGameDealModel) -> ()) {
         
     }
     

@@ -11,24 +11,26 @@ struct FeedView: View {
     
     @StateObject var viewModel = FeedViewModel()
     
-    var factory: FeedViewFactory = FeedViewFactory()
-    
     var body: some View {
         VStack {
-            factory.makeAAAList(deals: viewModel.dealsAAA)
+            makeAAAList(deals: viewModel.dealsAAA)
+        }
+    }
+    
+    // MARK: - LIST AAA GAMES
+    @ViewBuilder
+    func makeAAAList(deals: [FeedGameDealModel]) -> some View {
+        
+        ScrollView(.horizontal, showsIndicators: false) {
+            HStack(spacing: 0) {
+                ForEach(deals, id: \.dealID) { deal in
+                    LargeDealCell(title: deal.title, salePrice: deal.salePrice, normalPrice: deal.normalPrice, savings: deal.savings, thumb: deal.thumb, storeThumb: "")
+                        .padding(.leading)
+                }
+            }
         }
         .onAppear {
             viewModel.displayDeaslAAA()
-        }
-    }
-}
-
-struct FeedViewFactory {
-    
-    @ViewBuilder
-    func makeAAAList(deals: [FeedGameDealModel]) -> some View {
-        List(deals, id: \.dealID) { deal in
-            Text(deal.title)
         }
     }
 }

@@ -30,54 +30,101 @@ struct LargeDealCell: View {
     let salePrice: String
     let normalPrice: String
     let savings: String
-    let thumb: String
+    var thumb: String
     let storeThumb: String
     
     var body: some View {
         VStack {
             // Thumb
-            AsyncImage(url: URL(string: thumb)) { phase in
-                switch phase  {
-                case .empty:
-                    ProgressView()
-                case .success(let image):
-                    image
-                        .resizable()
-                        .scaledToFill()
-                        .frame(width: 330, height: 157)
-                        .clipped()
-                        
-                case .failure(_):
-                    EmptyView()
-                @unknown default:
-                    EmptyView()
-                }
-            }
-                
-                .frame(maxWidth: 330, maxHeight: 157)
+            gameImage()
             
-            HStack {
-                VStack(alignment: .leading) {
-                    Text(title)
+            VStack(alignment: .leading) {
+                HStack(alignment: .top) {
+                    gameTitleText()
                     
-                    HStack {
-                        Text(salePrice)
-                        Text(normalPrice)
-                    }
+                    Spacer()
+                    
+                    storeImage()
                 }
                 
-                Spacer()
-                
-                VStack(alignment: .trailing) {
-                    Image(uiImage: storeThumb.load())
-                        .resizable()
-                        .frame(maxWidth: 31, maxHeight: 31)
+                HStack(alignment: .top) {
+                    salePriceText()
                     
-                    Text(savings)
+                    normalPriceText()
+                    
+                    Spacer()
+                    
+                    savingsText()
                 }
             }
+            Divider()
         }
         .frame(maxWidth: 330)
+    }
+    
+    // MARK: - Game Image
+    @ViewBuilder
+    func gameImage() -> some View {
+        AsyncImage(url: URL(string: thumb)) { phase in
+            switch phase  {
+            case .empty:
+                ProgressView()
+            case .success(let image):
+                image
+                    .resizable()
+                    .scaledToFill()
+                    .frame(width: 330, height: 200)
+                    .clipped()
+                    
+            case .failure(_):
+                EmptyView()
+            @unknown default:
+                EmptyView()
+            }
+        }
+    }
+    
+    // MARK: - Game Title
+    @ViewBuilder
+    func gameTitleText() -> some View {
+        Text(title)
+    }
+    
+    @ViewBuilder
+    func salePriceText() -> some View {
+        Text(salePrice)
+    }
+    
+    @ViewBuilder
+    func normalPriceText() -> some View {
+        Text(normalPrice)
+    }
+    
+    @ViewBuilder
+    func savingsText() -> some View {
+        Text(savings)
+    }
+    
+    // MARK: - Store Image
+    @ViewBuilder
+    func storeImage() -> some View {
+        AsyncImage(url: URL(string: storeThumb)) { phase in
+            switch phase  {
+            case .empty:
+                ProgressView()
+            case .success(let image):
+                image
+                    .resizable()
+                    .scaledToFill()
+                    .frame(width: 31, height: 31)
+                    .clipped()
+                    
+            case .failure(_):
+                EmptyView()
+            @unknown default:
+                EmptyView()
+            }
+        }
     }
 }
 

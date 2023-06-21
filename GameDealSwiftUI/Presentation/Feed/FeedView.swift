@@ -20,16 +20,19 @@ struct FeedView: View {
     // MARK: - LIST AAA GAMES
     @ViewBuilder
     func makeAAAList(deals: [FeedGameDealModel]) -> some View {
-        
         ScrollView(.horizontal, showsIndicators: false) {
             HStack(spacing: 0) {
                 ForEach(deals, id: \.dealID) { deal in
-                    LargeDealCell(title: deal.title, salePrice: deal.salePrice, normalPrice: deal.normalPrice, savings: deal.savings, thumb: deal.thumb, storeThumb: "")
+                    
+                    let dealFormatted = viewModel.setupModel(deal)
+                    
+                    LargeDealCell(title: dealFormatted.title, salePrice: dealFormatted.salePrice, normalPrice: dealFormatted.normalPrice, savings: dealFormatted.savings, thumb: dealFormatted.thumb, storeThumb: dealFormatted.storeID)
                         .padding(.leading)
                 }
             }
         }
         .onAppear {
+            viewModel.fetchStores()
             viewModel.displayDeaslAAA()
         }
     }

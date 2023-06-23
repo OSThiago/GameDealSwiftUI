@@ -11,34 +11,21 @@ class FeedViewModel: ObservableObject {
     // Published Properties
     @Published var dealsAAA = [FeedGameDealModel]()
     
+    @Published var storesDeals: [(store: StoresCheapShark, dealsList:[FeedGameDealModel])] = []
+    
     @Published var storesInformations = [StoresCheapShark]()
     
     private let workerCheapShark = WorkerCheapShark()
     
     // Funcs
-    func displayDeaslAAA() {
-        let endpoint = EndpointCasesCheapShark.getDealsList(pageNumber: 0, pageSize: 10, sortList: .RECENT, AAA: true, storeID: nil)
-        
-        workerCheapShark.getDealsList(endpoint: endpoint) { result in
-            switch result {
-            case .success(let deals):
-                DispatchQueue.main.async { [self] in
-                    self.dealsAAA = deals
-                }
-            case .failure(let failure):
-                // TODO: - Tratar erro
-                print(failure)
-            }
-        }
-    }
-
     func fetchStores() {
         workerCheapShark.getStores { result in
             switch result {
             case .success(let stores):
                 DispatchQueue.main.async {
                     self.storesInformations = stores
-                } 
+                    self.displayDealsStores()
+                }
             case .failure(let failure):
                 // TODO: - Tratar erro
                 print(" erro ao baixar store image - \(failure)")
@@ -46,7 +33,55 @@ class FeedViewModel: ObservableObject {
         }
     }
     
-    func setupModel(_ model: FeedGameDealModel) -> FeedGameDealModel {
+    func displayDealsAAA() {
+        let endpoint = EndpointCasesCheapShark.getDealsList(pageNumber: 0, pageSize: 8, sortList: .DEALRATING, AAA: true, storeID: nil)
+        
+        workerCheapShark.getDealsList(endpoint: endpoint) { result in
+            switch result {
+            case .success(let deals):
+                DispatchQueue.main.async { [self] in
+                    
+                    var filtered = [FeedGameDealModel]()
+                    
+                    for deal in deals {
+                        if !filtered.contains(where: { $0.title == deal.title }) {
+                            filtered.append(deal)
+                        }
+                    }
+                    
+                    self.dealsAAA = filtered
+                }
+            case .failure(let failure):
+                // TODO: - Tratar erro
+                print(failure)
+            }
+        }
+    }
+    
+    func displayDealsStores() {
+        let selectedStores = ["Steam", "Epic Games Store", "Uplay" , "GOG"]
+        
+        for selectedStore in selectedStores {
+            
+            guard let store = storesInformations.first(where: {$0.storeName == selectedStore}) else { return }
+            
+            let endpoint = EndpointCasesCheapShark.getDealsList(pageNumber: 0, pageSize: 10, sortList: .PRICE, AAA: false, storeID: store.storeID)
+            
+            workerCheapShark.getDealsList(endpoint: endpoint) { result in
+                switch result {
+                case .success(let deals):
+                    DispatchQueue.main.async {
+                        self.storesDeals.append((store: store, dealsList: deals))
+                    }
+                case .failure(let failure):
+                    // TODO: - Tratar erro
+                    print(failure)
+                }
+            }
+        }
+    }
+    
+    func setupDealCell(_ model: FeedGameDealModel) -> FeedGameDealModel {
         let model = FeedGameDealModel(
             gameID: model.gameID,
             dealID: model.dealID,
@@ -61,6 +96,7 @@ class FeedViewModel: ObservableObject {
         
         return model
     }
+    
 }
 
 extension FeedViewModel {
@@ -71,7 +107,7 @@ extension FeedViewModel {
         return url.replacingOccurrences(of: "capsule_sm_120", with: "header")
     }
     
-    private func getStoreImage(storeID: String) -> String {
+    func getStoreImage(storeID: String) -> String {
         
         let store = self.storesInformations.first(where: {$0.storeID == storeID})
         

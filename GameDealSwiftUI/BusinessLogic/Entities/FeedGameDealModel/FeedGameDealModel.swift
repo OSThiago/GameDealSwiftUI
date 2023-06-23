@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct FeedGameDealModel: Codable {
+struct FeedGameDealModel: Codable, Hashable {
     let gameID: String
     let dealID: String
     let storeID: String

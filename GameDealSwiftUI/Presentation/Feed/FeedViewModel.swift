@@ -11,7 +11,7 @@ class FeedViewModel: ObservableObject {
     // Published Properties
     @Published var dealsAAA = [FeedGameDealModel]()
     
-    private var storesInformations = [StoresCheapShark]()
+    @Published var storesInformations = [StoresCheapShark]()
     
     private let workerCheapShark = WorkerCheapShark()
     

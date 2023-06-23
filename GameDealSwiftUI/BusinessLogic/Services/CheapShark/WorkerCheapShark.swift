@@ -51,8 +51,6 @@ class WorkerCheapShark {
         
         let url = URL(string: endpoint.url)!
         
-        print(url)
-        
         var request = URLRequest(url: url)
         
         request.httpMethod = endpoint.httpMethod

@@ -15,6 +15,9 @@ struct FeedView: View {
         VStack {
             makeAAAList(deals: viewModel.dealsAAA)
         }
+        .onAppear {
+            viewModel.fetchStores()
+        }
     }
     
     // MARK: - LIST AAA GAMES
@@ -32,7 +35,6 @@ struct FeedView: View {
             }
         }
         .onAppear {
-            viewModel.fetchStores()
             viewModel.displayDeaslAAA()
         }
     }

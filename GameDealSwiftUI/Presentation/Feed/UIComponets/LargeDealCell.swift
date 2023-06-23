@@ -7,22 +7,22 @@
 
 import SwiftUI
 
-extension String {
-    func load() -> UIImage {
-        do {
-            guard let url = URL(string: self) else {
-                return UIImage()
-            }
-            
-            let data: Data = try Data(contentsOf: url)
-            
-            return UIImage(data: data) ?? UIImage()
-        } catch {
-            
-        }
-        return UIImage()
-    }
-}
+//extension String {
+//    func load() -> UIImage {
+//        do {
+//            guard let url = URL(string: self) else {
+//                return UIImage()
+//            }
+//
+//            let data: Data = try Data(contentsOf: url)
+//
+//            return UIImage(data: data) ?? UIImage()
+//        } catch {
+//
+//        }
+//        return UIImage()
+//    }
+//}
 
 struct LargeDealCell: View {
     
@@ -62,6 +62,33 @@ struct LargeDealCell: View {
         .frame(maxWidth: 330)
     }
     
+    // MARK: - Game Title
+    @ViewBuilder
+    func gameTitleText() -> some View {
+        Text(title)
+    }
+    
+    // MARK: - Sale price
+    @ViewBuilder
+    func salePriceText() -> some View {
+        Text(salePrice)
+            .bold()
+    }
+    
+    // MARK: - Normal Price
+    @ViewBuilder
+    func normalPriceText() -> some View {
+        Text(normalPrice)
+            .strikethrough()
+    }
+    
+    // MARK: - Savings
+    @ViewBuilder
+    func savingsText() -> some View {
+        Text(savings)
+            .bold()
+    }
+    
     // MARK: - Game Image
     @ViewBuilder
     func gameImage() -> some View {
@@ -82,27 +109,6 @@ struct LargeDealCell: View {
                 EmptyView()
             }
         }
-    }
-    
-    // MARK: - Game Title
-    @ViewBuilder
-    func gameTitleText() -> some View {
-        Text(title)
-    }
-    
-    @ViewBuilder
-    func salePriceText() -> some View {
-        Text(salePrice)
-    }
-    
-    @ViewBuilder
-    func normalPriceText() -> some View {
-        Text(normalPrice)
-    }
-    
-    @ViewBuilder
-    func savingsText() -> some View {
-        Text(savings)
     }
     
     // MARK: - Store Image

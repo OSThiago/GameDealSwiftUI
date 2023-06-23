@@ -1,31 +1,13 @@
 //
-//  LargeDealCell.swift
+//  MediumDealCell.swift
 //  GameDealSwiftUI
 //
-//  Created by Thiago de Oliveira Sousa on 19/06/23.
+//  Created by Thiago de Oliveira Sousa on 23/06/23.
 //
 
 import SwiftUI
 
-//extension String {
-//    func load() -> UIImage {
-//        do {
-//            guard let url = URL(string: self) else {
-//                return UIImage()
-//            }
-//
-//            let data: Data = try Data(contentsOf: url)
-//
-//            return UIImage(data: data) ?? UIImage()
-//        } catch {
-//
-//        }
-//        return UIImage()
-//    }
-//}
-
-struct LargeDealCell: View {
-    
+struct MediumDealCell: View {
     let title: String
     let salePrice: String
     let normalPrice: String
@@ -57,23 +39,22 @@ struct LargeDealCell: View {
                     savingsText()
                 }
             }
-            //Divider()
         }
-        .frame(maxWidth: 330)
+        .frame(maxWidth: 157)
     }
     
     // MARK: - Game Title
     @ViewBuilder
     func gameTitleText() -> some View {
         Text(title)
-            .font(.title2)
+            .font(.title3)
     }
     
     // MARK: - Sale price
     @ViewBuilder
     func salePriceText() -> some View {
         Text(salePrice)
-            .font(.subheadline)
+            .font(.caption2)
             .bold()
     }
     
@@ -81,7 +62,7 @@ struct LargeDealCell: View {
     @ViewBuilder
     func normalPriceText() -> some View {
         Text(normalPrice)
-            .font(.subheadline)
+            .font(.caption2)
             .strikethrough()
     }
     
@@ -89,7 +70,7 @@ struct LargeDealCell: View {
     @ViewBuilder
     func savingsText() -> some View {
         Text(savings)
-            .font(.subheadline)
+            .font(.caption2)
             .bold()
     }
     
@@ -104,7 +85,7 @@ struct LargeDealCell: View {
                 image
                     .resizable()
                     .scaledToFill()
-                    .frame(width: 330, height: 200)
+                    .frame(width: 157, height: 100)
                     .clipped()
                     
             case .failure(_):
@@ -126,7 +107,7 @@ struct LargeDealCell: View {
                 image
                     .resizable()
                     .scaledToFill()
-                    .frame(width: 31, height: 31)
+                    .frame(width: 16, height: 16)
                     .clipped()
                     
             case .failure(_):
@@ -138,11 +119,8 @@ struct LargeDealCell: View {
     }
 }
 
-struct LargeDealCell_Previews: PreviewProvider {
+struct MediumDealCell_Previews: PreviewProvider {
     static var previews: some View {
-        let mock = FeedGameDealModel.riseOfIndustryMock
-        let storeMock = StoreImagesCheapShark.steamMockImages.icon
-        
-        LargeDealCell(title: mock.title, salePrice: mock.salePrice, normalPrice: mock.normalPrice, savings: mock.savings, thumb: mock.thumb, storeThumb: storeMock)
+        MediumDealCell(title: FeedGameDealModel.riseOfIndustryMock.title, salePrice: FeedGameDealModel.riseOfIndustryMock.salePrice, normalPrice: FeedGameDealModel.riseOfIndustryMock.normalPrice, savings: FeedGameDealModel.riseOfIndustryMock.savings, thumb: FeedGameDealModel.riseOfIndustryMock.thumb, storeThumb: FeedGameDealModel.riseOfIndustryMock.storeID)
     }
 }

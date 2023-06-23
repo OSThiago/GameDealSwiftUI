@@ -33,6 +33,8 @@
 		DBAE72FC2A3B491300AB9E5F /* GameDealSwiftUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBAE72FB2A3B491300AB9E5F /* GameDealSwiftUITests.swift */; };
 		DBAE73062A3B491300AB9E5F /* GameDealSwiftUIUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBAE73052A3B491300AB9E5F /* GameDealSwiftUIUITests.swift */; };
 		DBAE73082A3B491300AB9E5F /* GameDealSwiftUIUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBAE73072A3B491300AB9E5F /* GameDealSwiftUIUITestsLaunchTests.swift */; };
+		DBD998922A45FC5500D1D587 /* MediumDealCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBD998912A45FC5500D1D587 /* MediumDealCell.swift */; };
+		DBD998942A464C5000D1D587 /* StoreCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBD998932A464C5000D1D587 /* StoreCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -83,6 +85,8 @@
 		DBAE73012A3B491300AB9E5F /* GameDealSwiftUIUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GameDealSwiftUIUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		DBAE73052A3B491300AB9E5F /* GameDealSwiftUIUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameDealSwiftUIUITests.swift; sourceTree = "<group>"; };
 		DBAE73072A3B491300AB9E5F /* GameDealSwiftUIUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameDealSwiftUIUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		DBD998912A45FC5500D1D587 /* MediumDealCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediumDealCell.swift; sourceTree = "<group>"; };
+		DBD998932A464C5000D1D587 /* StoreCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -211,6 +215,8 @@
 			isa = PBXGroup;
 			children = (
 				DB95FDC92A40E774006EB578 /* LargeDealCell.swift */,
+				DBD998912A45FC5500D1D587 /* MediumDealCell.swift */,
+				DBD998932A464C5000D1D587 /* StoreCell.swift */,
 			);
 			path = UIComponets;
 			sourceTree = "<group>";
@@ -238,6 +244,7 @@
 		DBAE72E92A3B491100AB9E5F /* GameDealSwiftUI */ = {
 			isa = PBXGroup;
 			children = (
+				DBD998902A45F55800D1D587 /* Utilities */,
 				DB95FDC82A40E4FF006EB578 /* Info.plist */,
 				DB95FDC12A40D8FD006EB578 /* Presentation */,
 				DB92BBE22A3B5E82009630E0 /* BusinessLogic */,
@@ -272,6 +279,13 @@
 				DBAE73072A3B491300AB9E5F /* GameDealSwiftUIUITestsLaunchTests.swift */,
 			);
 			path = GameDealSwiftUIUITests;
+			sourceTree = "<group>";
+		};
+		DBD998902A45F55800D1D587 /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Utilities;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -405,6 +419,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				DB92BBE92A3B60F1009630E0 /* ServiceError.swift in Sources */,
+				DBD998942A464C5000D1D587 /* StoreCell.swift in Sources */,
 				DB92BC022A3B6882009630E0 /* CheapestPrice.swift in Sources */,
 				DB92BBEE2A3B6595009630E0 /* EndpointCasesCheapShark.swift in Sources */,
 				DB92BC002A3B686E009630E0 /* CheaperStores.swift in Sources */,
@@ -424,6 +439,7 @@
 				DB92BBF62A3B6732009630E0 /* FeedGameDealModel.swift in Sources */,
 				DB92BBEB2A3B610C009630E0 /* Response.swift in Sources */,
 				DB92BBE52A3B602D009630E0 /* BaseURL.swift in Sources */,
+				DBD998922A45FC5500D1D587 /* MediumDealCell.swift in Sources */,
 				DB92BC072A3B698D009630E0 /* StoresCheapSharkMock.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -583,13 +599,16 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"GameDealSwiftUI/Preview Content\"";
+				DEVELOPMENT_TEAM = L2XS3J727J;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = GameDealSwiftUI/Info.plist;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.games";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -611,13 +630,16 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"GameDealSwiftUI/Preview Content\"";
+				DEVELOPMENT_TEAM = L2XS3J727J;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = GameDealSwiftUI/Info.plist;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.games";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

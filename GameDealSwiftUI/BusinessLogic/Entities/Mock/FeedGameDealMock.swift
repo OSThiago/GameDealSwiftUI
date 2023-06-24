@@ -7,7 +7,7 @@
 
 import Foundation
 
-extension FeedGameDeal {
+extension FeedGameDealModel {
     static let riseOfIndustryMock: Self = .init(
         gameID: "177814",
         dealID: "N1lK%2F7DR1bJ9lrEgcuPVzg15HAo4i9IavFyIbROZWLI%3D",

@@ -56,10 +56,10 @@ enum EndpointCasesCheapShark: Endpoint {
             }
             
             if let storeID = storeID {
-                return "storeID=\(storeID)&pageNumber=\(pageNumber)&pageSize=\(pageSize)&sortList=\(sortList)&AAA\(isAAA)"
+                return "storeID=\(storeID)&pageNumber=\(pageNumber)&pageSize=\(pageSize)&sortBy=\(sortList)&AAA\(isAAA)"
             }
             
-            return "pageNumber=\(pageNumber)&pageSize=\(pageSize)&sortList=\(sortList)&AAA\(isAAA)"
+            return "pageNumber=\(pageNumber)&pageSize=\(pageSize)&sortBy=\(sortList)&AAA\(isAAA)"
             
         case .getDealLookup(dealID: let dealID):
             return "id=\(dealID)"

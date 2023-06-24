@@ -8,7 +8,7 @@
 import Foundation
 
 enum CheapSharkSortDeals: String {
-    case DEALRATING = "DealRating"
+    case DEALRATING = "Deal Rating"
     case SAVINGS = "Savings"
     case PRICE = "Price"
     case METACRITIC = "Metacritic"
@@ -16,4 +16,5 @@ enum CheapSharkSortDeals: String {
     case RELEASE = "Release"
     case STORE = "Store"
     case RECENT = "Recent"
+    case TITLE = "Title"
 }

@@ -14,7 +14,7 @@
 		DB92BBEE2A3B6595009630E0 /* EndpointCasesCheapShark.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB92BBED2A3B6595009630E0 /* EndpointCasesCheapShark.swift */; };
 		DB92BBF02A3B65C0009630E0 /* WorkerCheapShark.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB92BBEF2A3B65C0009630E0 /* WorkerCheapShark.swift */; };
 		DB92BBF22A3B65E4009630E0 /* CheapSharkSortDeals.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB92BBF12A3B65E4009630E0 /* CheapSharkSortDeals.swift */; };
-		DB92BBF62A3B6732009630E0 /* FeedGameDeal.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB92BBF52A3B6732009630E0 /* FeedGameDeal.swift */; };
+		DB92BBF62A3B6732009630E0 /* FeedGameDealModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB92BBF52A3B6732009630E0 /* FeedGameDealModel.swift */; };
 		DB92BBF92A3B678A009630E0 /* StoresCheapShark.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB92BBF82A3B678A009630E0 /* StoresCheapShark.swift */; };
 		DB92BBFB2A3B67BC009630E0 /* StoreImagesCheapShark.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB92BBFA2A3B67BC009630E0 /* StoreImagesCheapShark.swift */; };
 		DB92BBFE2A3B685C009630E0 /* DealLookup.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB92BBFD2A3B685C009630E0 /* DealLookup.swift */; };
@@ -23,6 +23,9 @@
 		DB92BC052A3B6974009630E0 /* DealLookupMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB92BC042A3B6974009630E0 /* DealLookupMock.swift */; };
 		DB92BC072A3B698D009630E0 /* StoresCheapSharkMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB92BC062A3B698D009630E0 /* StoresCheapSharkMock.swift */; };
 		DB92BC092A3B69A2009630E0 /* FeedGameDealMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB92BC082A3B69A2009630E0 /* FeedGameDealMock.swift */; };
+		DB95FDC42A40D997006EB578 /* FeedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB95FDC32A40D997006EB578 /* FeedView.swift */; };
+		DB95FDC72A40D9BE006EB578 /* FeedViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB95FDC62A40D9BE006EB578 /* FeedViewModel.swift */; };
+		DB95FDCA2A40E774006EB578 /* LargeDealCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB95FDC92A40E774006EB578 /* LargeDealCell.swift */; };
 		DBAE72EB2A3B491100AB9E5F /* GameDealSwiftUIApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBAE72EA2A3B491100AB9E5F /* GameDealSwiftUIApp.swift */; };
 		DBAE72ED2A3B491100AB9E5F /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBAE72EC2A3B491100AB9E5F /* ContentView.swift */; };
 		DBAE72EF2A3B491300AB9E5F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DBAE72EE2A3B491300AB9E5F /* Assets.xcassets */; };
@@ -30,6 +33,9 @@
 		DBAE72FC2A3B491300AB9E5F /* GameDealSwiftUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBAE72FB2A3B491300AB9E5F /* GameDealSwiftUITests.swift */; };
 		DBAE73062A3B491300AB9E5F /* GameDealSwiftUIUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBAE73052A3B491300AB9E5F /* GameDealSwiftUIUITests.swift */; };
 		DBAE73082A3B491300AB9E5F /* GameDealSwiftUIUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBAE73072A3B491300AB9E5F /* GameDealSwiftUIUITestsLaunchTests.swift */; };
+		DBD998922A45FC5500D1D587 /* MediumDealCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBD998912A45FC5500D1D587 /* MediumDealCell.swift */; };
+		DBD998942A464C5000D1D587 /* StoreCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBD998932A464C5000D1D587 /* StoreCell.swift */; };
+		DBD998962A472B0F00D1D587 /* ScreenSize.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBD998952A472B0F00D1D587 /* ScreenSize.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -57,7 +63,7 @@
 		DB92BBED2A3B6595009630E0 /* EndpointCasesCheapShark.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndpointCasesCheapShark.swift; sourceTree = "<group>"; };
 		DB92BBEF2A3B65C0009630E0 /* WorkerCheapShark.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkerCheapShark.swift; sourceTree = "<group>"; };
 		DB92BBF12A3B65E4009630E0 /* CheapSharkSortDeals.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheapSharkSortDeals.swift; sourceTree = "<group>"; };
-		DB92BBF52A3B6732009630E0 /* FeedGameDeal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedGameDeal.swift; sourceTree = "<group>"; };
+		DB92BBF52A3B6732009630E0 /* FeedGameDealModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedGameDealModel.swift; sourceTree = "<group>"; };
 		DB92BBF82A3B678A009630E0 /* StoresCheapShark.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoresCheapShark.swift; sourceTree = "<group>"; };
 		DB92BBFA2A3B67BC009630E0 /* StoreImagesCheapShark.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreImagesCheapShark.swift; sourceTree = "<group>"; };
 		DB92BBFD2A3B685C009630E0 /* DealLookup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DealLookup.swift; sourceTree = "<group>"; };
@@ -66,6 +72,10 @@
 		DB92BC042A3B6974009630E0 /* DealLookupMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DealLookupMock.swift; sourceTree = "<group>"; };
 		DB92BC062A3B698D009630E0 /* StoresCheapSharkMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoresCheapSharkMock.swift; sourceTree = "<group>"; };
 		DB92BC082A3B69A2009630E0 /* FeedGameDealMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedGameDealMock.swift; sourceTree = "<group>"; };
+		DB95FDC32A40D997006EB578 /* FeedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedView.swift; sourceTree = "<group>"; };
+		DB95FDC62A40D9BE006EB578 /* FeedViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedViewModel.swift; sourceTree = "<group>"; };
+		DB95FDC82A40E4FF006EB578 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		DB95FDC92A40E774006EB578 /* LargeDealCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LargeDealCell.swift; sourceTree = "<group>"; };
 		DBAE72E72A3B491100AB9E5F /* GameDealSwiftUI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GameDealSwiftUI.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DBAE72EA2A3B491100AB9E5F /* GameDealSwiftUIApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameDealSwiftUIApp.swift; sourceTree = "<group>"; };
 		DBAE72EC2A3B491100AB9E5F /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -76,6 +86,9 @@
 		DBAE73012A3B491300AB9E5F /* GameDealSwiftUIUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GameDealSwiftUIUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		DBAE73052A3B491300AB9E5F /* GameDealSwiftUIUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameDealSwiftUIUITests.swift; sourceTree = "<group>"; };
 		DBAE73072A3B491300AB9E5F /* GameDealSwiftUIUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameDealSwiftUIUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		DBD998912A45FC5500D1D587 /* MediumDealCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediumDealCell.swift; sourceTree = "<group>"; };
+		DBD998932A464C5000D1D587 /* StoreCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreCell.swift; sourceTree = "<group>"; };
+		DBD998952A472B0F00D1D587 /* ScreenSize.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScreenSize.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -148,7 +161,7 @@
 		DB92BBF42A3B671C009630E0 /* FeedGameDealModel */ = {
 			isa = PBXGroup;
 			children = (
-				DB92BBF52A3B6732009630E0 /* FeedGameDeal.swift */,
+				DB92BBF52A3B6732009630E0 /* FeedGameDealModel.swift */,
 			);
 			path = FeedGameDealModel;
 			sourceTree = "<group>";
@@ -182,6 +195,34 @@
 			path = Mock;
 			sourceTree = "<group>";
 		};
+		DB95FDC12A40D8FD006EB578 /* Presentation */ = {
+			isa = PBXGroup;
+			children = (
+				DB95FDC22A40D946006EB578 /* Feed */,
+			);
+			path = Presentation;
+			sourceTree = "<group>";
+		};
+		DB95FDC22A40D946006EB578 /* Feed */ = {
+			isa = PBXGroup;
+			children = (
+				DB95FDC32A40D997006EB578 /* FeedView.swift */,
+				DB95FDC62A40D9BE006EB578 /* FeedViewModel.swift */,
+				DB95FDC52A40D99E006EB578 /* UIComponets */,
+			);
+			path = Feed;
+			sourceTree = "<group>";
+		};
+		DB95FDC52A40D99E006EB578 /* UIComponets */ = {
+			isa = PBXGroup;
+			children = (
+				DB95FDC92A40E774006EB578 /* LargeDealCell.swift */,
+				DBD998912A45FC5500D1D587 /* MediumDealCell.swift */,
+				DBD998932A464C5000D1D587 /* StoreCell.swift */,
+			);
+			path = UIComponets;
+			sourceTree = "<group>";
+		};
 		DBAE72DE2A3B491000AB9E5F = {
 			isa = PBXGroup;
 			children = (
@@ -205,6 +246,9 @@
 		DBAE72E92A3B491100AB9E5F /* GameDealSwiftUI */ = {
 			isa = PBXGroup;
 			children = (
+				DBD998902A45F55800D1D587 /* Utilities */,
+				DB95FDC82A40E4FF006EB578 /* Info.plist */,
+				DB95FDC12A40D8FD006EB578 /* Presentation */,
 				DB92BBE22A3B5E82009630E0 /* BusinessLogic */,
 				DBAE72EA2A3B491100AB9E5F /* GameDealSwiftUIApp.swift */,
 				DBAE72EC2A3B491100AB9E5F /* ContentView.swift */,
@@ -237,6 +281,14 @@
 				DBAE73072A3B491300AB9E5F /* GameDealSwiftUIUITestsLaunchTests.swift */,
 			);
 			path = GameDealSwiftUIUITests;
+			sourceTree = "<group>";
+		};
+		DBD998902A45F55800D1D587 /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				DBD998952A472B0F00D1D587 /* ScreenSize.swift */,
+			);
+			path = Utilities;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -370,22 +422,28 @@
 			buildActionMask = 2147483647;
 			files = (
 				DB92BBE92A3B60F1009630E0 /* ServiceError.swift in Sources */,
+				DBD998942A464C5000D1D587 /* StoreCell.swift in Sources */,
 				DB92BC022A3B6882009630E0 /* CheapestPrice.swift in Sources */,
 				DB92BBEE2A3B6595009630E0 /* EndpointCasesCheapShark.swift in Sources */,
 				DB92BC002A3B686E009630E0 /* CheaperStores.swift in Sources */,
 				DB92BBF22A3B65E4009630E0 /* CheapSharkSortDeals.swift in Sources */,
+				DBD998962A472B0F00D1D587 /* ScreenSize.swift in Sources */,
 				DB92BBFB2A3B67BC009630E0 /* StoreImagesCheapShark.swift in Sources */,
 				DB92BBFE2A3B685C009630E0 /* DealLookup.swift in Sources */,
+				DB95FDCA2A40E774006EB578 /* LargeDealCell.swift in Sources */,
 				DB92BC092A3B69A2009630E0 /* FeedGameDealMock.swift in Sources */,
+				DB95FDC42A40D997006EB578 /* FeedView.swift in Sources */,
 				DB92BBF92A3B678A009630E0 /* StoresCheapShark.swift in Sources */,
+				DB95FDC72A40D9BE006EB578 /* FeedViewModel.swift in Sources */,
 				DBAE72ED2A3B491100AB9E5F /* ContentView.swift in Sources */,
 				DB92BC052A3B6974009630E0 /* DealLookupMock.swift in Sources */,
 				DBAE72EB2A3B491100AB9E5F /* GameDealSwiftUIApp.swift in Sources */,
 				DB92BBE72A3B60AF009630E0 /* Endpoint.swift in Sources */,
 				DB92BBF02A3B65C0009630E0 /* WorkerCheapShark.swift in Sources */,
-				DB92BBF62A3B6732009630E0 /* FeedGameDeal.swift in Sources */,
+				DB92BBF62A3B6732009630E0 /* FeedGameDealModel.swift in Sources */,
 				DB92BBEB2A3B610C009630E0 /* Response.swift in Sources */,
 				DB92BBE52A3B602D009630E0 /* BaseURL.swift in Sources */,
+				DBD998922A45FC5500D1D587 /* MediumDealCell.swift in Sources */,
 				DB92BC072A3B698D009630E0 /* StoresCheapSharkMock.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -545,13 +603,16 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"GameDealSwiftUI/Preview Content\"";
+				DEVELOPMENT_TEAM = L2XS3J727J;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_FILE = GameDealSwiftUI/Info.plist;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.games";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -573,13 +634,16 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"GameDealSwiftUI/Preview Content\"";
+				DEVELOPMENT_TEAM = L2XS3J727J;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_FILE = GameDealSwiftUI/Info.plist;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.games";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

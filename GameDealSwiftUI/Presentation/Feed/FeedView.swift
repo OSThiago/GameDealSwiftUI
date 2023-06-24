@@ -53,7 +53,7 @@ struct FeedView: View {
                         let dealFormatted = viewModel.setupDealCell(deal)
                         
                         LargeDealCell(title: dealFormatted.title, salePrice: dealFormatted.salePrice, normalPrice: dealFormatted.normalPrice, savings: dealFormatted.savings, thumb: dealFormatted.thumb, storeThumb: dealFormatted.storeID)
-                            .scenePadding(.leading)
+                            .padding(.leading)
                     }
                 }
             }
@@ -84,7 +84,7 @@ struct FeedView: View {
                         let dealFormatted = viewModel.setupDealCell(deal)
                         
                         MediumDealCell(title: dealFormatted.title, salePrice: dealFormatted.salePrice, normalPrice: dealFormatted.normalPrice, savings: dealFormatted.savings, thumb: dealFormatted.thumb, storeThumb: dealFormatted.storeID)
-                            .scenePadding(.leading)
+                            .padding(.leading)
                     }
                 }
             }

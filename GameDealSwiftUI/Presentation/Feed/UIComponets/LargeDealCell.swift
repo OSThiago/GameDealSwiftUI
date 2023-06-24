@@ -7,23 +7,6 @@
 
 import SwiftUI
 
-//extension String {
-//    func load() -> UIImage {
-//        do {
-//            guard let url = URL(string: self) else {
-//                return UIImage()
-//            }
-//
-//            let data: Data = try Data(contentsOf: url)
-//
-//            return UIImage(data: data) ?? UIImage()
-//        } catch {
-//
-//        }
-//        return UIImage()
-//    }
-//}
-
 struct LargeDealCell: View {
     
     let title: String
@@ -32,6 +15,8 @@ struct LargeDealCell: View {
     let savings: String
     var thumb: String
     let storeThumb: String
+    
+    private let cellWidth = ScreenSize.width * 0.9
     
     var body: some View {
         VStack {
@@ -59,7 +44,7 @@ struct LargeDealCell: View {
             }
             //Divider()
         }
-        .frame(maxWidth: 330)
+        .frame(maxWidth: cellWidth)
     }
     
     // MARK: - Game Title
@@ -104,8 +89,9 @@ struct LargeDealCell: View {
                 image
                     .resizable()
                     .scaledToFill()
-                    .frame(width: 330, height: 200)
+                    .frame(width: cellWidth, height: 200)
                     .clipped()
+                    .cornerRadius(3)
                     
             case .failure(_):
                 EmptyView()

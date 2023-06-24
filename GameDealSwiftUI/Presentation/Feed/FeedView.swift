@@ -10,13 +10,14 @@ import SwiftUI
 struct FeedView: View {
     
     @StateObject var viewModel = FeedViewModel()
+    @State var aaaID: FeedGameDealModel?
     
     var body: some View {
         NavigationView {
             ScrollView {
                 Divider()
                 
-                VStack(spacing: 10) {
+                VStack(spacing: 16) {
                     makeLargeList(deals: viewModel.dealsAAA, title: "AAA Games")
                     
                     makeStoreList(title: "Game Stores", stores: viewModel.storesInformations)
@@ -46,24 +47,27 @@ struct FeedView: View {
                 .padding(.leading)
             
             ScrollView(.horizontal, showsIndicators: false) {
-                HStack(spacing: 0) {
+                HStack(spacing: -5) {
                     ForEach(deals, id: \.dealID) { deal in
                         
                         let dealFormatted = viewModel.setupDealCell(deal)
                         
                         LargeDealCell(title: dealFormatted.title, salePrice: dealFormatted.salePrice, normalPrice: dealFormatted.normalPrice, savings: dealFormatted.savings, thumb: dealFormatted.thumb, storeThumb: dealFormatted.storeID)
-                            .padding(.leading)
+                            .scenePadding(.leading)
                     }
                 }
             }
+            
             Divider()
                 .padding(.horizontal)
+                .padding(.top, 8)
         }
         .onAppear {
             viewModel.displayDealsAAA()
         }
     }
     
+    // MARK: - LIST GAMES LIST
     @ViewBuilder
     func makeMediumList(deals: [FeedGameDealModel], title: String) -> some View {
         VStack(alignment: .leading, spacing: 5) {
@@ -74,21 +78,24 @@ struct FeedView: View {
                 .padding(.leading)
             
             ScrollView(.horizontal, showsIndicators: false) {
-                HStack(spacing: 0) {
+                HStack(spacing: -8) {
                     ForEach(deals, id: \.dealID) { deal in
                         
                         let dealFormatted = viewModel.setupDealCell(deal)
                         
                         MediumDealCell(title: dealFormatted.title, salePrice: dealFormatted.salePrice, normalPrice: dealFormatted.normalPrice, savings: dealFormatted.savings, thumb: dealFormatted.thumb, storeThumb: dealFormatted.storeID)
-                            .padding(.leading)
+                            .scenePadding(.leading)
                     }
                 }
             }
+            
             Divider()
                 .padding(.horizontal)
+                .padding(.top, 16)
         }
     }
     
+    // MARK: - STORE LIST
     @ViewBuilder
     func makeStoreList(title: String, stores: [StoresCheapShark]) -> some View {
         
@@ -116,6 +123,10 @@ struct FeedView: View {
                     }
                 }
             }
+            
+            Divider()
+                .padding(.horizontal)
+                .padding(.top, 8)
         }
     }
 }

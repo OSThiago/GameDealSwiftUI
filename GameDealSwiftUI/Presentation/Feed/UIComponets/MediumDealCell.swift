@@ -40,14 +40,14 @@ struct MediumDealCell: View {
                 }
             }
         }
-        .frame(maxWidth: 157)
+        .frame(maxWidth: 170)
     }
     
     // MARK: - Game Title
     @ViewBuilder
     func gameTitleText() -> some View {
         Text(title)
-            .font(.title3)
+            .font(.subheadline)
     }
     
     // MARK: - Sale price
@@ -85,8 +85,9 @@ struct MediumDealCell: View {
                 image
                     .resizable()
                     .scaledToFill()
-                    .frame(width: 157, height: 100)
+                    .frame(width: 170, height: 100)
                     .clipped()
+                    .cornerRadius(3)
                     
             case .failure(_):
                 EmptyView()

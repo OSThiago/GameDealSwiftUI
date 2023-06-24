@@ -35,6 +35,7 @@
 		DBAE73082A3B491300AB9E5F /* GameDealSwiftUIUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBAE73072A3B491300AB9E5F /* GameDealSwiftUIUITestsLaunchTests.swift */; };
 		DBD998922A45FC5500D1D587 /* MediumDealCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBD998912A45FC5500D1D587 /* MediumDealCell.swift */; };
 		DBD998942A464C5000D1D587 /* StoreCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBD998932A464C5000D1D587 /* StoreCell.swift */; };
+		DBD998962A472B0F00D1D587 /* ScreenSize.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBD998952A472B0F00D1D587 /* ScreenSize.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -87,6 +88,7 @@
 		DBAE73072A3B491300AB9E5F /* GameDealSwiftUIUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameDealSwiftUIUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		DBD998912A45FC5500D1D587 /* MediumDealCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediumDealCell.swift; sourceTree = "<group>"; };
 		DBD998932A464C5000D1D587 /* StoreCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreCell.swift; sourceTree = "<group>"; };
+		DBD998952A472B0F00D1D587 /* ScreenSize.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScreenSize.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -284,6 +286,7 @@
 		DBD998902A45F55800D1D587 /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
+				DBD998952A472B0F00D1D587 /* ScreenSize.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -424,6 +427,7 @@
 				DB92BBEE2A3B6595009630E0 /* EndpointCasesCheapShark.swift in Sources */,
 				DB92BC002A3B686E009630E0 /* CheaperStores.swift in Sources */,
 				DB92BBF22A3B65E4009630E0 /* CheapSharkSortDeals.swift in Sources */,
+				DBD998962A472B0F00D1D587 /* ScreenSize.swift in Sources */,
 				DB92BBFB2A3B67BC009630E0 /* StoreImagesCheapShark.swift in Sources */,
 				DB92BBFE2A3B685C009630E0 /* DealLookup.swift in Sources */,
 				DB95FDCA2A40E774006EB578 /* LargeDealCell.swift in Sources */,

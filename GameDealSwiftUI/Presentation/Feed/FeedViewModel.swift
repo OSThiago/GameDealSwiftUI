@@ -93,10 +93,8 @@ class FeedViewModel: ObservableObject {
             savings: formatSavings(model.savings),
             thumb: getHightQualityImage(url: model.thumb)
         )
-        
         return model
     }
-    
 }
 
 extension FeedViewModel {
@@ -104,7 +102,11 @@ extension FeedViewModel {
     /// - Parameter url: `String` with url with original quality
     /// - Returns: `String` url with hight quality image
     private func getHightQualityImage(url: String) -> String {
-        return url.replacingOccurrences(of: "capsule_sm_120", with: "header")
+        if url.contains("capsule_sm_120") {
+            return url.replacingOccurrences(of: "capsule_sm_120", with: "header")
+        } else {
+            return url
+        }
     }
     
     func getStoreImage(storeID: String) -> String {

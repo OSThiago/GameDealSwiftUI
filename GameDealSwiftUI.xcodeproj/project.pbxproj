@@ -36,6 +36,9 @@
 		DBD998922A45FC5500D1D587 /* MediumDealCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBD998912A45FC5500D1D587 /* MediumDealCell.swift */; };
 		DBD998942A464C5000D1D587 /* StoreCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBD998932A464C5000D1D587 /* StoreCell.swift */; };
 		DBD998962A472B0F00D1D587 /* ScreenSize.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBD998952A472B0F00D1D587 /* ScreenSize.swift */; };
+		DBD9989C2A47484700D1D587 /* ListDealsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBD9989B2A47484700D1D587 /* ListDealsView.swift */; };
+		DBD9989E2A474BAC00D1D587 /* ListDealCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBD9989D2A474BAC00D1D587 /* ListDealCell.swift */; };
+		DBD998A02A48BFCD00D1D587 /* ListDealViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBD9989F2A48BFCD00D1D587 /* ListDealViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -89,6 +92,9 @@
 		DBD998912A45FC5500D1D587 /* MediumDealCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediumDealCell.swift; sourceTree = "<group>"; };
 		DBD998932A464C5000D1D587 /* StoreCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreCell.swift; sourceTree = "<group>"; };
 		DBD998952A472B0F00D1D587 /* ScreenSize.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScreenSize.swift; sourceTree = "<group>"; };
+		DBD9989B2A47484700D1D587 /* ListDealsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListDealsView.swift; sourceTree = "<group>"; };
+		DBD9989D2A474BAC00D1D587 /* ListDealCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListDealCell.swift; sourceTree = "<group>"; };
+		DBD9989F2A48BFCD00D1D587 /* ListDealViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListDealViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -198,6 +204,7 @@
 		DB95FDC12A40D8FD006EB578 /* Presentation */ = {
 			isa = PBXGroup;
 			children = (
+				DBD9989A2A47480700D1D587 /* ListDeals */,
 				DB95FDC22A40D946006EB578 /* Feed */,
 			);
 			path = Presentation;
@@ -289,6 +296,16 @@
 				DBD998952A472B0F00D1D587 /* ScreenSize.swift */,
 			);
 			path = Utilities;
+			sourceTree = "<group>";
+		};
+		DBD9989A2A47480700D1D587 /* ListDeals */ = {
+			isa = PBXGroup;
+			children = (
+				DBD9989B2A47484700D1D587 /* ListDealsView.swift */,
+				DBD9989F2A48BFCD00D1D587 /* ListDealViewModel.swift */,
+				DBD9989D2A474BAC00D1D587 /* ListDealCell.swift */,
+			);
+			path = ListDeals;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -422,6 +439,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				DB92BBE92A3B60F1009630E0 /* ServiceError.swift in Sources */,
+				DBD9989C2A47484700D1D587 /* ListDealsView.swift in Sources */,
 				DBD998942A464C5000D1D587 /* StoreCell.swift in Sources */,
 				DB92BC022A3B6882009630E0 /* CheapestPrice.swift in Sources */,
 				DB92BBEE2A3B6595009630E0 /* EndpointCasesCheapShark.swift in Sources */,
@@ -429,6 +447,7 @@
 				DB92BBF22A3B65E4009630E0 /* CheapSharkSortDeals.swift in Sources */,
 				DBD998962A472B0F00D1D587 /* ScreenSize.swift in Sources */,
 				DB92BBFB2A3B67BC009630E0 /* StoreImagesCheapShark.swift in Sources */,
+				DBD9989E2A474BAC00D1D587 /* ListDealCell.swift in Sources */,
 				DB92BBFE2A3B685C009630E0 /* DealLookup.swift in Sources */,
 				DB95FDCA2A40E774006EB578 /* LargeDealCell.swift in Sources */,
 				DB92BC092A3B69A2009630E0 /* FeedGameDealMock.swift in Sources */,
@@ -444,6 +463,7 @@
 				DB92BBEB2A3B610C009630E0 /* Response.swift in Sources */,
 				DB92BBE52A3B602D009630E0 /* BaseURL.swift in Sources */,
 				DBD998922A45FC5500D1D587 /* MediumDealCell.swift in Sources */,
+				DBD998A02A48BFCD00D1D587 /* ListDealViewModel.swift in Sources */,
 				DB92BC072A3B698D009630E0 /* StoresCheapSharkMock.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

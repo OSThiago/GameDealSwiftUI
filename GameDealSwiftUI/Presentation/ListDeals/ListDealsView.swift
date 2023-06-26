@@ -11,12 +11,12 @@ struct ListDealsView: View {
     
     @StateObject var viewModel = ListDealViewModel()
     
+    let storesInformations: [StoresCheapShark]
     let store: StoresCheapShark
-    let feedviewModel: FeedViewModel
     
-    init(store: StoresCheapShark, feedviewModel: FeedViewModel) {
+    init(store: StoresCheapShark, storesInformations: [StoresCheapShark]) {
         self.store = store
-        self.feedviewModel = feedviewModel
+        self.storesInformations = storesInformations
     }
     
     var body: some View {
@@ -24,8 +24,7 @@ struct ListDealsView: View {
             ScrollView(.vertical, showsIndicators: false) {
                 VStack(spacing: 10) {
                     ForEach(viewModel.dealList, id: \.dealID) { deal in
-                        // TODO: - formater dados
-                        let formatted = feedviewModel.setupDealCell(deal)
+                        let formatted = viewModel.setupDealCell(deal)
                         
                         ListDealCell(title: formatted.title, salePrice: formatted.salePrice, normalPrice: formatted.normalPrice, savings: formatted.savings, thumb: formatted.thumb, storeThumb: formatted.storeID)
                         Divider()
@@ -36,6 +35,7 @@ struct ListDealsView: View {
         }
         .onAppear {
             viewModel.store = store
+            viewModel.storesInformations = storesInformations
             viewModel.fetchDeals()
         }
     }
@@ -43,6 +43,6 @@ struct ListDealsView: View {
 
 struct ListDealsView_Previews: PreviewProvider {
     static var previews: some View {
-        ListDealsView(store: StoresCheapShark.steamMock, feedviewModel: FeedViewModel())
+        ListDealsView(store: StoresCheapShark.steamMock, storesInformations: [])
     }
 }

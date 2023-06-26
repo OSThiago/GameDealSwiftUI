@@ -39,6 +39,7 @@
 		DBD9989C2A47484700D1D587 /* ListDealsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBD9989B2A47484700D1D587 /* ListDealsView.swift */; };
 		DBD9989E2A474BAC00D1D587 /* ListDealCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBD9989D2A474BAC00D1D587 /* ListDealCell.swift */; };
 		DBD998A02A48BFCD00D1D587 /* ListDealViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBD9989F2A48BFCD00D1D587 /* ListDealViewModel.swift */; };
+		DBD998A32A49E2CB00D1D587 /* FormatterDealData.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBD998A22A49E2CB00D1D587 /* FormatterDealData.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -95,6 +96,7 @@
 		DBD9989B2A47484700D1D587 /* ListDealsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListDealsView.swift; sourceTree = "<group>"; };
 		DBD9989D2A474BAC00D1D587 /* ListDealCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListDealCell.swift; sourceTree = "<group>"; };
 		DBD9989F2A48BFCD00D1D587 /* ListDealViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListDealViewModel.swift; sourceTree = "<group>"; };
+		DBD998A22A49E2CB00D1D587 /* FormatterDealData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormatterDealData.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -294,6 +296,7 @@
 			isa = PBXGroup;
 			children = (
 				DBD998952A472B0F00D1D587 /* ScreenSize.swift */,
+				DBD998A22A49E2CB00D1D587 /* FormatterDealData.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -303,9 +306,17 @@
 			children = (
 				DBD9989B2A47484700D1D587 /* ListDealsView.swift */,
 				DBD9989F2A48BFCD00D1D587 /* ListDealViewModel.swift */,
-				DBD9989D2A474BAC00D1D587 /* ListDealCell.swift */,
+				DBD998A12A49C14000D1D587 /* UIComponents */,
 			);
 			path = ListDeals;
+			sourceTree = "<group>";
+		};
+		DBD998A12A49C14000D1D587 /* UIComponents */ = {
+			isa = PBXGroup;
+			children = (
+				DBD9989D2A474BAC00D1D587 /* ListDealCell.swift */,
+			);
+			path = UIComponents;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -452,6 +463,7 @@
 				DB95FDCA2A40E774006EB578 /* LargeDealCell.swift in Sources */,
 				DB92BC092A3B69A2009630E0 /* FeedGameDealMock.swift in Sources */,
 				DB95FDC42A40D997006EB578 /* FeedView.swift in Sources */,
+				DBD998A32A49E2CB00D1D587 /* FormatterDealData.swift in Sources */,
 				DB92BBF92A3B678A009630E0 /* StoresCheapShark.swift in Sources */,
 				DB95FDC72A40D9BE006EB578 /* FeedViewModel.swift in Sources */,
 				DBAE72ED2A3B491100AB9E5F /* ContentView.swift in Sources */,

@@ -7,11 +7,13 @@
 
 import SwiftUI
 
-class ListDealViewModel: ObservableObject {
+class ListDealViewModel: ObservableObject, FormatterDealData {
     
     @Published var dealList = [FeedGameDealModel]()
     
     var workerCheapShark = WorkerCheapShark()
+    
+    var storesInformations: [StoresCheapShark] = []
     
     var store: StoresCheapShark?
     

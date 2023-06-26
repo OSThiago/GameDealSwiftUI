@@ -81,7 +81,7 @@ struct FeedView: View {
                 Spacer()
                 
                 NavigationLink {
-                    ListDealsView(store: store, feedviewModel: self.viewModel)
+                    ListDealsView(store: store, storesInformations: self.viewModel.storesInformations)
                         .navigationTitle(store.storeName)
                 } label: {
                     Text("See All")
@@ -130,7 +130,7 @@ struct FeedView: View {
                         VStack{
                             
                             NavigationLink {
-                                ListDealsView(store: store, feedviewModel: self.viewModel)
+                                ListDealsView(store: store, storesInformations: self.viewModel.storesInformations)
                                     .navigationTitle(store.storeName)
                             } label: {
                                 StoreCell(storeName: store.storeName, storeBanner: viewModel.getStoreImage(storeID: store.storeID))

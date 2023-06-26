@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-class FeedViewModel: ObservableObject {
+class FeedViewModel: ObservableObject, FormatterDealData {
     // Published Properties
     @Published var dealsAAA = [FeedGameDealModel]()
     
@@ -19,6 +19,11 @@ class FeedViewModel: ObservableObject {
     
     // Funcs
     func fetchStores() {
+        
+        if !storesInformations.isEmpty {
+            return
+        }
+        
         workerCheapShark.getStores { result in
             switch result {
             case .success(let stores):
@@ -34,6 +39,11 @@ class FeedViewModel: ObservableObject {
     }
     
     func displayDealsAAA() {
+        
+        if !dealsAAA.isEmpty {
+            return
+        }
+        
         let endpoint = EndpointCasesCheapShark.getDealsList(pageNumber: 0, pageSize: 8, sortList: .DEALRATING, AAA: true, storeID: nil)
         
         workerCheapShark.getDealsList(endpoint: endpoint) { result in
@@ -61,6 +71,10 @@ class FeedViewModel: ObservableObject {
     func displayDealsStores() {
         let selectedStores = ["Steam", "Epic Games Store", "Uplay" , "GOG"]
         
+        if !storesDeals.isEmpty {
+            return
+        }
+        
         for selectedStore in selectedStores {
             
             guard let store = storesInformations.first(where: {$0.storeName == selectedStore}) else { return }
@@ -85,7 +99,6 @@ class FeedViewModel: ObservableObject {
         let model = FeedGameDealModel(
             gameID: model.gameID,
             dealID: model.dealID,
-            // TODO: - change to get store image
             storeID: getStoreImage(storeID: model.storeID),
             title: model.title,
             salePrice: "$\(model.salePrice)",
@@ -93,43 +106,6 @@ class FeedViewModel: ObservableObject {
             savings: formatSavings(model.savings),
             thumb: getHightQualityImage(url: model.thumb)
         )
-        
         return model
-    }
-    
-}
-
-extension FeedViewModel {
-    /// Replace url to another url with hight quality image
-    /// - Parameter url: `String` with url with original quality
-    /// - Returns: `String` url with hight quality image
-    private func getHightQualityImage(url: String) -> String {
-        return url.replacingOccurrences(of: "capsule_sm_120", with: "header")
-    }
-    
-    func getStoreImage(storeID: String) -> String {
-        
-        let store = self.storesInformations.first(where: {$0.storeID == storeID})
-        
-        // TODO: - return empty store icon
-        guard let imageStore = store?.images.logo else { return "" }
-        
-        let baseURL = BaseURL.cheapsharkURL
-        
-        let finalImage = "\(baseURL)\(imageStore)"
-
-        return finalImage
-    }
-    
-    private func formatSavings(_ savings: String) -> String {
-        var savingFormatted = ""
-        
-        let index = savings.firstIndex(of: ".") ?? savings.endIndex
-        
-        let beginning = savings[..<index]
-        
-        savingFormatted = String(beginning)
-        
-        return "-\(savingFormatted)%"
     }
 }

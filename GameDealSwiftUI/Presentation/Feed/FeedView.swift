@@ -23,7 +23,7 @@ struct FeedView: View {
                     makeStoreList(title: "Game Stores", stores: viewModel.storesInformations)
                     
                     ForEach(viewModel.storesDeals, id: \.store.storeID) { store in
-                        makeMediumList(deals: store.dealsList, title: store.store.storeName)
+                        makeMediumList(deals: store.dealsList, store: store.store)
                     }
                 }
             }
@@ -69,13 +69,25 @@ struct FeedView: View {
     
     // MARK: - LIST GAMES LIST
     @ViewBuilder
-    func makeMediumList(deals: [FeedGameDealModel], title: String) -> some View {
+    func makeMediumList(deals: [FeedGameDealModel], store: StoresCheapShark) -> some View {
         VStack(alignment: .leading, spacing: 5) {
-            // Title
-            Text(title)
-                .font(.title2)
-                .bold()
-                .padding(.leading)
+            HStack {
+                // Title
+                Text(store.storeName)
+                    .font(.title2)
+                    .bold()
+                    .padding(.leading)
+                
+                Spacer()
+                
+                NavigationLink {
+                    ListDealsView(store: store, storesInformations: self.viewModel.storesInformations)
+                        .navigationTitle(store.storeName)
+                } label: {
+                    Text("See All")
+                }
+                .padding(.trailing)
+            }
             
             ScrollView(.horizontal, showsIndicators: false) {
                 HStack(spacing: -8) {
@@ -115,8 +127,14 @@ struct FeedView: View {
             ScrollView(.horizontal, showsIndicators: false) {
                 LazyHGrid(rows: rows, spacing: 5) {
                     ForEach(stores, id: \.storeID) { store in
-                        VStack{
-                            StoreCell(storeName: store.storeName, storeBanner: viewModel.getStoreImage(storeID: store.storeID))
+                        VStack {
+                            NavigationLink {
+                                ListDealsView(store: store, storesInformations: self.viewModel.storesInformations)
+                                    .navigationTitle(store.storeName)
+                            } label: {
+                                StoreCell(storeName: store.storeName, storeBanner: viewModel.getStoreImage(storeID: store.storeID))
+                            }
+
                             Divider()
                                 .padding(.leading)
                         }

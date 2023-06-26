@@ -127,8 +127,7 @@ struct FeedView: View {
             ScrollView(.horizontal, showsIndicators: false) {
                 LazyHGrid(rows: rows, spacing: 5) {
                     ForEach(stores, id: \.storeID) { store in
-                        VStack{
-                            
+                        VStack {
                             NavigationLink {
                                 ListDealsView(store: store, storesInformations: self.viewModel.storesInformations)
                                     .navigationTitle(store.storeName)

@@ -94,7 +94,7 @@ struct FeedView: View {
                     ForEach(deals, id: \.dealID) { deal in
                         
                         let dealFormatted = viewModel.setupDealCell(deal)
-                        
+
                         NavigationLink {
                             DealLookupView(gameID: dealFormatted.gameID)
                         } label: {

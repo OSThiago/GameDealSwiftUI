@@ -22,7 +22,6 @@ class DealLookupViewModel: ObservableObject {
             case .success(let gameData):
                 DispatchQueue.main.async {
                     self.gameLookupModel = gameData
-                    print(gameData.info.title)
                 }
             case .failure(let error):
                 print(error)

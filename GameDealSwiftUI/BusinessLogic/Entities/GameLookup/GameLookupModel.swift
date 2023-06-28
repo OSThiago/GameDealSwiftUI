@@ -8,22 +8,22 @@
 import Foundation
 
 struct GameLookupModel: Codable {
-    let info: InfoGameLookupModel
-    //let cheapestPriceEver: CheapestPrice
-    let deals: [DealsGameLookupModel]
+    let info: InfoGameLookupModel?
+    let cheapestPriceEver: CheapestPrice?
+    let deals: [DealsGameLookupModel]?
     
 }
 
 struct InfoGameLookupModel: Codable {
-    let title: String
-    let steamAppID: String
-    let thumb: String
+    let title: String?
+    let steamAppID: String?
+    let thumb: String?
 }
 
 struct DealsGameLookupModel: Codable {
-    let storeID: String
-    let dealID: String
-    let price: String
-    let retailPrice: String
-    let savings: String
+    let storeID: String?
+    let dealID: String?
+    let price: String?
+    let retailPrice: String?
+    let savings: String?
 }

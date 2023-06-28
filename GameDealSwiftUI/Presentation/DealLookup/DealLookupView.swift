@@ -19,11 +19,27 @@ struct DealLookupView: View {
     
     var body: some View {
         VStack {
-            Text(viewModel.gameLookupModel?.info.title ?? "Error")
+            Text(viewModel.gameLookupModel?.info?.title ?? "Error")
+            
+            ForEach(viewModel.gameLookupModel?.deals ?? [], id: \.dealID) { deal in
+                
+                HStack {
+                    Text(deal.price ?? "No title")
+                    Text(deal.retailPrice ?? "no Retail Price")
+                    Spacer()
+                    Text(deal.storeID ?? "no StoreID")
+                }
+                
+            }
         }
         .onAppear {
             viewModel.fetchDealLookup(gameID: gameID)
         }
+    }
+    
+    @ViewBuilder
+    func gameImage() -> some View {
+        
     }
 }
 

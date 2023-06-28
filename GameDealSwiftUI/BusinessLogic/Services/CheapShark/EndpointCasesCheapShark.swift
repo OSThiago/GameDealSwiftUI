@@ -39,7 +39,7 @@ enum EndpointCasesCheapShark: Endpoint {
         case .getDealLookup(_):
             return "/api/1.0/deals?"
         case .getGameLookup(_):
-            return "/api/1.0/deals?"
+            return "/api/1.0/games?"
         case .getStores:
             return "/api/1.0/stores"
         }

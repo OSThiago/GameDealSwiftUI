@@ -49,11 +49,11 @@ class WorkerCheapShark {
         var urlRequest = URLRequest(url: url)
 
         urlRequest.httpMethod = endpoint.httpMethod
-
+        
         let task = session.dataTask(with: urlRequest) { data, response, error in
             if let data {
                 do {
-                    let data = try JSONDecoder().decode([GameLookupModel].self, from: data)
+                    let data = try JSONDecoder().decode(GameLookupModel.self, from: data)
 
                     #warning("Ver o que diabos ta dando erro no decode")
 

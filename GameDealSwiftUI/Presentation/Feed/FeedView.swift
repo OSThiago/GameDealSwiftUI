@@ -95,8 +95,12 @@ struct FeedView: View {
                         
                         let dealFormatted = viewModel.setupDealCell(deal)
                         
-                        MediumDealCell(title: dealFormatted.title, salePrice: dealFormatted.salePrice, normalPrice: dealFormatted.normalPrice, savings: dealFormatted.savings, thumb: dealFormatted.thumb, storeThumb: dealFormatted.storeID)
-                            .padding(.leading)
+                        NavigationLink {
+                            DealLookupView(gameID: dealFormatted.gameID)
+                        } label: {
+                            MediumDealCell(title: dealFormatted.title, salePrice: dealFormatted.salePrice, normalPrice: dealFormatted.normalPrice, savings: dealFormatted.savings, thumb: dealFormatted.thumb, storeThumb: dealFormatted.storeID)
+                                .padding(.leading)
+                        }
                     }
                 }
             }

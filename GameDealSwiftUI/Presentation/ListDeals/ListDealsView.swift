@@ -10,6 +10,7 @@ import SwiftUI
 struct ListDealsView: View {
     
     @StateObject var viewModel = ListDealViewModel()
+    @State var isShowDatail = false
     
     let storesInformations: [StoresCheapShark]
     let store: StoresCheapShark
@@ -20,19 +21,24 @@ struct ListDealsView: View {
     }
     
     var body: some View {
-        NavigationView {
-            ScrollView(.vertical, showsIndicators: false) {
-                VStack(spacing: 10) {
-                    ForEach(viewModel.dealList, id: \.dealID) { deal in
-                        let formatted = viewModel.setupDealCell(deal)
-                        
+        ScrollView(.vertical, showsIndicators: false) {
+            VStack(spacing: 10) {
+                ForEach(viewModel.dealList, id: \.dealID) { deal in
+                    
+                    let formatted = viewModel.setupDealCell(deal)
+                    
+                    NavigationLink {
+                        DealLookupView(gameID: formatted.gameID)
+                            .navigationBarTitleDisplayMode(.inline)
+                            .navigationTitle(formatted.title)
+                    } label: {
                         ListDealCell(title: formatted.title, salePrice: formatted.salePrice, normalPrice: formatted.normalPrice, savings: formatted.savings, thumb: formatted.thumb, storeThumb: formatted.storeID)
-                        Divider()
                     }
+                    Divider()
                 }
             }
-            .padding(.horizontal)
         }
+        .padding(.horizontal)
         .onAppear {
             viewModel.store = store
             viewModel.storesInformations = storesInformations

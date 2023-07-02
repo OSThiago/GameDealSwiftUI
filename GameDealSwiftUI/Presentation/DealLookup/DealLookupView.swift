@@ -11,6 +11,8 @@ struct DealLookupView: View {
     
     @StateObject var viewModel = DealLookupViewModel()
     
+    @Environment(\.dismiss) var dismiss
+    
     private let gameID: String
     
     init(gameID: String) {
@@ -18,28 +20,61 @@ struct DealLookupView: View {
     }
     
     var body: some View {
-        VStack {
-            Text(viewModel.gameLookupModel?.info?.title ?? "Error")
-            
-            ForEach(viewModel.gameLookupModel?.deals ?? [], id: \.dealID) { deal in
+        ScrollView(.vertical, showsIndicators: false) {
+            VStack {
+                gameImage()
+                    .ignoresSafeArea()
                 
-                HStack {
-                    Text(deal.price ?? "No title")
-                    Text(deal.retailPrice ?? "no Retail Price")
-                    Spacer()
-                    Text(deal.storeID ?? "no StoreID")
+                Spacer()
+                
+                Text(viewModel.gameLookupModel?.info?.title ?? "Error")
+                
+                ForEach(viewModel.gameLookupModel?.deals ?? [], id: \.dealID) { deal in
+                    
+                    HStack {
+                        Text(deal.price ?? "No title")
+                        Text(deal.retailPrice ?? "no Retail Price")
+                        Spacer()
+                        Text(deal.storeID ?? "no StoreID")
+                    }
+                    
                 }
-                
+            }
+            .onAppear {
+                viewModel.fetchDealLookup(gameID: gameID)
             }
         }
-        .onAppear {
-            viewModel.fetchDealLookup(gameID: gameID)
-        }
+//        .toolbar {
+//            ToolbarItem(placement: .navigationBarLeading) {
+//                Button {
+//                    dismiss()
+//                } label: {
+//                    Image(systemName: "chevron.left.circle.fill")
+//                        .tint(.gray)
+//                }
+//            }
+//        }
     }
     
     @ViewBuilder
     func gameImage() -> some View {
-        
+        AsyncImage(url: URL(string: viewModel.getHightQualityImage(url: viewModel.gameLookupModel?.info?.thumb ?? ""))) { phase in
+            switch phase  {
+            case .empty:
+                ProgressView()
+            case .success(let image):
+                image
+                    .resizable()
+                    .scaledToFill()
+                    .frame(width: ScreenSize.width, height: ScreenSize.hight * 0.25)
+                    .clipped()
+                    
+            case .failure(_):
+                EmptyView()
+            @unknown default:
+                EmptyView()
+            }
+        }
     }
 }
 

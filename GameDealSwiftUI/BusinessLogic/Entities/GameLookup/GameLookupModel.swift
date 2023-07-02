@@ -17,7 +17,7 @@ struct GameLookupModel: Codable {
 struct InfoGameLookupModel: Codable {
     let title: String?
     let steamAppID: String?
-    let thumb: String?
+    var thumb: String?
 }
 
 struct DealsGameLookupModel: Codable {

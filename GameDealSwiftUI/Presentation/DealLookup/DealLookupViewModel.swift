@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-class DealLookupViewModel: ObservableObject, FormatterDealData {
+final class DealLookupViewModel: ObservableObject, FormatterDealData {
     
     var storesInformations: [StoresCheapShark] = []
     

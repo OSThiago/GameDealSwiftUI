@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-class ListDealViewModel: ObservableObject, FormatterDealData {
+final class ListDealViewModel: ObservableObject, FormatterDealData {
     
     @Published var dealList = [FeedGameDealModel]()
     

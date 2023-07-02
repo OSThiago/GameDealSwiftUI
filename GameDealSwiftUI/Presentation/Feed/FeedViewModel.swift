@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-class FeedViewModel: ObservableObject, FormatterDealData {
+final class FeedViewModel: ObservableObject, FormatterDealData {
     // Published Properties
     @Published var dealsAAA = [FeedGameDealModel]()
     

@@ -44,16 +44,6 @@ struct DealLookupView: View {
                 viewModel.fetchDealLookup(gameID: gameID)
             }
         }
-//        .toolbar {
-//            ToolbarItem(placement: .navigationBarLeading) {
-//                Button {
-//                    dismiss()
-//                } label: {
-//                    Image(systemName: "chevron.left.circle.fill")
-//                        .tint(.gray)
-//                }
-//            }
-//        }
     }
     
     @ViewBuilder

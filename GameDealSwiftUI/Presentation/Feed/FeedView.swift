@@ -10,7 +10,6 @@ import SwiftUI
 struct FeedView: View {
     
     @StateObject var viewModel = FeedViewModel()
-    @State var aaaID: FeedGameDealModel?
     
     var body: some View {
         NavigationView {

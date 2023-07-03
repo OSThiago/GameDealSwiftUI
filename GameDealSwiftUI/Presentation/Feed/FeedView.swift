@@ -10,7 +10,6 @@ import SwiftUI
 struct FeedView: View {
     
     @StateObject var viewModel = FeedViewModel()
-    @State var aaaID: FeedGameDealModel?
     
     var body: some View {
         NavigationView {
@@ -52,8 +51,14 @@ struct FeedView: View {
                         
                         let dealFormatted = viewModel.setupDealCell(deal)
                         
-                        LargeDealCell(title: dealFormatted.title, salePrice: dealFormatted.salePrice, normalPrice: dealFormatted.normalPrice, savings: dealFormatted.savings, thumb: dealFormatted.thumb, storeThumb: dealFormatted.storeID)
-                            .padding(.leading)
+                        NavigationLink {
+                            DealLookupView(gameID: dealFormatted.gameID)
+                                .navigationBarTitleDisplayMode(.inline)
+                                .navigationTitle(dealFormatted.title)
+                        } label: {
+                            LargeDealCell(title: dealFormatted.title, salePrice: dealFormatted.salePrice, normalPrice: dealFormatted.normalPrice, savings: dealFormatted.savings, thumb: dealFormatted.thumb, storeThumb: dealFormatted.storeID)
+                                .padding(.leading)
+                        }
                     }
                 }
             }
@@ -67,7 +72,7 @@ struct FeedView: View {
         }
     }
     
-    // MARK: - LIST GAMES LIST
+    // MARK: - LIST GAMES BY STORES
     @ViewBuilder
     func makeMediumList(deals: [FeedGameDealModel], store: StoresCheapShark) -> some View {
         VStack(alignment: .leading, spacing: 5) {
@@ -94,9 +99,15 @@ struct FeedView: View {
                     ForEach(deals, id: \.dealID) { deal in
                         
                         let dealFormatted = viewModel.setupDealCell(deal)
-                        
-                        MediumDealCell(title: dealFormatted.title, salePrice: dealFormatted.salePrice, normalPrice: dealFormatted.normalPrice, savings: dealFormatted.savings, thumb: dealFormatted.thumb, storeThumb: dealFormatted.storeID)
-                            .padding(.leading)
+
+                        NavigationLink {
+                            DealLookupView(gameID: dealFormatted.gameID)
+                                .navigationBarTitleDisplayMode(.inline)
+                                .navigationTitle(dealFormatted.title)
+                        } label: {
+                            MediumDealCell(title: dealFormatted.title, salePrice: dealFormatted.salePrice, normalPrice: dealFormatted.normalPrice, savings: dealFormatted.savings, thumb: dealFormatted.thumb, storeThumb: dealFormatted.storeID)
+                                .padding(.leading)
+                        }
                     }
                 }
             }

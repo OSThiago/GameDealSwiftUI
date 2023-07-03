@@ -40,8 +40,30 @@ class WorkerCheapShark {
         
     }
     
-    func getGameLookup(endpoint: Endpoint, completion: @escaping (FeedGameDealModel) -> ()) {
+    func getGameLookup(endpoint: Endpoint, completion: @escaping (Result<GameLookupModel, ServiceError>) -> ()) {
         
+        let session = URLSession.shared
+
+        let url = URL(string: endpoint.url)!
+
+        var urlRequest = URLRequest(url: url)
+
+        urlRequest.httpMethod = endpoint.httpMethod
+        
+        let task = session.dataTask(with: urlRequest) { data, response, error in
+            if let data {
+                do {
+                    let data = try JSONDecoder().decode(GameLookupModel.self, from: data)
+
+                    #warning("Ver o que diabos ta dando erro no decode")
+
+                    completion(.success(data))
+                } catch let error {
+                    completion(.failure(ServiceError.network(error)))
+                }
+            }
+        }
+        task.resume()
     }
     
     func getStores(completion: @escaping (Result<[StoresCheapShark], ServiceError>) -> ()) {

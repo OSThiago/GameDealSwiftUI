@@ -11,8 +11,6 @@ struct DealLookupView: View {
     
     @StateObject var viewModel = DealLookupViewModel()
     
-    @Environment(\.dismiss) var dismiss
-    
     private let gameID: String
     
     init(gameID: String) {
@@ -21,13 +19,14 @@ struct DealLookupView: View {
     
     var body: some View {
         ScrollView(.vertical, showsIndicators: false) {
-            VStack {
+            VStack(alignment: .leading) {
                 gameImage()
                     .ignoresSafeArea()
                 
                 Spacer()
                 
                 Text(viewModel.gameLookupModel?.info?.title ?? "Error")
+                    .font(.title2)
                 
                 ForEach(viewModel.gameLookupModel?.deals ?? [], id: \.dealID) { deal in
                     

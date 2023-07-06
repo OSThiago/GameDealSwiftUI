@@ -13,7 +13,11 @@ final class DealLookupViewModel: ObservableObject, FormatterDealData {
     
     let workerCheapShark = WorkerCheapShark()
     
+    // To fetch when get gameID
     @Published var gameLookupModel: GameLookupModel?
+    
+    // To recive from feed
+    @Published var feedGameDealModel: FeedGameDealModel?
     
     func fetchDealLookup(gameID: String) {
         

@@ -13,8 +13,8 @@ struct DealLookupView: View {
     
     private let gameID: String
     
-    init(gameID: String) {
-        self.gameID = gameID
+    init(feedGameDealModel: FeedGameDealModel) {
+        self.gameID = feedGameDealModel.gameID
     }
     
     var body: some View {
@@ -99,16 +99,12 @@ struct DealLookupView: View {
                     }
                 }
             }
-            
-//            Divider()
-//                .padding(.horizontal)
-//                .padding(.top, 8)
         }
     }
 }
 
 struct DealLookupView_Previews: PreviewProvider {
     static var previews: some View {
-        DealLookupView(gameID: FeedGameDealModel.riseOfIndustryMock.gameID)
+        DealLookupView(feedGameDealModel: FeedGameDealModel.riseOfIndustryMock)
     }
 }

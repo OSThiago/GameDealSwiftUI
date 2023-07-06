@@ -52,7 +52,7 @@ struct FeedView: View {
                         let dealFormatted = viewModel.setupDealCell(deal)
                         
                         NavigationLink {
-                            DealLookupView(gameID: dealFormatted.gameID)
+                            DealLookupView(feedGameDealModel: dealFormatted)
                                 .navigationBarTitleDisplayMode(.inline)
                                 .navigationTitle(dealFormatted.title)
                         } label: {
@@ -101,7 +101,7 @@ struct FeedView: View {
                         let dealFormatted = viewModel.setupDealCell(deal)
 
                         NavigationLink {
-                            DealLookupView(gameID: dealFormatted.gameID)
+                            DealLookupView(feedGameDealModel: dealFormatted)
                                 .navigationBarTitleDisplayMode(.inline)
                                 .navigationTitle(dealFormatted.title)
                         } label: {

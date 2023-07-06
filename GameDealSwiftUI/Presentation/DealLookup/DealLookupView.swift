@@ -20,33 +20,28 @@ struct DealLookupView: View {
     var body: some View {
         ScrollView(.vertical, showsIndicators: false) {
             VStack(alignment: .leading) {
-                gameImage()
+                makeGameImage()
                     .ignoresSafeArea()
                 
                 Spacer()
                 
-                Text(viewModel.gameLookupModel?.info?.title ?? "Error")
-                    .font(.title2)
+                makeGameTitle()
+                    .padding(.horizontal)
                 
-                ForEach(viewModel.gameLookupModel?.deals ?? [], id: \.dealID) { deal in
-                    
-                    HStack {
-                        Text(deal.price ?? "No title")
-                        Text(deal.retailPrice ?? "no Retail Price")
-                        Spacer()
-                        Text(deal.storeID ?? "no StoreID")
-                    }
-                    
-                }
+                Divider()
+                
+                makeStoresDeals()
+                
             }
             .onAppear {
+                viewModel.fetchStoresInformations()
                 viewModel.fetchDealLookup(gameID: gameID)
             }
         }
     }
     
     @ViewBuilder
-    func gameImage() -> some View {
+    func makeGameImage() -> some View {
         AsyncImage(url: URL(string: viewModel.getHightQualityImage(url: viewModel.gameLookupModel?.info?.thumb ?? ""))) { phase in
             switch phase  {
             case .empty:
@@ -63,6 +58,51 @@ struct DealLookupView: View {
             @unknown default:
                 EmptyView()
             }
+        }
+    }
+    
+    @ViewBuilder
+    func makeGameTitle() -> some View {
+        Text(viewModel.gameLookupModel?.info?.title ?? "Error")
+            .font(.title)
+    }
+    
+    @ViewBuilder
+    func makeStoresDeals() -> some View {
+        
+        let rows = [
+            GridItem(.fixed(50)),
+            GridItem(.fixed(50)),
+            GridItem(.fixed(50))
+        ]
+        
+        VStack(alignment: .leading) {
+            Text("Others Stores")
+                .font(.title2)
+                .bold()
+                .padding(.leading)
+            
+            ScrollView(.horizontal, showsIndicators: false) {
+                LazyHGrid(rows: rows, spacing: 5) {
+                    ForEach(viewModel.gameLookupModel?.deals ?? [], id: \.dealID) { deal in
+                        VStack {
+
+                            let storeInformation = viewModel.getStore(id: deal.storeID ?? "0")
+                            
+                            let storeImage = viewModel.getStoreImage(storeID: storeInformation?.storeID ?? "0")
+                            
+                            LookupDealStoreCell(storeImage: storeImage, storeTitle: storeInformation?.storeName, dealPrice: deal.price)
+
+                            Divider()
+                                .padding(.leading)
+                        }
+                    }
+                }
+            }
+            
+//            Divider()
+//                .padding(.horizontal)
+//                .padding(.top, 8)
         }
     }
 }

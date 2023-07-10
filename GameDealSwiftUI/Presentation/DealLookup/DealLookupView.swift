@@ -25,10 +25,10 @@ struct DealLookupView: View {
                 
                 Spacer()
                 
-                makeGameTitle()
-                    .padding(.horizontal)
+//                makeGameTitle()
+//                    .padding(.horizontal)
                 
-                Divider()
+                //Divider()
                 
                 makeDealDetail()
                 
@@ -95,44 +95,47 @@ struct DealLookupView: View {
     
     @ViewBuilder
     func makeDealDetail() -> some View {
-        ScrollView(.horizontal, showsIndicators: false) {
-            HStack {
+        HStack(alignment: .top) {
+            VStack(alignment: .leading) {
+                makeGameTitle()
                 
-                makeCurrentStoreImage()
-                    .padding(.leading, 16)
+                Spacer()
                 
-                Divider()
+                HStack {
+                    
                 
-                VStack {
-                    Text("Store")
-                        
-                    Text(viewModel.getStore(id: feedGameDealModel.storeID)?.storeName ?? "Unkwon")
-                }
-                
-                Divider()
-                
-                VStack {
-                    Text("Sale price")
                     Text(feedGameDealModel.salePrice)
-                }
-                
-                Divider()
-                
-                VStack {
-                    Text("Normal Price")
+
                     Text(feedGameDealModel.normalPrice)
-                }
                 
-                Divider()
-                
-                VStack {
-                    Text("Savings")
                     Text(feedGameDealModel.savings)
                 }
             }
+            
+            Spacer()
+            
+            VStack(alignment: .trailing) {
+                makeCurrentStoreImage()
+                Text(viewModel.getStore(id: feedGameDealModel.storeID)?.storeName ?? "Unkwon")
+                    .font(.headline)
+                
+                Spacer()
+                
+                makeBuyButton(dealID: "game id")
+            }
         }
+        .padding(.horizontal)
     }
 
+    
+    @ViewBuilder
+    func makeBuyButton(dealID: String) -> some View {
+        Button {
+            print("Buy - \(dealID)")
+        } label: {
+            Text("Buy")
+        }
+    }
     
     @ViewBuilder
     func makeStoresDeals() -> some View {

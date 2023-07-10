@@ -61,6 +61,13 @@ extension FormatterDealData {
         return finalImage
     }
     
+    /// Serach store into stores list
+    /// - Parameter id: `String` store ID
+    /// - Returns: `StoreCheapShark` if contains or nil
+    func getStore(id: String) -> StoresCheapShark? {
+        return self.storesInformations.first(where: { $0.storeID == id})
+    }
+    
     /// Formatte Savings data
     /// - Parameter savings: `String` with data
     /// - Returns: `String` saving formatted like: "-90%"

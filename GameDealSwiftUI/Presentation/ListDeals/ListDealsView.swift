@@ -28,7 +28,7 @@ struct ListDealsView: View {
                     let formatted = viewModel.setupDealCell(deal)
                     
                     NavigationLink {
-                        DealLookupView(gameID: formatted.gameID)
+                        DealLookupView(feedGameDealModel: deal)
                             .navigationBarTitleDisplayMode(.inline)
                             .navigationTitle(formatted.title)
                     } label: {

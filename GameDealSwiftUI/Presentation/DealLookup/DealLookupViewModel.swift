@@ -13,7 +13,11 @@ final class DealLookupViewModel: ObservableObject, FormatterDealData {
     
     let workerCheapShark = WorkerCheapShark()
     
+    // To fetch when get gameID
     @Published var gameLookupModel: GameLookupModel?
+    
+    // To recive from feed
+    @Published var feedGameDealModel: FeedGameDealModel?
     
     func fetchDealLookup(gameID: String) {
         
@@ -27,6 +31,24 @@ final class DealLookupViewModel: ObservableObject, FormatterDealData {
                 }
             case .failure(let error):
                 print(error)
+            }
+        }
+    }
+    
+    func fetchStoresInformations() {
+        if !storesInformations.isEmpty {
+            return
+        }
+        
+        workerCheapShark.getStores { result in
+            switch result {
+            case .success(let stores):
+                DispatchQueue.main.async {
+                    self.storesInformations = stores
+                }
+            case .failure(let failure):
+                // TODO: - Tratar erro
+                print(" erro ao baixar store image - \(failure)")
             }
         }
     }

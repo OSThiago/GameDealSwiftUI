@@ -55,8 +55,6 @@ class WorkerCheapShark {
                 do {
                     let data = try JSONDecoder().decode(GameLookupModel.self, from: data)
 
-                    #warning("Ver o que diabos ta dando erro no decode")
-
                     completion(.success(data))
                 } catch let error {
                     completion(.failure(ServiceError.network(error)))

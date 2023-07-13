@@ -41,6 +41,8 @@ struct DealLookupView: View {
                 viewModel.fetchStoresInformations()
                 viewModel.feedGameDealModel = feedGameDealModel
                 viewModel.fetchDealLookup(gameID: feedGameDealModel.gameID)
+                
+                viewModel.fetchGameDetailFromRawg()
             }
         }
     }

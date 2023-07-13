@@ -13,11 +13,17 @@ final class DealLookupViewModel: ObservableObject, FormatterDealData {
     
     let workerCheapShark = WorkerCheapShark()
     
+    let workerRawg = WorkerRAWG()
+    
     // To fetch when get gameID
     @Published var gameLookupModel: GameLookupModel?
     
     // To recive from feed
     @Published var feedGameDealModel: FeedGameDealModel?
+    
+    func setupView() {
+        
+    }
     
     func fetchDealLookup(gameID: String) {
         
@@ -49,6 +55,26 @@ final class DealLookupViewModel: ObservableObject, FormatterDealData {
             case .failure(let failure):
                 // TODO: - Tratar erro
                 print(" erro ao baixar store image - \(failure)")
+            }
+        }
+    }
+    
+    func fetchGameDetailFromRawg() {
+        
+        guard let gameNameReplaced = self.feedGameDealModel?.title.replacingOccurrences(of: " ", with: "-") else { return }
+        
+        let endpoint = EndpointCasesRAWG.getGameDetail(name: gameNameReplaced.lowercased())
+        
+        print(endpoint.url)
+        
+        workerRawg.getGameDetail(endpoint: endpoint) { result in
+            switch result {
+            case .success(let gameDetail):
+                
+                print(gameDetail)
+                
+            case .failure(let failure):
+                print(failure)
             }
         }
     }

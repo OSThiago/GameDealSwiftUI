@@ -54,7 +54,7 @@ struct FeedView: View {
                         NavigationLink {
                             DealLookupView(feedGameDealModel: deal)
                                 .navigationBarTitleDisplayMode(.inline)
-                                .navigationTitle(dealFormatted.title)
+                                //.navigationTitle(dealFormatted.title)
                         } label: {
                             LargeDealCell(title: dealFormatted.title, salePrice: dealFormatted.salePrice, normalPrice: dealFormatted.normalPrice, savings: dealFormatted.savings, thumb: dealFormatted.thumb, storeThumb: dealFormatted.storeID)
                                 .padding(.leading)
@@ -103,7 +103,7 @@ struct FeedView: View {
                         NavigationLink {
                             DealLookupView(feedGameDealModel: deal)
                                 .navigationBarTitleDisplayMode(.inline)
-                                .navigationTitle(dealFormatted.title)
+                                //.navigationTitle(dealFormatted.title)
                         } label: {
                             MediumDealCell(title: dealFormatted.title, salePrice: dealFormatted.salePrice, normalPrice: dealFormatted.normalPrice, savings: dealFormatted.savings, thumb: dealFormatted.thumb, storeThumb: dealFormatted.storeID)
                                 .padding(.leading)

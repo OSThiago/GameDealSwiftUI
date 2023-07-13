@@ -10,6 +10,7 @@ import SwiftUI
 struct DealLookupView: View {
     
     @StateObject var viewModel = DealLookupViewModel()
+    @Environment (\.presentationMode) var mode
     
     private let feedGameDealModel: FeedGameDealModel
     
@@ -21,14 +22,9 @@ struct DealLookupView: View {
         ScrollView(.vertical, showsIndicators: false) {
             VStack(alignment: .leading) {
                 makeGameImage()
-                    .ignoresSafeArea()
+                    
                 
                 Spacer()
-                
-//                makeGameTitle()
-//                    .padding(.horizontal)
-                
-                //Divider()
                 
                 makeDealDetail()
                 
@@ -44,6 +40,21 @@ struct DealLookupView: View {
                 
                 viewModel.fetchGameDetailFromRawg()
             }
+            .onBackSwipe {
+                mode.wrappedValue.dismiss()
+            }
+        }
+        .ignoresSafeArea()
+        .navigationBarBackButtonHidden()
+        .toolbar {
+            ToolbarItem(placement: .navigationBarLeading) {
+                Button {
+                    mode.wrappedValue.dismiss()
+                } label: {
+                    Image(systemName: "chevron.backward.circle.fill")
+                        .foregroundColor(.gray)
+                }
+            }
         }
     }
     
@@ -57,7 +68,7 @@ struct DealLookupView: View {
                 image
                     .resizable()
                     .scaledToFill()
-                    .frame(width: ScreenSize.width, height: ScreenSize.hight * 0.25)
+                    .frame(width: ScreenSize.width, height: ScreenSize.hight * 0.35)
                     .clipped()
                     
             case .failure(_):
@@ -178,5 +189,18 @@ struct DealLookupView: View {
 struct DealLookupView_Previews: PreviewProvider {
     static var previews: some View {
         DealLookupView(feedGameDealModel: FeedGameDealModel.riseOfIndustryMock)
+    }
+}
+
+extension View {
+    func onBackSwipe(perform action: @escaping () -> Void) -> some View {
+        gesture(
+            DragGesture()
+                .onEnded({ value in
+                    if value.startLocation.x < 50 && value.translation.width > 80 {
+                        action()
+                    }
+                })
+        )
     }
 }

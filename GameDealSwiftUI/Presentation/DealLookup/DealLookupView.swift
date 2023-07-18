@@ -22,7 +22,6 @@ struct DealLookupView: View {
         ScrollView(.vertical, showsIndicators: false) {
             VStack(alignment: .leading) {
                 makeGameImage()
-                    
                 
                 Spacer()
                 
@@ -31,7 +30,6 @@ struct DealLookupView: View {
                 Divider()
                 
                 makeStoresDeals()
-                
             }
             .onAppear {
                 viewModel.fetchStoresInformations()
@@ -60,23 +58,28 @@ struct DealLookupView: View {
     
     @ViewBuilder
     func makeGameImage() -> some View {
-        AsyncImage(url: URL(string: viewModel.getHightQualityImage(url: viewModel.gameLookupModel?.info?.thumb ?? ""))) { phase in
-            switch phase  {
-            case .empty:
-                ProgressView()
-            case .success(let image):
-                image
-                    .resizable()
-                    .scaledToFill()
-                    .frame(width: ScreenSize.width, height: ScreenSize.hight * 0.35)
-                    .clipped()
-                    
-            case .failure(_):
-                EmptyView()
-            @unknown default:
-                EmptyView()
+        GeometryReader { reader in
+            AsyncImage(url: URL(string: viewModel.getHightQualityImage(url: viewModel.gameLookupModel?.info?.thumb ?? ""))) { phase in
+                switch phase  {
+                case .empty:
+                    ProgressView()
+                case .success(let image):
+                    image
+                        .resizable()
+                        .scaledToFill()
+                        .frame(width: ScreenSize.width, height: reader.frame(in: .global).minY + ScreenSize.hight * 0.35)
+                        .clipped()
+                        .offset(y: -reader.frame(in: .global).minY)
+                        
+                case .failure(_):
+                    EmptyView()
+                @unknown default:
+                    EmptyView()
+                }
             }
         }
+        // Default frame
+        .frame(height: ScreenSize.hight * 0.35)
     }
     
     @ViewBuilder
@@ -115,7 +118,6 @@ struct DealLookupView: View {
                 Spacer()
                 
                 HStack {
-                    
                 
                     Text(feedGameDealModel.salePrice)
 

@@ -24,8 +24,13 @@ final class DealLookupViewModel: ObservableObject, FormatterDealData {
     // Contains list of games searched by game name
     @Published var searchGamesModel: RwSearchGameModel?
     
-    func setupView() {
+    func setupView(feedGameDealModel: FeedGameDealModel) {
+        fetchStoresInformations()
+        self.feedGameDealModel = feedGameDealModel
+        fetchDealLookup(gameID: feedGameDealModel.gameID)
         
+        //viewModel.fetchGameDetailFromRawg()
+        fetchSearchDetailRawg(gameName: feedGameDealModel.title)
     }
     
     func fetchDealLookup(gameID: String) {
@@ -67,7 +72,7 @@ final class DealLookupViewModel: ObservableObject, FormatterDealData {
         
         let endpoint = EndpointCasesRAWG.getGameDetail(name: gameNameReplaced.lowercased())
         
-        print(endpoint.url)
+        //print(endpoint.url)
         
         workerRawg.getGameDetail(endpoint: endpoint) { result in
             switch result {
@@ -87,7 +92,7 @@ final class DealLookupViewModel: ObservableObject, FormatterDealData {
         
         let endpoint = EndpointCasesRAWG.searchGame(name: gameNameReplaced.lowercased())
         
-        print(endpoint.url)
+        //print(endpoint.url)
         
         workerRawg.searchGame(endpoint: endpoint) { result in
             switch result {

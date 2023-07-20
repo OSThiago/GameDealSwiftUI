@@ -26,12 +26,7 @@ struct DealLookupView: View {
                 makeSectionDeailDetail()
             }
             .onAppear {
-                viewModel.fetchStoresInformations()
-                viewModel.feedGameDealModel = feedGameDealModel
-                viewModel.fetchDealLookup(gameID: feedGameDealModel.gameID)
-                
-                //viewModel.fetchGameDetailFromRawg()
-                viewModel.fetchSearchDetailRawg(gameName: viewModel.feedGameDealModel?.title ?? "")
+                viewModel.setupView(feedGameDealModel: self.feedGameDealModel)
             }
             // Custom swipe back action
             .onBackSwipe {

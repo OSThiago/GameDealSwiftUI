@@ -44,7 +44,7 @@ final class FeedViewModel: ObservableObject, FormatterDealData {
             return
         }
         
-        let endpoint = EndpointCasesCheapShark.getDealsList(pageNumber: 0, pageSize: 8, sortList: .DEALRATING, AAA: true, storeID: nil)
+        let endpoint = EndpointCasesCheapShark.getDealsList(pageNumber: 0, pageSize: 8, sortList: .RELEASE, AAA: true, storeID: nil)
         
         workerCheapShark.getDealsList(endpoint: endpoint) { result in
             switch result {

@@ -30,7 +30,7 @@ struct ListDealsView: View {
                     NavigationLink {
                         DealLookupView(feedGameDealModel: deal)
                             .navigationBarTitleDisplayMode(.inline)
-                            .navigationTitle(formatted.title)
+                            //.navigationTitle(formatted.title)
                     } label: {
                         ListDealCell(title: formatted.title, salePrice: formatted.salePrice, normalPrice: formatted.normalPrice, savings: formatted.savings, thumb: formatted.thumb, storeThumb: formatted.storeID)
                     }

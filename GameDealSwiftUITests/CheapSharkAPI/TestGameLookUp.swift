@@ -20,33 +20,33 @@ final class TestGameLookUp: XCTestCase {
         self.network = nil
     }
     
-//    func testGetValidGameLookUp() async throws {
-//        
-//        let expectation = expectation(description: "Fetch game Lookup")
-//        
-//        let expectationGameTitle = "The Sims 4 Horse Ranch Expansion Pack"
-//        
-//        let gameID = "265723"
-//        
-//        let endpoint = EndpointCasesCheapShark.getGameLookup(gameID)
-//        
-//        var game: GameLookupModel?
-//        
-//        network.getGameLookup(endpoint: endpoint) { result in
-//            switch result {
-//            case .success(let gameData):
-//                //game = gameData
-//                XCTAssertEqual(gameData.info.title, expectationGameTitle)
-//            case .failure(_):
-//                XCTFail()
-//            }
-//            expectation.fulfill()
-//        }
-//        
-//        await self.waitForExpectations(timeout: 3.0)
-//        
-////        XCTAssertEqual(game?.info.title, expectationGameTitle)
-//    }
+    func testGetValidGameLookUp() async throws {
+        
+        let expectation = expectation(description: "Fetch game Lookup")
+        
+        let expectationGameTitle = "The Sims 4 Horse Ranch Expansion Pack"
+        
+        let gameID = "265723"
+        
+        let endpoint = EndpointCasesCheapShark.getGameLookup(gameID)
+        
+        var game: GameLookupModel?
+        
+        network.getGameLookup(endpoint: endpoint) { result in
+            switch result {
+            case .success(let gameData):
+                //game = gameData
+                XCTAssertEqual(gameData.info?.title, expectationGameTitle)
+            case .failure(_):
+                XCTFail()
+            }
+            expectation.fulfill()
+        }
+        
+        await self.waitForExpectations(timeout: 3.0)
+        
+        XCTAssertEqual(game?.info?.title, expectationGameTitle)
+    }
     
     func testPerformanceExample() throws {
         // This is an example of a performance test case.

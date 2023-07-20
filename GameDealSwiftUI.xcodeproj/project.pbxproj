@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		DB3931D22A53CC5C00CF0218 /* LookupDealStoreCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB3931D12A53CC5C00CF0218 /* LookupDealStoreCell.swift */; };
 		DB80A9102A697E9D005489AD /* RwSearchGameModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB80A90F2A697E9D005489AD /* RwSearchGameModel.swift */; };
+		DB80A9132A6998A0005489AD /* DealLookupView+DealDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB80A9122A6998A0005489AD /* DealLookupView+DealDetails.swift */; };
 		DB92BBE52A3B602D009630E0 /* BaseURL.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB92BBE42A3B602D009630E0 /* BaseURL.swift */; };
 		DB92BBE72A3B60AF009630E0 /* Endpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB92BBE62A3B60AF009630E0 /* Endpoint.swift */; };
 		DB92BBE92A3B60F1009630E0 /* ServiceError.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB92BBE82A3B60F1009630E0 /* ServiceError.swift */; };
@@ -73,6 +74,7 @@
 /* Begin PBXFileReference section */
 		DB3931D12A53CC5C00CF0218 /* LookupDealStoreCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LookupDealStoreCell.swift; sourceTree = "<group>"; };
 		DB80A90F2A697E9D005489AD /* RwSearchGameModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RwSearchGameModel.swift; sourceTree = "<group>"; };
+		DB80A9122A6998A0005489AD /* DealLookupView+DealDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DealLookupView+DealDetails.swift"; sourceTree = "<group>"; };
 		DB92BBE42A3B602D009630E0 /* BaseURL.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseURL.swift; sourceTree = "<group>"; };
 		DB92BBE62A3B60AF009630E0 /* Endpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Endpoint.swift; sourceTree = "<group>"; };
 		DB92BBE82A3B60F1009630E0 /* ServiceError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceError.swift; sourceTree = "<group>"; };
@@ -152,6 +154,14 @@
 				DB3931D12A53CC5C00CF0218 /* LookupDealStoreCell.swift */,
 			);
 			path = UIComponents;
+			sourceTree = "<group>";
+		};
+		DB80A9112A6997BF005489AD /* UISections */ = {
+			isa = PBXGroup;
+			children = (
+				DB80A9122A6998A0005489AD /* DealLookupView+DealDetails.swift */,
+			);
+			path = UISections;
 			sourceTree = "<group>";
 		};
 		DB92BBE22A3B5E82009630E0 /* BusinessLogic */ = {
@@ -411,6 +421,7 @@
 			children = (
 				DBD998AB2A4B8EF100D1D587 /* DealLookupView.swift */,
 				DBD998AD2A4B90E000D1D587 /* DealLookupViewModel.swift */,
+				DB80A9112A6997BF005489AD /* UISections */,
 				DB3931D02A53CBE300CF0218 /* UIComponents */,
 			);
 			path = DealLookup;
@@ -550,6 +561,7 @@
 				DBD9989C2A47484700D1D587 /* ListDealsView.swift in Sources */,
 				DBD998942A464C5000D1D587 /* StoreCell.swift in Sources */,
 				DBBE68A92A5CD0BB00EF7932 /* RwGameDetailModelMock.swift in Sources */,
+				DB80A9132A6998A0005489AD /* DealLookupView+DealDetails.swift in Sources */,
 				DBD998A92A4A30DE00D1D587 /* GameLookupModel.swift in Sources */,
 				DB92BC022A3B6882009630E0 /* CheapestPrice.swift in Sources */,
 				DBBE68AE2A5CE16F00EF7932 /* WorkerRAWG.swift in Sources */,

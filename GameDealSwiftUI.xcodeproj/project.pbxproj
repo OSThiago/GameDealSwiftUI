@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		DB3931D22A53CC5C00CF0218 /* LookupDealStoreCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB3931D12A53CC5C00CF0218 /* LookupDealStoreCell.swift */; };
+		DB80A9102A697E9D005489AD /* RwSearchGameModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB80A90F2A697E9D005489AD /* RwSearchGameModel.swift */; };
 		DB92BBE52A3B602D009630E0 /* BaseURL.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB92BBE42A3B602D009630E0 /* BaseURL.swift */; };
 		DB92BBE72A3B60AF009630E0 /* Endpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB92BBE62A3B60AF009630E0 /* Endpoint.swift */; };
 		DB92BBE92A3B60F1009630E0 /* ServiceError.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB92BBE82A3B60F1009630E0 /* ServiceError.swift */; };
@@ -71,6 +72,7 @@
 
 /* Begin PBXFileReference section */
 		DB3931D12A53CC5C00CF0218 /* LookupDealStoreCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LookupDealStoreCell.swift; sourceTree = "<group>"; };
+		DB80A90F2A697E9D005489AD /* RwSearchGameModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RwSearchGameModel.swift; sourceTree = "<group>"; };
 		DB92BBE42A3B602D009630E0 /* BaseURL.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseURL.swift; sourceTree = "<group>"; };
 		DB92BBE62A3B60AF009630E0 /* Endpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Endpoint.swift; sourceTree = "<group>"; };
 		DB92BBE82A3B60F1009630E0 /* ServiceError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceError.swift; sourceTree = "<group>"; };
@@ -338,6 +340,7 @@
 			isa = PBXGroup;
 			children = (
 				DBBE68A62A5CBF2400EF7932 /* RawgGameDetailModel.swift */,
+				DB80A90F2A697E9D005489AD /* RwSearchGameModel.swift */,
 			);
 			path = RAWG;
 			sourceTree = "<group>";
@@ -554,6 +557,7 @@
 				DB92BC002A3B686E009630E0 /* CheaperStores.swift in Sources */,
 				DB92BBF22A3B65E4009630E0 /* CheapSharkSortDeals.swift in Sources */,
 				DBD998962A472B0F00D1D587 /* ScreenSize.swift in Sources */,
+				DB80A9102A697E9D005489AD /* RwSearchGameModel.swift in Sources */,
 				DB92BBFB2A3B67BC009630E0 /* StoreImagesCheapShark.swift in Sources */,
 				DBD9989E2A474BAC00D1D587 /* ListDealCell.swift in Sources */,
 				DB92BBFE2A3B685C009630E0 /* DealLookup.swift in Sources */,

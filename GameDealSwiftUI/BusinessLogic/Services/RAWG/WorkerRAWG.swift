@@ -41,4 +41,38 @@ class WorkerRAWG {
         }
         task.resume()
     }
+    
+    func searchGame(endpoint: Endpoint, completion: @escaping (Result<RwSearchGameModel, ServiceError>) -> ()) {
+        
+        let session = URLSession.shared
+        
+        guard let url = URL(string: endpoint.url) else {
+            completion(.failure(.invalidURL))
+            return
+        }
+        
+        var urlRequest = URLRequest(url: url)
+        
+        urlRequest.httpMethod = endpoint.httpMethod
+        
+        let task = session.dataTask(with: urlRequest) { data, response, error in
+            
+            if let data {
+                do {
+                    
+                    let decoder = JSONDecoder()
+                    // Formatting data snake_Case to CamelCase
+                    decoder.keyDecodingStrategy = .convertFromSnakeCase
+                    
+                    let data = try decoder.decode(RwSearchGameModel.self, from: data)
+                    
+                    completion(.success(data))
+                    
+                } catch let error {
+                    completion(.failure(.network(error)))
+                }
+            }
+        }
+        task.resume()
+    }
 }

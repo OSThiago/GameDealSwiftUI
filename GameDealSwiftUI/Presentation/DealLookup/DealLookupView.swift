@@ -36,8 +36,10 @@ struct DealLookupView: View {
                 viewModel.feedGameDealModel = feedGameDealModel
                 viewModel.fetchDealLookup(gameID: feedGameDealModel.gameID)
                 
-                viewModel.fetchGameDetailFromRawg()
+                //viewModel.fetchGameDetailFromRawg()
+                viewModel.fetchSearchDetailRawg(gameName: viewModel.feedGameDealModel?.title ?? "")
             }
+            // Custom Action to Swipe back
             .onBackSwipe {
                 mode.wrappedValue.dismiss()
             }

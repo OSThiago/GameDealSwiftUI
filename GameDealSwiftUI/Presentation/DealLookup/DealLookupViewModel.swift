@@ -21,6 +21,9 @@ final class DealLookupViewModel: ObservableObject, FormatterDealData {
     // To recive from feed
     @Published var feedGameDealModel: FeedGameDealModel?
     
+    // Contains list of games searched by game name
+    @Published var searchGamesModel: RwSearchGameModel?
+    
     func setupView() {
         
     }
@@ -60,7 +63,6 @@ final class DealLookupViewModel: ObservableObject, FormatterDealData {
     }
     
     func fetchGameDetailFromRawg() {
-        
         guard let gameNameReplaced = self.feedGameDealModel?.title.replacingOccurrences(of: " ", with: "-") else { return }
         
         let endpoint = EndpointCasesRAWG.getGameDetail(name: gameNameReplaced.lowercased())
@@ -74,6 +76,27 @@ final class DealLookupViewModel: ObservableObject, FormatterDealData {
                 print(gameDetail)
                 
             case .failure(let failure):
+                print(failure)
+            }
+        }
+    }
+    
+    func fetchSearchDetailRawg(gameName: String) {
+        
+        let gameNameReplaced = gameName.replacingOccurrences(of: " ", with: "+")
+        
+        let endpoint = EndpointCasesRAWG.searchGame(name: gameNameReplaced.lowercased())
+        
+        print(endpoint.url)
+        
+        workerRawg.searchGame(endpoint: endpoint) { result in
+            switch result {
+            case .success(let result):
+                DispatchQueue.main.async {
+                    self.searchGamesModel = result
+                }
+            case .failure(let failure):
+                // TODO: - Create error feedback
                 print(failure)
             }
         }

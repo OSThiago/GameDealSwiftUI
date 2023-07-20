@@ -9,6 +9,7 @@ import Foundation
 
 enum EndpointCasesRAWG: Endpoint  {
     case getGameDetail(name: String)
+    case searchGame(name: String)
     
     var baseURLString: String {
         return BaseURL.rawgURL
@@ -21,8 +22,9 @@ enum EndpointCasesRAWG: Endpoint  {
     var path: String {
         switch self {
         case .getGameDetail(let name):
-            //return "/api/games?search=\(name)&"
             return "/api/games/\(name)?"
+        case .searchGame(name: let name):
+            return "/api/games?search=\(name)&"
         }
     }
     

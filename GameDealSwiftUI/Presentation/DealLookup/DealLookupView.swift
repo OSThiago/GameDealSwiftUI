@@ -8,16 +8,18 @@
 import SwiftUI
 
 struct DealLookupView: View {
-    
+    // MARK: - PROPERTIES
     @StateObject var viewModel = DealLookupViewModel()
-    @Environment (\.presentationMode) var mode
+    @Environment (\.presentationMode) var presentation
     
     let feedGameDealModel: FeedGameDealModel
     
+    // MARK: - INITIALIZER
     init(feedGameDealModel: FeedGameDealModel) {
         self.feedGameDealModel = feedGameDealModel
     }
     
+    // MARK: - BODY
     var body: some View {
         ScrollView(.vertical, showsIndicators: false) {
             VStack(alignment: .leading) {
@@ -31,22 +33,29 @@ struct DealLookupView: View {
                 //viewModel.fetchGameDetailFromRawg()
                 viewModel.fetchSearchDetailRawg(gameName: viewModel.feedGameDealModel?.title ?? "")
             }
-            // Custom Action to Swipe back
+            // Custom swipe back action
             .onBackSwipe {
-                mode.wrappedValue.dismiss()
+                presentation.wrappedValue.dismiss()
             }
         }
         .ignoresSafeArea()
         .navigationBarBackButtonHidden()
+        // MARK: - TOOL BAR
         .toolbar {
             ToolbarItem(placement: .navigationBarLeading) {
-                Button {
-                    mode.wrappedValue.dismiss()
-                } label: {
-                    Image(systemName: "chevron.backward.circle.fill")
-                        .foregroundColor(.gray)
-                }
+                makeBackButton()
             }
+        }
+    }
+    
+    // MARK: - BACK BUTTON
+    @ViewBuilder
+    private func makeBackButton() -> some View {
+        Button {
+            presentation.wrappedValue.dismiss()
+        } label: {
+            Image(systemName: "chevron.backward.circle.fill")
+                .foregroundColor(.gray)
         }
     }
 }
@@ -54,18 +63,5 @@ struct DealLookupView: View {
 struct DealLookupView_Previews: PreviewProvider {
     static var previews: some View {
         DealLookupView(feedGameDealModel: FeedGameDealModel.riseOfIndustryMock)
-    }
-}
-
-extension View {
-    func onBackSwipe(perform action: @escaping () -> Void) -> some View {
-        gesture(
-            DragGesture()
-                .onEnded({ value in
-                    if value.startLocation.x < 50 && value.translation.width > 80 {
-                        action()
-                    }
-                })
-        )
     }
 }

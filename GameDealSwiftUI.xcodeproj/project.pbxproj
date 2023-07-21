@@ -12,6 +12,7 @@
 		DB80A9132A6998A0005489AD /* DealLookupView+DealDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB80A9122A6998A0005489AD /* DealLookupView+DealDetails.swift */; };
 		DB80A9152A699ED2005489AD /* View+onBackSwipe.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB80A9142A699ED2005489AD /* View+onBackSwipe.swift */; };
 		DB80A9172A69C02C005489AD /* DealLookupView+SimilarGames.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB80A9162A69C02C005489AD /* DealLookupView+SimilarGames.swift */; };
+		DB80A9192A6AA684005489AD /* DealLookupView+GameDescription.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB80A9182A6AA684005489AD /* DealLookupView+GameDescription.swift */; };
 		DB92BBE52A3B602D009630E0 /* BaseURL.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB92BBE42A3B602D009630E0 /* BaseURL.swift */; };
 		DB92BBE72A3B60AF009630E0 /* Endpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB92BBE62A3B60AF009630E0 /* Endpoint.swift */; };
 		DB92BBE92A3B60F1009630E0 /* ServiceError.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB92BBE82A3B60F1009630E0 /* ServiceError.swift */; };
@@ -79,6 +80,7 @@
 		DB80A9122A6998A0005489AD /* DealLookupView+DealDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DealLookupView+DealDetails.swift"; sourceTree = "<group>"; };
 		DB80A9142A699ED2005489AD /* View+onBackSwipe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+onBackSwipe.swift"; sourceTree = "<group>"; };
 		DB80A9162A69C02C005489AD /* DealLookupView+SimilarGames.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DealLookupView+SimilarGames.swift"; sourceTree = "<group>"; };
+		DB80A9182A6AA684005489AD /* DealLookupView+GameDescription.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DealLookupView+GameDescription.swift"; sourceTree = "<group>"; };
 		DB92BBE42A3B602D009630E0 /* BaseURL.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseURL.swift; sourceTree = "<group>"; };
 		DB92BBE62A3B60AF009630E0 /* Endpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Endpoint.swift; sourceTree = "<group>"; };
 		DB92BBE82A3B60F1009630E0 /* ServiceError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceError.swift; sourceTree = "<group>"; };
@@ -165,6 +167,7 @@
 			children = (
 				DB80A9122A6998A0005489AD /* DealLookupView+DealDetails.swift */,
 				DB80A9162A69C02C005489AD /* DealLookupView+SimilarGames.swift */,
+				DB80A9182A6AA684005489AD /* DealLookupView+GameDescription.swift */,
 			);
 			path = UISections;
 			sourceTree = "<group>";
@@ -593,6 +596,7 @@
 				DB95FDC72A40D9BE006EB578 /* FeedViewModel.swift in Sources */,
 				DBAE72ED2A3B491100AB9E5F /* ContentView.swift in Sources */,
 				DB92BC052A3B6974009630E0 /* DealLookupMock.swift in Sources */,
+				DB80A9192A6AA684005489AD /* DealLookupView+GameDescription.swift in Sources */,
 				DBAE72EB2A3B491100AB9E5F /* GameDealSwiftUIApp.swift in Sources */,
 				DB92BBE72A3B60AF009630E0 /* Endpoint.swift in Sources */,
 				DB92BBF02A3B65C0009630E0 /* WorkerCheapShark.swift in Sources */,

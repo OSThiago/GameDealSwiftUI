@@ -27,12 +27,13 @@ struct DealLookupView: View {
                 
                 Divider()
                 
+                makeGameDescription()
+                
                 makeSimilarGames(title: "Similar names", games: viewModel.searchGamesModel?.results ?? [])
             }
             .onAppear {
                 viewModel.setupView(feedGameDealModel: self.feedGameDealModel)
             }
-            // Custom swipe back action
             .onBackSwipe {
                 presentation.wrappedValue.dismiss()
             }

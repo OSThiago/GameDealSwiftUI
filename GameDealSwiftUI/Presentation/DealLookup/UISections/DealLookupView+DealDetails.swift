@@ -35,9 +35,9 @@ extension DealLookupView {
                     image
                         .resizable()
                         .scaledToFill()
-                        .frame(width: ScreenSize.width, height: reader.frame(in: .global).minY + ScreenSize.hight * 0.35)
+                        .frame(width: ScreenSize.width, height: abs(reader.frame(in: .global).minY + ScreenSize.hight * 0.35))
                         .clipped()
-                        .offset(y: -reader.frame(in: .global).minY)
+                        .offset(y: -reader.frame(in: .global).minY < 0 ? -reader.frame(in: .global).minY : 0)
                         
                 case .failure(_):
                     EmptyView()

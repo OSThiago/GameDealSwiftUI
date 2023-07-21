@@ -11,6 +11,7 @@
 		DB80A9102A697E9D005489AD /* RwSearchGameModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB80A90F2A697E9D005489AD /* RwSearchGameModel.swift */; };
 		DB80A9132A6998A0005489AD /* DealLookupView+DealDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB80A9122A6998A0005489AD /* DealLookupView+DealDetails.swift */; };
 		DB80A9152A699ED2005489AD /* View+onBackSwipe.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB80A9142A699ED2005489AD /* View+onBackSwipe.swift */; };
+		DB80A9172A69C02C005489AD /* DealLookupView+SimilarGames.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB80A9162A69C02C005489AD /* DealLookupView+SimilarGames.swift */; };
 		DB92BBE52A3B602D009630E0 /* BaseURL.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB92BBE42A3B602D009630E0 /* BaseURL.swift */; };
 		DB92BBE72A3B60AF009630E0 /* Endpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB92BBE62A3B60AF009630E0 /* Endpoint.swift */; };
 		DB92BBE92A3B60F1009630E0 /* ServiceError.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB92BBE82A3B60F1009630E0 /* ServiceError.swift */; };
@@ -77,6 +78,7 @@
 		DB80A90F2A697E9D005489AD /* RwSearchGameModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RwSearchGameModel.swift; sourceTree = "<group>"; };
 		DB80A9122A6998A0005489AD /* DealLookupView+DealDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DealLookupView+DealDetails.swift"; sourceTree = "<group>"; };
 		DB80A9142A699ED2005489AD /* View+onBackSwipe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+onBackSwipe.swift"; sourceTree = "<group>"; };
+		DB80A9162A69C02C005489AD /* DealLookupView+SimilarGames.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DealLookupView+SimilarGames.swift"; sourceTree = "<group>"; };
 		DB92BBE42A3B602D009630E0 /* BaseURL.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseURL.swift; sourceTree = "<group>"; };
 		DB92BBE62A3B60AF009630E0 /* Endpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Endpoint.swift; sourceTree = "<group>"; };
 		DB92BBE82A3B60F1009630E0 /* ServiceError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceError.swift; sourceTree = "<group>"; };
@@ -162,6 +164,7 @@
 			isa = PBXGroup;
 			children = (
 				DB80A9122A6998A0005489AD /* DealLookupView+DealDetails.swift */,
+				DB80A9162A69C02C005489AD /* DealLookupView+SimilarGames.swift */,
 			);
 			path = UISections;
 			sourceTree = "<group>";
@@ -561,6 +564,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				DB92BBE92A3B60F1009630E0 /* ServiceError.swift in Sources */,
+				DB80A9172A69C02C005489AD /* DealLookupView+SimilarGames.swift in Sources */,
 				DBD9989C2A47484700D1D587 /* ListDealsView.swift in Sources */,
 				DBD998942A464C5000D1D587 /* StoreCell.swift in Sources */,
 				DBBE68A92A5CD0BB00EF7932 /* RwGameDetailModelMock.swift in Sources */,

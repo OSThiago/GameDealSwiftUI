@@ -136,7 +136,7 @@ extension DealLookupView {
                 .padding(.leading)
             
             ScrollView(.horizontal, showsIndicators: false) {
-                LazyHGrid(rows: rows, spacing: 5) {
+                LazyHGrid(rows: rows, spacing: 0) {
                     ForEach(viewModel.gameLookupModel?.deals ?? [], id: \.dealID) { deal in
                         VStack {
 

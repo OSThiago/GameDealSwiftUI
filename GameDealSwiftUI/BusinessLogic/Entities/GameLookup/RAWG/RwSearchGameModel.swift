@@ -8,5 +8,5 @@
 import Foundation
 
 struct RwSearchGameModel: Codable {
-    let results: [RwGameDetailModel]?
+    let results: [RwGameDetailModel]
 }

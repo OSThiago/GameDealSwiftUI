@@ -24,6 +24,10 @@ struct DealLookupView: View {
         ScrollView(.vertical, showsIndicators: false) {
             VStack(alignment: .leading) {
                 makeSectionDeailDetail()
+                
+                Divider()
+                
+                makeSimilarGames(title: "Similar names", games: viewModel.searchGamesModel?.results ?? [])
             }
             .onAppear {
                 viewModel.setupView(feedGameDealModel: self.feedGameDealModel)

@@ -13,6 +13,7 @@ extension DealLookupView {
         if let description = viewModel.rwGameDetail?.descriptionRaw {
             VStack(alignment: .leading) {
                 Text("Description")
+                    .font(.title3)
                 
                 Text(description)
             }

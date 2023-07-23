@@ -29,6 +29,8 @@ struct DealLookupView: View {
                 
                 makeGameDescription()
                 
+                Divider()
+                
                 makeSimilarGames(title: "Similar names", games: viewModel.searchGamesModel?.results ?? [])
             }
             .onAppear {

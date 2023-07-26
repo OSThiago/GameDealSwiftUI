@@ -26,18 +26,30 @@ extension DealLookupView {
     
     @ViewBuilder
     private func makeGameImage() -> some View {
-        GeometryReader { reader in
+        
+        let imageHeight = 220.0
+        
             AsyncImage(url: URL(string: viewModel.getHightQualityImage(url: viewModel.gameLookupModel?.info?.thumb ?? ""))) { phase in
                 switch phase  {
                 case .empty:
                     ProgressView()
                 case .success(let image):
-                    image
-                        .resizable()
-                        .scaledToFill()
-                        .frame(width: ScreenSize.width, height: abs(reader.frame(in: .global).minY + ScreenSize.hight * 0.35))
-                        .clipped()
-                        .offset(y: -reader.frame(in: .global).minY < abs(reader.frame(in: .global).minY + ScreenSize.hight * 0.35) ? -reader.frame(in: .global).minY : 0)
+                    GeometryReader { reader in
+                        
+                        let offsetY = reader.frame(in: .global).minY
+                        let isScrolled = offsetY > 0
+                        
+                        
+                        image
+                            .resizable()
+                            .scaledToFill()
+                            .frame(width: ScreenSize.width, height: isScrolled ? offsetY + imageHeight : imageHeight)
+                            .clipped()
+                            .offset(y: isScrolled ? -offsetY : 0)
+                            .scaleEffect(isScrolled ? offsetY / 2000 + 1 : 1)
+                    }
+                    // Default frame
+                    .frame(height: imageHeight)
                         
                 case .failure(_):
                     EmptyView()
@@ -45,9 +57,6 @@ extension DealLookupView {
                     EmptyView()
                 }
             }
-        }
-        // Default frame
-        .frame(height: ScreenSize.hight * 0.35)
     }
     
     @ViewBuilder

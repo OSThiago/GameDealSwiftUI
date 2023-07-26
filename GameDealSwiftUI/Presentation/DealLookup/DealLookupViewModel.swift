@@ -78,7 +78,9 @@ final class DealLookupViewModel: ObservableObject, FormatterDealData {
         workerRawg.getGameDetail(endpoint: endpoint) { result in
             switch result {
             case .success(let gameDetail):
-                self.rwGameDetail = gameDetail
+                DispatchQueue.main.async {
+                    self.rwGameDetail = gameDetail
+                }
             case .failure(let failure):
                 print(failure)
             }

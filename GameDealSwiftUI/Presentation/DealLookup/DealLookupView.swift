@@ -22,14 +22,12 @@ struct DealLookupView: View {
     // MARK: - BODY
     var body: some View {
         ScrollView(.vertical, showsIndicators: false) {
-            VStack(alignment: .leading) {
+            VStack(alignment: .leading, spacing: 15) {
                 makeSectionDeailDetail()
                 
-                Divider()
+                makeGenres()
                 
                 makeGameDescription()
-                
-                Divider()
                 
                 makeSimilarGames(title: "Similar names", games: viewModel.searchGamesModel?.results ?? [])
             }

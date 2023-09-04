@@ -19,7 +19,7 @@ struct RwGameDetailModel: Codable {
     let backgroundImageAdditional: String?
     let rating: Double?
     //let parentPlataforms: [RwParentPlataform]
-    let genres: [RwGenre]?
+    let genres: [RwGenre]
     let tags: [RwTag]?
 }
 

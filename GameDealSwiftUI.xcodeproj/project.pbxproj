@@ -32,6 +32,7 @@
 		DB95FDC42A40D997006EB578 /* FeedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB95FDC32A40D997006EB578 /* FeedView.swift */; };
 		DB95FDC72A40D9BE006EB578 /* FeedViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB95FDC62A40D9BE006EB578 /* FeedViewModel.swift */; };
 		DB95FDCA2A40E774006EB578 /* LargeDealCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB95FDC92A40E774006EB578 /* LargeDealCell.swift */; };
+		DB9CED0E2A8A6F220097BB48 /* DealLookupView+Genres.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB9CED0D2A8A6F220097BB48 /* DealLookupView+Genres.swift */; };
 		DBAE72EB2A3B491100AB9E5F /* GameDealSwiftUIApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBAE72EA2A3B491100AB9E5F /* GameDealSwiftUIApp.swift */; };
 		DBAE72ED2A3B491100AB9E5F /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBAE72EC2A3B491100AB9E5F /* ContentView.swift */; };
 		DBAE72EF2A3B491300AB9E5F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DBAE72EE2A3B491300AB9E5F /* Assets.xcassets */; };
@@ -101,6 +102,7 @@
 		DB95FDC62A40D9BE006EB578 /* FeedViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedViewModel.swift; sourceTree = "<group>"; };
 		DB95FDC82A40E4FF006EB578 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		DB95FDC92A40E774006EB578 /* LargeDealCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LargeDealCell.swift; sourceTree = "<group>"; };
+		DB9CED0D2A8A6F220097BB48 /* DealLookupView+Genres.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DealLookupView+Genres.swift"; sourceTree = "<group>"; };
 		DBAE72E72A3B491100AB9E5F /* GameDealSwiftUI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GameDealSwiftUI.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DBAE72EA2A3B491100AB9E5F /* GameDealSwiftUIApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameDealSwiftUIApp.swift; sourceTree = "<group>"; };
 		DBAE72EC2A3B491100AB9E5F /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -168,6 +170,7 @@
 				DB80A9122A6998A0005489AD /* DealLookupView+DealDetails.swift */,
 				DB80A9162A69C02C005489AD /* DealLookupView+SimilarGames.swift */,
 				DB80A9182A6AA684005489AD /* DealLookupView+GameDescription.swift */,
+				DB9CED0D2A8A6F220097BB48 /* DealLookupView+Genres.swift */,
 			);
 			path = UISections;
 			sourceTree = "<group>";
@@ -570,6 +573,7 @@
 				DB80A9172A69C02C005489AD /* DealLookupView+SimilarGames.swift in Sources */,
 				DBD9989C2A47484700D1D587 /* ListDealsView.swift in Sources */,
 				DBD998942A464C5000D1D587 /* StoreCell.swift in Sources */,
+				DB9CED0E2A8A6F220097BB48 /* DealLookupView+Genres.swift in Sources */,
 				DBBE68A92A5CD0BB00EF7932 /* RwGameDetailModelMock.swift in Sources */,
 				DB80A9132A6998A0005489AD /* DealLookupView+DealDetails.swift in Sources */,
 				DBD998A92A4A30DE00D1D587 /* GameLookupModel.swift in Sources */,

@@ -39,7 +39,6 @@ extension DealLookupView {
                         let offsetY = reader.frame(in: .global).minY
                         let isScrolled = offsetY > 0
                         
-                        
                         image
                             .resizable()
                             .scaledToFill()

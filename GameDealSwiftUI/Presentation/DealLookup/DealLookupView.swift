@@ -14,6 +14,9 @@ struct DealLookupView: View {
     
     let feedGameDealModel: FeedGameDealModel
     
+    @State private var scrollPosition: CGPoint = .zero
+    @State private var showNavigationTitle = false
+    
     // MARK: - INITIALIZER
     init(feedGameDealModel: FeedGameDealModel) {
         self.feedGameDealModel = feedGameDealModel
@@ -37,13 +40,24 @@ struct DealLookupView: View {
             .onBackSwipe {
                 presentation.wrappedValue.dismiss()
             }
+            .background(GeometryReader { geometry in
+                Color.clear
+                    .preference(key: ScrollOffsetPreferenceKey.self, value: geometry.frame(in: .named("scroll")).origin)
+            })
+            .onPreferenceChange(ScrollOffsetPreferenceKey.self) { value in
+                self.scrollPosition = value
+            }
         }
+        .coordinateSpace(name: "scroll")
+        .navigationTitle(showNavigationTitleDescription())
         .ignoresSafeArea()
-        .navigationBarBackButtonHidden()
+        .navigationBarBackButtonHidden(showNavigationBar())
         // MARK: - TOOL BAR
         .toolbar {
             ToolbarItem(placement: .navigationBarLeading) {
-                makeBackButton()
+                if showNavigationBar() {
+                    makeBackButton()
+                }
             }
         }
     }
@@ -58,10 +72,31 @@ struct DealLookupView: View {
                 .foregroundColor(.gray)
         }
     }
+    
+    private func showNavigationTitleDescription() -> String {
+        if showNavigationBar() {
+            return ""
+        }
+        return viewModel.feedGameDealModel?.title ?? "Unkow"
+    }
+    
+    private func showNavigationBar() -> Bool {
+        if self.scrollPosition.y >= -5.0 {
+            return true
+        }
+        return false
+    }
 }
 
 struct DealLookupView_Previews: PreviewProvider {
     static var previews: some View {
         DealLookupView(feedGameDealModel: FeedGameDealModel.riseOfIndustryMock)
+    }
+}
+
+struct ScrollOffsetPreferenceKey: PreferenceKey {
+    static var defaultValue: CGPoint = .zero
+
+    static func reduce(value: inout CGPoint, nextValue: () -> CGPoint) {
     }
 }

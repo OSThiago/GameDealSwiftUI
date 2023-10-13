@@ -130,34 +130,21 @@ extension DealLookupView {
     
     @ViewBuilder
     private func makeStoresDeals() -> some View {
-        
-        let rows = [
-            GridItem(.fixed(50)),
-            GridItem(.fixed(50)),
-            GridItem(.fixed(50))
-        ]
-        
         VStack(alignment: .leading) {
-            Text("Others Stores")
+            Text("Stores")
                 .font(.title2)
                 .bold()
                 .padding(.leading)
             
-            ScrollView(.horizontal, showsIndicators: false) {
-                LazyHGrid(rows: rows, spacing: 0) {
-                    ForEach(viewModel.gameLookupModel?.deals ?? [], id: \.dealID) { deal in
-                        VStack {
+            VStack(alignment: .leading) {
+                ForEach(viewModel.gameLookupModel?.deals ?? [], id: \.dealID) { deal in
+                    let storeInformation = viewModel.getStore(id: deal.storeID ?? "0")
+                    let storeImage = viewModel.getStoreImage(storeID: storeInformation?.storeID ?? "0")
+                    
+                    LookupDealStoreCell(storeImage: storeImage, storeTitle: storeInformation?.storeName, dealPrice: deal.price)
 
-                            let storeInformation = viewModel.getStore(id: deal.storeID ?? "0")
-                            
-                            let storeImage = viewModel.getStoreImage(storeID: storeInformation?.storeID ?? "0")
-                            
-                            LookupDealStoreCell(storeImage: storeImage, storeTitle: storeInformation?.storeName, dealPrice: deal.price)
-
-                            Divider()
-                                .padding(.leading)
-                        }
-                    }
+                    Divider()
+                        .padding(.leading)
                 }
             }
         }

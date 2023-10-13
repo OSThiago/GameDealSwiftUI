@@ -21,8 +21,8 @@ struct LookupDealStoreCell: View {
             Spacer()
             makeDealPrice()
         }
-        .frame(width: 330, height: 50)
-        .padding(.leading)
+        .frame(height: 50)
+        .padding(.horizontal)
     }
     
     // MARK: - DEAL PRICE

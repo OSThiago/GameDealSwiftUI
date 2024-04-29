@@ -35,7 +35,9 @@ struct DealLookupView: View {
                 makeSimilarGames(title: "Similar names", games: viewModel.searchGamesModel?.results ?? [])
             }
             .onAppear {
-                viewModel.setupView(feedGameDealModel: self.feedGameDealModel)
+                Task {
+                    await viewModel.setupView(feedGameDealModel: self.feedGameDealModel)
+                }
             }
             .onBackSwipe {
                 presentation.wrappedValue.dismiss()

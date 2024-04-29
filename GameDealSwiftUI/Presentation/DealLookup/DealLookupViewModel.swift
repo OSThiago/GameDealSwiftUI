@@ -26,15 +26,17 @@ final class DealLookupViewModel: ObservableObject, FormatterDealData {
     
     @Published var rwGameDetail: RwGameDetailModel?
     
-    func setupView(feedGameDealModel: FeedGameDealModel) {
-        fetchStoresInformations()
+    @MainActor
+    func setupView(feedGameDealModel: FeedGameDealModel) async {
         self.feedGameDealModel = feedGameDealModel
-        fetchDealLookup(gameID: feedGameDealModel.gameID)
-        fetchGameDetailFromRawg()
-        fetchSearchDetailRawg(gameName: feedGameDealModel.title)
+        await fetchStoresInformations()
+        await fetchDealLookup(gameID: feedGameDealModel.gameID)
+        await fetchGameDetailFromRawg()
+        await fetchSearchDetailRawg(gameName: feedGameDealModel.title)
     }
     
-    func fetchDealLookup(gameID: String) {
+    @MainActor
+    func fetchDealLookup(gameID: String) async {
         
         let endpoint = EndpointCasesCheapShark.getGameLookup(gameID)
         
@@ -50,10 +52,10 @@ final class DealLookupViewModel: ObservableObject, FormatterDealData {
         }
     }
     
-    func fetchStoresInformations() {
-        if !storesInformations.isEmpty {
-            return
-        }
+    @MainActor
+    func fetchStoresInformations() async {
+
+        guard storesInformations.isEmpty else { return }
         
         workerCheapShark.getStores { result in
             switch result {
@@ -68,7 +70,8 @@ final class DealLookupViewModel: ObservableObject, FormatterDealData {
         }
     }
     
-    func fetchGameDetailFromRawg() {
+    @MainActor
+    func fetchGameDetailFromRawg() async {
         guard let gameNameReplaced = self.feedGameDealModel?.title.replacingOccurrences(of: " ", with: "-") else { return }
         
         let endpoint = EndpointCasesRAWG.getGameDetail(name: gameNameReplaced.lowercased())
@@ -87,7 +90,8 @@ final class DealLookupViewModel: ObservableObject, FormatterDealData {
         }
     }
     
-    func fetchSearchDetailRawg(gameName: String) {
+    @MainActor
+    func fetchSearchDetailRawg(gameName: String) async {
         
         let gameNameReplaced = gameName.replacingOccurrences(of: " ", with: "+")
         

@@ -45,6 +45,8 @@
 		DBBE68AC2A5CDE3800EF7932 /* EndPointCasesRAWG.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBBE68AB2A5CDE3800EF7932 /* EndPointCasesRAWG.swift */; };
 		DBBE68AE2A5CE16F00EF7932 /* WorkerRAWG.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBBE68AD2A5CE16F00EF7932 /* WorkerRAWG.swift */; };
 		DBBE68B12A5D03B300EF7932 /* TestGameDetailRawg.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBBE68B02A5D03B300EF7932 /* TestGameDetailRawg.swift */; };
+		DBC8C1152C3CE1680094865F /* MetacriticWebScrapingImplementaiton.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBC8C1142C3CE1680094865F /* MetacriticWebScrapingImplementaiton.swift */; };
+		DBC8C1182C3CE1CF0094865F /* SwiftSoup in Frameworks */ = {isa = PBXBuildFile; productRef = DBC8C1172C3CE1CF0094865F /* SwiftSoup */; };
 		DBD998922A45FC5500D1D587 /* MediumDealCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBD998912A45FC5500D1D587 /* MediumDealCell.swift */; };
 		DBD998942A464C5000D1D587 /* StoreCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBD998932A464C5000D1D587 /* StoreCell.swift */; };
 		DBD998962A472B0F00D1D587 /* ScreenSize.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBD998952A472B0F00D1D587 /* ScreenSize.swift */; };
@@ -118,6 +120,7 @@
 		DBBE68AB2A5CDE3800EF7932 /* EndPointCasesRAWG.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndPointCasesRAWG.swift; sourceTree = "<group>"; };
 		DBBE68AD2A5CE16F00EF7932 /* WorkerRAWG.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkerRAWG.swift; sourceTree = "<group>"; };
 		DBBE68B02A5D03B300EF7932 /* TestGameDetailRawg.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestGameDetailRawg.swift; sourceTree = "<group>"; };
+		DBC8C1142C3CE1680094865F /* MetacriticWebScrapingImplementaiton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MetacriticWebScrapingImplementaiton.swift; sourceTree = "<group>"; };
 		DBD998912A45FC5500D1D587 /* MediumDealCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediumDealCell.swift; sourceTree = "<group>"; };
 		DBD998932A464C5000D1D587 /* StoreCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreCell.swift; sourceTree = "<group>"; };
 		DBD998952A472B0F00D1D587 /* ScreenSize.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScreenSize.swift; sourceTree = "<group>"; };
@@ -136,6 +139,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DBC8C1182C3CE1CF0094865F /* SwiftSoup in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -178,6 +182,7 @@
 		DB92BBE22A3B5E82009630E0 /* BusinessLogic */ = {
 			isa = PBXGroup;
 			children = (
+				DBC8C1122C3CE0020094865F /* MetacriticWebScraping */,
 				DB92BBE32A3B600B009630E0 /* Services */,
 				DB92BBF32A3B661C009630E0 /* Entities */,
 			);
@@ -294,6 +299,7 @@
 				DBAE72FA2A3B491300AB9E5F /* GameDealSwiftUITests */,
 				DBAE73042A3B491300AB9E5F /* GameDealSwiftUIUITests */,
 				DBAE72E82A3B491100AB9E5F /* Products */,
+				DBC8C1162C3CE1CF0094865F /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -383,6 +389,29 @@
 			path = RawgAPI;
 			sourceTree = "<group>";
 		};
+		DBC8C1122C3CE0020094865F /* MetacriticWebScraping */ = {
+			isa = PBXGroup;
+			children = (
+				DBC8C1132C3CE13C0094865F /* Implementation */,
+			);
+			path = MetacriticWebScraping;
+			sourceTree = "<group>";
+		};
+		DBC8C1132C3CE13C0094865F /* Implementation */ = {
+			isa = PBXGroup;
+			children = (
+				DBC8C1142C3CE1680094865F /* MetacriticWebScrapingImplementaiton.swift */,
+			);
+			path = Implementation;
+			sourceTree = "<group>";
+		};
+		DBC8C1162C3CE1CF0094865F /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		DBD998902A45F55800D1D587 /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
@@ -455,6 +484,9 @@
 			dependencies = (
 			);
 			name = GameDealSwiftUI;
+			packageProductDependencies = (
+				DBC8C1172C3CE1CF0094865F /* SwiftSoup */,
+			);
 			productName = GameDealSwiftUI;
 			productReference = DBAE72E72A3B491100AB9E5F /* GameDealSwiftUI.app */;
 			productType = "com.apple.product-type.application";
@@ -610,6 +642,7 @@
 				DBD998AE2A4B90E000D1D587 /* DealLookupViewModel.swift in Sources */,
 				DB92BBF62A3B6732009630E0 /* FeedGameDealModel.swift in Sources */,
 				DB92BBEB2A3B610C009630E0 /* Response.swift in Sources */,
+				DBC8C1152C3CE1680094865F /* MetacriticWebScrapingImplementaiton.swift in Sources */,
 				DB92BBE52A3B602D009630E0 /* BaseURL.swift in Sources */,
 				DBD998922A45FC5500D1D587 /* MediumDealCell.swift in Sources */,
 				DBD998A02A48BFCD00D1D587 /* ListDealViewModel.swift in Sources */,
@@ -951,6 +984,14 @@
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		DBC8C1172C3CE1CF0094865F /* SwiftSoup */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = DBC8C1112C3CDDB00094865F /* XCRemoteSwiftPackageReference "SwiftSoup" */;
+			productName = SwiftSoup;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = DBAE72DF2A3B491000AB9E5F /* Project object */;
 }

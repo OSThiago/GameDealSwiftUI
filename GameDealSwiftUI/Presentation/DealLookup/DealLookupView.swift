@@ -26,7 +26,7 @@ struct DealLookupView: View {
     var body: some View {
         ScrollView(.vertical, showsIndicators: false) {
             VStack(alignment: .leading, spacing: 15) {
-                makeSectionDeailDetail()
+                detailSectionView()
                 
                 makeGenres()
                 

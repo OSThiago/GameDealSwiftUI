@@ -10,22 +10,22 @@ import SwiftUI
 extension DealLookupView {
     
     @ViewBuilder
-    func makeSectionDeailDetail() -> some View {
+    func detailSectionView() -> some View {
         VStack(alignment: .leading) {
-            makeGameImage()
+            gameImage()
             
             Spacer()
             
-            makeDealDetail()
+            dealDetail()
             
             Divider()
             
-            makeStoresDeals()
+            storesDeals()
         }
     }
     
     @ViewBuilder
-    private func makeGameImage() -> some View {
+    private func gameImage() -> some View {
         
         let imageHeight = 220.0
         
@@ -59,7 +59,7 @@ extension DealLookupView {
     }
     
     @ViewBuilder
-    private func makeCurrentStoreImage() -> some View {
+    private func storeImage() -> some View {
         AsyncImage(url: URL(string: viewModel.getStoreImage(storeID: feedGameDealModel.storeID))) { phase in
             switch phase  {
             case .empty:
@@ -80,25 +80,22 @@ extension DealLookupView {
     }
     
     @ViewBuilder
-    private func makeGameTitle() -> some View {
+    private func gameTitle() -> some View {
         Text(viewModel.gameLookupModel?.info?.title ?? "Error")
             .font(.title)
     }
     
     @ViewBuilder
-    private func makeDealDetail() -> some View {
+    private func dealDetail() -> some View {
         HStack(alignment: .top) {
             VStack(alignment: .leading) {
-                makeGameTitle()
+                gameTitle()
                 
                 Spacer()
                 
                 HStack {
-                
                     Text(feedGameDealModel.salePrice)
-
                     Text(feedGameDealModel.normalPrice)
-                
                     Text(feedGameDealModel.savings)
                 }
             }
@@ -106,13 +103,13 @@ extension DealLookupView {
             Spacer()
             
             VStack(alignment: .trailing) {
-                makeCurrentStoreImage()
+                storeImage()
                 Text(viewModel.getStore(id: feedGameDealModel.storeID)?.storeName ?? "Unkwon")
                     .font(.headline)
                 
                 Spacer()
                 
-                makeBuyButton(dealID: "game id")
+                buyButton(dealID: "game id")
             }
         }
         .padding(.horizontal)
@@ -120,7 +117,7 @@ extension DealLookupView {
 
     
     @ViewBuilder
-    private func makeBuyButton(dealID: String) -> some View {
+    private func buyButton(dealID: String) -> some View {
         Button {
             print("Buy - \(dealID)")
         } label: {
@@ -129,7 +126,7 @@ extension DealLookupView {
     }
     
     @ViewBuilder
-    private func makeStoresDeals() -> some View {
+    private func storesDeals() -> some View {
         VStack(alignment: .leading) {
             Text("Stores")
                 .font(.title2)

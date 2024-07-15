@@ -10,6 +10,7 @@
 		DB3931D22A53CC5C00CF0218 /* LookupDealStoreCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB3931D12A53CC5C00CF0218 /* LookupDealStoreCell.swift */; };
 		DB4030422C44665F000DCFD1 /* MetacriticWebScrapingImplementationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB4030412C44665F000DCFD1 /* MetacriticWebScrapingImplementationTests.swift */; };
 		DB4030462C446A33000DCFD1 /* MetacriticMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB4030452C446A33000DCFD1 /* MetacriticMock.swift */; };
+		DB4030492C453F94000DCFD1 /* MetacriticWebScrapingProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB4030482C453F94000DCFD1 /* MetacriticWebScrapingProtocol.swift */; };
 		DB80A9102A697E9D005489AD /* RwSearchGameModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB80A90F2A697E9D005489AD /* RwSearchGameModel.swift */; };
 		DB80A9132A6998A0005489AD /* DealLookupView+DealDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB80A9122A6998A0005489AD /* DealLookupView+DealDetails.swift */; };
 		DB80A9152A699ED2005489AD /* View+onBackSwipe.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB80A9142A699ED2005489AD /* View+onBackSwipe.swift */; };
@@ -83,6 +84,7 @@
 		DB3931D12A53CC5C00CF0218 /* LookupDealStoreCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LookupDealStoreCell.swift; sourceTree = "<group>"; };
 		DB4030412C44665F000DCFD1 /* MetacriticWebScrapingImplementationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MetacriticWebScrapingImplementationTests.swift; sourceTree = "<group>"; };
 		DB4030452C446A33000DCFD1 /* MetacriticMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MetacriticMock.swift; sourceTree = "<group>"; };
+		DB4030482C453F94000DCFD1 /* MetacriticWebScrapingProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MetacriticWebScrapingProtocol.swift; sourceTree = "<group>"; };
 		DB80A90F2A697E9D005489AD /* RwSearchGameModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RwSearchGameModel.swift; sourceTree = "<group>"; };
 		DB80A9122A6998A0005489AD /* DealLookupView+DealDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DealLookupView+DealDetails.swift"; sourceTree = "<group>"; };
 		DB80A9142A699ED2005489AD /* View+onBackSwipe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+onBackSwipe.swift"; sourceTree = "<group>"; };
@@ -446,6 +448,7 @@
 		DBC8C1192C3CE2E30094865F /* Interface */ = {
 			isa = PBXGroup;
 			children = (
+				DB4030482C453F94000DCFD1 /* MetacriticWebScrapingProtocol.swift */,
 			);
 			path = Interface;
 			sourceTree = "<group>";
@@ -672,6 +675,7 @@
 				DBBE68A72A5CBF2400EF7932 /* RawgGameDetailModel.swift in Sources */,
 				DB95FDC72A40D9BE006EB578 /* FeedViewModel.swift in Sources */,
 				DBAE72ED2A3B491100AB9E5F /* ContentView.swift in Sources */,
+				DB4030492C453F94000DCFD1 /* MetacriticWebScrapingProtocol.swift in Sources */,
 				DB92BC052A3B6974009630E0 /* DealLookupMock.swift in Sources */,
 				DB80A9192A6AA684005489AD /* DealLookupView+GameDescription.swift in Sources */,
 				DBAE72EB2A3B491100AB9E5F /* GameDealSwiftUIApp.swift in Sources */,

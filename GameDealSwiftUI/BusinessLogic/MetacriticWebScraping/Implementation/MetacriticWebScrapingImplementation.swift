@@ -9,15 +9,7 @@ import Foundation
 import SwiftSoup
 import WebKit
 
-// "https://www.metacritic.com/game/tsukihime-a-piece-of-blue-glass-moon/details/"
-
-// c-pageProductDetails_description g-outer-spacing-bottom-xlarge
-// "c-pageProductDetails_description"
-// c-gameDetails
-// c-gameDetails_listItem
-// c-gameDetails_Platforms
-
-class MetacriticWebScrapingImplementation {
+class MetacriticWebScrapingImplementation: MetacriticWebScrapingProtocol {
     func getContent(htmlContent: String, byClass className: String) -> String {
         do {
             let document: Document = try SwiftSoup.parse(htmlContent)
@@ -81,13 +73,4 @@ class MetacriticWebScrapingImplementation {
             return "error"
         }
     }
-    
-//    func stripHtml(content: String) -> String {
-//        var result = content
-//        guard let startIndex = content.firstIndex(of: "<") else { return content }
-//        guard let endIndex = content.firstIndex(of: ">") else { return content }
-//        let range: ClosedRange = startIndex...endIndex
-//        result.replaceSubrange(range, with: "")
-//        return result
-//    }
  }

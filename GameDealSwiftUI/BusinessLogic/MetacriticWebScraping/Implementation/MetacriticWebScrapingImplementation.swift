@@ -17,7 +17,7 @@ import WebKit
 // c-gameDetails_listItem
 // c-gameDetails_Platforms
 
-class MetacriticWebScrapingImplementaiton {
+class MetacriticWebScrapingImplementation {
     func getContent(htmlContent: String, byClass className: String) -> String {
         do {
             let document: Document = try SwiftSoup.parse(htmlContent)
@@ -31,7 +31,7 @@ class MetacriticWebScrapingImplementaiton {
             return formatted
         } catch {
             print("Error Parsing: " + String(describing: error))
-            return ""
+            return "content error"
         }
     }
     
@@ -71,7 +71,7 @@ class MetacriticWebScrapingImplementaiton {
     func getURLContent(url: String) async -> String {
         guard let url = URL(string: url) else {
             print("Error: \(url) doesn't seem to be a valid URL")
-            return ""
+            return "error"
         }
         do {
             let htmlString = try String(contentsOf: url, encoding: .utf8)

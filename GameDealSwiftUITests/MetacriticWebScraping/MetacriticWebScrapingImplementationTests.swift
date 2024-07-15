@@ -10,10 +10,10 @@ import XCTest
 
 final class MetacriticWebScrapingImplementationTests: XCTestCase {
     
-    private var sut: MetacriticWebScrapingImplementaiton!
+    private var sut: MetacriticWebScrapingImplementation!
     
     override func setUpWithError() throws {
-        self.sut = MetacriticWebScrapingImplementaiton()
+        self.sut = MetacriticWebScrapingImplementation()
     }
 
     override func tearDownWithError() throws {

@@ -29,7 +29,7 @@ struct FeedView: View {
             .onAppear {
                 Task {
 //                    viewModel.fetchStores()
-                    let metacritic = MetacriticWebScrapingImplementaiton()
+                    let metacritic = MetacriticWebScrapingImplementation()
                     let htmlContent = await metacritic.getURLContent(url: "https://www.metacritic.com/game/the-witcher-3-wild-hunt/details/")
 //                    await metacritic.getDescription(htmlContent: htmlContent)
                     let filteredContent = metacritic.filterRawHtmlContent(fullHtmlContent: htmlContent, byClass: "c-gameDetails_Platforms")

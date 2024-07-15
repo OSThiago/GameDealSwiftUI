@@ -7,17 +7,17 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "2BE3C6DC-6BA3-4418-8CA5-51BDD0EB99AC"
+            uuid = "01A5FE3A-5ED6-43A6-88CE-1A66E6DF8F9F"
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "GameDealSwiftUI/Presentation/Feed/FeedView.swift"
+            filePath = "GameDealSwiftUI/Presentation/DealLookup/DealLookupViewModel.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "36"
-            endingLineNumber = "36"
-            landmarkName = "body"
-            landmarkType = "24">
+            startingLineNumber = "83"
+            endingLineNumber = "83"
+            landmarkName = "fetchMetacriticDetailsInformation(metacriticLink:)"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

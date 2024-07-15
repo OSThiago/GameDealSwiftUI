@@ -28,14 +28,12 @@ struct DealLookupView: View {
             VStack(alignment: .leading, spacing: 15) {
                 makeSectionDeailDetail()
                 
-                makeGenres()
-                
-                makeGameDescription()
-                
-                makeSimilarGames(title: "Similar names", games: viewModel.searchGamesModel?.results ?? [])
+                gameDetails
             }
             .onAppear {
-                viewModel.setupView(feedGameDealModel: self.feedGameDealModel)
+                Task {
+                    await viewModel.setupView(feedGameDealModel: self.feedGameDealModel)
+                }
             }
             .onBackSwipe {
                 presentation.wrappedValue.dismiss()
@@ -85,6 +83,43 @@ struct DealLookupView: View {
             return true
         }
         return false
+    }
+}
+
+extension DealLookupView {
+    @ViewBuilder
+    var gameDetails: some View {
+        VStack(alignment: .leading, spacing: 8) {
+            if let metacriticModel = viewModel.metacriticDetailModel {
+                Text(metacriticModel.description)
+                Text("Publisher: \(metacriticModel.publisher)")
+                Text("Release Date \(metacriticModel.releaseDate)")
+                
+                HStack(alignment: .top) {
+                    Text("Platforms: ")
+                    ForEach(metacriticModel.platforms, id: \.self) { platform in
+                        Text(platform)
+                            .truncationMode(.head)
+                            .lineLimit(4)
+                    }
+                }
+                
+                HStack(alignment: .top) {
+                    Text("Developers: ")
+                    ForEach(metacriticModel.developers, id: \.self) { developer in
+                        Text(developer)
+                    }
+                }
+                
+                HStack(alignment: .top) {
+                    Text("Genres: ")
+                    ForEach(metacriticModel.genres, id: \.self) { genre in
+                        Text(genre)
+                    }
+                }
+            }
+        }
+        .padding(.horizontal, 16)
     }
 }
 

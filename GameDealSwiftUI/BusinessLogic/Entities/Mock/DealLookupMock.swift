@@ -16,7 +16,8 @@ extension DealLookup {
         retailPrice: "19.99",
         thumb: "https://cdn.cloudflare.steamstatic.com/steam/apps/20920/capsule_sm_120.jpg?t=1659618473",
         cheaperStores: [.theWircher2],
-        cheapestPrice: .theWitcher2)
+        cheapestPrice: .theWitcher2, 
+        metacriticLink: "/game/the-witcher-2-assassins-of-kings/")
 }
 
 extension CheaperStores {

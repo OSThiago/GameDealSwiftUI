@@ -16,4 +16,5 @@ struct FeedGameDealModel: Codable, Hashable {
     let normalPrice: String
     let savings: String
     let thumb: String
+    let metacriticLink: String?
 }

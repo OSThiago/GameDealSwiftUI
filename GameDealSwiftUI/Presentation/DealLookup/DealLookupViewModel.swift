@@ -12,8 +12,7 @@ final class DealLookupViewModel: ObservableObject, FormatterDealData {
     var storesInformations: [StoresCheapShark] = []
     
     let workerCheapShark = WorkerCheapShark()
-    
-    let workerRawg = WorkerRAWG()
+    let workerMetacritic = MetacriticWebScrapingImplementation()
     
     // To fetch when get gameID
     @Published var gameLookupModel: GameLookupModel?
@@ -21,17 +20,15 @@ final class DealLookupViewModel: ObservableObject, FormatterDealData {
     // To recive from feed
     @Published var feedGameDealModel: FeedGameDealModel?
     
-    // Contains list of games searched by game name
-    @Published var searchGamesModel: RwSearchGameModel?
+    @Published var metacriticDetailModel: MetacriticDetailModel?
     
-    @Published var rwGameDetail: RwGameDetailModel?
-    
-    func setupView(feedGameDealModel: FeedGameDealModel) {
-        fetchStoresInformations()
+    @MainActor
+    func setupView(feedGameDealModel: FeedGameDealModel) async {
         self.feedGameDealModel = feedGameDealModel
+        fetchStoresInformations()
         fetchDealLookup(gameID: feedGameDealModel.gameID)
-        fetchGameDetailFromRawg()
-        fetchSearchDetailRawg(gameName: feedGameDealModel.title)
+        self.metacriticDetailModel = await fetchMetacriticDetailsInformation(metacriticLink: feedGameDealModel.metacriticLink ?? "")
+        print(metacriticDetailModel)
     }
     
     func fetchDealLookup(gameID: String) {
@@ -68,43 +65,67 @@ final class DealLookupViewModel: ObservableObject, FormatterDealData {
         }
     }
     
-    func fetchGameDetailFromRawg() {
-        guard let gameNameReplaced = self.feedGameDealModel?.title.replacingOccurrences(of: " ", with: "-") else { return }
+    // MARK: - Metacritic
+    func fetchMetacriticDetailsInformation(metacriticLink: String) async -> MetacriticDetailModel{
+        let baseURL = "https://www.metacritic.com"
+        let details = "details/"
+        let url = baseURL + metacriticLink + details
         
-        let endpoint = EndpointCasesRAWG.getGameDetail(name: gameNameReplaced.lowercased())
+        let htmlContent = await workerMetacritic.getURLContent(url: url)
         
-        //print(endpoint.url)
-        
-        workerRawg.getGameDetail(endpoint: endpoint) { result in
-            switch result {
-            case .success(let gameDetail):
-                DispatchQueue.main.async {
-                    self.rwGameDetail = gameDetail
-                }
-            case .failure(let failure):
-                print(failure)
-            }
-        }
+        let description = getMetacriticDescription(htmlContent: htmlContent)
+        let releaseDate = getReleaseDate(htmlContent: htmlContent)
+        let publisher = getPublisher(htmlContent: htmlContent)
+        let platforms = getPlatforms(htmlContent: htmlContent)
+        let developers = getDevelopers(htmlContent: htmlContent)
+        let genres = getGenres(htmlContent: htmlContent)
+
+        return MetacriticDetailModel(description: description,
+                                     releaseDate: releaseDate,
+                                     publisher: publisher,
+                                     platforms: platforms,
+                                     developers: developers,
+                                     genres: genres)
+    }
+
+    private func getMetacriticDescription(htmlContent: String) -> String {
+        let className = "c-pageProductDetails_description"
+        return workerMetacritic.getContent(htmlContent: htmlContent, byClass: className)
     }
     
-    func fetchSearchDetailRawg(gameName: String) {
+    private func getReleaseDate(htmlContent: String) -> String {
+        let className = "c-gameDetails_ReleaseDate"
+        let release = workerMetacritic.getContent(htmlContent: htmlContent, byClass: className)
+        return release.replacingOccurrences(of: "Initial Release Date: ", with: "")
+    }
+    
+    private func getPublisher(htmlContent: String) -> String {
+        let className = "c-gameDetails_Distributor"
+        let publisher = workerMetacritic.getContent(htmlContent: htmlContent, byClass: className)
+        return publisher.replacingOccurrences(of: "Publisher: ", with: "")
+    }
+    
+    private func getPlatforms(htmlContent: String) -> [String] {
+        let className = "c-gameDetails_Platforms"
+        let tag = "li"
         
-        let gameNameReplaced = gameName.replacingOccurrences(of: " ", with: "+")
+        let classContent = workerMetacritic.filterRawHtmlContent(fullHtmlContent: htmlContent, byClass: className)
+        return workerMetacritic.getContents(htmlContent: classContent, byElementsTag: tag)
+    }
+    
+    private func getDevelopers(htmlContent: String) -> [String] {
+        let className = "c-gameDetails_Developer"
+        let tag = "li"
         
-        let endpoint = EndpointCasesRAWG.searchGame(name: gameNameReplaced.lowercased())
+        let classContent = workerMetacritic.filterRawHtmlContent(fullHtmlContent: htmlContent, byClass: className)
+        return workerMetacritic.getContents(htmlContent: classContent, byElementsTag: tag)
+    }
+    
+    private func getGenres(htmlContent: String) -> [String] {
+        let className = "c-genreList"
+        let tag = "span"
         
-        //print(endpoint.url)
-        
-        workerRawg.searchGame(endpoint: endpoint) { result in
-            switch result {
-            case .success(let result):
-                DispatchQueue.main.async {
-                    self.searchGamesModel = result
-                }
-            case .failure(let failure):
-                // TODO: - Create error feedback
-                print(failure)
-            }
-        }
+        let classContent = workerMetacritic.filterRawHtmlContent(fullHtmlContent: htmlContent, byClass: className)
+        return workerMetacritic.getContents(htmlContent: classContent, byElementsTag: tag)
     }
 }

@@ -28,7 +28,8 @@ extension FormatterDealData {
             salePrice: "$\(model.salePrice)",
             normalPrice: "$\(model.normalPrice)",
             savings: formatSavings(model.savings),
-            thumb: getHightQualityImage(url: model.thumb)
+            thumb: getHightQualityImage(url: model.thumb), 
+            metacriticLink: model.metacriticLink
         )
         return model
     }

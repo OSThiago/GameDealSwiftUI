@@ -16,4 +16,5 @@ struct DealLookup: Codable {
     let thumb: String
     let cheaperStores: [CheaperStores]
     let cheapestPrice: CheapestPrice
+    let metacriticLink: String
 }

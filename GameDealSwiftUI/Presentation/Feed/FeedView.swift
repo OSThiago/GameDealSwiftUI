@@ -28,7 +28,13 @@ struct FeedView: View {
             }
             .onAppear {
                 Task {
-                    viewModel.fetchStores()
+//                    viewModel.fetchStores()
+                    let metacritic = MetacriticWebScrapingImplementaiton()
+                    let htmlContent = await metacritic.getURLContent(url: "https://www.metacritic.com/game/the-witcher-3-wild-hunt/details/")
+//                    await metacritic.getDescription(htmlContent: htmlContent)
+                    let filteredContent = metacritic.filterRawHtmlContent(fullHtmlContent: htmlContent, byClass: "c-gameDetails_Platforms")
+                    let result = metacritic.getContents(htmlContent: filteredContent, byElementsTag: "li")
+                    print(result)
                 }
             }
             .navigationTitle("Feed")
@@ -68,7 +74,7 @@ struct FeedView: View {
                 .padding(.top, 8)
         }
         .onAppear {
-            viewModel.displayDealsAAA()
+//            viewModel.displayDealsAAA()
         }
     }
     

@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		DB3931D22A53CC5C00CF0218 /* LookupDealStoreCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB3931D12A53CC5C00CF0218 /* LookupDealStoreCell.swift */; };
+		DB4030422C44665F000DCFD1 /* MetacriticWebScrapingImplementationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB4030412C44665F000DCFD1 /* MetacriticWebScrapingImplementationTests.swift */; };
+		DB4030462C446A33000DCFD1 /* MetacriticMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB4030452C446A33000DCFD1 /* MetacriticMock.swift */; };
 		DB80A9102A697E9D005489AD /* RwSearchGameModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB80A90F2A697E9D005489AD /* RwSearchGameModel.swift */; };
 		DB80A9132A6998A0005489AD /* DealLookupView+DealDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB80A9122A6998A0005489AD /* DealLookupView+DealDetails.swift */; };
 		DB80A9152A699ED2005489AD /* View+onBackSwipe.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB80A9142A699ED2005489AD /* View+onBackSwipe.swift */; };
@@ -79,6 +81,8 @@
 
 /* Begin PBXFileReference section */
 		DB3931D12A53CC5C00CF0218 /* LookupDealStoreCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LookupDealStoreCell.swift; sourceTree = "<group>"; };
+		DB4030412C44665F000DCFD1 /* MetacriticWebScrapingImplementationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MetacriticWebScrapingImplementationTests.swift; sourceTree = "<group>"; };
+		DB4030452C446A33000DCFD1 /* MetacriticMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MetacriticMock.swift; sourceTree = "<group>"; };
 		DB80A90F2A697E9D005489AD /* RwSearchGameModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RwSearchGameModel.swift; sourceTree = "<group>"; };
 		DB80A9122A6998A0005489AD /* DealLookupView+DealDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DealLookupView+DealDetails.swift"; sourceTree = "<group>"; };
 		DB80A9142A699ED2005489AD /* View+onBackSwipe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+onBackSwipe.swift"; sourceTree = "<group>"; };
@@ -166,6 +170,31 @@
 				DB3931D12A53CC5C00CF0218 /* LookupDealStoreCell.swift */,
 			);
 			path = UIComponents;
+			sourceTree = "<group>";
+		};
+		DB4030402C446612000DCFD1 /* MetacriticWebScraping */ = {
+			isa = PBXGroup;
+			children = (
+				DB4030432C4469E4000DCFD1 /* Double */,
+				DB4030412C44665F000DCFD1 /* MetacriticWebScrapingImplementationTests.swift */,
+			);
+			path = MetacriticWebScraping;
+			sourceTree = "<group>";
+		};
+		DB4030432C4469E4000DCFD1 /* Double */ = {
+			isa = PBXGroup;
+			children = (
+				DB4030442C4469EC000DCFD1 /* Mock */,
+			);
+			path = Double;
+			sourceTree = "<group>";
+		};
+		DB4030442C4469EC000DCFD1 /* Mock */ = {
+			isa = PBXGroup;
+			children = (
+				DB4030452C446A33000DCFD1 /* MetacriticMock.swift */,
+			);
+			path = Mock;
 			sourceTree = "<group>";
 		};
 		DB80A9112A6997BF005489AD /* UISections */ = {
@@ -339,6 +368,7 @@
 		DBAE72FA2A3B491300AB9E5F /* GameDealSwiftUITests */ = {
 			isa = PBXGroup;
 			children = (
+				DB4030402C446612000DCFD1 /* MetacriticWebScraping */,
 				DBBE68AF2A5D035600EF7932 /* RawgAPI */,
 				DBD998A42A4A2C3300D1D587 /* CheapSharkAPI */,
 				DBAE72FB2A3B491300AB9E5F /* GameDealSwiftUITests.swift */,
@@ -393,6 +423,7 @@
 			isa = PBXGroup;
 			children = (
 				DBC8C1132C3CE13C0094865F /* Implementation */,
+				DBC8C1192C3CE2E30094865F /* Interface */,
 			);
 			path = MetacriticWebScraping;
 			sourceTree = "<group>";
@@ -410,6 +441,13 @@
 			children = (
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		DBC8C1192C3CE2E30094865F /* Interface */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Interface;
 			sourceTree = "<group>";
 		};
 		DBD998902A45F55800D1D587 /* Utilities */ = {
@@ -654,9 +692,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DB4030422C44665F000DCFD1 /* MetacriticWebScrapingImplementationTests.swift in Sources */,
 				DBAE72FC2A3B491300AB9E5F /* GameDealSwiftUITests.swift in Sources */,
 				DBD998A62A4A2C7900D1D587 /* TestGameLookUp.swift in Sources */,
 				DBBE68B12A5D03B300EF7932 /* TestGameDetailRawg.swift in Sources */,
+				DB4030462C446A33000DCFD1 /* MetacriticMock.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

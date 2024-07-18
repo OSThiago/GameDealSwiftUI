@@ -10,10 +10,12 @@ import SwiftUI
 final class FeedViewModel: ObservableObject, FormatterDealData {
     // Published Properties
     @Published var dealsAAA = [FeedGameDealModel]()
-    
     @Published var storesDeals: [(store: StoresCheapShark, dealsList:[FeedGameDealModel])] = []
-    
     @Published var storesInformations = [StoresCheapShark]()
+    @Published var viewState: ViewState = .loading
+    
+    @Published var isLoadedAAAGames = false
+    @Published var isLoadedStoreGames = false
     
     private let workerCheapShark = WorkerCheapShark()
     
@@ -49,7 +51,7 @@ final class FeedViewModel: ObservableObject, FormatterDealData {
         workerCheapShark.getDealsList(endpoint: endpoint) { result in
             switch result {
             case .success(let deals):
-                DispatchQueue.main.async { [self] in
+                DispatchQueue.main.async { [weak self] in
                     
                     var filtered = [FeedGameDealModel]()
                     
@@ -59,7 +61,9 @@ final class FeedViewModel: ObservableObject, FormatterDealData {
                         }
                     }
                     
-                    self.dealsAAA = filtered
+                    self?.dealsAAA = filtered
+                    self?.isLoadedAAAGames = true
+                    self?.checkIsLoadedInfos()
                 }
             case .failure(let failure):
                 // TODO: - Tratar erro
@@ -86,6 +90,8 @@ final class FeedViewModel: ObservableObject, FormatterDealData {
                 case .success(let deals):
                     DispatchQueue.main.async {
                         self.storesDeals.append((store: store, dealsList: deals))
+                        self.isLoadedStoreGames = true
+                        self.checkIsLoadedInfos()
                     }
                 case .failure(let failure):
                     // TODO: - Tratar erro
@@ -108,5 +114,13 @@ final class FeedViewModel: ObservableObject, FormatterDealData {
             metacriticLink: model.metacriticLink
         )
         return model
+    }
+    
+    private func checkIsLoadedInfos() {
+        if isLoadedAAAGames == true  && isLoadedStoreGames == true {
+            withAnimation(.easeIn) {
+                self.viewState = .loaded
+            }
+        }
     }
 }

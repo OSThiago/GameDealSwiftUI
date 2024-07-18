@@ -12,32 +12,60 @@ struct FeedView: View {
     @StateObject var viewModel = FeedViewModel()
     
     var body: some View {
-        NavigationView {
-            ScrollView {
-                Divider()
-                
-                VStack(spacing: 16) {
-                    makeLargeList(deals: viewModel.dealsAAA, title: "AAA Games")
-                    
-                    makeStoreList(title: "Game Stores", stores: viewModel.storesInformations)
-                    
-                    ForEach(viewModel.storesDeals, id: \.store.storeID) { store in
-                        makeMediumList(deals: store.dealsList, store: store.store)
-                    }
-                }
-            }
+        buildedContent
             .onAppear {
                 Task {
                     viewModel.fetchStores()
                 }
             }
+            .onAppear {
+                viewModel.displayDealsAAA()
+            }
+    }
+}
+
+// MARK: - Builded Content
+extension FeedView {
+    @ViewBuilder
+    var buildedContent: some View {
+        switch viewModel.viewState {
+        case .loading:
+            ProgressView()
+        case .loaded:
+            content
+        case .error:
+            Text("Error")
+        }
+    }
+}
+
+// MARK: - Content
+extension FeedView {
+    @ViewBuilder
+    var content: some View {
+        NavigationView {
+            ScrollView {
+                Divider()
+                
+                VStack(spacing: 16) {
+                    largeList(deals: viewModel.dealsAAA, title: "AAA Games")
+                    
+                    storeList(title: "Game Stores", stores: viewModel.storesInformations)
+                    
+                    ForEach(viewModel.storesDeals, id: \.store.storeID) { store in
+                        mediumList(deals: store.dealsList, store: store.store)
+                    }
+                }
+            }
             .navigationTitle("Feed")
         }
     }
-    
-    // MARK: - LIST AAA GAMES
+}
+
+// MARK: - LIST AAA GAMES
+extension FeedView {
     @ViewBuilder
-    func makeLargeList(deals: [FeedGameDealModel], title: String) -> some View {
+    func largeList(deals: [FeedGameDealModel], title: String) -> some View {
         VStack(alignment: .leading, spacing: 5) {
             // Title
             Text(title)
@@ -67,14 +95,13 @@ struct FeedView: View {
                 .padding(.horizontal)
                 .padding(.top, 8)
         }
-        .onAppear {
-            viewModel.displayDealsAAA()
-        }
     }
-    
-    // MARK: - LIST GAMES BY STORES
+}
+
+// MARK: - LIST GAMES BY STORES
+extension FeedView {
     @ViewBuilder
-    func makeMediumList(deals: [FeedGameDealModel], store: StoresCheapShark) -> some View {
+    func mediumList(deals: [FeedGameDealModel], store: StoresCheapShark) -> some View {
         VStack(alignment: .leading, spacing: 5) {
             HStack {
                 // Title
@@ -117,10 +144,12 @@ struct FeedView: View {
                 .padding(.top, 16)
         }
     }
-    
-    // MARK: - STORE LIST
+}
+
+// MARK: - STORE LIST
+extension FeedView {
     @ViewBuilder
-    func makeStoreList(title: String, stores: [StoresCheapShark]) -> some View {
+    func storeList(title: String, stores: [StoresCheapShark]) -> some View {
         
         let rows = [
             GridItem(.fixed(50)),
@@ -159,8 +188,6 @@ struct FeedView: View {
         }
     }
 }
-
-
 
 struct FeedView_Previews: PreviewProvider {
     static var previews: some View {

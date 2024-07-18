@@ -19,8 +19,8 @@ final class DealLookupViewModel: ObservableObject, FormatterDealData {
     
     // To recive from feed
     @Published var feedGameDealModel: FeedGameDealModel?
-    
     @Published var metacriticDetailModel: MetacriticDetailModel?
+    @Published var viewState: ViewState = .loading
     
     @MainActor
     func setupView(feedGameDealModel: FeedGameDealModel) async {
@@ -28,7 +28,6 @@ final class DealLookupViewModel: ObservableObject, FormatterDealData {
         fetchStoresInformations()
         fetchDealLookup(gameID: feedGameDealModel.gameID)
         self.metacriticDetailModel = await fetchMetacriticDetailsInformation(metacriticLink: feedGameDealModel.metacriticLink ?? "")
-        print(metacriticDetailModel)
     }
     
     func fetchDealLookup(gameID: String) {
@@ -65,7 +64,20 @@ final class DealLookupViewModel: ObservableObject, FormatterDealData {
         }
     }
     
+    func formatSavings(_ savings: String) -> String {
+        var savingFormatted = ""
+        
+        let index = savings.firstIndex(of: ".") ?? savings.endIndex
+        
+        let beginning = savings[..<index]
+        
+        savingFormatted = String(beginning)
+        
+        return "-\(savingFormatted)%"
+    }
+    
     // MARK: - Metacritic
+    @MainActor
     func fetchMetacriticDetailsInformation(metacriticLink: String) async -> MetacriticDetailModel{
         let baseURL = "https://www.metacritic.com"
         let details = "details/"
@@ -80,6 +92,7 @@ final class DealLookupViewModel: ObservableObject, FormatterDealData {
         let developers = getDevelopers(htmlContent: htmlContent)
         let genres = getGenres(htmlContent: htmlContent)
 
+        self.viewState = .loaded
         return MetacriticDetailModel(description: description,
                                      releaseDate: releaseDate,
                                      publisher: publisher,

@@ -28,13 +28,17 @@ struct LookupDealStoreCell: View {
     // MARK: - DEAL PRICE
     @ViewBuilder
     func makeDealPrice() -> some View {
-        Text(dealPrice ?? "Unkown")
+        Text("$\(dealPrice ?? "")")
+            .font(.body)
+            .fontWeight(.bold)
     }
     
     // MARK: - STORE TITLE
     @ViewBuilder
     func makeStoreTitle() -> some View {
         Text(storeTitle ?? "Unkow")
+            .font(.body)
+            .fontWeight(.bold)
     }
     
     // MARK: - STORE IMAGE

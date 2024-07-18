@@ -12,54 +12,58 @@ extension DealLookupView {
     @ViewBuilder
     func makeSectionDeailDetail() -> some View {
         VStack(alignment: .leading) {
-            makeGameImage()
+            gameImage()
             
             Spacer()
             
-            makeDealDetail()
+            dealDetail()
             
             Divider()
             
-            makeStoresDeals()
+            storesDeals()
         }
     }
     
     @ViewBuilder
-    private func makeGameImage() -> some View {
+    func gameImage() -> some View {
+        
+        let url = viewModel.getHightQualityImage(url: viewModel.gameLookupModel?.info?.thumb ?? "")
         
         let imageHeight = 220.0
         
-            AsyncImage(url: URL(string: viewModel.getHightQualityImage(url: viewModel.gameLookupModel?.info?.thumb ?? ""))) { phase in
-                switch phase  {
-                case .empty:
-                    ProgressView()
-                case .success(let image):
-                    GeometryReader { reader in
+        AsyncImage(url: URL(string: url)) { phase in
+            switch phase  {
+            case .empty:
+                ProgressView()
+            case .success(let image):
+                GeometryReader { reader in
+                    let offsetY = reader.frame(in: .global).minY
+                    let isScrolled = offsetY > 0
+                    
+                    image
+                        .resizable()
+                        .scaledToFill()
+//                        .aspectRatio(contentMode: .fill)
+                        .frame(width: ScreenSize.width, height: isScrolled ? offsetY + imageHeight : imageHeight)
+//                        .frame(width: ScreenSize.width, height: imageHeight, alignment: .top)
+                        .clipped()
                         
-                        let offsetY = reader.frame(in: .global).minY
-                        let isScrolled = offsetY > 0
-                        
-                        image
-                            .resizable()
-                            .scaledToFill()
-                            .frame(width: ScreenSize.width, height: isScrolled ? offsetY + imageHeight : imageHeight)
-                            .clipped()
-                            .offset(y: isScrolled ? -offsetY : 0)
-                            .scaleEffect(isScrolled ? offsetY / 2000 + 1 : 1)
-                    }
-                    // Default frame
-                    .frame(height: imageHeight)
-                        
-                case .failure(_):
-                    EmptyView()
-                @unknown default:
-                    EmptyView()
+                        .offset(y: isScrolled ? -offsetY : 0)
+                        .scaleEffect(isScrolled ? offsetY / 2000 + 1 : 1)
                 }
+                // Default frame
+                .frame(height: imageHeight)
+                    
+            case .failure(_):
+                EmptyView()
+            @unknown default:
+                EmptyView()
             }
+        }
     }
     
     @ViewBuilder
-    private func makeCurrentStoreImage() -> some View {
+    func currentStoreImage() -> some View {
         AsyncImage(url: URL(string: viewModel.getStoreImage(storeID: feedGameDealModel.storeID))) { phase in
             switch phase  {
             case .empty:
@@ -80,56 +84,70 @@ extension DealLookupView {
     }
     
     @ViewBuilder
-    private func makeGameTitle() -> some View {
+    func makeGameTitle() -> some View {
         Text(viewModel.gameLookupModel?.info?.title ?? "Error")
             .font(.title)
+            .fontWeight(.bold)
     }
     
     @ViewBuilder
-    private func makeDealDetail() -> some View {
-        HStack(alignment: .top) {
+    func dealDetail() -> some View {
+        VStack(alignment: .leading, spacing: 4) {
+            makeGameTitle()
+                .padding(.bottom, 16)
+            
             VStack(alignment: .leading) {
-                makeGameTitle()
-                
-                Spacer()
-                
-                HStack {
-                
-                    Text(feedGameDealModel.salePrice)
-
-                    Text(feedGameDealModel.normalPrice)
-                
-                    Text(feedGameDealModel.savings)
+                HStack(alignment: .bottom) {
+                    Text("$\(feedGameDealModel.salePrice)")
+                        .font(.body)
+                        .fontWeight(.bold)
+                    
+                    Text("$\(feedGameDealModel.normalPrice)")
+                        .font(.subheadline)
+                        .fontWeight(.medium)
+                        .strikethrough()
+                    
+                    Spacer()
+                    
+                    Text(viewModel.formatSavings(feedGameDealModel.savings))
+                        .font(.body)
+                        .fontWeight(.bold)
                 }
             }
-            
-            Spacer()
-            
-            VStack(alignment: .trailing) {
-                makeCurrentStoreImage()
+
+            HStack(alignment: .center) {
+                currentStoreImage()
+                
                 Text(viewModel.getStore(id: feedGameDealModel.storeID)?.storeName ?? "Unkwon")
-                    .font(.headline)
+                    .font(.body)
+                    .fontWeight(.bold)
                 
                 Spacer()
                 
                 makeBuyButton(dealID: "game id")
             }
         }
-        .padding(.horizontal)
+        .padding(.horizontal, 16)
+        .padding(.bottom, 16)
     }
 
-    
     @ViewBuilder
-    private func makeBuyButton(dealID: String) -> some View {
+    func makeBuyButton(dealID: String) -> some View {
         Button {
             print("Buy - \(dealID)")
         } label: {
             Text("Buy")
+                .font(.body)
+                .fontWeight(.medium)
+                .foregroundStyle(.white)
+                .frame(width: 65, height: 25)
         }
+        .background(Color.blue)
+        .clipShape(.rect(cornerRadius: 12))
     }
     
     @ViewBuilder
-    private func makeStoresDeals() -> some View {
+    func storesDeals() -> some View {
         
         let rows = [
             GridItem(.fixed(50)),
@@ -137,25 +155,27 @@ extension DealLookupView {
             GridItem(.fixed(50))
         ]
         
-        VStack(alignment: .leading) {
-            Text("Others Stores")
-                .font(.title2)
-                .bold()
-                .padding(.leading)
-            
-            ScrollView(.horizontal, showsIndicators: false) {
-                LazyHGrid(rows: rows, spacing: 0) {
-                    ForEach(viewModel.gameLookupModel?.deals ?? [], id: \.dealID) { deal in
-                        VStack {
+        if viewModel.gameLookupModel?.deals?.count ?? 0  > 1 {
+            VStack(alignment: .leading, spacing: 0) {
+                Text("Others Stores")
+                    .font(.title2)
+                    .fontWeight(.bold)
+                    .padding(.leading)
+                
+                ScrollView(.horizontal, showsIndicators: false) {
+                    LazyHGrid(rows: rows, spacing: 0) {
+                        ForEach(viewModel.gameLookupModel?.deals ?? [], id: \.dealID) { deal in
+                            VStack {
 
-                            let storeInformation = viewModel.getStore(id: deal.storeID ?? "0")
-                            
-                            let storeImage = viewModel.getStoreImage(storeID: storeInformation?.storeID ?? "0")
-                            
-                            LookupDealStoreCell(storeImage: storeImage, storeTitle: storeInformation?.storeName, dealPrice: deal.price)
+                                let storeInformation = viewModel.getStore(id: deal.storeID ?? "0")
+                                
+                                let storeImage = viewModel.getStoreImage(storeID: storeInformation?.storeID ?? "0")
+                                
+                                LookupDealStoreCell(storeImage: storeImage, storeTitle: storeInformation?.storeName, dealPrice: deal.price)
 
-                            Divider()
-                                .padding(.leading)
+                                Divider()
+                                    .padding(.leading)
+                            }
                         }
                     }
                 }

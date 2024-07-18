@@ -20,16 +20,12 @@ struct DealLookupView: View {
     // MARK: - INITIALIZER
     init(feedGameDealModel: FeedGameDealModel) {
         self.feedGameDealModel = feedGameDealModel
+//        UIScrollView.appearance().bounces = false
     }
     
     // MARK: - BODY
     var body: some View {
-        ScrollView(.vertical, showsIndicators: false) {
-            VStack(alignment: .leading, spacing: 15) {
-                makeSectionDeailDetail()
-                
-                gameDetails
-            }
+        buildedContent
             .onAppear {
                 Task {
                     await viewModel.setupView(feedGameDealModel: self.feedGameDealModel)
@@ -38,26 +34,6 @@ struct DealLookupView: View {
             .onBackSwipe {
                 presentation.wrappedValue.dismiss()
             }
-            .background(GeometryReader { geometry in
-                Color.clear
-                    .preference(key: ScrollOffsetPreferenceKey.self, value: geometry.frame(in: .named("scroll")).origin)
-            })
-            .onPreferenceChange(ScrollOffsetPreferenceKey.self) { value in
-                self.scrollPosition = value
-            }
-        }
-        .coordinateSpace(name: "scroll")
-        .navigationTitle(showNavigationTitleDescription())
-        .ignoresSafeArea()
-        .navigationBarBackButtonHidden(showNavigationBar())
-        // MARK: - TOOL BAR
-        .toolbar {
-            ToolbarItem(placement: .navigationBarLeading) {
-                if showNavigationBar() {
-                    makeBackButton()
-                }
-            }
-        }
     }
     
     // MARK: - BACK BUTTON
@@ -88,44 +64,168 @@ struct DealLookupView: View {
 
 extension DealLookupView {
     @ViewBuilder
-    var gameDetails: some View {
-        VStack(alignment: .leading, spacing: 8) {
-            if let metacriticModel = viewModel.metacriticDetailModel {
-                Text(metacriticModel.description)
-                Text("Publisher: \(metacriticModel.publisher)")
-                Text("Release Date \(metacriticModel.releaseDate)")
+    var buildedContent: some View {
+        switch viewModel.viewState {
+        case .loading:
+            ProgressView()
+        case .loaded:
+            contentView
+        case .error:
+            Text("Error")
+        }
+    }
+}
+
+extension DealLookupView {
+    @ViewBuilder
+    var contentView: some View {
+        ScrollView(.vertical, showsIndicators: false) {
+            VStack(alignment: .leading) {
                 
-                HStack(alignment: .top) {
-                    Text("Platforms: ")
-                    ForEach(metacriticModel.platforms, id: \.self) { platform in
-                        Text(platform)
-                            .truncationMode(.head)
-                            .lineLimit(4)
-                    }
-                }
+                gameImage()
+                                
+                dealDetail()
                 
-                HStack(alignment: .top) {
-                    Text("Developers: ")
-                    ForEach(metacriticModel.developers, id: \.self) { developer in
-                        Text(developer)
-                    }
-                }
+                storesDeals()
                 
-                HStack(alignment: .top) {
-                    Text("Genres: ")
-                    ForEach(metacriticModel.genres, id: \.self) { genre in
-                        Text(genre)
-                    }
+                gameDetails
+            }
+            .background(GeometryReader { geometry in
+                Color.clear
+                    .preference(key: ScrollOffsetPreferenceKey.self, value: geometry.frame(in: .named("scroll")).origin)
+            })
+            .onPreferenceChange(ScrollOffsetPreferenceKey.self) { value in
+                self.scrollPosition = value
+            }
+        }
+        .fontDesign(.rounded)
+        .coordinateSpace(name: "scroll")
+        .navigationTitle(showNavigationTitleDescription())
+        .ignoresSafeArea()
+        .navigationBarBackButtonHidden(showNavigationBar())
+        // MARK: - TOOL BAR
+        .toolbar {
+            ToolbarItem(placement: .navigationBarLeading) {
+                if showNavigationBar() {
+                    makeBackButton()
                 }
             }
         }
+    }
+}
+
+extension DealLookupView {
+    @ViewBuilder
+    var gameDetails: some View {
+        VStack(alignment: .leading, spacing: 16) {
+            if let metacriticModel = viewModel.metacriticDetailModel {
+                // Platforms
+                gameDescriptionItem(items: metacriticModel.platforms, 
+                                    title: "Platforms")
+                
+                // Release Date
+                gameDescriptionItem(item: metacriticModel.releaseDate, 
+                                    title: "Release Date")
+
+                // Developers
+                gameDescriptionItem(items: metacriticModel.developers, 
+                                    title: "Developers")
+                
+                // Publisher
+                gameDescriptionItem(item: metacriticModel.publisher, 
+                                    title: "Publisher")
+
+                // Genres
+                gameDescriptionItem(items: metacriticModel.genres, 
+                                    title: "Genres")
+                
+                // Description
+                gameDescription(description: metacriticModel.description.replacingOccurrences(of: "Description:", with: ""),
+                                    title: "Description")
+            }
+        }
         .padding(.horizontal, 16)
+        .padding(.bottom, 100)
+    }
+}
+
+extension DealLookupView {
+    @ViewBuilder
+    func gameDescriptionItem(items: [String], title: String) -> some View {
+        if !items.isEmpty {
+            VStack(alignment: .leading, spacing: 4) {
+                Text("\(title): ")
+                    .font(.title3)
+                    .fontWeight(.bold)
+                    .fontDesign(.rounded)
+                
+                ScrollView(.horizontal) {
+                    HStack {
+                        ForEach(items, id: \.self) { item in
+                            Text(item)
+                                .font(.body)
+                                .fontWeight(.medium)
+                                .fontDesign(.rounded)
+                                .padding(8)
+                                .background(Color.gray.opacity(0.08))
+                                .clipShape(.rect(cornerRadius: 8))
+                        }
+                    }
+                }
+                .scrollIndicators(.hidden)
+            }
+        }
+    }
+}
+
+extension DealLookupView {
+    @ViewBuilder
+    func gameDescriptionItem(item: String, title: String) -> some View {
+        if !item.isEmpty {
+            VStack(alignment: .leading, spacing: 4) {
+                Text("\(title): ")
+                    .font(.title3)
+                    .fontWeight(.bold)
+                    .fontDesign(.rounded)
+                
+                Text(item)
+                    .font(.body)
+                    .fontWeight(.medium)
+                    .fontDesign(.rounded)
+                    .padding(8)
+                    .background(Color.gray.opacity(0.08))
+                    .clipShape(.rect(cornerRadius: 8))
+            }
+        }
+    }
+}
+
+extension DealLookupView {
+    @ViewBuilder
+    func gameDescription(description: String, title: String) -> some View {
+        if !description.isEmpty {
+            VStack(alignment: .leading, spacing: 4) {
+                Text("\(title): ")
+                    .font(.title3)
+                    .fontWeight(.bold)
+                    .fontDesign(.rounded)
+                
+                Text(description)
+                    .font(.body)
+                    .fontWeight(.medium)
+                    .fontDesign(.rounded)
+                    .multilineTextAlignment(.leading)
+                    .padding(8)
+                    .background(Color.gray.opacity(0.08))
+                    .clipShape(.rect(cornerRadius: 4))
+            }
+        }
     }
 }
 
 struct DealLookupView_Previews: PreviewProvider {
     static var previews: some View {
-        DealLookupView(feedGameDealModel: FeedGameDealModel.riseOfIndustryMock)
+        let view = DealLookupView(feedGameDealModel: FeedGameDealModel.riseOfIndustryMock)
     }
 }
 

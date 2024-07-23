@@ -30,7 +30,7 @@ struct LookupDealStoreCell: View {
     func makeDealPrice() -> some View {
         Text("$\(dealPrice ?? "")")
             .font(.body)
-            .fontWeight(.bold)
+            .fontWeight(.medium)
     }
     
     // MARK: - STORE TITLE
@@ -38,7 +38,7 @@ struct LookupDealStoreCell: View {
     func makeStoreTitle() -> some View {
         Text(storeTitle ?? "Unkow")
             .font(.body)
-            .fontWeight(.bold)
+            .fontWeight(.medium)
     }
     
     // MARK: - STORE IMAGE

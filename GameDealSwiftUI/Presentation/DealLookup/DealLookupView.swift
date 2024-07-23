@@ -85,7 +85,7 @@ extension DealLookupView {
                 gameImage()
                                 
                 dealDetail()
-                
+                            
                 storesDeals()
                 
                 gameDetails
@@ -118,6 +118,10 @@ extension DealLookupView {
     @ViewBuilder
     var gameDetails: some View {
         VStack(alignment: .leading, spacing: 16) {
+            Text("Information")
+                .font(.body)
+                .fontWeight(.bold)
+            
             if let metacriticModel = viewModel.metacriticDetailModel {
                 // Platforms
                 gameDescriptionItem(items: metacriticModel.platforms, 
@@ -142,6 +146,8 @@ extension DealLookupView {
                 // Description
                 gameDescription(description: metacriticModel.description.replacingOccurrences(of: "Description:", with: ""),
                                     title: "Description")
+            } else {
+                Text("No information available")
             }
         }
         .padding(.horizontal, 16)
@@ -155,23 +161,25 @@ extension DealLookupView {
         if !items.isEmpty {
             VStack(alignment: .leading, spacing: 4) {
                 Text("\(title): ")
-                    .font(.title3)
-                    .fontWeight(.bold)
+                    .font(.body)
+                    .fontWeight(.medium)
                     .fontDesign(.rounded)
+                    .foregroundStyle(.gray)
                 
                 ScrollView(.horizontal) {
                     HStack {
                         ForEach(items, id: \.self) { item in
                             Text(item)
                                 .font(.body)
-                                .fontWeight(.medium)
+                                .fontWeight(.regular)
                                 .fontDesign(.rounded)
-                                .padding(8)
-                                .background(Color.gray.opacity(0.08))
-                                .clipShape(.rect(cornerRadius: 8))
+//                                .padding(8)
+//                                .background(Color.gray.opacity(0.08))
+//                                .clipShape(.rect(cornerRadius: 8))
                         }
                     }
                 }
+                .scrollBounceBehavior(.basedOnSize, axes: .horizontal)
                 .scrollIndicators(.hidden)
             }
         }
@@ -184,17 +192,18 @@ extension DealLookupView {
         if !item.isEmpty {
             VStack(alignment: .leading, spacing: 4) {
                 Text("\(title): ")
-                    .font(.title3)
-                    .fontWeight(.bold)
-                    .fontDesign(.rounded)
-                
-                Text(item)
                     .font(.body)
                     .fontWeight(.medium)
                     .fontDesign(.rounded)
-                    .padding(8)
-                    .background(Color.gray.opacity(0.08))
-                    .clipShape(.rect(cornerRadius: 8))
+                    .foregroundStyle(.gray)
+                
+                Text(item)
+                    .font(.body)
+                    .fontWeight(.regular)
+                    .fontDesign(.rounded)
+//                    .padding(8)
+//                    .background(Color.gray.opacity(0.08))
+//                    .clipShape(.rect(cornerRadius: 8))
             }
         }
     }
@@ -206,18 +215,16 @@ extension DealLookupView {
         if !description.isEmpty {
             VStack(alignment: .leading, spacing: 4) {
                 Text("\(title): ")
-                    .font(.title3)
-                    .fontWeight(.bold)
-                    .fontDesign(.rounded)
-                
-                Text(description)
                     .font(.body)
                     .fontWeight(.medium)
                     .fontDesign(.rounded)
+                    .foregroundStyle(.gray)
+                
+                Text(description)
+                    .font(.body)
+                    .fontWeight(.regular)
+                    .fontDesign(.rounded)
                     .multilineTextAlignment(.leading)
-                    .padding(8)
-                    .background(Color.gray.opacity(0.08))
-                    .clipShape(.rect(cornerRadius: 4))
             }
         }
     }

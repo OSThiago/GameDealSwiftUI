@@ -25,6 +25,8 @@ struct StoreCell: View {
     @ViewBuilder
     func name() -> some View {
         Text(storeName)
+            .font(.body)
+            .fontWeight(.bold)
     }
     
     // MARK: - Store Image

@@ -10,6 +10,7 @@ import SwiftUI
 struct FeedView: View {
     
     @StateObject var viewModel = FeedViewModel()
+    @Environment(\.colorScheme) var colorScheme
     
     var body: some View {
         buildedContent
@@ -45,18 +46,19 @@ extension FeedView {
     var content: some View {
         NavigationView {
             ScrollView {
-                Divider()
-                
                 VStack(spacing: 16) {
-                    largeList(deals: viewModel.dealsAAA, title: "AAA Games")
+                    largeList(deals: viewModel.dealsAAA, title: "Best Deals")
                     
                     storeList(title: "Game Stores", stores: viewModel.storesInformations)
                     
-                    ForEach(viewModel.storesDeals, id: \.store.storeID) { store in
-                        mediumList(deals: store.dealsList, store: store.store)
+                    VStack(alignment: .leading, spacing: 24) {
+                        ForEach(viewModel.storesDeals, id: \.store.storeID) { store in
+                            mediumList(deals: store.dealsList, store: store.store)
+                        }
                     }
                 }
             }
+            .foregroundStyle(Color(uiColor: colorScheme == .light ? .darkText : .lightText))
             .navigationTitle("Feed")
         }
     }
@@ -74,7 +76,7 @@ extension FeedView {
                 .padding(.leading)
             
             ScrollView(.horizontal, showsIndicators: false) {
-                HStack(spacing: -5) {
+                HStack(spacing: -20) {
                     ForEach(deals, id: \.dealID) { deal in
                         
                         let dealFormatted = viewModel.setupDealCell(deal)
@@ -85,15 +87,11 @@ extension FeedView {
                                 //.navigationTitle(dealFormatted.title)
                         } label: {
                             LargeDealCell(title: dealFormatted.title, salePrice: dealFormatted.salePrice, normalPrice: dealFormatted.normalPrice, savings: dealFormatted.savings, thumb: dealFormatted.thumb, storeThumb: dealFormatted.storeID)
-                                .padding(.leading)
+                                .padding(.horizontal)
                         }
                     }
                 }
             }
-            
-            Divider()
-                .padding(.horizontal)
-                .padding(.top, 8)
         }
     }
 }
@@ -102,13 +100,16 @@ extension FeedView {
 extension FeedView {
     @ViewBuilder
     func mediumList(deals: [FeedGameDealModel], store: StoresCheapShark) -> some View {
-        VStack(alignment: .leading, spacing: 5) {
-            HStack {
+        VStack(alignment: .leading, spacing: 8) {
+            HStack(spacing: 4) {
+                // Store Banner
+                storeImage(storeBanner: viewModel.getStoreImage(storeID: store.storeID))
+                    .padding(.leading)
+                
                 // Title
                 Text(store.storeName)
-                    .font(.title2)
-                    .bold()
-                    .padding(.leading)
+                    .font(.title3)
+                    .fontWeight(.bold)
                 
                 Spacer()
                 
@@ -117,6 +118,7 @@ extension FeedView {
                         .navigationTitle(store.storeName)
                 } label: {
                     Text("See All")
+                        .foregroundStyle(Color.blue)
                 }
                 .padding(.trailing)
             }
@@ -138,10 +140,27 @@ extension FeedView {
                     }
                 }
             }
-            
-            Divider()
-                .padding(.horizontal)
-                .padding(.top, 16)
+        }
+    }
+    
+    @ViewBuilder
+    func storeImage(storeBanner: String) -> some View {
+        AsyncImage(url: URL(string: storeBanner)) { phase in
+            switch phase  {
+            case .empty:
+                ProgressView()
+            case .success(let image):
+                image
+                    .resizable()
+                    .scaledToFill()
+                    .frame(width: 25, height: 25)
+                    .clipped()
+                    
+            case .failure(_):
+                EmptyView()
+            @unknown default:
+                EmptyView()
+            }
         }
     }
 }
@@ -181,10 +200,6 @@ extension FeedView {
                     }
                 }
             }
-            
-            Divider()
-                .padding(.horizontal)
-                .padding(.top, 8)
         }
     }
 }

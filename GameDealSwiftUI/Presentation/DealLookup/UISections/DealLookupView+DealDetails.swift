@@ -87,7 +87,7 @@ extension DealLookupView {
     func makeGameTitle() -> some View {
         Text(viewModel.gameLookupModel?.info?.title ?? "Error")
             .font(.title)
-            .fontWeight(.bold)
+            .fontWeight(.medium)
     }
     
     @ViewBuilder
@@ -100,12 +100,13 @@ extension DealLookupView {
                 HStack(alignment: .bottom) {
                     Text("$\(feedGameDealModel.salePrice)")
                         .font(.body)
-                        .fontWeight(.bold)
+                        .fontWeight(.medium)
                     
                     Text("$\(feedGameDealModel.normalPrice)")
                         .font(.subheadline)
-                        .fontWeight(.medium)
+                        .fontWeight(.regular)
                         .strikethrough()
+                        .foregroundStyle(Color.gray)
                     
                     Spacer()
                     
@@ -126,6 +127,9 @@ extension DealLookupView {
                 
                 makeBuyButton(dealID: "game id")
             }
+            
+            Divider()
+                .padding(.bottom, 8)
         }
         .padding(.horizontal, 16)
         .padding(.bottom, 16)
@@ -158,7 +162,7 @@ extension DealLookupView {
         if viewModel.gameLookupModel?.deals?.count ?? 0  > 1 {
             VStack(alignment: .leading, spacing: 0) {
                 Text("Others Stores")
-                    .font(.title2)
+                    .font(.body)
                     .fontWeight(.bold)
                     .padding(.leading)
                 

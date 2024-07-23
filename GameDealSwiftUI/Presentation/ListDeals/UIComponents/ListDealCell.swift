@@ -29,7 +29,7 @@ struct ListDealCell: View {
                     storeImage()
                 }
                 Spacer()
-                HStack {
+                HStack(spacing: 4) {
                     salePriceText()
                     normalPriceText()
                     Spacer()

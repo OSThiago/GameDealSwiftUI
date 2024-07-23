@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct LargeDealCell: View {
-    
+
     let title: String
     let salePrice: String
     let normalPrice: String
@@ -16,35 +16,40 @@ struct LargeDealCell: View {
     var thumb: String
     let storeThumb: String
     
-    private let cellWidth = ScreenSize.width * 0.9
-    
+    private let cellWidth = ScreenSize.width - 32
     var body: some View {
-        VStack {
-            // Thumb
-            gameImage()
-            
-            VStack(alignment: .leading) {
-                HStack(alignment: .top) {
+        VStack(spacing: 0) {
+            ZStack(alignment: .bottomLeading) {
+                // Thumb
+                gameImage()
+                
+                HStack(alignment: .bottom) {
                     gameTitleText()
                     
                     Spacer()
                     
                     storeImage()
                 }
-                
-                HStack(alignment: .top) {
-                    salePriceText()
-                    
-                    normalPriceText()
-                    
-                    Spacer()
-                    
-                    savingsText()
-                }
+                .padding(8)
             }
-            //Divider()
+            
+            HStack(alignment: .bottom) {
+                salePriceText()
+                
+                normalPriceText()
+                
+                Spacer()
+                
+                savingsText()
+            }
+            .padding(8)
         }
         .frame(maxWidth: cellWidth)
+        .background(RoundedRectangle(cornerRadius: 8)
+            .fill(Color(uiColor: UIColor.systemBackground))
+            .shadow(color: Color.gray.opacity(0.2), radius: 8, y: 4)
+        )
+        .padding(.bottom, 16)
     }
     
     // MARK: - Game Title
@@ -52,14 +57,17 @@ struct LargeDealCell: View {
     func gameTitleText() -> some View {
         Text(title)
             .font(.title2)
+            .multilineTextAlignment(.leading)
+            .foregroundStyle(Color.white)
     }
     
     // MARK: - Sale price
     @ViewBuilder
     func salePriceText() -> some View {
         Text(salePrice)
-            .font(.subheadline)
-            .bold()
+            .font(.title2)
+            .fontWeight(.heavy)
+            .foregroundStyle(.green)
     }
     
     // MARK: - Normal Price
@@ -67,15 +75,18 @@ struct LargeDealCell: View {
     func normalPriceText() -> some View {
         Text(normalPrice)
             .font(.subheadline)
+            .fontWeight(.regular)
             .strikethrough()
+            .foregroundStyle(.gray)
     }
     
     // MARK: - Savings
     @ViewBuilder
     func savingsText() -> some View {
         Text(savings)
-            .font(.subheadline)
-            .bold()
+            .font(.title)
+            .fontWeight(.bold)
+            .foregroundStyle(.green)
     }
     
     // MARK: - Game Image
@@ -91,8 +102,13 @@ struct LargeDealCell: View {
                     .scaledToFill()
                     .frame(width: cellWidth, height: 200)
                     .clipped()
-                    .cornerRadius(3)
-                    
+                    .clipShape(.rect(topLeadingRadius: 8, topTrailingRadius: 8))
+                    .overlay {
+                        LinearGradient(gradient: Gradient(colors: [Color.white.opacity(0.1),
+                                                                   Color.black.opacity(0.85)]),
+                                             startPoint: .top,
+                                       endPoint: .bottom)
+                    }
             case .failure(_):
                 EmptyView()
             @unknown default:

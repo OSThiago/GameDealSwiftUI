@@ -17,28 +17,25 @@ struct MediumDealCell: View {
     
     var body: some View {
         VStack {
-            // Thumb
-            gameImage()
-            
-            VStack(alignment: .leading) {
-                HStack(alignment: .top) {
-                    gameTitleText()
-                    
-                    Spacer()
-                    
-                    storeImage()
-                }
+            ZStack(alignment: .bottomLeading) {
+                // Thumb
+                gameImage()
                 
-                HStack(alignment: .top) {
-                    salePriceText()
-                    
-                    normalPriceText()
-                    
-                    Spacer()
-                    
-                    savingsText()
-                }
+                gameTitleText()
+                    .padding(8)
             }
+            
+           
+            HStack(alignment: .bottom, spacing: 2) {
+                salePriceText()
+                
+                normalPriceText()
+                
+                Spacer()
+                
+                savingsText()
+            }
+            
         }
         .frame(maxWidth: 170)
     }
@@ -48,30 +45,36 @@ struct MediumDealCell: View {
     func gameTitleText() -> some View {
         Text(title)
             .font(.subheadline)
+            .fontWeight(.bold)
+            .foregroundStyle(.white)
+            .multilineTextAlignment(.leading)
     }
     
     // MARK: - Sale price
     @ViewBuilder
     func salePriceText() -> some View {
         Text(salePrice)
-            .font(.caption2)
-            .bold()
+            .font(.body)
+            .fontWeight(.heavy)
+            .foregroundStyle(.green)
     }
     
     // MARK: - Normal Price
     @ViewBuilder
     func normalPriceText() -> some View {
         Text(normalPrice)
-            .font(.caption2)
+            .font(.caption)
             .strikethrough()
+            .foregroundStyle(.gray)
     }
     
     // MARK: - Savings
     @ViewBuilder
     func savingsText() -> some View {
         Text(savings)
-            .font(.caption2)
-            .bold()
+            .font(.body)
+            .fontWeight(.bold)
+            .foregroundStyle(.green)
     }
     
     // MARK: - Game Image
@@ -88,6 +91,12 @@ struct MediumDealCell: View {
                     .frame(width: 170, height: 100)
                     .clipped()
                     .cornerRadius(3)
+                    .overlay {
+                        LinearGradient(gradient: Gradient(colors: [Color.white.opacity(0.1),
+                                                                   Color.black.opacity(0.85)]),
+                                             startPoint: .top,
+                                       endPoint: .bottom)
+                    }
                     
             case .failure(_):
                 EmptyView()

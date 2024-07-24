@@ -20,7 +20,6 @@ struct LargeDealCell: View {
     var body: some View {
         VStack(spacing: 0) {
             ZStack(alignment: .bottomLeading) {
-                // Thumb
                 gameImage()
                 
                 HStack(alignment: .bottom) {

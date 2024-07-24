@@ -20,7 +20,6 @@ struct DealLookupView: View {
     // MARK: - INITIALIZER
     init(feedGameDealModel: FeedGameDealModel) {
         self.feedGameDealModel = feedGameDealModel
-//        UIScrollView.appearance().bounces = false
     }
     
     // MARK: - BODY

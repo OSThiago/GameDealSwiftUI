@@ -87,7 +87,7 @@ final class FeedViewModel: ObservableObject, FormatterDealData {
             
             guard let store = storesInformations.first(where: {$0.storeName == selectedStore}) else { return }
             
-            let endpoint = EndpointCasesCheapShark.getDealsList(pageNumber: 0, pageSize: 10, sortList: .PRICE, AAA: false, storeID: store.storeID)
+            let endpoint = EndpointCasesCheapShark.getDealsList(pageNumber: 0, pageSize: 10, sortList: .DEALRATING, AAA: false, storeID: store.storeID)
             
             workerCheapShark.getDealsList(endpoint: endpoint) { result in
                 switch result {

@@ -16,9 +16,12 @@ struct LargeDealCell: View {
     var thumb: String
     let storeThumb: String
     
-    private let cellWidth = ScreenSize.width - 32
+    private let cellWidth: CGFloat = ScreenSize.width - Tokens.padding.xs
+    private let cellHight: CGFloat = 200
+    private let storeImageSize: CGFloat = 40
+
     var body: some View {
-        VStack(spacing: 0) {
+        VStack(spacing: Tokens.padding.none) {
             ZStack(alignment: .bottomLeading) {
                 gameImage()
                 
@@ -27,9 +30,10 @@ struct LargeDealCell: View {
                     
                     Spacer()
                     
-                    storeImage()
+                    StoreImage(storeImage: storeThumb,
+                               size: storeImageSize)
                 }
-                .padding(8)
+                .padding(Tokens.padding.nano)
             }
             
             HStack(alignment: .bottom) {
@@ -41,14 +45,14 @@ struct LargeDealCell: View {
                 
                 savingsText()
             }
-            .padding(8)
+            .padding(Tokens.padding.nano)
         }
         .frame(maxWidth: cellWidth)
-        .background(RoundedRectangle(cornerRadius: 8)
+        .background(RoundedRectangle(cornerRadius: Tokens.borderRadius.md)
             .fill(Color(uiColor: UIColor.systemBackground))
-            .shadow(color: Color.gray.opacity(0.2), radius: 8, y: 4)
+            .shadow(ShadowLevel.level1)
         )
-        .padding(.bottom, 16)
+        .padding(.bottom, Tokens.padding.xxxs)
     }
     
     // MARK: - Game Title
@@ -99,37 +103,20 @@ struct LargeDealCell: View {
                 image
                     .resizable()
                     .scaledToFill()
-                    .frame(width: cellWidth, height: 200)
+                    .frame(width: cellWidth, height: cellHight)
                     .clipped()
-                    .clipShape(.rect(topLeadingRadius: 8, topTrailingRadius: 8))
+                    .clipShape(.rect(
+                        topLeadingRadius: Tokens.borderRadius.md,
+                        topTrailingRadius: Tokens.borderRadius.md))
                     .overlay {
-                        LinearGradient(gradient: Gradient(colors: [Color.white.opacity(0.1),
-                                                                   Color.black.opacity(0.85)]),
-                                             startPoint: .top,
-                                       endPoint: .bottom)
+                        LinearGradient(
+                            gradient: Gradient(
+                                colors: [Color.white.opacity(Tokens.opacity.transparent),
+                                         Color.black.opacity(Tokens.opacity.semiIntense)
+                                        ]),
+                            startPoint: .top,
+                            endPoint: .bottom)
                     }
-            case .failure(_):
-                EmptyView()
-            @unknown default:
-                EmptyView()
-            }
-        }
-    }
-    
-    // MARK: - Store Image
-    @ViewBuilder
-    func storeImage() -> some View {
-        AsyncImage(url: URL(string: storeThumb)) { phase in
-            switch phase  {
-            case .empty:
-                ProgressView()
-            case .success(let image):
-                image
-                    .resizable()
-                    .scaledToFill()
-                    .frame(width: 31, height: 31)
-                    .clipped()
-                    
             case .failure(_):
                 EmptyView()
             @unknown default:

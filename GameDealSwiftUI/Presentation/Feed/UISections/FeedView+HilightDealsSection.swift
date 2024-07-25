@@ -10,7 +10,7 @@ import SwiftUI
 extension FeedView {
     @ViewBuilder
     func highlightDealSection(deals: [FeedGameDealModel], title: String) -> some View {
-        VStack(alignment: .leading, spacing: 5) {
+        VStack(alignment: .leading, spacing: Tokens.padding.quarck) {
             // Title
             Text(title)
                 .font(.title2)
@@ -18,7 +18,7 @@ extension FeedView {
                 .padding(.leading)
             
             ScrollView(.horizontal, showsIndicators: false) {
-                HStack(spacing: -20) {
+                HStack(spacing: constants.lighlightCustomSpacing) {
                     ForEach(deals, id: \.dealID) { deal in
                         
                         let dealFormatted = viewModel.setupDealCell(deal)
@@ -26,7 +26,6 @@ extension FeedView {
                         NavigationLink {
                             DealLookupView(feedGameDealModel: deal)
                                 .navigationBarTitleDisplayMode(.inline)
-                                //.navigationTitle(dealFormatted.title)
                         } label: {
                             LargeDealCell(title: dealFormatted.title, salePrice: dealFormatted.salePrice, normalPrice: dealFormatted.normalPrice, savings: dealFormatted.savings, thumb: dealFormatted.thumb, storeThumb: dealFormatted.storeID)
                                 .padding(.horizontal)

@@ -12,12 +12,12 @@ extension FeedView {
     func storeList(title: String, stores: [StoresCheapShark]) -> some View {
         
         let rows = [
-            GridItem(.fixed(50)),
-            GridItem(.fixed(50)),
-            GridItem(.fixed(50))
+            GridItem(.fixed(constants.gridItemSize)),
+            GridItem(.fixed(constants.gridItemSize)),
+            GridItem(.fixed(constants.gridItemSize))
         ]
         
-        VStack(alignment: .leading, spacing: 5) {
+        VStack(alignment: .leading, spacing: Tokens.padding.quarck) {
             // Title
             Text(title)
                 .font(.title2)
@@ -25,18 +25,18 @@ extension FeedView {
                 .padding(.leading)
             
             ScrollView(.horizontal, showsIndicators: false) {
-                LazyHGrid(rows: rows, spacing: 5) {
+                LazyHGrid(rows: rows, spacing: Tokens.padding.quarck) {
                     ForEach(stores, id: \.storeID) { store in
-                        VStack {
+                        VStack(spacing: Tokens.padding.quarck) {
                             NavigationLink {
                                 ListDealsView(store: store, storesInformations: self.viewModel.storesInformations)
                                     .navigationTitle(store.storeName)
                             } label: {
                                 StoreCell(storeName: store.storeName, storeBanner: viewModel.getStoreImage(storeID: store.storeID))
                             }
-
+                            
                             Divider()
-                                .padding(.leading)
+                                .padding(.leading, Tokens.padding.xl)
                         }
                     }
                 }

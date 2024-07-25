@@ -17,6 +17,6 @@ extension StoresCheapShark {
 extension StoreImagesCheapShark {
     static let steamMockImages: Self = .init(
         banner: "/img/stores/banners/0.png",
-        logo: "/img/stores/banners/0.png",
-        icon: "/img/stores/banners/0.png")
+        logo: "/img/stores/logos/0.png",
+        icon: "/img/stores/icons/0.png")
 }

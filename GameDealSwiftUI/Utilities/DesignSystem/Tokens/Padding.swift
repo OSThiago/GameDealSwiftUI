@@ -7,7 +7,7 @@
 
 import Foundation
 
-class Padding {
+struct Padding {
     /// 0
     let none: Double
     /// 4.0

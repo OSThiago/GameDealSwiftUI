@@ -8,17 +8,23 @@
 import SwiftUI
 
 struct StoreCell: View {
-    
+    // Properties
     let storeName: String
     let storeBanner: String
     
+    // Constants
+    private let cellWidth: CGFloat = ScreenSize.width - Tokens.padding.md
+    private let cellHight: CGFloat = 50
+    private let storeImageSize: CGFloat = 40
+    
     var body: some View {
         HStack {
-            storeImage()
+            StoreImage(storeImage: storeBanner,
+                       size: storeImageSize)
             name()
             Spacer()
         }
-        .frame(width: 330, height: 50)
+        .frame(width: cellWidth, height: cellHight)
         .padding(.leading)
     }
     
@@ -27,28 +33,6 @@ struct StoreCell: View {
         Text(storeName)
             .font(.body)
             .fontWeight(.bold)
-    }
-    
-    // MARK: - Store Image
-    @ViewBuilder
-    func storeImage() -> some View {
-        AsyncImage(url: URL(string: storeBanner)) { phase in
-            switch phase  {
-            case .empty:
-                ProgressView()
-            case .success(let image):
-                image
-                    .resizable()
-                    .scaledToFill()
-                    .frame(width: 40, height: 40)
-                    .clipped()
-                    
-            case .failure(_):
-                EmptyView()
-            @unknown default:
-                EmptyView()
-            }
-        }
     }
 }
 

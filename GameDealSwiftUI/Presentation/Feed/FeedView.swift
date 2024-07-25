@@ -12,6 +12,8 @@ struct FeedView: View {
     @StateObject var viewModel = FeedViewModel()
     @Environment(\.colorScheme) var colorScheme
     
+    let constants = FeedConstants()
+    
     var body: some View {
         buildedContent
             .onAppear {
@@ -33,7 +35,7 @@ extension FeedView {
         case .loaded:
             content
         case .error:
-            Text("Error")
+            Text(constants.viewErrorMensage)
         }
     }
 }
@@ -45,15 +47,15 @@ extension FeedView {
         NavigationView {
             ScrollView {
                 VStack(spacing: 16) {
-                    highlightDealSection(deals: viewModel.dealsAAA, title: "Best Deals")
+                    highlightDealSection(deals: viewModel.dealsAAA, title: constants.highlightTitle)
                     
-                    storeList(title: "Game Stores", stores: viewModel.storesInformations)
+                    storeList(title: constants.storeSectionTitle, stores: viewModel.storesInformations)
                     
                     dealsByStoreSection
                 }
             }
             .foregroundStyle(Color(uiColor: colorScheme == .light ? .darkText : .lightText))
-            .navigationTitle("Feed")
+            .navigationTitle(constants.navigationTitle)
         }
     }
 }

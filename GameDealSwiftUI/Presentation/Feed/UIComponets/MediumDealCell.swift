@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct MediumDealCell: View {
+    // Properties
     let title: String
     let salePrice: String
     let normalPrice: String
@@ -15,18 +16,21 @@ struct MediumDealCell: View {
     var thumb: String
     let storeThumb: String
     
+    // Constants
+    private let cellWidth: CGFloat = ScreenSize.width * 0.45
+    private let imageHight: CGFloat = ScreenSize.width * 0.45 * 9/16
+    
     var body: some View {
         VStack {
             ZStack(alignment: .bottomLeading) {
-                // Thumb
                 gameImage()
                 
                 gameTitleText()
-                    .padding(8)
+                    .padding(Tokens.padding.nano)
             }
-            
-           
-            HStack(alignment: .bottom, spacing: 2) {
+            .cornerRadius(Tokens.borderRadius.sm)
+
+            HStack(alignment: .bottom, spacing: Tokens.padding.quarck) {
                 salePriceText()
                 
                 normalPriceText()
@@ -37,7 +41,7 @@ struct MediumDealCell: View {
             }
             
         }
-        .frame(maxWidth: 170)
+        .frame(width: cellWidth)
     }
     
     // MARK: - Game Title
@@ -88,37 +92,17 @@ struct MediumDealCell: View {
                 image
                     .resizable()
                     .scaledToFill()
-                    .frame(width: 170, height: 100)
+                    .frame(width: cellWidth, height: imageHight)
                     .clipped()
-                    .cornerRadius(3)
                     .overlay {
-                        LinearGradient(gradient: Gradient(colors: [Color.white.opacity(0.1),
-                                                                   Color.black.opacity(0.85)]),
-                                             startPoint: .top,
-                                       endPoint: .bottom)
+                        LinearGradient(
+                            gradient: 
+                                Gradient(
+                                    colors: [Color.black.opacity(Tokens.opacity.transparent),
+                                             Color.black.opacity(Tokens.opacity.intense)]),
+                            startPoint: .top,
+                            endPoint: .bottom)
                     }
-                    
-            case .failure(_):
-                EmptyView()
-            @unknown default:
-                EmptyView()
-            }
-        }
-    }
-    
-    // MARK: - Store Image
-    @ViewBuilder
-    func storeImage() -> some View {
-        AsyncImage(url: URL(string: storeThumb)) { phase in
-            switch phase  {
-            case .empty:
-                ProgressView()
-            case .success(let image):
-                image
-                    .resizable()
-                    .scaledToFill()
-                    .frame(width: 16, height: 16)
-                    .clipped()
                     
             case .failure(_):
                 EmptyView()

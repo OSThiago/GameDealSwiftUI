@@ -9,4 +9,6 @@ import Foundation
 
 enum Tokens {
     static let padding = Padding()
+    static let borderRadius = BorderRadius()
+    static let opacity = Opacity()
 }

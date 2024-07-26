@@ -31,11 +31,7 @@ extension Endpoint {
         
         return url
     }
-    
-    var rawgURL: String {
-        return baseURLString + path + formatedKey(key: key ?? "")
-    }
-    
+
     private func formatedKey(key: String) -> String {
         return "key=\(key)"
     }

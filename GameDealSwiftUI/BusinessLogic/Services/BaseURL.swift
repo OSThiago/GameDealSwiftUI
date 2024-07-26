@@ -9,5 +9,4 @@ import Foundation
 
 enum BaseURL {
     static let cheapsharkURL = "https://www.cheapshark.com"
-    static let rawgURL = "https://api.rawg.io"
 }

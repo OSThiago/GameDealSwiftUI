@@ -70,6 +70,7 @@
 		DBD998A92A4A30DE00D1D587 /* GameLookupModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBD998A82A4A30DE00D1D587 /* GameLookupModel.swift */; };
 		DBD998AC2A4B8EF100D1D587 /* DealLookupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBD998AB2A4B8EF100D1D587 /* DealLookupView.swift */; };
 		DBD998AE2A4B90E000D1D587 /* DealLookupViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBD998AD2A4B90E000D1D587 /* DealLookupViewModel.swift */; };
+		DBFDE30F2C53D25D00310FF9 /* ListDealConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBFDE30E2C53D25D00310FF9 /* ListDealConstants.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -156,6 +157,7 @@
 		DBD998A82A4A30DE00D1D587 /* GameLookupModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameLookupModel.swift; sourceTree = "<group>"; };
 		DBD998AB2A4B8EF100D1D587 /* DealLookupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DealLookupView.swift; sourceTree = "<group>"; };
 		DBD998AD2A4B90E000D1D587 /* DealLookupViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DealLookupViewModel.swift; sourceTree = "<group>"; };
+		DBFDE30E2C53D25D00310FF9 /* ListDealConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListDealConstants.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -535,6 +537,7 @@
 			children = (
 				DBD9989B2A47484700D1D587 /* ListDealsView.swift */,
 				DBD9989F2A48BFCD00D1D587 /* ListDealViewModel.swift */,
+				DBFDE30E2C53D25D00310FF9 /* ListDealConstants.swift */,
 				DBD998A12A49C14000D1D587 /* UIComponents */,
 			);
 			path = ListDeals;
@@ -715,6 +718,7 @@
 				DB92BBE92A3B60F1009630E0 /* ServiceError.swift in Sources */,
 				DBD9989C2A47484700D1D587 /* ListDealsView.swift in Sources */,
 				DBD998942A464C5000D1D587 /* StoreCell.swift in Sources */,
+				DBFDE30F2C53D25D00310FF9 /* ListDealConstants.swift in Sources */,
 				DBBE68A92A5CD0BB00EF7932 /* RwGameDetailModelMock.swift in Sources */,
 				DB80A9132A6998A0005489AD /* DealLookupView+DealDetails.swift in Sources */,
 				DBD998A92A4A30DE00D1D587 /* GameLookupModel.swift in Sources */,

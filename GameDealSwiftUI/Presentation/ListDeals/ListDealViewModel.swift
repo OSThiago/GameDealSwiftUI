@@ -10,6 +10,7 @@ import SwiftUI
 final class ListDealViewModel: ObservableObject, FormatterDealData {
     
     @Published var dealList = [FeedGameDealModel]()
+    @Published var viewState: ViewState = .loading
     
     var workerCheapShark = WorkerCheapShark()
     
@@ -20,17 +21,25 @@ final class ListDealViewModel: ObservableObject, FormatterDealData {
     func fetchDeals() {
         guard let store = self.store else { return }
         
-        let endpoint = EndpointCasesCheapShark.getDealsList(pageNumber: 0, pageSize: 30, sortList: .RECENT, AAA: false, storeID: store.storeID)
+        let endpoint = EndpointCasesCheapShark.getDealsList(pageNumber: 0,
+                                                            pageSize: 30,
+                                                            sortList: .DEALRATING,
+                                                            AAA: false,
+                                                            storeID: store.storeID)
         
         workerCheapShark.getDealsList(endpoint: endpoint) { result in
             switch result {
             case .success(let deals):
                 DispatchQueue.main.async {
                     self.dealList = deals
+                    withAnimation(.linear) {
+                        self.viewState = .loaded
+                    }
                 }
             case .failure(let failure):
                 // TODO: - Tratar erro
                 print(failure)
+                self.viewState = .error
             }
         }
     }

@@ -9,6 +9,9 @@ import SwiftUI
 
 struct ListDealCell: View {
     
+    @Environment(\.colorScheme) var colorScheme
+    
+    // Properties
     let title: String
     let salePrice: String
     let normalPrice: String
@@ -16,20 +19,21 @@ struct ListDealCell: View {
     var thumb: String
     let storeThumb: String
     
+    // Constants
+    private let cellHeight: CGFloat = 80
+    private let imageWidth: CGFloat = 80 * 16/9
+    private let imageHeight: CGFloat = 80
+    
     var body: some View {
         HStack {
             gameImage()
             
-            VStack {
+            VStack(alignment: .leading) {
                 HStack {
                     gameTitleText()
-                    
-                    Spacer()
-                    
-                    storeImage()
                 }
                 Spacer()
-                HStack(spacing: 4) {
+                HStack(alignment: .bottom, spacing: Tokens.padding.quarck) {
                     salePriceText()
                     normalPriceText()
                     Spacer()
@@ -37,38 +41,45 @@ struct ListDealCell: View {
                 }
             }
         }
-        .frame(maxWidth: .infinity, maxHeight: 80)
+        .frame(maxWidth: .infinity, maxHeight: cellHeight)
     }
     
     // MARK: - Game Title
     @ViewBuilder
     func gameTitleText() -> some View {
         Text(title)
-            .font(.subheadline)
+            .font(.body)
+            .fontWeight(.medium)
+            .foregroundStyle(colorScheme == .light ? Color.black : Color.white)
+            .multilineTextAlignment(.leading)
     }
     
     // MARK: - Sale price
     @ViewBuilder
     func salePriceText() -> some View {
         Text(salePrice)
-            .font(.caption2)
-            .bold()
+            .font(.body)
+            .fontWeight(.bold)
+            .foregroundStyle(Color.green)
     }
     
     // MARK: - Normal Price
     @ViewBuilder
     func normalPriceText() -> some View {
         Text(normalPrice)
-            .font(.caption2)
+            .font(.footnote)
+            .fontWeight(.medium)
             .strikethrough()
+            .foregroundStyle(Color.gray)
     }
     
     // MARK: - Savings
     @ViewBuilder
     func savingsText() -> some View {
         Text(savings)
-            .font(.caption2)
-            .bold()
+            .font(.title2)
+            .fontWeight(.bold)
+            .foregroundStyle(Color.green)
     }
     
     // MARK: - Game Image
@@ -82,30 +93,9 @@ struct ListDealCell: View {
                 image
                     .resizable()
                     .scaledToFill()
-                    .frame(width: 157, height: 80)
+                    .frame(width: imageWidth, height: imageHeight)
                     .clipped()
-                    .cornerRadius(3)
-                    
-            case .failure(_):
-                EmptyView()
-            @unknown default:
-                EmptyView()
-            }
-        }
-    }
-    
-    @ViewBuilder
-    func storeImage() -> some View {
-        AsyncImage(url: URL(string: storeThumb)) { phase in
-            switch phase  {
-            case .empty:
-                ProgressView()
-            case .success(let image):
-                image
-                    .resizable()
-                    .scaledToFill()
-                    .frame(width: 30, height: 30)
-                    .clipped()
+                    .cornerRadius(Tokens.borderRadius.sm)
                     
             case .failure(_):
                 EmptyView()

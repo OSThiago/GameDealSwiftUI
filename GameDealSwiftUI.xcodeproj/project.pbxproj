@@ -41,7 +41,6 @@
 		DBAE72FC2A3B491300AB9E5F /* GameDealSwiftUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBAE72FB2A3B491300AB9E5F /* GameDealSwiftUITests.swift */; };
 		DBAE73062A3B491300AB9E5F /* GameDealSwiftUIUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBAE73052A3B491300AB9E5F /* GameDealSwiftUIUITests.swift */; };
 		DBAE73082A3B491300AB9E5F /* GameDealSwiftUIUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBAE73072A3B491300AB9E5F /* GameDealSwiftUIUITestsLaunchTests.swift */; };
-		DBBE68B12A5D03B300EF7932 /* TestGameDetailRawg.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBBE68B02A5D03B300EF7932 /* TestGameDetailRawg.swift */; };
 		DBC8C1152C3CE1680094865F /* MetacriticWebScrapingImplementation.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBC8C1142C3CE1680094865F /* MetacriticWebScrapingImplementation.swift */; };
 		DBC8C1182C3CE1CF0094865F /* SwiftSoup in Frameworks */ = {isa = PBXBuildFile; productRef = DBC8C1172C3CE1CF0094865F /* SwiftSoup */; };
 		DBCF02CD2C5040BD00DCE264 /* FeedView+HilightDealsSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBCF02CC2C5040BD00DCE264 /* FeedView+HilightDealsSection.swift */; };
@@ -124,7 +123,6 @@
 		DBAE73012A3B491300AB9E5F /* GameDealSwiftUIUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GameDealSwiftUIUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		DBAE73052A3B491300AB9E5F /* GameDealSwiftUIUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameDealSwiftUIUITests.swift; sourceTree = "<group>"; };
 		DBAE73072A3B491300AB9E5F /* GameDealSwiftUIUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameDealSwiftUIUITestsLaunchTests.swift; sourceTree = "<group>"; };
-		DBBE68B02A5D03B300EF7932 /* TestGameDetailRawg.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestGameDetailRawg.swift; sourceTree = "<group>"; };
 		DBC8C1142C3CE1680094865F /* MetacriticWebScrapingImplementation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MetacriticWebScrapingImplementation.swift; sourceTree = "<group>"; };
 		DBCF02CC2C5040BD00DCE264 /* FeedView+HilightDealsSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FeedView+HilightDealsSection.swift"; sourceTree = "<group>"; };
 		DBCF02CE2C51264000DCE264 /* DealsByStoreSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DealsByStoreSection.swift; sourceTree = "<group>"; };
@@ -379,7 +377,6 @@
 			isa = PBXGroup;
 			children = (
 				DB4030402C446612000DCFD1 /* MetacriticWebScraping */,
-				DBBE68AF2A5D035600EF7932 /* RawgAPI */,
 				DBD998A42A4A2C3300D1D587 /* CheapSharkAPI */,
 				DBAE72FB2A3B491300AB9E5F /* GameDealSwiftUITests.swift */,
 			);
@@ -401,14 +398,6 @@
 				DBD998A82A4A30DE00D1D587 /* GameLookupModel.swift */,
 			);
 			path = CheapShark;
-			sourceTree = "<group>";
-		};
-		DBBE68AF2A5D035600EF7932 /* RawgAPI */ = {
-			isa = PBXGroup;
-			children = (
-				DBBE68B02A5D03B300EF7932 /* TestGameDetailRawg.swift */,
-			);
-			path = RawgAPI;
 			sourceTree = "<group>";
 		};
 		DBC8C1122C3CE0020094865F /* MetacriticWebScraping */ = {
@@ -743,7 +732,6 @@
 				DB4030422C44665F000DCFD1 /* MetacriticWebScrapingImplementationTests.swift in Sources */,
 				DBAE72FC2A3B491300AB9E5F /* GameDealSwiftUITests.swift in Sources */,
 				DBD998A62A4A2C7900D1D587 /* TestGameLookUp.swift in Sources */,
-				DBBE68B12A5D03B300EF7932 /* TestGameDetailRawg.swift in Sources */,
 				DB4030462C446A33000DCFD1 /* MetacriticMock.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

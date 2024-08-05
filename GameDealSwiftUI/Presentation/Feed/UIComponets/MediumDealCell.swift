@@ -46,8 +46,10 @@ struct MediumDealCell: View {
         }
         .frame(width: cellWidth)
     }
-    
-    // MARK: - Game Title
+}
+
+// MARK: - Game Title
+extension MediumDealCell {
     @ViewBuilder
     func gameTitleText() -> some View {
         Text(title)
@@ -56,8 +58,10 @@ struct MediumDealCell: View {
             .foregroundStyle(.white)
             .multilineTextAlignment(.leading)
     }
-    
-    // MARK: - Sale price
+}
+
+// MARK: - Sale price
+extension MediumDealCell {
     @ViewBuilder
     func salePriceText() -> some View {
         Text(salePrice)
@@ -65,8 +69,10 @@ struct MediumDealCell: View {
             .fontWeight(.semibold)
             .foregroundStyle(Tokens.color.positive.secondary)
     }
-    
-    // MARK: - Normal Price
+}
+
+// MARK: - Normal Price
+extension MediumDealCell {
     @ViewBuilder
     func normalPriceText() -> some View {
         Text(normalPrice)
@@ -74,8 +80,10 @@ struct MediumDealCell: View {
             .strikethrough()
             .foregroundStyle(.gray)
     }
-    
-    // MARK: - Game Image
+}
+
+// MARK: - Game Image
+extension MediumDealCell {
     @ViewBuilder
     func gameImage() -> some View {
         AsyncImage(url: URL(string: thumb)) { phase in
@@ -90,7 +98,7 @@ struct MediumDealCell: View {
                     .clipped()
                     .overlay {
                         LinearGradient(
-                            gradient: 
+                            gradient:
                                 Gradient(
                                     colors: [Color.black.opacity(Tokens.opacity.transparent),
                                              Color.black.opacity(Tokens.opacity.intense)]),

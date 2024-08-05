@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct LargeDealCell: View {
-
+    
     let title: String
     let salePrice: String
     let normalPrice: String
@@ -20,7 +20,7 @@ struct LargeDealCell: View {
     private let cellWidth: CGFloat = ScreenSize.width - Tokens.padding.xs
     private let cellHight: CGFloat = 200
     private let storeImageSize: CGFloat = 40
-
+    
     var body: some View {
         VStack(spacing: Tokens.padding.none) {
             ZStack(alignment: .bottomLeading) {
@@ -62,8 +62,10 @@ struct LargeDealCell: View {
         )
         .padding(.bottom, Tokens.padding.xxxs)
     }
-    
-    // MARK: - Game Title
+}
+
+// MARK: - Game Title
+extension LargeDealCell {
     @ViewBuilder
     func gameTitleText() -> some View {
         Text(title)
@@ -72,8 +74,10 @@ struct LargeDealCell: View {
             .multilineTextAlignment(.leading)
             .foregroundStyle(Color.white)
     }
-    
-    // MARK: - Sale price
+}
+
+// MARK: - Sale price
+extension LargeDealCell {
     @ViewBuilder
     func salePriceText() -> some View {
         Text(salePrice)
@@ -81,8 +85,10 @@ struct LargeDealCell: View {
             .fontWeight(.semibold)
             .foregroundStyle(Tokens.color.positive.secondary)
     }
-    
-    // MARK: - Normal Price
+}
+
+// MARK: - Normal Price
+extension LargeDealCell {
     @ViewBuilder
     func normalPriceText() -> some View {
         Text(normalPrice)
@@ -91,8 +97,10 @@ struct LargeDealCell: View {
             .strikethrough()
             .foregroundStyle(.gray)
     }
-    
-    // MARK: - Savings
+}
+
+// MARK: - Savings
+extension LargeDealCell {
     @ViewBuilder
     func savingsText() -> some View {
         Text(savings)
@@ -100,8 +108,10 @@ struct LargeDealCell: View {
             .fontWeight(.bold)
             .foregroundStyle(.green)
     }
-    
-    // MARK: - Store Name
+}
+
+// MARK: - Store Name
+extension LargeDealCell {
     @ViewBuilder
     func storeName() -> some View {
         Text(store)
@@ -109,8 +119,10 @@ struct LargeDealCell: View {
             .fontWeight(.regular)
             .foregroundStyle(Tokens.color.neutral.primary)
     }
-    
-    // MARK: - Game Image
+}
+
+// MARK: - Game Image
+extension LargeDealCell {
     @ViewBuilder
     func gameImage() -> some View {
         AsyncImage(url: URL(string: thumb)) { phase in

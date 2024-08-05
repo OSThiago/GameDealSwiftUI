@@ -28,6 +28,11 @@ struct StoreCell: View {
         .padding(.leading)
     }
     
+    
+}
+
+// MARK: - Name
+extension StoreCell {
     @ViewBuilder
     func name() -> some View {
         Text(storeName)

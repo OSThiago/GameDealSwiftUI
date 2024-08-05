@@ -37,7 +37,10 @@ struct MediumDealCell: View {
                 
                 Spacer()
                 
-                savingsText()
+                Savings(savings: savings,
+                        font: .subheadline,
+                        padding: 4)
+                
             }
             
         }
@@ -59,26 +62,17 @@ struct MediumDealCell: View {
     func salePriceText() -> some View {
         Text(salePrice)
             .font(.body)
-            .fontWeight(.heavy)
-            .foregroundStyle(.green)
+            .fontWeight(.semibold)
+            .foregroundStyle(Tokens.color.positive.secondary)
     }
     
     // MARK: - Normal Price
     @ViewBuilder
     func normalPriceText() -> some View {
         Text(normalPrice)
-            .font(.caption)
+            .font(.footnote)
             .strikethrough()
             .foregroundStyle(.gray)
-    }
-    
-    // MARK: - Savings
-    @ViewBuilder
-    func savingsText() -> some View {
-        Text(savings)
-            .font(.body)
-            .fontWeight(.bold)
-            .foregroundStyle(.green)
     }
     
     // MARK: - Game Image

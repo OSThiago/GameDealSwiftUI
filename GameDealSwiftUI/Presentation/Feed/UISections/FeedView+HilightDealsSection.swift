@@ -27,7 +27,7 @@ extension FeedView {
                             DealLookupView(feedGameDealModel: deal)
                                 .navigationBarTitleDisplayMode(.inline)
                         } label: {
-                            LargeDealCell(title: dealFormatted.title, salePrice: dealFormatted.salePrice, normalPrice: dealFormatted.normalPrice, savings: dealFormatted.savings, thumb: dealFormatted.thumb, storeThumb: dealFormatted.storeID)
+                            LargeDealCell(title: dealFormatted.title, salePrice: dealFormatted.salePrice, normalPrice: dealFormatted.normalPrice, savings: dealFormatted.savings, thumb: dealFormatted.thumb, storeThumb: dealFormatted.storeID, store: viewModel.storeName(storeID: deal.storeID))
                                 .padding(.horizontal)
                         }
                     }

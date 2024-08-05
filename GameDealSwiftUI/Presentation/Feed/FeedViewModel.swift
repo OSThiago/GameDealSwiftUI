@@ -109,7 +109,7 @@ final class FeedViewModel: ObservableObject, FormatterDealData {
         let model = FeedGameDealModel(
             gameID: model.gameID,
             dealID: model.dealID,
-            storeID: getStoreImage(storeID: model.storeID),
+            storeID: getStoreImage(storeID: model.storeID), 
             title: model.title,
             salePrice: "$\(model.salePrice)",
             normalPrice: "$\(model.normalPrice)",
@@ -126,5 +126,10 @@ final class FeedViewModel: ObservableObject, FormatterDealData {
                 self.viewState = .loaded
             }
         }
+    }
+    
+    func storeName(storeID: String) -> String {
+        guard let store = self.storesInformations.first(where: {$0.storeID == storeID}) else { return ""}
+        return store.storeName
     }
 }

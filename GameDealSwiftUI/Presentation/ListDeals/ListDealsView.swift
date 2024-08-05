@@ -54,28 +54,32 @@ extension ListDealsView {
 extension ListDealsView {
     @ViewBuilder
     var content: some View {
-        ScrollView(.vertical, showsIndicators: false) {
-            VStack(spacing: Tokens.padding.nano) {
-                ForEach(viewModel.dealList, id: \.dealID) { deal in
-                    
-                    let formatted = viewModel.setupDealCell(deal)
-                    
-                    NavigationLink {
-                        DealLookupView(feedGameDealModel: deal)
-                            .navigationBarTitleDisplayMode(.inline)
-                    } label: {
-                        ListDealCell(title: formatted.title,
-                                     salePrice: formatted.salePrice,
-                                     normalPrice: formatted.normalPrice,
-                                     savings: formatted.savings,
-                                     thumb: formatted.thumb,
-                                     storeThumb: formatted.storeID)
+        if !viewModel.dealList.isEmpty {
+            ScrollView(.vertical, showsIndicators: false) {
+                VStack(spacing: Tokens.padding.nano) {
+                    ForEach(viewModel.dealList, id: \.dealID) { deal in
+                        
+                        let formatted = viewModel.setupDealCell(deal)
+                        
+                        NavigationLink {
+                            DealLookupView(feedGameDealModel: deal)
+                                .navigationBarTitleDisplayMode(.inline)
+                        } label: {
+                            ListDealCell(title: formatted.title,
+                                         salePrice: formatted.salePrice,
+                                         normalPrice: formatted.normalPrice,
+                                         savings: formatted.savings,
+                                         thumb: formatted.thumb,
+                                         storeThumb: formatted.storeID)
+                        }
+                        Divider()
                     }
-                    Divider()
                 }
             }
+            .padding(.horizontal)
+        } else {
+            Text(constants.emptyMessage)
         }
-        .padding(.horizontal)
     }
 }
 

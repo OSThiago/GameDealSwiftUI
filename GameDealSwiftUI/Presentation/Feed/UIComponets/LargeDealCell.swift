@@ -15,6 +15,7 @@ struct LargeDealCell: View {
     let savings: String
     var thumb: String
     let storeThumb: String
+    let store: String
     
     private let cellWidth: CGFloat = ScreenSize.width - Tokens.padding.xs
     private let cellHight: CGFloat = 200
@@ -26,7 +27,10 @@ struct LargeDealCell: View {
                 gameImage()
                 
                 HStack(alignment: .bottom) {
-                    gameTitleText()
+                    VStack(alignment: .leading, spacing: 4) {
+                        gameTitleText()
+                        storeName()
+                    }
                     
                     Spacer()
                     
@@ -36,16 +40,20 @@ struct LargeDealCell: View {
                 .padding(Tokens.padding.nano)
             }
             
-            HStack(alignment: .bottom) {
+            HStack(alignment: .bottom, spacing: Tokens.padding.micro) {
                 salePriceText()
                 
                 normalPriceText()
+                    .padding(.bottom, 2)
                 
                 Spacer()
                 
-                savingsText()
+                Savings(savings: savings,
+                        font: .title3,
+                        padding: Tokens.padding.nano)
             }
-            .padding(Tokens.padding.nano)
+            .padding(.horizontal, Tokens.padding.xxxs)
+            .padding(.vertical, Tokens.padding.micro)
         }
         .frame(maxWidth: cellWidth)
         .background(RoundedRectangle(cornerRadius: Tokens.borderRadius.md)
@@ -60,6 +68,7 @@ struct LargeDealCell: View {
     func gameTitleText() -> some View {
         Text(title)
             .font(.title2)
+            .fontWeight(.semibold)
             .multilineTextAlignment(.leading)
             .foregroundStyle(Color.white)
     }
@@ -69,15 +78,15 @@ struct LargeDealCell: View {
     func salePriceText() -> some View {
         Text(salePrice)
             .font(.title2)
-            .fontWeight(.heavy)
-            .foregroundStyle(.green)
+            .fontWeight(.semibold)
+            .foregroundStyle(Tokens.color.positive.secondary)
     }
     
     // MARK: - Normal Price
     @ViewBuilder
     func normalPriceText() -> some View {
         Text(normalPrice)
-            .font(.subheadline)
+            .font(.callout)
             .fontWeight(.regular)
             .strikethrough()
             .foregroundStyle(.gray)
@@ -90,6 +99,15 @@ struct LargeDealCell: View {
             .font(.title)
             .fontWeight(.bold)
             .foregroundStyle(.green)
+    }
+    
+    // MARK: - Store Name
+    @ViewBuilder
+    func storeName() -> some View {
+        Text(store)
+            .font(.headline)
+            .fontWeight(.regular)
+            .foregroundStyle(Tokens.color.neutral.primary)
     }
     
     // MARK: - Game Image
@@ -112,7 +130,7 @@ struct LargeDealCell: View {
                         LinearGradient(
                             gradient: Gradient(
                                 colors: [Color.white.opacity(Tokens.opacity.transparent),
-                                         Color.black.opacity(Tokens.opacity.semiIntense)
+                                         Color.black.opacity(Tokens.opacity.intense)
                                         ]),
                             startPoint: .top,
                             endPoint: .bottom)
@@ -131,6 +149,6 @@ struct LargeDealCell_Previews: PreviewProvider {
         let mock = FeedGameDealModel.riseOfIndustryMock
         let storeMock = StoreImagesCheapShark.steamMockImages.icon
         
-        LargeDealCell(title: mock.title, salePrice: mock.salePrice, normalPrice: mock.normalPrice, savings: mock.savings, thumb: mock.thumb, storeThumb: storeMock)
+        LargeDealCell(title: mock.title, salePrice: mock.salePrice, normalPrice: mock.normalPrice, savings: mock.savings, thumb: mock.thumb, storeThumb: storeMock, store: "Steam")
     }
 }

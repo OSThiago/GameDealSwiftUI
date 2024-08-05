@@ -81,6 +81,6 @@ extension FormatterDealData {
         
         savingFormatted = String(beginning)
         
-        return "-\(savingFormatted)%"
+        return savingFormatted
     }
 }

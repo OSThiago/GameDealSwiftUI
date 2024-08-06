@@ -37,6 +37,7 @@ struct ListDealsView: View {
     }
 }
 
+// MARK: - Builded content
 extension ListDealsView {
     @ViewBuilder
     var buildedContent: some View {
@@ -51,6 +52,7 @@ extension ListDealsView {
     }
 }
 
+// MARK: - Content
 extension ListDealsView {
     @ViewBuilder
     var content: some View {

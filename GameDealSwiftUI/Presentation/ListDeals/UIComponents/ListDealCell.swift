@@ -37,7 +37,9 @@ struct ListDealCell: View {
                     salePriceText()
                     normalPriceText()
                     Spacer()
-                    savingsText()
+                    Savings(savings: savings,
+                            font: .footnote,
+                            padding: Tokens.padding.nano)
                 }
             }
         }
@@ -49,7 +51,7 @@ struct ListDealCell: View {
     func gameTitleText() -> some View {
         Text(title)
             .font(.body)
-            .fontWeight(.medium)
+            .fontWeight(.semibold)
             .foregroundStyle(colorScheme == .light ? Color.black : Color.white)
             .multilineTextAlignment(.leading)
     }
@@ -58,9 +60,9 @@ struct ListDealCell: View {
     @ViewBuilder
     func salePriceText() -> some View {
         Text(salePrice)
-            .font(.body)
-            .fontWeight(.bold)
-            .foregroundStyle(Color.green)
+            .font(.headline)
+            .fontWeight(.semibold)
+            .foregroundStyle(Tokens.color.positive.secondary)
     }
     
     // MARK: - Normal Price
@@ -71,15 +73,6 @@ struct ListDealCell: View {
             .fontWeight(.medium)
             .strikethrough()
             .foregroundStyle(Color.gray)
-    }
-    
-    // MARK: - Savings
-    @ViewBuilder
-    func savingsText() -> some View {
-        Text(savings)
-            .font(.title2)
-            .fontWeight(.bold)
-            .foregroundStyle(Color.green)
     }
     
     // MARK: - Game Image
@@ -104,6 +97,10 @@ struct ListDealCell: View {
             }
         }
     }
+}
+
+extension ListDealCell {
+    
 }
 
 struct ListDealCell_Previews: PreviewProvider {

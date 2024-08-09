@@ -12,7 +12,7 @@ final class DealLookupViewModel: ObservableObject, FormatterDealData {
     var storesInformations: [StoresCheapShark] = []
     
     let workerCheapShark = WorkerCheapShark()
-    let workerMetacritic = MetacriticWebScrapingImplementation()
+    let workerMetacritic = MetacriticServiceImplementation()
     
     // To fetch when get gameID
     @Published var gameLookupModel: GameLookupModel?
@@ -22,12 +22,29 @@ final class DealLookupViewModel: ObservableObject, FormatterDealData {
     @Published var metacriticDetailModel: MetacriticDetailModel?
     @Published var viewState: ViewState = .loading
     
+    @Published var scrollPosition: CGPoint = .zero
+    @Published var showNavigationTitle = false
+    
     @MainActor
     func setupView(feedGameDealModel: FeedGameDealModel) async {
         self.feedGameDealModel = feedGameDealModel
         fetchStoresInformations()
         fetchDealLookup(gameID: feedGameDealModel.gameID)
         self.metacriticDetailModel = await fetchMetacriticDetailsInformation(metacriticLink: feedGameDealModel.metacriticLink ?? "")
+    }
+    
+    func showNavigationTitleDescription() -> String {
+        if showNavigationBar() {
+            return ""
+        }
+        return feedGameDealModel?.title ?? "Unkow"
+    }
+    
+    func showNavigationBar() -> Bool {
+        if self.scrollPosition.y >= -5.0 {
+            return true
+        }
+        return false
     }
     
     func fetchDealLookup(gameID: String) {
@@ -73,72 +90,19 @@ final class DealLookupViewModel: ObservableObject, FormatterDealData {
         
         savingFormatted = String(beginning)
         
-        return "-\(savingFormatted)%"
+        return savingFormatted
     }
     
     // MARK: - Metacritic
     @MainActor
     func fetchMetacriticDetailsInformation(metacriticLink: String) async -> MetacriticDetailModel{
         let baseURL = "https://www.metacritic.com"
-        let details = "details/"
-        let url = baseURL + metacriticLink + details
         
-        let htmlContent = await workerMetacritic.getURLContent(url: url)
+        let url = baseURL + metacriticLink
         
-        let description = getMetacriticDescription(htmlContent: htmlContent)
-        let releaseDate = getReleaseDate(htmlContent: htmlContent)
-        let publisher = getPublisher(htmlContent: htmlContent)
-        let platforms = getPlatforms(htmlContent: htmlContent)
-        let developers = getDevelopers(htmlContent: htmlContent)
-        let genres = getGenres(htmlContent: htmlContent)
-
+        let data = await workerMetacritic.fetchDetailsInformation(metacriticLink: url)
+        
         self.viewState = .loaded
-        return MetacriticDetailModel(description: description,
-                                     releaseDate: releaseDate,
-                                     publisher: publisher,
-                                     platforms: platforms,
-                                     developers: developers,
-                                     genres: genres)
-    }
-
-    private func getMetacriticDescription(htmlContent: String) -> String {
-        let className = "c-pageProductDetails_description"
-        return workerMetacritic.getContent(htmlContent: htmlContent, byClass: className)
-    }
-    
-    private func getReleaseDate(htmlContent: String) -> String {
-        let className = "c-gameDetails_ReleaseDate"
-        let release = workerMetacritic.getContent(htmlContent: htmlContent, byClass: className)
-        return release.replacingOccurrences(of: "Initial Release Date: ", with: "")
-    }
-    
-    private func getPublisher(htmlContent: String) -> String {
-        let className = "c-gameDetails_Distributor"
-        let publisher = workerMetacritic.getContent(htmlContent: htmlContent, byClass: className)
-        return publisher.replacingOccurrences(of: "Publisher: ", with: "")
-    }
-    
-    private func getPlatforms(htmlContent: String) -> [String] {
-        let className = "c-gameDetails_Platforms"
-        let tag = "li"
-        
-        let classContent = workerMetacritic.filterRawHtmlContent(fullHtmlContent: htmlContent, byClass: className)
-        return workerMetacritic.getContents(htmlContent: classContent, byElementsTag: tag)
-    }
-    
-    private func getDevelopers(htmlContent: String) -> [String] {
-        let className = "c-gameDetails_Developer"
-        let tag = "li"
-        
-        let classContent = workerMetacritic.filterRawHtmlContent(fullHtmlContent: htmlContent, byClass: className)
-        return workerMetacritic.getContents(htmlContent: classContent, byElementsTag: tag)
-    }
-    
-    private func getGenres(htmlContent: String) -> [String] {
-        let className = "c-genreList"
-        let tag = "span"
-        
-        let classContent = workerMetacritic.filterRawHtmlContent(fullHtmlContent: htmlContent, byClass: className)
-        return workerMetacritic.getContents(htmlContent: classContent, byElementsTag: tag)
+        return data
     }
 }

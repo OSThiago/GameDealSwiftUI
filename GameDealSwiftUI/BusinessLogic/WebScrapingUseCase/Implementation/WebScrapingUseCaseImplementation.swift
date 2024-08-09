@@ -1,15 +1,14 @@
 //
-//  MetacriticWebScrapingImplementaiton.swift
+//  ScrapingUseCase.swift
 //  GameDealSwiftUI
 //
-//  Created by Thiago de Oliveira Sousa on 09/07/24.
+//  Created by Thiago de Oliveira Sousa on 08/08/24.
 //
 
 import Foundation
 import SwiftSoup
-import WebKit
 
-class MetacriticWebScrapingImplementation: MetacriticWebScrapingProtocol {
+struct WebScrapingUseCaseImplementation: WebScrapingUseCaseProtocol {
     func getContent(htmlContent: String, byClass className: String) -> String {
         do {
             let document: Document = try SwiftSoup.parse(htmlContent)
@@ -73,4 +72,4 @@ class MetacriticWebScrapingImplementation: MetacriticWebScrapingProtocol {
             return "error"
         }
     }
- }
+}

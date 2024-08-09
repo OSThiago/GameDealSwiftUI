@@ -6,26 +6,11 @@
 //
 
 import SwiftUI
-
+ 
+// MARK: - Game Image
 extension DealLookupView {
-    
     @ViewBuilder
-    func makeSectionDeailDetail() -> some View {
-        VStack(alignment: .leading) {
-            gameImage()
-            
-            Spacer()
-            
-            dealDetail()
-            
-            Divider()
-            
-            storesDeals()
-        }
-    }
-    
-    @ViewBuilder
-    func gameImage() -> some View {
+    var gameImage: some View {
         
         let url = viewModel.getHightQualityImage(url: viewModel.gameLookupModel?.info?.thumb ?? "")
         
@@ -43,9 +28,7 @@ extension DealLookupView {
                     image
                         .resizable()
                         .scaledToFill()
-//                        .aspectRatio(contentMode: .fill)
                         .frame(width: ScreenSize.width, height: isScrolled ? offsetY + imageHeight : imageHeight)
-//                        .frame(width: ScreenSize.width, height: imageHeight, alignment: .top)
                         .clipped()
                         
                         .offset(y: isScrolled ? -offsetY : 0)
@@ -61,82 +44,98 @@ extension DealLookupView {
             }
         }
     }
-    
-    @ViewBuilder
-    func currentStoreImage() -> some View {
-        AsyncImage(url: URL(string: viewModel.getStoreImage(storeID: feedGameDealModel.storeID))) { phase in
-            switch phase  {
-            case .empty:
-                ProgressView()
-            case .success(let image):
-                image
-                    .resizable()
-                    .scaledToFill()
-                    .frame(width: 40, height: 40)
-                    .clipped()
-                    
-            case .failure(_):
-                EmptyView()
-            @unknown default:
-                EmptyView()
-            }
-        }
-    }
-    
-    @ViewBuilder
-    func makeGameTitle() -> some View {
-        Text(viewModel.gameLookupModel?.info?.title ?? "Error")
-            .font(.title)
-            .fontWeight(.medium)
-    }
-    
-    @ViewBuilder
-    func dealDetail() -> some View {
-        VStack(alignment: .leading, spacing: 4) {
-            makeGameTitle()
-                .padding(.bottom, 16)
-            
-            VStack(alignment: .leading) {
-                HStack(alignment: .bottom) {
-                    Text("$\(feedGameDealModel.salePrice)")
-                        .font(.body)
-                        .fontWeight(.medium)
-                    
-                    Text("$\(feedGameDealModel.normalPrice)")
-                        .font(.subheadline)
-                        .fontWeight(.regular)
-                        .strikethrough()
-                        .foregroundStyle(Color.gray)
-                    
-                    Spacer()
-                    
-                    Text(viewModel.formatSavings(feedGameDealModel.savings))
-                        .font(.body)
-                        .fontWeight(.bold)
-                }
-            }
+}
 
-            HStack(alignment: .center) {
-                currentStoreImage()
-                
-                Text(viewModel.getStore(id: feedGameDealModel.storeID)?.storeName ?? "Unkwon")
-                    .font(.body)
-                    .fontWeight(.bold)
+// MARK: - Deal Detail Section
+extension DealLookupView {
+    @ViewBuilder
+    var dealDetailSection: some View {
+        VStack(alignment: .leading, spacing: 4) {
+            HStack(alignment: .top) {
+                VStack(alignment: .leading, spacing: 4) {
+                    gameTitle
+                                    
+                    storeName
+                }
                 
                 Spacer()
                 
-                makeBuyButton(dealID: "game id")
+                StoreImage(storeImage: viewModel.getStoreImage(storeID: feedGameDealModel.storeID),
+                           size: 40)
+            }
+            .padding(.bottom, 32)
+
+            
+            HStack(alignment: .bottom) {
+                
+                buyButton(dealID: "game id")
+                
+                Spacer()
+                
+                salePrice
+                
+                normalPrice
+                
+                Savings(savings: viewModel.formatSavings(feedGameDealModel.savings),
+                        font: .body,
+                        padding: 8)
             }
             
             Divider()
-                .padding(.bottom, 8)
+                .padding(.top, 8)
         }
         .padding(.horizontal, 16)
         .padding(.bottom, 16)
     }
+}
 
+// MARK: - Game Title
+extension DealLookupView {
     @ViewBuilder
-    func makeBuyButton(dealID: String) -> some View {
+    var gameTitle: some View {
+        Text(viewModel.gameLookupModel?.info?.title ?? "Error")
+            .font(.title2)
+            .fontWeight(.semibold)
+    }
+}
+
+// MARK: - Sale Price
+extension DealLookupView {
+    @ViewBuilder
+    var salePrice: some View {
+        Text("$\(feedGameDealModel.salePrice)")
+            .font(.title2)
+            .fontWeight(.bold)
+            .foregroundStyle(Tokens.color.positive.secondary)
+    }
+}
+
+// MARK: - Normal Price
+extension DealLookupView {
+    @ViewBuilder
+    var normalPrice: some View {
+        Text("$\(feedGameDealModel.normalPrice)")
+            .font(.subheadline)
+            .fontWeight(.regular)
+            .strikethrough()
+            .foregroundStyle(Tokens.color.neutral.primary)
+    }
+}
+
+// MARK: - Store Name
+extension DealLookupView {
+    var storeName: some View {
+        Text(viewModel.getStore(id: feedGameDealModel.storeID)?.storeName ?? "Unkwon")
+            .font(.body)
+            .fontWeight(.medium)
+            .foregroundStyle(Tokens.color.neutral.primary)
+    }
+}
+
+// MARK: - Buy Button
+extension DealLookupView {
+    @ViewBuilder
+    func buyButton(dealID: String) -> some View {
         Button {
             print("Buy - \(dealID)")
         } label: {
@@ -148,42 +147,5 @@ extension DealLookupView {
         }
         .background(Color.blue)
         .clipShape(.rect(cornerRadius: 12))
-    }
-    
-    @ViewBuilder
-    func storesDeals() -> some View {
-        
-        let rows = [
-            GridItem(.fixed(50)),
-            GridItem(.fixed(50)),
-            GridItem(.fixed(50))
-        ]
-        
-        if viewModel.gameLookupModel?.deals?.count ?? 0  > 1 {
-            VStack(alignment: .leading, spacing: 0) {
-                Text("Others Stores")
-                    .font(.body)
-                    .fontWeight(.bold)
-                    .padding(.leading)
-                
-                ScrollView(.horizontal, showsIndicators: false) {
-                    LazyHGrid(rows: rows, spacing: 0) {
-                        ForEach(viewModel.gameLookupModel?.deals ?? [], id: \.dealID) { deal in
-                            VStack {
-
-                                let storeInformation = viewModel.getStore(id: deal.storeID ?? "0")
-                                
-                                let storeImage = viewModel.getStoreImage(storeID: storeInformation?.storeID ?? "0")
-                                
-                                LookupDealStoreCell(storeImage: storeImage, storeTitle: storeInformation?.storeName, dealPrice: deal.price)
-
-                                Divider()
-                                    .padding(.leading)
-                            }
-                        }
-                    }
-                }
-            }
-        }
     }
 }

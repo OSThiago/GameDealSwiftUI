@@ -16,6 +16,7 @@
 		DB49372E2C64EAAD005FF688 /* ScrollOffsetPreferenceKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB49372D2C64EAAD005FF688 /* ScrollOffsetPreferenceKey.swift */; };
 		DB4937302C64FFEA005FF688 /* WebScrapingUseCaseImplementation.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB49372F2C64FFEA005FF688 /* WebScrapingUseCaseImplementation.swift */; };
 		DB4937352C65013C005FF688 /* WebScrapingUseCaseProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB4937342C65013C005FF688 /* WebScrapingUseCaseProtocol.swift */; };
+		DB4937372C6A8AB9005FF688 /* DealLookupConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB4937362C6A8AB8005FF688 /* DealLookupConstants.swift */; };
 		DB5D134C2C62CD07000B2E94 /* DealLookupView+StoresSales.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB5D134B2C62CD07000B2E94 /* DealLookupView+StoresSales.swift */; };
 		DB5D134E2C62CEC5000B2E94 /* DealLookupView+GameDetailSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB5D134D2C62CEC5000B2E94 /* DealLookupView+GameDetailSection.swift */; };
 		DB80A9132A6998A0005489AD /* DealLookupView+DealDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB80A9122A6998A0005489AD /* DealLookupView+DealDetails.swift */; };
@@ -101,6 +102,7 @@
 		DB49372D2C64EAAD005FF688 /* ScrollOffsetPreferenceKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrollOffsetPreferenceKey.swift; sourceTree = "<group>"; };
 		DB49372F2C64FFEA005FF688 /* WebScrapingUseCaseImplementation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebScrapingUseCaseImplementation.swift; sourceTree = "<group>"; };
 		DB4937342C65013C005FF688 /* WebScrapingUseCaseProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebScrapingUseCaseProtocol.swift; sourceTree = "<group>"; };
+		DB4937362C6A8AB8005FF688 /* DealLookupConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DealLookupConstants.swift; sourceTree = "<group>"; };
 		DB5D134B2C62CD07000B2E94 /* DealLookupView+StoresSales.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DealLookupView+StoresSales.swift"; sourceTree = "<group>"; };
 		DB5D134D2C62CEC5000B2E94 /* DealLookupView+GameDetailSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DealLookupView+GameDetailSection.swift"; sourceTree = "<group>"; };
 		DB80A9122A6998A0005489AD /* DealLookupView+DealDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DealLookupView+DealDetails.swift"; sourceTree = "<group>"; };
@@ -576,6 +578,7 @@
 			children = (
 				DBD998AB2A4B8EF100D1D587 /* DealLookupView.swift */,
 				DBD998AD2A4B90E000D1D587 /* DealLookupViewModel.swift */,
+				DB4937362C6A8AB8005FF688 /* DealLookupConstants.swift */,
 				DB80A9112A6997BF005489AD /* UISections */,
 				DB3931D02A53CBE300CF0218 /* UIComponents */,
 			);
@@ -770,6 +773,7 @@
 				DB92BBEB2A3B610C009630E0 /* Response.swift in Sources */,
 				DBC8C1152C3CE1680094865F /* MetacriticWebScrapingImplementation.swift in Sources */,
 				DB92BBE52A3B602D009630E0 /* BaseURL.swift in Sources */,
+				DB4937372C6A8AB9005FF688 /* DealLookupConstants.swift in Sources */,
 				DB5D134E2C62CEC5000B2E94 /* DealLookupView+GameDetailSection.swift in Sources */,
 				DBD998922A45FC5500D1D587 /* MediumDealCell.swift in Sources */,
 				DBD998A02A48BFCD00D1D587 /* ListDealViewModel.swift in Sources */,

@@ -13,6 +13,7 @@ struct DealLookupView: View {
     @Environment (\.presentationMode) var presentation
 
     let feedGameDealModel: FeedGameDealModel
+    let constants = DealLookupConstants()
     
     init(feedGameDealModel: FeedGameDealModel) {
         self.feedGameDealModel = feedGameDealModel
@@ -59,7 +60,7 @@ extension DealLookupView {
                     
                     Savings(savings: viewModel.formatSavings(feedGameDealModel.savings),
                             font: .body,
-                            padding: 8)
+                            padding: Tokens.padding.nano)
                     .padding(Tokens.padding.nano)
                 }
                 
@@ -72,13 +73,13 @@ extension DealLookupView {
             }
             .background(GeometryReader { geometry in
                 Color.clear
-                    .preference(key: ScrollOffsetPreferenceKey.self, value: geometry.frame(in: .named("scroll")).origin)
+                    .preference(key: ScrollOffsetPreferenceKey.self, value: geometry.frame(in: .named(constants.scrollkey)).origin)
             })
             .onPreferenceChange(ScrollOffsetPreferenceKey.self) { value in
                 self.viewModel.scrollPosition = value
             }
         }
-        .coordinateSpace(name: "scroll")
+        .coordinateSpace(name: constants.scrollkey)
         .navigationTitle(viewModel.showNavigationTitleDescription())
         .ignoresSafeArea()
         .navigationBarBackButtonHidden(viewModel.showNavigationBar())
@@ -89,20 +90,6 @@ extension DealLookupView {
                     backButton()
                 }
             }
-        }
-    }
-}
-
-// MARK: - BACK BUTTON
-extension DealLookupView {
-    @ViewBuilder
-    private func backButton() -> some View {
-        Button {
-            presentation.wrappedValue.dismiss()
-        } label: {
-            Image(systemName: "chevron.backward.circle.fill")
-                .foregroundColor(Color.white)
-                .shadow(radius: 2)
         }
     }
 }

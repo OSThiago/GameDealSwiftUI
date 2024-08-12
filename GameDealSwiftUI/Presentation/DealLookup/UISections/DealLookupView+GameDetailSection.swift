@@ -10,7 +10,7 @@ import SwiftUI
 extension DealLookupView {
     @ViewBuilder
     var gameDetailsSection: some View {
-        VStack(alignment: .leading, spacing: 16) {
+        VStack(alignment: .leading, spacing: Tokens.padding.xxxs) {
 //            Text("Information")
 //                .font(.body)
 //                .fontWeight(.bold)
@@ -18,33 +18,33 @@ extension DealLookupView {
             if let metacriticModel = viewModel.metacriticDetailModel {
                 // Platforms
                 gameDescriptionItem(items: metacriticModel.platforms,
-                                    title: "Platforms")
+                                    title: constants.platforms)
                 
                 // Release Date
                 gameDescriptionItem(item: metacriticModel.releaseDate,
-                                    title: "Release Date")
+                                    title: constants.releaseDate)
 
                 // Developers
                 gameDescriptionItem(items: metacriticModel.developers,
-                                    title: "Developers")
+                                    title: constants.developers)
                 
                 // Publisher
                 gameDescriptionItem(item: metacriticModel.publisher,
-                                    title: "Publisher")
+                                    title: constants.publisher)
 
                 // Genres
                 gameDescriptionItem(items: metacriticModel.genres,
-                                    title: "Genres")
+                                    title: constants.genres)
                 
                 // Description
                 gameDescription(description: metacriticModel.description.replacingOccurrences(of: "Description:", with: ""),
-                                    title: "Description")
+                                title: constants.description)
             } else {
-                Text("No information available")
+                Text(constants.emptyMessage)
             }
         }
-        .padding(.horizontal, 16)
-        .padding(.bottom, 100)
+        .padding(.horizontal, Tokens.padding.xxxs)
+        .padding(.bottom, constants.gameDetailCustomBottomPadding)
     }
 }
 
@@ -52,7 +52,7 @@ extension DealLookupView {
     @ViewBuilder
     func gameDescriptionItem(items: [String], title: String) -> some View {
         if !items.isEmpty {
-            VStack(alignment: .leading, spacing: 4) {
+            VStack(alignment: .leading, spacing: Tokens.padding.quarck) {
                 Text("\(title): ")
                     .font(.body)
                     .fontWeight(.medium)
@@ -80,7 +80,7 @@ extension DealLookupView {
     @ViewBuilder
     func gameDescriptionItem(item: String, title: String) -> some View {
         if !item.isEmpty {
-            VStack(alignment: .leading, spacing: 4) {
+            VStack(alignment: .leading, spacing: Tokens.padding.quarck) {
                 Text("\(title): ")
                     .font(.body)
                     .fontWeight(.medium)
@@ -100,7 +100,7 @@ extension DealLookupView {
     @ViewBuilder
     func gameDescription(description: String, title: String) -> some View {
         if !description.isEmpty {
-            VStack(alignment: .leading, spacing: 4) {
+            VStack(alignment: .leading, spacing: Tokens.padding.quarck) {
                 Text("\(title): ")
                     .font(.body)
                     .fontWeight(.medium)

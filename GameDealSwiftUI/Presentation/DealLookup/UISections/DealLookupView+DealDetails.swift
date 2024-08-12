@@ -14,7 +14,7 @@ extension DealLookupView {
         
         let url = viewModel.getHightQualityImage(url: viewModel.gameLookupModel?.info?.thumb ?? "")
         
-        let imageHeight = 220.0
+        let imageHeight = constants.gameImageHeight
         
         AsyncImage(url: URL(string: url)) { phase in
             switch phase  {
@@ -46,13 +46,27 @@ extension DealLookupView {
     }
 }
 
+// MARK: - BACK BUTTON
+extension DealLookupView {
+    @ViewBuilder
+    func backButton() -> some View {
+        Button {
+            presentation.wrappedValue.dismiss()
+        } label: {
+            Image(systemName: constants.backButtonIcon)
+                .foregroundColor(Color.white)
+                .shadow(radius: Tokens.borderRadius.xs)
+        }
+    }
+}
+
 // MARK: - Deal Detail Section
 extension DealLookupView {
     @ViewBuilder
     var dealDetailSection: some View {
-        VStack(alignment: .leading, spacing: 4) {
+        VStack(alignment: .leading, spacing: Tokens.padding.quarck) {
             HStack(alignment: .top) {
-                VStack(alignment: .leading, spacing: 4) {
+                VStack(alignment: .leading, spacing: Tokens.padding.quarck) {
                     gameTitle
                                     
                     storeName
@@ -61,9 +75,9 @@ extension DealLookupView {
                 Spacer()
                 
                 StoreImage(storeImage: viewModel.getStoreImage(storeID: feedGameDealModel.storeID),
-                           size: 40)
+                           size: constants.storeImageSize)
             }
-            .padding(.bottom, 32)
+            .padding(.bottom, Tokens.padding.xs)
 
             
             HStack(alignment: .bottom) {
@@ -81,10 +95,10 @@ extension DealLookupView {
             }
             
             Divider()
-                .padding(.top, 8)
+                .padding(.top, Tokens.padding.nano)
         }
-        .padding(.horizontal, 16)
-        .padding(.bottom, 16)
+        .padding(.horizontal, Tokens.padding.xxxs)
+        .padding(.bottom, Tokens.padding.xxxs)
     }
 }
 
@@ -92,7 +106,7 @@ extension DealLookupView {
 extension DealLookupView {
     @ViewBuilder
     var gameTitle: some View {
-        Text(viewModel.gameLookupModel?.info?.title ?? "Error")
+        Text(viewModel.gameLookupModel?.info?.title ?? constants.error)
             .font(.title2)
             .fontWeight(.semibold)
     }
@@ -124,7 +138,7 @@ extension DealLookupView {
 // MARK: - Store Name
 extension DealLookupView {
     var storeName: some View {
-        Text(viewModel.getStore(id: feedGameDealModel.storeID)?.storeName ?? "Unkwon")
+        Text(viewModel.getStore(id: feedGameDealModel.storeID)?.storeName ?? constants.error)
             .font(.body)
             .fontWeight(.medium)
             .foregroundStyle(Tokens.color.neutral.primary)
@@ -136,15 +150,16 @@ extension DealLookupView {
     @ViewBuilder
     func buyButton(dealID: String) -> some View {
         Button {
-            print("Buy - \(dealID)")
+            print("\(constants.buy) - \(dealID)")
         } label: {
-            Text("Buy")
+            Text(constants.buy)
                 .font(.body)
                 .fontWeight(.medium)
                 .foregroundStyle(.white)
-                .frame(width: 65, height: 25)
+                .frame(width: constants.buyButtonWidth,
+                       height: constants.buyButtonHeight)
         }
         .background(Color.blue)
-        .clipShape(.rect(cornerRadius: 12))
+        .clipShape(.rect(cornerRadius: Tokens.borderRadius.lg))
     }
 }

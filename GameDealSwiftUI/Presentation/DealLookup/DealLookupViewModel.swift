@@ -37,7 +37,7 @@ final class DealLookupViewModel: ObservableObject, FormatterDealData {
         if showNavigationBar() {
             return ""
         }
-        return feedGameDealModel?.title ?? "Unkow"
+        return feedGameDealModel?.title ?? "Unknown"
     }
     
     func showNavigationBar() -> Bool {

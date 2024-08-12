@@ -14,6 +14,11 @@ struct LookupDealStoreCell: View {
     let dealPrice: String?
     let isCheaper: Bool
     
+    private let cellWidth: CGFloat = 330
+    private let cellHeignt: CGFloat = 50
+    private let unknown: String = "unknown"
+    private let storeImageSize: CGFloat = 40
+    
     // MARK: - BODY
     var body: some View {
         HStack(alignment: .center) {
@@ -22,7 +27,7 @@ struct LookupDealStoreCell: View {
             Spacer()
             dealPriceComponent
         }
-        .frame(width: 330, height: 50)
+        .frame(width: cellWidth, height: cellHeignt)
         .padding(.leading)
     }
 }
@@ -42,7 +47,7 @@ extension LookupDealStoreCell {
 extension LookupDealStoreCell {
     @ViewBuilder
     var storeTitleComponent: some View {
-        Text(storeTitle ?? "Unkow")
+        Text(storeTitle ?? unknown)
             .font(.body)
             .fontWeight(.medium)
     }
@@ -52,7 +57,7 @@ extension LookupDealStoreCell {
 extension LookupDealStoreCell {
     @ViewBuilder
     var storeImageComponent: some View {
-        AsyncImage(url: URL(string: storeImage ?? "Unkown")) { phase in
+        AsyncImage(url: URL(string: storeImage ?? unknown)) { phase in
             switch phase  {
             case .empty:
                 ProgressView()
@@ -60,7 +65,7 @@ extension LookupDealStoreCell {
                 image
                     .resizable()
                     .scaledToFill()
-                    .frame(width: 40, height: 40)
+                    .frame(width: storeImageSize, height: storeImageSize)
                     
             case .failure(_):
                 EmptyView()

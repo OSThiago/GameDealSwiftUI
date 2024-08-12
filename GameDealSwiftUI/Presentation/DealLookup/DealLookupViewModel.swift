@@ -93,6 +93,17 @@ final class DealLookupViewModel: ObservableObject, FormatterDealData {
         return savingFormatted
     }
     
+    func isCheaper(chepeast: String?, value: String?) -> Bool {
+        guard let cheapestDouble = Double(chepeast!) else { return false }
+        guard let valueDouble = Double(value!) else { return false }
+        
+        if valueDouble <= cheapestDouble {
+            return true
+        }
+        
+        return false
+    }
+    
     // MARK: - Metacritic
     @MainActor
     func fetchMetacriticDetailsInformation(metacriticLink: String) async -> MetacriticDetailModel{

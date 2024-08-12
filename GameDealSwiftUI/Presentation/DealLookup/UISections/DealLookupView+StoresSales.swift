@@ -33,7 +33,11 @@ extension DealLookupView {
                                 
                                 let storeImage = viewModel.getStoreImage(storeID: storeInformation?.storeID ?? "0")
                                 
-                                LookupDealStoreCell(storeImage: storeImage, storeTitle: storeInformation?.storeName, dealPrice: deal.price)
+                                LookupDealStoreCell(storeImage: storeImage, 
+                                                    storeTitle: storeInformation?.storeName,
+                                                    dealPrice: deal.price,
+                                                    isCheaper: viewModel.isCheaper(chepeast: viewModel.feedGameDealModel?.salePrice, 
+                                                                                   value: deal.price))
 
                                 Divider()
                                     .padding(.leading)

@@ -11,9 +11,9 @@ extension DealLookupView {
     @ViewBuilder
     var gameDetailsSection: some View {
         VStack(alignment: .leading, spacing: 16) {
-            Text("Information")
-                .font(.body)
-                .fontWeight(.bold)
+//            Text("Information")
+//                .font(.body)
+//                .fontWeight(.bold)
             
             if let metacriticModel = viewModel.metacriticDetailModel {
                 // Platforms
@@ -66,9 +66,6 @@ extension DealLookupView {
                                 .font(.body)
                                 .fontWeight(.regular)
                                 .fontDesign(.rounded)
-//                                .padding(8)
-//                                .background(Color.gray.opacity(0.08))
-//                                .clipShape(.rect(cornerRadius: 8))
                         }
                     }
                 }
@@ -94,9 +91,6 @@ extension DealLookupView {
                     .font(.body)
                     .fontWeight(.regular)
                     .fontDesign(.rounded)
-//                    .padding(8)
-//                    .background(Color.gray.opacity(0.08))
-//                    .clipShape(.rect(cornerRadius: 8))
             }
         }
     }

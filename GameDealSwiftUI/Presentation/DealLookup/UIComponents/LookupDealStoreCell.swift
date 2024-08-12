@@ -12,38 +12,46 @@ struct LookupDealStoreCell: View {
     let storeImage: String?
     let storeTitle: String?
     let dealPrice: String?
+    let isCheaper: Bool
     
     // MARK: - BODY
     var body: some View {
         HStack(alignment: .center) {
-            makeStoreImage()
-            makeStoreTitle()
+            storeImageComponent
+            storeTitleComponent
             Spacer()
-            makeDealPrice()
+            dealPriceComponent
         }
         .frame(width: 330, height: 50)
         .padding(.leading)
     }
-    
-    // MARK: - DEAL PRICE
+}
+
+// MARK: - DEAL PRICE
+extension LookupDealStoreCell {
     @ViewBuilder
-    func makeDealPrice() -> some View {
+    var dealPriceComponent: some View {
         Text("$\(dealPrice ?? "")")
-            .font(.body)
-            .fontWeight(.medium)
+            .font(.title3)
+            .fontWeight(.semibold)
+            .foregroundStyle(Color.primary )
     }
-    
-    // MARK: - STORE TITLE
+}
+
+// MARK: - STORE TITLE
+extension LookupDealStoreCell {
     @ViewBuilder
-    func makeStoreTitle() -> some View {
+    var storeTitleComponent: some View {
         Text(storeTitle ?? "Unkow")
             .font(.body)
             .fontWeight(.medium)
     }
-    
-    // MARK: - STORE IMAGE
+}
+
+// MARK: - STORE IMAGE
+extension LookupDealStoreCell {
     @ViewBuilder
-    func makeStoreImage() -> some View {
+    var storeImageComponent: some View {
         AsyncImage(url: URL(string: storeImage ?? "Unkown")) { phase in
             switch phase  {
             case .empty:
@@ -53,7 +61,6 @@ struct LookupDealStoreCell: View {
                     .resizable()
                     .scaledToFill()
                     .frame(width: 40, height: 40)
-                    //.clipped()
                     
             case .failure(_):
                 EmptyView()
@@ -66,6 +73,6 @@ struct LookupDealStoreCell: View {
 
 struct LookupDealStoreCell_Previews: PreviewProvider {
     static var previews: some View {
-        LookupDealStoreCell(storeImage: StoreImagesCheapShark.steamMockImages.banner, storeTitle: StoresCheapShark.steamMock.storeName, dealPrice: "0.00")
+        LookupDealStoreCell(storeImage: StoreImagesCheapShark.steamMockImages.banner, storeTitle: StoresCheapShark.steamMock.storeName, dealPrice: "0.00", isCheaper: true)
     }
 }

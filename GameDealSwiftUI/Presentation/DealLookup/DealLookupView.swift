@@ -54,7 +54,15 @@ extension DealLookupView {
         ScrollView(.vertical, showsIndicators: false) {
             VStack(alignment: .leading) {
                 
-                gameImage
+                ZStack(alignment: .bottomTrailing) {
+                    gameImage
+                    
+                    Savings(savings: viewModel.formatSavings(feedGameDealModel.savings),
+                            font: .body,
+                            padding: 8)
+                    .padding(Tokens.padding.nano)
+                }
+                
                                 
                 dealDetailSection
                             

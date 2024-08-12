@@ -67,18 +67,17 @@ extension DealLookupView {
 
             
             HStack(alignment: .bottom) {
-                
-                buyButton(dealID: "game id")
-                
-                Spacer()
+//                Savings(savings: viewModel.formatSavings(feedGameDealModel.savings),
+//                        font: .body,
+//                        padding: 8)
                 
                 salePrice
-                
+
                 normalPrice
+                                                
+                Spacer()
                 
-                Savings(savings: viewModel.formatSavings(feedGameDealModel.savings),
-                        font: .body,
-                        padding: 8)
+                buyButton(dealID: "game id")
             }
             
             Divider()

@@ -37,7 +37,7 @@ class MetacriticServiceImplementation: MetacriticServiceProtocol {
                                      developers: developers,
                                      genres: genres)
     }
- }
+}
 
 extension MetacriticServiceImplementation {
     private func getMetacriticDescription(htmlContent: String) -> String {

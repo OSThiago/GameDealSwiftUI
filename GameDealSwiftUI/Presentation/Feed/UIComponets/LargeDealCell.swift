@@ -8,25 +8,29 @@
 import SwiftUI
 
 struct LargeDealCell: View {
-
+    
     let title: String
     let salePrice: String
     let normalPrice: String
     let savings: String
     var thumb: String
     let storeThumb: String
+    let store: String
     
     private let cellWidth: CGFloat = ScreenSize.width - Tokens.padding.xs
     private let cellHight: CGFloat = 200
     private let storeImageSize: CGFloat = 40
-
+    
     var body: some View {
         VStack(spacing: Tokens.padding.none) {
             ZStack(alignment: .bottomLeading) {
                 gameImage()
                 
                 HStack(alignment: .bottom) {
-                    gameTitleText()
+                    VStack(alignment: .leading, spacing: 4) {
+                        gameTitleText()
+                        storeName()
+                    }
                     
                     Spacer()
                     
@@ -36,16 +40,20 @@ struct LargeDealCell: View {
                 .padding(Tokens.padding.nano)
             }
             
-            HStack(alignment: .bottom) {
+            HStack(alignment: .bottom, spacing: Tokens.padding.micro) {
                 salePriceText()
                 
                 normalPriceText()
+                    .padding(.bottom, 2)
                 
                 Spacer()
                 
-                savingsText()
+                Savings(savings: savings,
+                        font: .title3,
+                        padding: Tokens.padding.nano)
             }
-            .padding(Tokens.padding.nano)
+            .padding(.horizontal, Tokens.padding.xxxs)
+            .padding(.vertical, Tokens.padding.micro)
         }
         .frame(maxWidth: cellWidth)
         .background(RoundedRectangle(cornerRadius: Tokens.borderRadius.md)
@@ -54,36 +62,45 @@ struct LargeDealCell: View {
         )
         .padding(.bottom, Tokens.padding.xxxs)
     }
-    
-    // MARK: - Game Title
+}
+
+// MARK: - Game Title
+extension LargeDealCell {
     @ViewBuilder
     func gameTitleText() -> some View {
         Text(title)
             .font(.title2)
+            .fontWeight(.semibold)
             .multilineTextAlignment(.leading)
             .foregroundStyle(Color.white)
     }
-    
-    // MARK: - Sale price
+}
+
+// MARK: - Sale price
+extension LargeDealCell {
     @ViewBuilder
     func salePriceText() -> some View {
         Text(salePrice)
             .font(.title2)
-            .fontWeight(.heavy)
-            .foregroundStyle(.green)
+            .fontWeight(.semibold)
+            .foregroundStyle(Tokens.color.positive.secondary)
     }
-    
-    // MARK: - Normal Price
+}
+
+// MARK: - Normal Price
+extension LargeDealCell {
     @ViewBuilder
     func normalPriceText() -> some View {
         Text(normalPrice)
-            .font(.subheadline)
+            .font(.callout)
             .fontWeight(.regular)
             .strikethrough()
             .foregroundStyle(.gray)
     }
-    
-    // MARK: - Savings
+}
+
+// MARK: - Savings
+extension LargeDealCell {
     @ViewBuilder
     func savingsText() -> some View {
         Text(savings)
@@ -91,8 +108,21 @@ struct LargeDealCell: View {
             .fontWeight(.bold)
             .foregroundStyle(.green)
     }
-    
-    // MARK: - Game Image
+}
+
+// MARK: - Store Name
+extension LargeDealCell {
+    @ViewBuilder
+    func storeName() -> some View {
+        Text(store)
+            .font(.headline)
+            .fontWeight(.regular)
+            .foregroundStyle(Tokens.color.neutral.primary)
+    }
+}
+
+// MARK: - Game Image
+extension LargeDealCell {
     @ViewBuilder
     func gameImage() -> some View {
         AsyncImage(url: URL(string: thumb)) { phase in
@@ -112,7 +142,7 @@ struct LargeDealCell: View {
                         LinearGradient(
                             gradient: Gradient(
                                 colors: [Color.white.opacity(Tokens.opacity.transparent),
-                                         Color.black.opacity(Tokens.opacity.semiIntense)
+                                         Color.black.opacity(Tokens.opacity.intense)
                                         ]),
                             startPoint: .top,
                             endPoint: .bottom)
@@ -131,6 +161,6 @@ struct LargeDealCell_Previews: PreviewProvider {
         let mock = FeedGameDealModel.riseOfIndustryMock
         let storeMock = StoreImagesCheapShark.steamMockImages.icon
         
-        LargeDealCell(title: mock.title, salePrice: mock.salePrice, normalPrice: mock.normalPrice, savings: mock.savings, thumb: mock.thumb, storeThumb: storeMock)
+        LargeDealCell(title: mock.title, salePrice: mock.salePrice, normalPrice: mock.normalPrice, savings: mock.savings, thumb: mock.thumb, storeThumb: storeMock, store: "Steam")
     }
 }

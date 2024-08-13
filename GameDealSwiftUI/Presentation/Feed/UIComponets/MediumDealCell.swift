@@ -37,14 +37,19 @@ struct MediumDealCell: View {
                 
                 Spacer()
                 
-                savingsText()
+                Savings(savings: savings,
+                        font: .subheadline,
+                        padding: 4)
+                
             }
             
         }
         .frame(width: cellWidth)
     }
-    
-    // MARK: - Game Title
+}
+
+// MARK: - Game Title
+extension MediumDealCell {
     @ViewBuilder
     func gameTitleText() -> some View {
         Text(title)
@@ -53,35 +58,32 @@ struct MediumDealCell: View {
             .foregroundStyle(.white)
             .multilineTextAlignment(.leading)
     }
-    
-    // MARK: - Sale price
+}
+
+// MARK: - Sale price
+extension MediumDealCell {
     @ViewBuilder
     func salePriceText() -> some View {
         Text(salePrice)
             .font(.body)
-            .fontWeight(.heavy)
-            .foregroundStyle(.green)
+            .fontWeight(.semibold)
+            .foregroundStyle(Tokens.color.positive.secondary)
     }
-    
-    // MARK: - Normal Price
+}
+
+// MARK: - Normal Price
+extension MediumDealCell {
     @ViewBuilder
     func normalPriceText() -> some View {
         Text(normalPrice)
-            .font(.caption)
+            .font(.footnote)
             .strikethrough()
             .foregroundStyle(.gray)
     }
-    
-    // MARK: - Savings
-    @ViewBuilder
-    func savingsText() -> some View {
-        Text(savings)
-            .font(.body)
-            .fontWeight(.bold)
-            .foregroundStyle(.green)
-    }
-    
-    // MARK: - Game Image
+}
+
+// MARK: - Game Image
+extension MediumDealCell {
     @ViewBuilder
     func gameImage() -> some View {
         AsyncImage(url: URL(string: thumb)) { phase in
@@ -96,7 +98,7 @@ struct MediumDealCell: View {
                     .clipped()
                     .overlay {
                         LinearGradient(
-                            gradient: 
+                            gradient:
                                 Gradient(
                                     colors: [Color.black.opacity(Tokens.opacity.transparent),
                                              Color.black.opacity(Tokens.opacity.intense)]),

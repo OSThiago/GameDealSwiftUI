@@ -11,13 +11,10 @@ struct DealLookupView: View {
     // MARK: - PROPERTIES
     @StateObject var viewModel = DealLookupViewModel()
     @Environment (\.presentationMode) var presentation
-    
+
     let feedGameDealModel: FeedGameDealModel
+    let constants = DealLookupConstants()
     
-    @State private var scrollPosition: CGPoint = .zero
-    @State private var showNavigationTitle = false
-    
-    // MARK: - INITIALIZER
     init(feedGameDealModel: FeedGameDealModel) {
         self.feedGameDealModel = feedGameDealModel
     }
@@ -34,33 +31,9 @@ struct DealLookupView: View {
                 presentation.wrappedValue.dismiss()
             }
     }
-    
-    // MARK: - BACK BUTTON
-    @ViewBuilder
-    private func makeBackButton() -> some View {
-        Button {
-            presentation.wrappedValue.dismiss()
-        } label: {
-            Image(systemName: "chevron.backward.circle.fill")
-                .foregroundColor(.gray)
-        }
-    }
-    
-    private func showNavigationTitleDescription() -> String {
-        if showNavigationBar() {
-            return ""
-        }
-        return viewModel.feedGameDealModel?.title ?? "Unkow"
-    }
-    
-    private func showNavigationBar() -> Bool {
-        if self.scrollPosition.y >= -5.0 {
-            return true
-        }
-        return false
-    }
 }
 
+// MARK: - Builded Content
 extension DealLookupView {
     @ViewBuilder
     var buildedContent: some View {
@@ -75,169 +48,54 @@ extension DealLookupView {
     }
 }
 
+// MARK: - Content
 extension DealLookupView {
     @ViewBuilder
     var contentView: some View {
         ScrollView(.vertical, showsIndicators: false) {
             VStack(alignment: .leading) {
                 
-                gameImage()
-                                
-                dealDetail()
-                            
-                storesDeals()
+                ZStack(alignment: .bottomTrailing) {
+                    gameImage
+                    
+                    Savings(savings: viewModel.formatSavings(feedGameDealModel.savings),
+                            font: .body,
+                            padding: Tokens.padding.nano)
+                    .padding(Tokens.padding.nano)
+                }
                 
-                gameDetails
+                                
+                dealDetailSection
+                            
+                storesDealsSection
+                
+                gameDetailsSection
             }
             .background(GeometryReader { geometry in
                 Color.clear
-                    .preference(key: ScrollOffsetPreferenceKey.self, value: geometry.frame(in: .named("scroll")).origin)
+                    .preference(key: ScrollOffsetPreferenceKey.self, value: geometry.frame(in: .named(constants.scrollkey)).origin)
             })
             .onPreferenceChange(ScrollOffsetPreferenceKey.self) { value in
-                self.scrollPosition = value
+                self.viewModel.scrollPosition = value
             }
         }
-        .fontDesign(.rounded)
-        .coordinateSpace(name: "scroll")
-        .navigationTitle(showNavigationTitleDescription())
+        .coordinateSpace(name: constants.scrollkey)
+        .navigationTitle(viewModel.showNavigationTitleDescription())
         .ignoresSafeArea()
-        .navigationBarBackButtonHidden(showNavigationBar())
+        .navigationBarBackButtonHidden(viewModel.showNavigationBar())
         // MARK: - TOOL BAR
         .toolbar {
             ToolbarItem(placement: .navigationBarLeading) {
-                if showNavigationBar() {
-                    makeBackButton()
+                if viewModel.showNavigationBar() {
+                    backButton()
                 }
             }
         }
     }
 }
 
-extension DealLookupView {
-    @ViewBuilder
-    var gameDetails: some View {
-        VStack(alignment: .leading, spacing: 16) {
-            Text("Information")
-                .font(.body)
-                .fontWeight(.bold)
-            
-            if let metacriticModel = viewModel.metacriticDetailModel {
-                // Platforms
-                gameDescriptionItem(items: metacriticModel.platforms, 
-                                    title: "Platforms")
-                
-                // Release Date
-                gameDescriptionItem(item: metacriticModel.releaseDate, 
-                                    title: "Release Date")
-
-                // Developers
-                gameDescriptionItem(items: metacriticModel.developers, 
-                                    title: "Developers")
-                
-                // Publisher
-                gameDescriptionItem(item: metacriticModel.publisher, 
-                                    title: "Publisher")
-
-                // Genres
-                gameDescriptionItem(items: metacriticModel.genres, 
-                                    title: "Genres")
-                
-                // Description
-                gameDescription(description: metacriticModel.description.replacingOccurrences(of: "Description:", with: ""),
-                                    title: "Description")
-            } else {
-                Text("No information available")
-            }
-        }
-        .padding(.horizontal, 16)
-        .padding(.bottom, 100)
-    }
-}
-
-extension DealLookupView {
-    @ViewBuilder
-    func gameDescriptionItem(items: [String], title: String) -> some View {
-        if !items.isEmpty {
-            VStack(alignment: .leading, spacing: 4) {
-                Text("\(title): ")
-                    .font(.body)
-                    .fontWeight(.medium)
-                    .fontDesign(.rounded)
-                    .foregroundStyle(.gray)
-                
-                ScrollView(.horizontal) {
-                    HStack {
-                        ForEach(items, id: \.self) { item in
-                            Text(item)
-                                .font(.body)
-                                .fontWeight(.regular)
-                                .fontDesign(.rounded)
-//                                .padding(8)
-//                                .background(Color.gray.opacity(0.08))
-//                                .clipShape(.rect(cornerRadius: 8))
-                        }
-                    }
-                }
-                .scrollBounceBehavior(.basedOnSize, axes: .horizontal)
-                .scrollIndicators(.hidden)
-            }
-        }
-    }
-}
-
-extension DealLookupView {
-    @ViewBuilder
-    func gameDescriptionItem(item: String, title: String) -> some View {
-        if !item.isEmpty {
-            VStack(alignment: .leading, spacing: 4) {
-                Text("\(title): ")
-                    .font(.body)
-                    .fontWeight(.medium)
-                    .fontDesign(.rounded)
-                    .foregroundStyle(.gray)
-                
-                Text(item)
-                    .font(.body)
-                    .fontWeight(.regular)
-                    .fontDesign(.rounded)
-//                    .padding(8)
-//                    .background(Color.gray.opacity(0.08))
-//                    .clipShape(.rect(cornerRadius: 8))
-            }
-        }
-    }
-}
-
-extension DealLookupView {
-    @ViewBuilder
-    func gameDescription(description: String, title: String) -> some View {
-        if !description.isEmpty {
-            VStack(alignment: .leading, spacing: 4) {
-                Text("\(title): ")
-                    .font(.body)
-                    .fontWeight(.medium)
-                    .fontDesign(.rounded)
-                    .foregroundStyle(.gray)
-                
-                Text(description)
-                    .font(.body)
-                    .fontWeight(.regular)
-                    .fontDesign(.rounded)
-                    .multilineTextAlignment(.leading)
-            }
-        }
-    }
-}
-
-struct DealLookupView_Previews: PreviewProvider {
-    static var previews: some View {
-        let view = DealLookupView(feedGameDealModel: FeedGameDealModel.riseOfIndustryMock)
-    }
-}
-
-struct ScrollOffsetPreferenceKey: PreferenceKey {
-    static var defaultValue: CGPoint = .zero
-
-    static func reduce(value: inout CGPoint, nextValue: () -> CGPoint) {
-    }
-}
+//struct DealLookupView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        let view = DealLookupView(feedGameDealModel: FeedGameDealModel.riseOfIndustryMock)
+//    }
+//}

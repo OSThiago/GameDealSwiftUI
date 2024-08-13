@@ -13,4 +13,5 @@ struct ListDealConstants {
     
     // MARK: - View State
     let viewErrorState: String = "Error"
+    let emptyMessage: String = "No Deals"
 }

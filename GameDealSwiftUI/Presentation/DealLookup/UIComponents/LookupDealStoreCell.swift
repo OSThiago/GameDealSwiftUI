@@ -12,39 +12,52 @@ struct LookupDealStoreCell: View {
     let storeImage: String?
     let storeTitle: String?
     let dealPrice: String?
+    let isCheaper: Bool
+    
+    private let cellWidth: CGFloat = 330
+    private let cellHeignt: CGFloat = 50
+    private let unknown: String = "unknown"
+    private let storeImageSize: CGFloat = 40
     
     // MARK: - BODY
     var body: some View {
         HStack(alignment: .center) {
-            makeStoreImage()
-            makeStoreTitle()
+            storeImageComponent
+            storeTitleComponent
             Spacer()
-            makeDealPrice()
+            dealPriceComponent
         }
-        .frame(width: 330, height: 50)
+        .frame(width: cellWidth, height: cellHeignt)
         .padding(.leading)
     }
-    
-    // MARK: - DEAL PRICE
+}
+
+// MARK: - DEAL PRICE
+extension LookupDealStoreCell {
     @ViewBuilder
-    func makeDealPrice() -> some View {
+    var dealPriceComponent: some View {
         Text("$\(dealPrice ?? "")")
+            .font(.title3)
+            .fontWeight(.semibold)
+            .foregroundStyle(Color.primary )
+    }
+}
+
+// MARK: - STORE TITLE
+extension LookupDealStoreCell {
+    @ViewBuilder
+    var storeTitleComponent: some View {
+        Text(storeTitle ?? unknown)
             .font(.body)
             .fontWeight(.medium)
     }
-    
-    // MARK: - STORE TITLE
+}
+
+// MARK: - STORE IMAGE
+extension LookupDealStoreCell {
     @ViewBuilder
-    func makeStoreTitle() -> some View {
-        Text(storeTitle ?? "Unkow")
-            .font(.body)
-            .fontWeight(.medium)
-    }
-    
-    // MARK: - STORE IMAGE
-    @ViewBuilder
-    func makeStoreImage() -> some View {
-        AsyncImage(url: URL(string: storeImage ?? "Unkown")) { phase in
+    var storeImageComponent: some View {
+        AsyncImage(url: URL(string: storeImage ?? unknown)) { phase in
             switch phase  {
             case .empty:
                 ProgressView()
@@ -52,8 +65,7 @@ struct LookupDealStoreCell: View {
                 image
                     .resizable()
                     .scaledToFill()
-                    .frame(width: 40, height: 40)
-                    //.clipped()
+                    .frame(width: storeImageSize, height: storeImageSize)
                     
             case .failure(_):
                 EmptyView()
@@ -66,6 +78,6 @@ struct LookupDealStoreCell: View {
 
 struct LookupDealStoreCell_Previews: PreviewProvider {
     static var previews: some View {
-        LookupDealStoreCell(storeImage: StoreImagesCheapShark.steamMockImages.banner, storeTitle: StoresCheapShark.steamMock.storeName, dealPrice: "0.00")
+        LookupDealStoreCell(storeImage: StoreImagesCheapShark.steamMockImages.banner, storeTitle: StoresCheapShark.steamMock.storeName, dealPrice: "0.00", isCheaper: true)
     }
 }

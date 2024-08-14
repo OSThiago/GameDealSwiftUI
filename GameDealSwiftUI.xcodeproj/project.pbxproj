@@ -11,7 +11,7 @@
 		DB2A10822C6D247100D1C879 /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB2A10812C6D247100D1C879 /* Router.swift */; };
 		DB2A10842C6D248D00D1C879 /* RouterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB2A10832C6D248D00D1C879 /* RouterView.swift */; };
 		DB3931D22A53CC5C00CF0218 /* LookupDealStoreCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB3931D12A53CC5C00CF0218 /* LookupDealStoreCell.swift */; };
-		DB4030422C44665F000DCFD1 /* MetacriticWebScrapingImplementationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB4030412C44665F000DCFD1 /* MetacriticWebScrapingImplementationTests.swift */; };
+		DB4030422C44665F000DCFD1 /* WebScrapingImplementationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB4030412C44665F000DCFD1 /* WebScrapingImplementationTests.swift */; };
 		DB4030462C446A33000DCFD1 /* MetacriticMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB4030452C446A33000DCFD1 /* MetacriticMock.swift */; };
 		DB4030492C453F94000DCFD1 /* MetacriticWebScrapingProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB4030482C453F94000DCFD1 /* MetacriticWebScrapingProtocol.swift */; };
 		DB40304B2C455D3D000DCFD1 /* MetacriticDetailModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB40304A2C455D3D000DCFD1 /* MetacriticDetailModel.swift */; };
@@ -100,7 +100,7 @@
 		DB2A10812C6D247100D1C879 /* Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
 		DB2A10832C6D248D00D1C879 /* RouterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouterView.swift; sourceTree = "<group>"; };
 		DB3931D12A53CC5C00CF0218 /* LookupDealStoreCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LookupDealStoreCell.swift; sourceTree = "<group>"; };
-		DB4030412C44665F000DCFD1 /* MetacriticWebScrapingImplementationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MetacriticWebScrapingImplementationTests.swift; sourceTree = "<group>"; };
+		DB4030412C44665F000DCFD1 /* WebScrapingImplementationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebScrapingImplementationTests.swift; sourceTree = "<group>"; };
 		DB4030452C446A33000DCFD1 /* MetacriticMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MetacriticMock.swift; sourceTree = "<group>"; };
 		DB4030482C453F94000DCFD1 /* MetacriticWebScrapingProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MetacriticWebScrapingProtocol.swift; sourceTree = "<group>"; };
 		DB40304A2C455D3D000DCFD1 /* MetacriticDetailModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MetacriticDetailModel.swift; sourceTree = "<group>"; };
@@ -206,6 +206,15 @@
 			path = Router;
 			sourceTree = "<group>";
 		};
+		DB2A10852C6D451400D1C879 /* Root */ = {
+			isa = PBXGroup;
+			children = (
+				DBAE72EA2A3B491100AB9E5F /* GameDealSwiftUIApp.swift */,
+				DBAE72EC2A3B491100AB9E5F /* ContentView.swift */,
+			);
+			path = Root;
+			sourceTree = "<group>";
+		};
 		DB3931D02A53CBE300CF0218 /* UIComponents */ = {
 			isa = PBXGroup;
 			children = (
@@ -218,7 +227,7 @@
 			isa = PBXGroup;
 			children = (
 				DB4030432C4469E4000DCFD1 /* Double */,
-				DB4030412C44665F000DCFD1 /* MetacriticWebScrapingImplementationTests.swift */,
+				DB4030412C44665F000DCFD1 /* WebScrapingImplementationTests.swift */,
 			);
 			path = MetacriticWebScraping;
 			sourceTree = "<group>";
@@ -412,14 +421,13 @@
 		DBAE72E92A3B491100AB9E5F /* GameDealSwiftUI */ = {
 			isa = PBXGroup;
 			children = (
+				DB2A10852C6D451400D1C879 /* Root */,
 				DB2A107E2C6D1A7300D1C879 /* Router */,
 				DBD998902A45F55800D1D587 /* Utilities */,
 				DB95FDC82A40E4FF006EB578 /* Info.plist */,
 				DB95FDC12A40D8FD006EB578 /* Presentation */,
 				DBCF02DA2C51612300DCE264 /* Views */,
 				DB92BBE22A3B5E82009630E0 /* BusinessLogic */,
-				DBAE72EA2A3B491100AB9E5F /* GameDealSwiftUIApp.swift */,
-				DBAE72EC2A3B491100AB9E5F /* ContentView.swift */,
 				DBAE72EE2A3B491300AB9E5F /* Assets.xcassets */,
 				DBAE72F02A3B491300AB9E5F /* Preview Content */,
 			);
@@ -805,7 +813,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DB4030422C44665F000DCFD1 /* MetacriticWebScrapingImplementationTests.swift in Sources */,
+				DB4030422C44665F000DCFD1 /* WebScrapingImplementationTests.swift in Sources */,
 				DBAE72FC2A3B491300AB9E5F /* GameDealSwiftUITests.swift in Sources */,
 				DBD998A62A4A2C7900D1D587 /* TestGameLookUp.swift in Sources */,
 				DB4030462C446A33000DCFD1 /* MetacriticMock.swift in Sources */,

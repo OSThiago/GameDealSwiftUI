@@ -1,5 +1,5 @@
 //
-//  MetacriticWebScrapingImplementationTests.swift
+//  WebScrapingImplementationTests.swift
 //  GameDealSwiftUITests
 //
 //  Created by Thiago de Oliveira Sousa on 14/07/24.
@@ -8,12 +8,12 @@
 import XCTest
 @testable import GameDealSwiftUI
 
-final class MetacriticWebScrapingImplementationTests: XCTestCase {
+final class WebScrapingImplementationTests: XCTestCase {
     
-    private var sut: MetacriticWebScrapingProtocol!
+    private var sut: WebScrapingUseCaseProtocol!
     
     override func setUpWithError() throws {
-        self.sut = MetacriticWebScrapingImplementation()
+        self.sut = WebScrapingUseCaseImplementation()
     }
 
     override func tearDownWithError() throws {

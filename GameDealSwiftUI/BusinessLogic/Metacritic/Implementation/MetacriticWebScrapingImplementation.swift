@@ -13,7 +13,7 @@ class MetacriticServiceImplementation: MetacriticServiceProtocol {
     
     private let webScrapingUseCase: WebScrapingUseCaseProtocol
     
-    init() {
+    init(webScrapingUseCase: WebScrapingUseCaseProtocol = WebScrapingUseCaseImplementation()) {
         self.webScrapingUseCase = WebScrapingUseCaseImplementation()
     }
     

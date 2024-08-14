@@ -7,17 +7,34 @@
 
 import SwiftUI
 
+final class DealLookupConfigurator {
+    
+    let feedGameDealModel: FeedGameDealModel
+    
+    var viewModel: DealLookupViewModel = DealLookupViewModel()
+    
+    init(feedGameDealModel: FeedGameDealModel) {
+        self.feedGameDealModel = feedGameDealModel
+    }
+    
+    func configure() -> DealLookupView {
+        return .init(feedGameDealModel: self.feedGameDealModel, 
+                     viewModel: self.viewModel)
+    }
+}
+
 struct DealLookupView: View {
     // MARK: - PROPERTIES
-    @StateObject var viewModel = DealLookupViewModel()
+    @StateObject var viewModel: DealLookupViewModel
     @Environment (\.presentationMode) var presentation
     @EnvironmentObject var router: Router
 
     let feedGameDealModel: FeedGameDealModel
     let constants = DealLookupConstants()
     
-    init(feedGameDealModel: FeedGameDealModel) {
+    init(feedGameDealModel: FeedGameDealModel, viewModel: DealLookupViewModel) {
         self.feedGameDealModel = feedGameDealModel
+        self._viewModel = StateObject(wrappedValue: viewModel)
     }
     
     // MARK: - BODY
@@ -97,6 +114,7 @@ extension DealLookupView {
 
 //struct DealLookupView_Previews: PreviewProvider {
 //    static var previews: some View {
-//        let view = DealLookupView(feedGameDealModel: FeedGameDealModel.riseOfIndustryMock)
+//        DealLookupView(feedGameDealModel: FeedGameDealModel.riseOfIndustryMock,
+//                       viewModel: DealLookupViewModel())
 //    }
 //}

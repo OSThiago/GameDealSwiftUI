@@ -33,7 +33,7 @@ extension Router {
         case .listDeal(let store, let storesInformations):
             ListDealsView(store: store, storesInformations: storesInformations)
         case .dealDetail(let feedGameDealModel):
-            DealLookupView(feedGameDealModel: feedGameDealModel)
+            DealLookupConfigurator(feedGameDealModel: feedGameDealModel).configure()
         }
     }
 }

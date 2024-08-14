@@ -51,7 +51,7 @@ extension DealLookupView {
     @ViewBuilder
     func backButton() -> some View {
         Button {
-            presentation.wrappedValue.dismiss()
+            router.pop()
         } label: {
             Image(systemName: constants.backButtonIcon)
                 .foregroundColor(Color.white)

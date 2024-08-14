@@ -10,6 +10,7 @@ import SwiftUI
 struct ListDealsView: View {
     
     @StateObject var viewModel = ListDealViewModel()
+    @EnvironmentObject var router: Router
     @State var isShowDatail = false
     private let constants = ListDealConstants()
     
@@ -63,9 +64,8 @@ extension ListDealsView {
                         
                         let formatted = viewModel.setupDealCell(deal)
                         
-                        NavigationLink {
-                            DealLookupView(feedGameDealModel: deal)
-                                .navigationBarTitleDisplayMode(.inline)
+                        Button {
+                            router.push(.dealDetail(feedGameDealModel: deal))
                         } label: {
                             ListDealCell(title: formatted.title,
                                          salePrice: formatted.salePrice,
@@ -74,6 +74,7 @@ extension ListDealsView {
                                          thumb: formatted.thumb,
                                          storeThumb: formatted.storeID)
                         }
+
                         Divider()
                     }
                 }

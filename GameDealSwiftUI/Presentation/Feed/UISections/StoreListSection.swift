@@ -28,13 +28,13 @@ extension FeedView {
                 LazyHGrid(rows: rows, spacing: Tokens.padding.quarck) {
                     ForEach(stores, id: \.storeID) { store in
                         VStack(spacing: Tokens.padding.quarck) {
-                            NavigationLink {
-                                ListDealsView(store: store, storesInformations: self.viewModel.storesInformations)
-                                    .navigationTitle(store.storeName)
+                            
+                            Button {
+                                router.push(.listDeal(store: store, storesInformations: self.viewModel.storesInformations))
                             } label: {
                                 StoreCell(storeName: store.storeName, storeBanner: viewModel.getStoreImage(storeID: store.storeID))
                             }
-                            
+
                             Divider()
                                 .padding(.leading, Tokens.padding.xl)
                         }

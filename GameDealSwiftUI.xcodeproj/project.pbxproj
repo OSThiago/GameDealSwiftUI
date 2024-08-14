@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		DB2A10802C6D1AA600D1C879 /* AppScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB2A107F2C6D1AA600D1C879 /* AppScene.swift */; };
+		DB2A10822C6D247100D1C879 /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB2A10812C6D247100D1C879 /* Router.swift */; };
+		DB2A10842C6D248D00D1C879 /* RouterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB2A10832C6D248D00D1C879 /* RouterView.swift */; };
 		DB3931D22A53CC5C00CF0218 /* LookupDealStoreCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB3931D12A53CC5C00CF0218 /* LookupDealStoreCell.swift */; };
 		DB4030422C44665F000DCFD1 /* MetacriticWebScrapingImplementationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB4030412C44665F000DCFD1 /* MetacriticWebScrapingImplementationTests.swift */; };
 		DB4030462C446A33000DCFD1 /* MetacriticMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB4030452C446A33000DCFD1 /* MetacriticMock.swift */; };
@@ -93,6 +96,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		DB2A107F2C6D1AA600D1C879 /* AppScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppScene.swift; sourceTree = "<group>"; };
+		DB2A10812C6D247100D1C879 /* Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
+		DB2A10832C6D248D00D1C879 /* RouterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouterView.swift; sourceTree = "<group>"; };
 		DB3931D12A53CC5C00CF0218 /* LookupDealStoreCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LookupDealStoreCell.swift; sourceTree = "<group>"; };
 		DB4030412C44665F000DCFD1 /* MetacriticWebScrapingImplementationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MetacriticWebScrapingImplementationTests.swift; sourceTree = "<group>"; };
 		DB4030452C446A33000DCFD1 /* MetacriticMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MetacriticMock.swift; sourceTree = "<group>"; };
@@ -190,6 +196,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		DB2A107E2C6D1A7300D1C879 /* Router */ = {
+			isa = PBXGroup;
+			children = (
+				DB2A107F2C6D1AA600D1C879 /* AppScene.swift */,
+				DB2A10812C6D247100D1C879 /* Router.swift */,
+				DB2A10832C6D248D00D1C879 /* RouterView.swift */,
+			);
+			path = Router;
+			sourceTree = "<group>";
+		};
 		DB3931D02A53CBE300CF0218 /* UIComponents */ = {
 			isa = PBXGroup;
 			children = (
@@ -396,6 +412,7 @@
 		DBAE72E92A3B491100AB9E5F /* GameDealSwiftUI */ = {
 			isa = PBXGroup;
 			children = (
+				DB2A107E2C6D1A7300D1C879 /* Router */,
 				DBD998902A45F55800D1D587 /* Utilities */,
 				DB95FDC82A40E4FF006EB578 /* Info.plist */,
 				DB95FDC12A40D8FD006EB578 /* Presentation */,
@@ -738,6 +755,7 @@
 				DBD998962A472B0F00D1D587 /* ScreenSize.swift in Sources */,
 				DB40304D2C45A75A000DCFD1 /* ViewState.swift in Sources */,
 				DB92BBFB2A3B67BC009630E0 /* StoreImagesCheapShark.swift in Sources */,
+				DB2A10822C6D247100D1C879 /* Router.swift in Sources */,
 				DBCF02DF2C5166F900DCE264 /* BorderRadius.swift in Sources */,
 				DB40304B2C455D3D000DCFD1 /* MetacriticDetailModel.swift in Sources */,
 				DBD9989E2A474BAC00D1D587 /* ListDealCell.swift in Sources */,
@@ -753,11 +771,13 @@
 				DBD998A32A49E2CB00D1D587 /* FormatterDealData.swift in Sources */,
 				DB4937352C65013C005FF688 /* WebScrapingUseCaseProtocol.swift in Sources */,
 				DBCF02CF2C51264000DCE264 /* DealsByStoreSection.swift in Sources */,
+				DB2A10802C6D1AA600D1C879 /* AppScene.swift in Sources */,
 				DBCF02D52C51368A00DCE264 /* Padding.swift in Sources */,
 				DBCF02D12C512FC800DCE264 /* StoreListSection.swift in Sources */,
 				DB3931D22A53CC5C00CF0218 /* LookupDealStoreCell.swift in Sources */,
 				DB92BBF92A3B678A009630E0 /* StoresCheapShark.swift in Sources */,
 				DB4937302C64FFEA005FF688 /* WebScrapingUseCaseImplementation.swift in Sources */,
+				DB2A10842C6D248D00D1C879 /* RouterView.swift in Sources */,
 				DBCF02DD2C51617000DCE264 /* StoreImage.swift in Sources */,
 				DB95FDC72A40D9BE006EB578 /* FeedViewModel.swift in Sources */,
 				DBAE72ED2A3B491100AB9E5F /* ContentView.swift in Sources */,

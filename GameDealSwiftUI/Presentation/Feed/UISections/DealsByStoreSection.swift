@@ -36,13 +36,12 @@ extension FeedView {
                 
                 Spacer()
                 
-                NavigationLink {
-                    ListDealsView(store: store, storesInformations: self.viewModel.storesInformations)
-                        .navigationTitle(store.storeName)
-                } label: {
+                Button(action: {
+                    router.push(.listDeal(store: store, storesInformations: self.viewModel.storesInformations))
+                }, label: {
                     Text(constants.seeAllButton)
                         .foregroundStyle(Color.blue)
-                }
+                })
                 .padding(.trailing)
             }
             
@@ -52,9 +51,8 @@ extension FeedView {
                         
                         let dealFormatted = viewModel.setupDealCell(deal)
 
-                        NavigationLink {
-                            DealLookupView(feedGameDealModel: deal)
-                                .navigationBarTitleDisplayMode(.inline)
+                        Button {
+                            router.push(.dealDetail(feedGameDealModel: deal))
                         } label: {
                             MediumDealCell(title: dealFormatted.title, salePrice: dealFormatted.salePrice, normalPrice: dealFormatted.normalPrice, savings: dealFormatted.savings, thumb: dealFormatted.thumb, storeThumb: dealFormatted.storeID)
                                 .padding(.leading)

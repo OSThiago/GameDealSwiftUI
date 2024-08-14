@@ -11,6 +11,7 @@ struct FeedView: View {
     
     @StateObject var viewModel = FeedViewModel()
     @Environment(\.colorScheme) var colorScheme
+    @EnvironmentObject var router: Router
     
     let constants = FeedConstants()
     

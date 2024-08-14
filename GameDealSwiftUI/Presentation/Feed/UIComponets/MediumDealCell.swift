@@ -65,7 +65,7 @@ extension MediumDealCell {
     @ViewBuilder
     func salePriceText() -> some View {
         Text(salePrice)
-            .font(.body)
+            .font(.callout)
             .fontWeight(.semibold)
             .foregroundStyle(Tokens.color.positive.secondary)
     }
@@ -76,7 +76,7 @@ extension MediumDealCell {
     @ViewBuilder
     func normalPriceText() -> some View {
         Text(normalPrice)
-            .font(.footnote)
+            .font(.caption)
             .strikethrough()
             .foregroundStyle(.gray)
     }

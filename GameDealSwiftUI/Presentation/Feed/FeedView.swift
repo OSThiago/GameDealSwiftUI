@@ -9,11 +9,15 @@ import SwiftUI
 
 struct FeedView: View {
     
-    @StateObject var viewModel = FeedViewModel()
+    @StateObject var viewModel: FeedViewModel
     @Environment(\.colorScheme) var colorScheme
     @EnvironmentObject var router: Router
     
     let constants = FeedConstants()
+    
+    init(viewModel: FeedViewModel) {
+        self._viewModel = StateObject(wrappedValue: viewModel)
+    }
     
     var body: some View {
         buildedContent
@@ -61,8 +65,8 @@ extension FeedView {
     }
 }
 
-struct FeedView_Previews: PreviewProvider {
-    static var previews: some View {
-        FeedView()
-    }
-}
+//struct FeedView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        FeedView()
+//    }
+//}

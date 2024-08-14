@@ -10,6 +10,9 @@
 		DB2A10802C6D1AA600D1C879 /* AppScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB2A107F2C6D1AA600D1C879 /* AppScene.swift */; };
 		DB2A10822C6D247100D1C879 /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB2A10812C6D247100D1C879 /* Router.swift */; };
 		DB2A10842C6D248D00D1C879 /* RouterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB2A10832C6D248D00D1C879 /* RouterView.swift */; };
+		DB2A10872C6D47D900D1C879 /* DealLookupConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB2A10862C6D47D900D1C879 /* DealLookupConfigurator.swift */; };
+		DB2A10892C6D483B00D1C879 /* ListDealsConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB2A10882C6D483B00D1C879 /* ListDealsConfigurator.swift */; };
+		DB2A108B2C6D4A9500D1C879 /* FeedConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB2A108A2C6D4A9500D1C879 /* FeedConfigurator.swift */; };
 		DB3931D22A53CC5C00CF0218 /* LookupDealStoreCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB3931D12A53CC5C00CF0218 /* LookupDealStoreCell.swift */; };
 		DB4030422C44665F000DCFD1 /* WebScrapingImplementationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB4030412C44665F000DCFD1 /* WebScrapingImplementationTests.swift */; };
 		DB4030462C446A33000DCFD1 /* MetacriticMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB4030452C446A33000DCFD1 /* MetacriticMock.swift */; };
@@ -99,6 +102,9 @@
 		DB2A107F2C6D1AA600D1C879 /* AppScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppScene.swift; sourceTree = "<group>"; };
 		DB2A10812C6D247100D1C879 /* Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
 		DB2A10832C6D248D00D1C879 /* RouterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouterView.swift; sourceTree = "<group>"; };
+		DB2A10862C6D47D900D1C879 /* DealLookupConfigurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DealLookupConfigurator.swift; sourceTree = "<group>"; };
+		DB2A10882C6D483B00D1C879 /* ListDealsConfigurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListDealsConfigurator.swift; sourceTree = "<group>"; };
+		DB2A108A2C6D4A9500D1C879 /* FeedConfigurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedConfigurator.swift; sourceTree = "<group>"; };
 		DB3931D12A53CC5C00CF0218 /* LookupDealStoreCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LookupDealStoreCell.swift; sourceTree = "<group>"; };
 		DB4030412C44665F000DCFD1 /* WebScrapingImplementationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebScrapingImplementationTests.swift; sourceTree = "<group>"; };
 		DB4030452C446A33000DCFD1 /* MetacriticMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MetacriticMock.swift; sourceTree = "<group>"; };
@@ -378,6 +384,7 @@
 		DB95FDC22A40D946006EB578 /* Feed */ = {
 			isa = PBXGroup;
 			children = (
+				DB2A108A2C6D4A9500D1C879 /* FeedConfigurator.swift */,
 				DB95FDC32A40D997006EB578 /* FeedView.swift */,
 				DB95FDC62A40D9BE006EB578 /* FeedViewModel.swift */,
 				DBCF02D82C515A3E00DCE264 /* FeedConstants.swift */,
@@ -566,6 +573,7 @@
 		DBD9989A2A47480700D1D587 /* ListDeals */ = {
 			isa = PBXGroup;
 			children = (
+				DB2A10882C6D483B00D1C879 /* ListDealsConfigurator.swift */,
 				DBD9989B2A47484700D1D587 /* ListDealsView.swift */,
 				DBD9989F2A48BFCD00D1D587 /* ListDealViewModel.swift */,
 				DBFDE30E2C53D25D00310FF9 /* ListDealConstants.swift */,
@@ -601,6 +609,7 @@
 		DBD998AA2A4B8ECE00D1D587 /* DealLookup */ = {
 			isa = PBXGroup;
 			children = (
+				DB2A10862C6D47D900D1C879 /* DealLookupConfigurator.swift */,
 				DBD998AB2A4B8EF100D1D587 /* DealLookupView.swift */,
 				DBD998AD2A4B90E000D1D587 /* DealLookupViewModel.swift */,
 				DB4937362C6A8AB8005FF688 /* DealLookupConstants.swift */,
@@ -773,7 +782,9 @@
 				DB92BBFE2A3B685C009630E0 /* DealLookup.swift in Sources */,
 				DB95FDCA2A40E774006EB578 /* LargeDealCell.swift in Sources */,
 				DB92BC092A3B69A2009630E0 /* FeedGameDealMock.swift in Sources */,
+				DB2A10872C6D47D900D1C879 /* DealLookupConfigurator.swift in Sources */,
 				DBD998AC2A4B8EF100D1D587 /* DealLookupView.swift in Sources */,
+				DB2A108B2C6D4A9500D1C879 /* FeedConfigurator.swift in Sources */,
 				DB95FDC42A40D997006EB578 /* FeedView.swift in Sources */,
 				DB49372E2C64EAAD005FF688 /* ScrollOffsetPreferenceKey.swift in Sources */,
 				DBD998A32A49E2CB00D1D587 /* FormatterDealData.swift in Sources */,
@@ -783,6 +794,7 @@
 				DBCF02D52C51368A00DCE264 /* Padding.swift in Sources */,
 				DBCF02D12C512FC800DCE264 /* StoreListSection.swift in Sources */,
 				DB3931D22A53CC5C00CF0218 /* LookupDealStoreCell.swift in Sources */,
+				DB2A10892C6D483B00D1C879 /* ListDealsConfigurator.swift in Sources */,
 				DB92BBF92A3B678A009630E0 /* StoresCheapShark.swift in Sources */,
 				DB4937302C64FFEA005FF688 /* WebScrapingUseCaseImplementation.swift in Sources */,
 				DB2A10842C6D248D00D1C879 /* RouterView.swift in Sources */,

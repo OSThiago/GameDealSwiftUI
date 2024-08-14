@@ -7,22 +7,6 @@
 
 import SwiftUI
 
-final class DealLookupConfigurator {
-    
-    let feedGameDealModel: FeedGameDealModel
-    
-    var viewModel: DealLookupViewModel = DealLookupViewModel()
-    
-    init(feedGameDealModel: FeedGameDealModel) {
-        self.feedGameDealModel = feedGameDealModel
-    }
-    
-    func configure() -> DealLookupView {
-        return .init(feedGameDealModel: self.feedGameDealModel, 
-                     viewModel: self.viewModel)
-    }
-}
-
 struct DealLookupView: View {
     // MARK: - PROPERTIES
     @StateObject var viewModel: DealLookupViewModel

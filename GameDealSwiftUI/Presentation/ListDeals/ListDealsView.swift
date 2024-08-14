@@ -9,7 +9,7 @@ import SwiftUI
 
 struct ListDealsView: View {
     
-    @StateObject var viewModel = ListDealViewModel()
+    @StateObject var viewModel: ListDealViewModel
     @EnvironmentObject var router: Router
     @State var isShowDatail = false
     private let constants = ListDealConstants()
@@ -17,9 +17,14 @@ struct ListDealsView: View {
     let storesInformations: [StoresCheapShark]
     let store: StoresCheapShark
     
-    init(store: StoresCheapShark, storesInformations: [StoresCheapShark]) {
+    init(
+        store: StoresCheapShark, 
+        storesInformations: [StoresCheapShark],
+        viewModel: ListDealViewModel
+    ) {
         self.store = store
         self.storesInformations = storesInformations
+        self._viewModel = StateObject(wrappedValue: viewModel)
     }
     
     var body: some View {
@@ -86,8 +91,8 @@ extension ListDealsView {
     }
 }
 
-struct ListDealsView_Previews: PreviewProvider {
-    static var previews: some View {
-        ListDealsView(store: StoresCheapShark.steamMock, storesInformations: [])
-    }
-}
+//struct ListDealsView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        ListDealsView(store: StoresCheapShark.steamMock, storesInformations: [])
+//    }
+//}

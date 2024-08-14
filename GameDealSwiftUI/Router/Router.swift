@@ -29,9 +29,9 @@ extension Router {
     func buildedView(scene: AppScene) -> some View {
         switch scene {
         case .feed:
-            FeedView()
+            FeedConfigurator().configure()
         case .listDeal(let store, let storesInformations):
-            ListDealsView(store: store, storesInformations: storesInformations)
+            ListDealsConfigurator(store: store, storesInformations: storesInformations).configure()
         case .dealDetail(let feedGameDealModel):
             DealLookupConfigurator(feedGameDealModel: feedGameDealModel).configure()
         }

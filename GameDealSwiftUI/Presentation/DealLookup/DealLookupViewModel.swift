@@ -9,10 +9,10 @@ import SwiftUI
 
 final class DealLookupViewModel: ObservableObject, FormatterDealData {
     
-    var storesInformations: [StoresCheapShark] = []
+    @Injected var ServiceMetacritic: MetacriticServiceProtocol
+    @Injected var ServiceCheapShark: CheapSharkServiceProtocol
     
-    let workerCheapShark = WorkerCheapShark()
-    let workerMetacritic = MetacriticServiceImplementation()
+    var storesInformations: [StoresCheapShark] = []
     
     // To fetch when get gameID
     @Published var gameLookupModel: GameLookupModel?
@@ -51,7 +51,7 @@ final class DealLookupViewModel: ObservableObject, FormatterDealData {
         
         let endpoint = EndpointCasesCheapShark.getGameLookup(gameID)
         
-        workerCheapShark.getGameLookup(endpoint: endpoint) { result in
+        ServiceCheapShark.getGameLookup(endpoint: endpoint) { result in
             switch result {
             case .success(let gameData):
                 DispatchQueue.main.async {
@@ -68,7 +68,7 @@ final class DealLookupViewModel: ObservableObject, FormatterDealData {
             return
         }
         
-        workerCheapShark.getStores { result in
+        ServiceCheapShark.getStores { result in
             switch result {
             case .success(let stores):
                 DispatchQueue.main.async {
@@ -111,7 +111,7 @@ final class DealLookupViewModel: ObservableObject, FormatterDealData {
         
         let url = baseURL + metacriticLink
         
-        let data = await workerMetacritic.fetchDetailsInformation(metacriticLink: url)
+        let data = await ServiceMetacritic.fetchDetailsInformation(metacriticLink: url)
         
         self.viewState = .loaded
         return data

@@ -10,10 +10,10 @@ import XCTest
 
 final class TestGameLookUp: XCTestCase {
     
-    var network: WorkerCheapShark!
+    var network: CheapSharkServiceImplementation!
     
     override func setUpWithError() throws {
-        self.network = WorkerCheapShark()
+        self.network = CheapSharkServiceImplementation()
     }
 
     override func tearDownWithError() throws {

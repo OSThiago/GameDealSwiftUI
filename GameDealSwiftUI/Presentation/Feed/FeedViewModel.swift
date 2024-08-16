@@ -8,17 +8,17 @@
 import SwiftUI
 
 final class FeedViewModel: ObservableObject, FormatterDealData {
+    
+    @Injected var serviceCheapShark: CheapSharkServiceProtocol
+    
     // Published Properties
     @Published var dealsAAA = [FeedGameDealModel]()
     @Published var storesDeals: [(store: StoresCheapShark, dealsList:[FeedGameDealModel])] = []
     @Published var storesInformations = [StoresCheapShark]()
     @Published var viewState: ViewState = .loading
-    
     @Published var isLoadedAAAGames = false
     @Published var isLoadedStoreGames = false
-    
-    private let workerCheapShark = WorkerCheapShark()
-    
+
     // Funcs
     func fetchStores() {
         
@@ -26,7 +26,7 @@ final class FeedViewModel: ObservableObject, FormatterDealData {
             return
         }
         
-        workerCheapShark.getStores { result in
+        serviceCheapShark.getStores { result in
             switch result {
             case .success(let stores):
                 DispatchQueue.main.async {
@@ -52,7 +52,7 @@ final class FeedViewModel: ObservableObject, FormatterDealData {
                                                             AAA: true,
                                                             storeID: nil)
         
-        workerCheapShark.getDealsList(endpoint: endpoint) { result in
+        serviceCheapShark.getDealsList(endpoint: endpoint) { result in
             switch result {
             case .success(let deals):
                 DispatchQueue.main.async { [weak self] in
@@ -89,7 +89,7 @@ final class FeedViewModel: ObservableObject, FormatterDealData {
             
             let endpoint = EndpointCasesCheapShark.getDealsList(pageNumber: 0, pageSize: 10, sortList: .DEALRATING, AAA: false, storeID: store.storeID)
             
-            workerCheapShark.getDealsList(endpoint: endpoint) { result in
+            serviceCheapShark.getDealsList(endpoint: endpoint) { result in
                 switch result {
                 case .success(let deals):
                     DispatchQueue.main.async {

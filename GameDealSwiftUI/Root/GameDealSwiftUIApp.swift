@@ -9,6 +9,13 @@ import SwiftUI
 
 @main
 struct GameDealSwiftUIApp: App {
+    
+    private let assembler: Assembler = AppAssembler()
+    
+    init() {
+        assembler.injectionRules()
+    }
+    
     var body: some Scene {
         WindowGroup {
             ContentView()

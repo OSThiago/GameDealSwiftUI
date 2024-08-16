@@ -7,7 +7,13 @@
 
 import Foundation
 
-class WorkerCheapShark {
+protocol CheapSharkServiceProtocol {
+    func getDealsList(endpoint: Endpoint, completion: @escaping (Result<[FeedGameDealModel] ,ServiceError>) -> ())
+    func getGameLookup(endpoint: Endpoint, completion: @escaping (Result<GameLookupModel, ServiceError>) -> ())
+    func getStores(completion: @escaping (Result<[StoresCheapShark], ServiceError>) -> ())
+}
+
+class CheapSharkServiceImplementation: CheapSharkServiceProtocol {
     
     func getDealsList(endpoint: Endpoint, completion: @escaping (Result<[FeedGameDealModel] ,ServiceError>) -> ()) {
         
@@ -34,10 +40,6 @@ class WorkerCheapShark {
             }
         }
         task.resume()
-    }
-    
-    func getDealLookup(endpoint: Endpoint, completion: @escaping (FeedGameDealModel?) -> ()) {
-        
     }
     
     func getGameLookup(endpoint: Endpoint, completion: @escaping (Result<GameLookupModel, ServiceError>) -> ()) {

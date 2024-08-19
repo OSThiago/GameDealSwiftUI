@@ -25,7 +25,7 @@ extension FeedView {
         VStack(alignment: .leading, spacing: Tokens.padding.nano) {
             HStack(spacing: Tokens.padding.quarck) {
                 // Store Banner
-                StoreImage(storeImage: viewModel.getStoreImage(storeID: store.storeID),
+                StoreImage(storeImage: viewModel.storeImage(storeID: store.storeID),
                            size: constants.dealsByStoresImageStoreSize)
                     .padding(.leading)
                 
@@ -37,7 +37,7 @@ extension FeedView {
                 Spacer()
                 
                 Button(action: {
-                    router.push(.listDeal(store: store, storesInformations: self.viewModel.storesInformations))
+                    router.push(.listDeal(store: store))
                 }, label: {
                     Text(constants.seeAllButton)
                         .foregroundStyle(Color.blue)

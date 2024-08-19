@@ -14,30 +14,22 @@ struct ListDealsView: View {
     @State var isShowDatail = false
     private let constants = ListDealConstants()
     
-    let storesInformations: [StoresCheapShark]
-    let store: StoresCheapShark
-    
     init(
-        store: StoresCheapShark, 
-        storesInformations: [StoresCheapShark],
         viewModel: ListDealViewModel
     ) {
-        self.store = store
-        self.storesInformations = storesInformations
         self._viewModel = StateObject(wrappedValue: viewModel)
     }
     
     var body: some View {
         buildedContent
         .onAppear {
-            viewModel.store = store
-            viewModel.storesInformations = storesInformations
             viewModel.fetchDeals()
         }
         .toolbar {
             ToolbarItem(placement: .topBarTrailing) {
-                let image = viewModel.getStoreImage(storeID: store.storeID)
-                StoreImage(storeImage: image, size: constants.storeImageSize)
+                let image = viewModel.formatterUseCase.getStoreImage(store: viewModel.store)
+                StoreImage(storeImage: image,
+                           size: constants.storeImageSize)
             }
         }
     }
@@ -67,17 +59,17 @@ extension ListDealsView {
                 VStack(spacing: Tokens.padding.nano) {
                     ForEach(viewModel.dealList, id: \.dealID) { deal in
                         
-                        let formatted = viewModel.setupDealCell(deal)
+//                        let formatted = viewModel.setupDealCell(deal)
                         
                         Button {
                             router.push(.dealDetail(feedGameDealModel: deal))
                         } label: {
-                            ListDealCell(title: formatted.title,
-                                         salePrice: formatted.salePrice,
-                                         normalPrice: formatted.normalPrice,
-                                         savings: formatted.savings,
-                                         thumb: formatted.thumb,
-                                         storeThumb: formatted.storeID)
+                            ListDealCell(title: deal.title,
+                                         salePrice: deal.salePrice,
+                                         normalPrice: deal.normalPrice,
+                                         savings: viewModel.formatterUseCase.formatSavings(deal.savings),
+                                         thumb: viewModel.formatterUseCase.getHightQualityImage(url: deal.thumb),
+                                         storeThumb: viewModel.formatterUseCase.getStoreImage(store: viewModel.store))
                         }
 
                         Divider()

@@ -59,7 +59,7 @@ struct ListDealCell: View {
     // MARK: - Sale price
     @ViewBuilder
     func salePriceText() -> some View {
-        Text(salePrice)
+        Text("$\(salePrice)")
             .font(.headline)
             .fontWeight(.semibold)
             .foregroundStyle(Tokens.color.positive.secondary)
@@ -68,7 +68,7 @@ struct ListDealCell: View {
     // MARK: - Normal Price
     @ViewBuilder
     func normalPriceText() -> some View {
-        Text(normalPrice)
+        Text("$\(normalPrice)")
             .font(.footnote)
             .fontWeight(.medium)
             .strikethrough()

@@ -10,7 +10,7 @@ import SwiftUI
 struct DealLookupView: View {
     // MARK: - PROPERTIES
     @StateObject var viewModel: DealLookupViewModel
-    @Environment (\.presentationMode) var presentation
+//    @Environment (\.presentationMode) var presentation
     @EnvironmentObject var router: Router
 
     let feedGameDealModel: FeedGameDealModel

@@ -11,9 +11,7 @@ final class FeedConfigurator {
     
     var viewModel: FeedViewModel = FeedViewModel()
     
-    init() {
-        
-    }
+    init() {}
     
     func configure() -> FeedView {
         return .init(viewModel: self.viewModel)

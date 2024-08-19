@@ -10,20 +10,18 @@ import Foundation
 final class ListDealsConfigurator {
     
     let store: StoresCheapShark
-    let storesInformations: [StoresCheapShark]
-    var viewModel: ListDealViewModel = ListDealViewModel()
+
+    lazy var viewModel: ListDealViewModel = {
+        ListDealViewModel(store: store)
+    }()
     
     init(
-        store: StoresCheapShark,
-        storesInformations: [StoresCheapShark]
+        store: StoresCheapShark
     ) {
         self.store = store
-        self.storesInformations = storesInformations
     }
     
     func configure() -> ListDealsView {
-        return .init(store: self.store,
-                     storesInformations: self.storesInformations, 
-                     viewModel: self.viewModel)
+        return .init(viewModel: self.viewModel)
     }
 }

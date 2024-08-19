@@ -23,8 +23,7 @@ struct FeedView: View {
         buildedContent
             .onAppear {
                 Task {
-                    viewModel.fetchStores()
-                    viewModel.displayDealsAAA()
+                    viewModel.viewDidLoad()
                 }
             }
     }
@@ -51,7 +50,7 @@ extension FeedView {
     var content: some View {
         NavigationView {
             ScrollView {
-                VStack(spacing: 16) {
+                VStack(spacing: Tokens.padding.xxxs) {
                     highlightDealSection(deals: viewModel.dealsAAA, title: constants.highlightTitle)
                     
                     storeList(title: constants.storeSectionTitle, stores: viewModel.storesInformations)

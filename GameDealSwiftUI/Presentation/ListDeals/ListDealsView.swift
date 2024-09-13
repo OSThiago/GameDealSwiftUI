@@ -25,6 +25,8 @@ struct ListDealsView: View {
         .onAppear {
             viewModel.fetchDeals()
         }
+        .navigationTitle(viewModel.store.storeName)
+        .navigationBarTitleDisplayMode(.inline)
         .toolbar {
             ToolbarItem(placement: .topBarTrailing) {
                 let image = viewModel.formatterUseCase.getStoreImage(store: viewModel.store)

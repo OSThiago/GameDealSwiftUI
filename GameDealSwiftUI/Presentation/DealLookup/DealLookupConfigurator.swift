@@ -11,10 +11,13 @@ final class DealLookupConfigurator {
     
     let feedGameDealModel: FeedGameDealModel
     
-    var viewModel: DealLookupViewModel = DealLookupViewModel()
+    var viewModel: DealLookupViewModel
     
-    init(feedGameDealModel: FeedGameDealModel) {
+    init(feedGameDealModel: FeedGameDealModel,
+         viewModel: DealLookupViewModel = .init()
+    ) {
         self.feedGameDealModel = feedGameDealModel
+        self.viewModel = viewModel
     }
     
     func configure() -> DealLookupView {

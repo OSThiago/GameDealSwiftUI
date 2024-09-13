@@ -58,9 +58,6 @@ extension ListDealsView {
             ScrollView(.vertical, showsIndicators: false) {
                 VStack(spacing: Tokens.padding.nano) {
                     ForEach(viewModel.dealList, id: \.dealID) { deal in
-                        
-//                        let formatted = viewModel.setupDealCell(deal)
-                        
                         Button {
                             router.push(.dealDetail(feedGameDealModel: deal))
                         } label: {
@@ -83,8 +80,8 @@ extension ListDealsView {
     }
 }
 
-//struct ListDealsView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        ListDealsView(store: StoresCheapShark.steamMock, storesInformations: [])
-//    }
-//}
+struct ListDealsView_Previews: PreviewProvider {
+    static var previews: some View {
+        ListDealsConfigurator(store: StoresCheapShark.steamMock).configure()
+    }
+}

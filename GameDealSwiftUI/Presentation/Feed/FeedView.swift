@@ -64,8 +64,8 @@ extension FeedView {
     }
 }
 
-//struct FeedView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        FeedView()
-//    }
-//}
+struct FeedView_Previews: PreviewProvider {
+    static var previews: some View {
+        FeedConfigurator().configure()
+    }
+}

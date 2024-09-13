@@ -9,6 +9,7 @@ import Foundation
 
 enum EndpointCasesCheapShark: Endpoint {
     
+    // TODO: - Melhorar adicionando uma lista de Query
     case getDealsList(pageNumber: Int, pageSize: Int, sortList: CheapSharkSortDeals, AAA: Bool, storeID: String?)
     case getDealLookup(_ dealID: String)
     case getGameLookup(_ gameID: String)

@@ -81,17 +81,17 @@ final class DealLookupViewModel: ObservableObject, FormatterDealData {
         }
     }
     
-    func formatSavings(_ savings: String) -> String {
-        var savingFormatted = ""
-        
-        let index = savings.firstIndex(of: ".") ?? savings.endIndex
-        
-        let beginning = savings[..<index]
-        
-        savingFormatted = String(beginning)
-        
-        return savingFormatted
-    }
+//    func formatSavings(_ savings: String) -> String {
+//        var savingFormatted = ""
+//        
+//        let index = savings.firstIndex(of: ".") ?? savings.endIndex
+//        
+//        let beginning = savings[..<index]
+//        
+//        savingFormatted = String(beginning)
+//        
+//        return savingFormatted
+//    }
     
     func isCheaper(chepeast: String?, value: String?) -> Bool {
         guard let cheapestDouble = Double(chepeast!) else { return false }

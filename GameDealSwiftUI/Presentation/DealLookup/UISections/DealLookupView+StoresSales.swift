@@ -49,3 +49,16 @@ extension DealLookupView {
         }
     }
 }
+
+struct StoresDealsSection_Previews: PreviewProvider {
+    static var previews: some View {
+        lazy var viewModel: DealLookupViewModel = {
+            let viewModel = DealLookupViewModel()
+            viewModel.viewState = .loaded
+            return viewModel
+        }()
+        
+        DealLookupConfigurator(feedGameDealModel: FeedGameDealModel.riseOfIndustryMock,
+                               viewModel: viewModel).configure()
+    }
+}

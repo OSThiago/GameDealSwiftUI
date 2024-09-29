@@ -20,6 +20,7 @@ extension DealLookupView {
             switch phase  {
             case .empty:
                 ProgressView()
+                    .frame(width: ScreenSize.width, height: imageHeight)
             case .success(let image):
                 GeometryReader { reader in
                     let offsetY = reader.frame(in: .global).minY
@@ -38,9 +39,15 @@ extension DealLookupView {
                 .frame(height: imageHeight)
                     
             case .failure(_):
-                EmptyView()
+                // TODO: Criar ou adicionar em um token de simbolos
+                Image(systemName: "photo.artframe")
+                    .foregroundStyle(Tokens.color.neutral.primary)
+                    .scaleEffect(2)
+                    .frame(width: ScreenSize.width, height: imageHeight)
             @unknown default:
-                EmptyView()
+                Image(systemName: "photo.artframe")
+                    .frame(width: ScreenSize.width, height: imageHeight)
+                    .foregroundStyle(Tokens.color.neutral.primary)
             }
         }
     }

@@ -7,21 +7,27 @@
 
 import SwiftUI
 
-final class FeedViewModel: ObservableObject, FormatterDealData {
+final class FeedViewModel: ObservableObject {
     
     @Injected var serviceCheapShark: CheapSharkServiceProtocol
+    @Injected var formatterUseCase: FormatterProcol
     
-    // Published Properties
+    // Data
     @Published var dealsAAA = [FeedGameDealModel]()
     @Published var storesDeals: [(store: StoresCheapShark, dealsList:[FeedGameDealModel])] = []
     @Published var storesInformations = [StoresCheapShark]()
+    // States
     @Published var viewState: ViewState = .loading
     @Published var isLoadedAAAGames = false
     @Published var isLoadedStoreGames = false
 
+    func viewDidLoad() {
+        fetchStores()
+        displayDealsAAA()
+    }
+    
     // Funcs
-    func fetchStores() {
-        
+    private func fetchStores() {
         if !storesInformations.isEmpty {
             return
         }
@@ -40,7 +46,7 @@ final class FeedViewModel: ObservableObject, FormatterDealData {
         }
     }
     
-    func displayDealsAAA() {
+    private func displayDealsAAA() {
         
         if !dealsAAA.isEmpty {
             return
@@ -76,7 +82,7 @@ final class FeedViewModel: ObservableObject, FormatterDealData {
         }
     }
     
-    func displayDealsStores() {
+    private func displayDealsStores() {
         let selectedStores = ["Steam", "Epic Games Store", "GreenManGaming" , "GOG"]
         
         if !storesDeals.isEmpty {
@@ -109,12 +115,12 @@ final class FeedViewModel: ObservableObject, FormatterDealData {
         let model = FeedGameDealModel(
             gameID: model.gameID,
             dealID: model.dealID,
-            storeID: getStoreImage(storeID: model.storeID), 
+            storeID: storeImage(storeID: model.storeID),
             title: model.title,
             salePrice: "$\(model.salePrice)",
             normalPrice: "$\(model.normalPrice)",
-            savings: formatSavings(model.savings),
-            thumb: getHightQualityImage(url: model.thumb), 
+            savings: formatterUseCase.formatSavings(model.savings),
+            thumb: formatterUseCase.getHightQualityImage(url: model.thumb),
             metacriticLink: model.metacriticLink
         )
         return model
@@ -131,5 +137,10 @@ final class FeedViewModel: ObservableObject, FormatterDealData {
     func storeName(storeID: String) -> String {
         guard let store = self.storesInformations.first(where: {$0.storeID == storeID}) else { return ""}
         return store.storeName
+    }
+    
+    func storeImage(storeID: String) -> String {
+        guard let store = self.storesInformations.first(where: { $0.storeID == storeID }) else { return "" }
+        return formatterUseCase.getStoreImage(store: store)
     }
 }

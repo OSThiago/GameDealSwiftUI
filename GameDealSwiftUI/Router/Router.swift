@@ -30,8 +30,8 @@ extension Router {
         switch scene {
         case .feed:
             FeedConfigurator().configure()
-        case .listDeal(let store, let storesInformations):
-            ListDealsConfigurator(store: store, storesInformations: storesInformations).configure()
+        case .listDeal(let store):
+            ListDealsConfigurator(store: store).configure()
         case .dealDetail(let feedGameDealModel):
             DealLookupConfigurator(feedGameDealModel: feedGameDealModel).configure()
         }

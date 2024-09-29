@@ -22,12 +22,15 @@
 		DB4030492C453F94000DCFD1 /* MetacriticWebScrapingProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB4030482C453F94000DCFD1 /* MetacriticWebScrapingProtocol.swift */; };
 		DB40304B2C455D3D000DCFD1 /* MetacriticDetailModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB40304A2C455D3D000DCFD1 /* MetacriticDetailModel.swift */; };
 		DB40304D2C45A75A000DCFD1 /* ViewState.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB40304C2C45A75A000DCFD1 /* ViewState.swift */; };
+		DB421C6E2C73BE990061C530 /* FormatterProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB421C6D2C73BE990061C530 /* FormatterProtocol.swift */; };
+		DB421C702C73D8600061C530 /* FormatterUseCaseImplementation.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB421C6F2C73D8600061C530 /* FormatterUseCaseImplementation.swift */; };
 		DB49372E2C64EAAD005FF688 /* ScrollOffsetPreferenceKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB49372D2C64EAAD005FF688 /* ScrollOffsetPreferenceKey.swift */; };
 		DB4937302C64FFEA005FF688 /* WebScrapingUseCaseImplementation.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB49372F2C64FFEA005FF688 /* WebScrapingUseCaseImplementation.swift */; };
 		DB4937352C65013C005FF688 /* WebScrapingUseCaseProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB4937342C65013C005FF688 /* WebScrapingUseCaseProtocol.swift */; };
 		DB4937372C6A8AB9005FF688 /* DealLookupConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB4937362C6A8AB8005FF688 /* DealLookupConstants.swift */; };
 		DB5D134C2C62CD07000B2E94 /* DealLookupView+StoresSales.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB5D134B2C62CD07000B2E94 /* DealLookupView+StoresSales.swift */; };
 		DB5D134E2C62CEC5000B2E94 /* DealLookupView+GameDetailSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB5D134D2C62CEC5000B2E94 /* DealLookupView+GameDetailSection.swift */; };
+		DB6964EA2C6FE5EF00D48837 /* CheapSharkServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB6964E92C6FE5EF00D48837 /* CheapSharkServiceProtocol.swift */; };
 		DB80A9132A6998A0005489AD /* DealLookupView+DealDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB80A9122A6998A0005489AD /* DealLookupView+DealDetails.swift */; };
 		DB80A9152A699ED2005489AD /* View+onBackSwipe.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB80A9142A699ED2005489AD /* View+onBackSwipe.swift */; };
 		DB92BBE52A3B602D009630E0 /* BaseURL.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB92BBE42A3B602D009630E0 /* BaseURL.swift */; };
@@ -117,12 +120,15 @@
 		DB4030482C453F94000DCFD1 /* MetacriticWebScrapingProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MetacriticWebScrapingProtocol.swift; sourceTree = "<group>"; };
 		DB40304A2C455D3D000DCFD1 /* MetacriticDetailModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MetacriticDetailModel.swift; sourceTree = "<group>"; };
 		DB40304C2C45A75A000DCFD1 /* ViewState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewState.swift; sourceTree = "<group>"; };
+		DB421C6D2C73BE990061C530 /* FormatterProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormatterProtocol.swift; sourceTree = "<group>"; };
+		DB421C6F2C73D8600061C530 /* FormatterUseCaseImplementation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormatterUseCaseImplementation.swift; sourceTree = "<group>"; };
 		DB49372D2C64EAAD005FF688 /* ScrollOffsetPreferenceKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrollOffsetPreferenceKey.swift; sourceTree = "<group>"; };
 		DB49372F2C64FFEA005FF688 /* WebScrapingUseCaseImplementation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebScrapingUseCaseImplementation.swift; sourceTree = "<group>"; };
 		DB4937342C65013C005FF688 /* WebScrapingUseCaseProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebScrapingUseCaseProtocol.swift; sourceTree = "<group>"; };
 		DB4937362C6A8AB8005FF688 /* DealLookupConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DealLookupConstants.swift; sourceTree = "<group>"; };
 		DB5D134B2C62CD07000B2E94 /* DealLookupView+StoresSales.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DealLookupView+StoresSales.swift"; sourceTree = "<group>"; };
 		DB5D134D2C62CEC5000B2E94 /* DealLookupView+GameDetailSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DealLookupView+GameDetailSection.swift"; sourceTree = "<group>"; };
+		DB6964E92C6FE5EF00D48837 /* CheapSharkServiceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheapSharkServiceProtocol.swift; sourceTree = "<group>"; };
 		DB80A9122A6998A0005489AD /* DealLookupView+DealDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DealLookupView+DealDetails.swift"; sourceTree = "<group>"; };
 		DB80A9142A699ED2005489AD /* View+onBackSwipe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+onBackSwipe.swift"; sourceTree = "<group>"; };
 		DB92BBE42A3B602D009630E0 /* BaseURL.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseURL.swift; sourceTree = "<group>"; };
@@ -270,6 +276,31 @@
 			path = Mock;
 			sourceTree = "<group>";
 		};
+		DB421C6A2C73BE300061C530 /* FormatterUseCase */ = {
+			isa = PBXGroup;
+			children = (
+				DB421C6C2C73BE640061C530 /* Implementation */,
+				DB421C6B2C73BE5F0061C530 /* Interface */,
+			);
+			path = FormatterUseCase;
+			sourceTree = "<group>";
+		};
+		DB421C6B2C73BE5F0061C530 /* Interface */ = {
+			isa = PBXGroup;
+			children = (
+				DB421C6D2C73BE990061C530 /* FormatterProtocol.swift */,
+			);
+			path = Interface;
+			sourceTree = "<group>";
+		};
+		DB421C6C2C73BE640061C530 /* Implementation */ = {
+			isa = PBXGroup;
+			children = (
+				DB421C6F2C73D8600061C530 /* FormatterUseCaseImplementation.swift */,
+			);
+			path = Implementation;
+			sourceTree = "<group>";
+		};
 		DB4937312C65010F005FF688 /* WebScrapingUseCase */ = {
 			isa = PBXGroup;
 			children = (
@@ -295,6 +326,66 @@
 			path = Interface;
 			sourceTree = "<group>";
 		};
+		DB6964E42C6FE4DF00D48837 /* CheapShark */ = {
+			isa = PBXGroup;
+			children = (
+				DB6964E52C6FE4F400D48837 /* Implementation */,
+				DB6964E62C6FE4FA00D48837 /* Interface */,
+			);
+			path = CheapShark;
+			sourceTree = "<group>";
+		};
+		DB6964E52C6FE4F400D48837 /* Implementation */ = {
+			isa = PBXGroup;
+			children = (
+				DB6964EB2C6FE64E00D48837 /* Service */,
+				DB92BBEF2A3B65C0009630E0 /* CheapSharkServiceImplementation.swift */,
+			);
+			path = Implementation;
+			sourceTree = "<group>";
+		};
+		DB6964E62C6FE4FA00D48837 /* Interface */ = {
+			isa = PBXGroup;
+			children = (
+				DB6964E82C6FE5D900D48837 /* Protocol */,
+				DB6964E72C6FE51C00D48837 /* Data */,
+			);
+			path = Interface;
+			sourceTree = "<group>";
+		};
+		DB6964E72C6FE51C00D48837 /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				DB92BBF42A3B671C009630E0 /* FeedGameDealModel */,
+				DB92BBF72A3B676C009630E0 /* StoresCheapSharkModel */,
+				DB92BBFC2A3B6834009630E0 /* DealLookupModel */,
+				DBD998A72A4A30AA00D1D587 /* GameLookup */,
+				DB92BC032A3B6959009630E0 /* Mock */,
+			);
+			path = Data;
+			sourceTree = "<group>";
+		};
+		DB6964E82C6FE5D900D48837 /* Protocol */ = {
+			isa = PBXGroup;
+			children = (
+				DB6964E92C6FE5EF00D48837 /* CheapSharkServiceProtocol.swift */,
+			);
+			path = Protocol;
+			sourceTree = "<group>";
+		};
+		DB6964EB2C6FE64E00D48837 /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				DB92BBE42A3B602D009630E0 /* BaseURL.swift */,
+				DB92BBE62A3B60AF009630E0 /* Endpoint.swift */,
+				DB92BBE82A3B60F1009630E0 /* ServiceError.swift */,
+				DB92BBEA2A3B610C009630E0 /* Response.swift */,
+				DB92BBED2A3B6595009630E0 /* EndpointCasesCheapShark.swift */,
+				DB92BBF12A3B65E4009630E0 /* CheapSharkSortDeals.swift */,
+			);
+			path = Service;
+			sourceTree = "<group>";
+		};
 		DB80A9112A6997BF005489AD /* UISections */ = {
 			isa = PBXGroup;
 			children = (
@@ -308,46 +399,12 @@
 		DB92BBE22A3B5E82009630E0 /* BusinessLogic */ = {
 			isa = PBXGroup;
 			children = (
+				DB421C6A2C73BE300061C530 /* FormatterUseCase */,
+				DB6964E42C6FE4DF00D48837 /* CheapShark */,
 				DB4937312C65010F005FF688 /* WebScrapingUseCase */,
 				DBC8C1122C3CE0020094865F /* Metacritic */,
-				DB92BBE32A3B600B009630E0 /* Services */,
-				DB92BBF32A3B661C009630E0 /* Entities */,
 			);
 			path = BusinessLogic;
-			sourceTree = "<group>";
-		};
-		DB92BBE32A3B600B009630E0 /* Services */ = {
-			isa = PBXGroup;
-			children = (
-				DB92BBE42A3B602D009630E0 /* BaseURL.swift */,
-				DB92BBE62A3B60AF009630E0 /* Endpoint.swift */,
-				DB92BBE82A3B60F1009630E0 /* ServiceError.swift */,
-				DB92BBEA2A3B610C009630E0 /* Response.swift */,
-				DB92BBEC2A3B6583009630E0 /* CheapShark */,
-			);
-			path = Services;
-			sourceTree = "<group>";
-		};
-		DB92BBEC2A3B6583009630E0 /* CheapShark */ = {
-			isa = PBXGroup;
-			children = (
-				DB92BBED2A3B6595009630E0 /* EndpointCasesCheapShark.swift */,
-				DB92BBEF2A3B65C0009630E0 /* CheapSharkServiceImplementation.swift */,
-				DB92BBF12A3B65E4009630E0 /* CheapSharkSortDeals.swift */,
-			);
-			path = CheapShark;
-			sourceTree = "<group>";
-		};
-		DB92BBF32A3B661C009630E0 /* Entities */ = {
-			isa = PBXGroup;
-			children = (
-				DB92BBF42A3B671C009630E0 /* FeedGameDealModel */,
-				DB92BBF72A3B676C009630E0 /* StoresCheapSharkModel */,
-				DB92BBFC2A3B6834009630E0 /* DealLookupModel */,
-				DBD998A72A4A30AA00D1D587 /* GameLookup */,
-				DB92BC032A3B6959009630E0 /* Mock */,
-			);
-			path = Entities;
 			sourceTree = "<group>";
 		};
 		DB92BBF42A3B671C009630E0 /* FeedGameDealModel */ = {
@@ -484,14 +541,6 @@
 			path = GameDealSwiftUIUITests;
 			sourceTree = "<group>";
 		};
-		DBBE68A42A5CBEF300EF7932 /* CheapShark */ = {
-			isa = PBXGroup;
-			children = (
-				DBD998A82A4A30DE00D1D587 /* GameLookupModel.swift */,
-			);
-			path = CheapShark;
-			sourceTree = "<group>";
-		};
 		DBC8C1122C3CE0020094865F /* Metacritic */ = {
 			isa = PBXGroup;
 			children = (
@@ -618,7 +667,7 @@
 		DBD998A72A4A30AA00D1D587 /* GameLookup */ = {
 			isa = PBXGroup;
 			children = (
-				DBBE68A42A5CBEF300EF7932 /* CheapShark */,
+				DBD998A82A4A30DE00D1D587 /* GameLookupModel.swift */,
 			);
 			path = GameLookup;
 			sourceTree = "<group>";
@@ -777,9 +826,11 @@
 				DBD998942A464C5000D1D587 /* StoreCell.swift in Sources */,
 				DBFDE30F2C53D25D00310FF9 /* ListDealConstants.swift in Sources */,
 				DB5D134C2C62CD07000B2E94 /* DealLookupView+StoresSales.swift in Sources */,
+				DB6964EA2C6FE5EF00D48837 /* CheapSharkServiceProtocol.swift in Sources */,
 				DB80A9132A6998A0005489AD /* DealLookupView+DealDetails.swift in Sources */,
 				DBD998A92A4A30DE00D1D587 /* GameLookupModel.swift in Sources */,
 				DBCF02CD2C5040BD00DCE264 /* FeedView+HilightDealsSection.swift in Sources */,
+				DB421C702C73D8600061C530 /* FormatterUseCaseImplementation.swift in Sources */,
 				DB92BC022A3B6882009630E0 /* CheapestPrice.swift in Sources */,
 				DBFDE3132C5986F700310FF9 /* Savings.swift in Sources */,
 				DB2A108E2C6F839D00D1C879 /* DependencyInjectionContainer.swift in Sources */,
@@ -803,6 +854,7 @@
 				DB2A10872C6D47D900D1C879 /* DealLookupConfigurator.swift in Sources */,
 				DBD998AC2A4B8EF100D1D587 /* DealLookupView.swift in Sources */,
 				DB2A10902C6F879900D1C879 /* Injected.swift in Sources */,
+				DB421C6E2C73BE990061C530 /* FormatterProtocol.swift in Sources */,
 				DB2A108B2C6D4A9500D1C879 /* FeedConfigurator.swift in Sources */,
 				DB95FDC42A40D997006EB578 /* FeedView.swift in Sources */,
 				DB49372E2C64EAAD005FF688 /* ScrollOffsetPreferenceKey.swift in Sources */,

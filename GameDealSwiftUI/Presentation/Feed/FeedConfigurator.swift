@@ -9,10 +9,11 @@ import Foundation
 
 final class FeedConfigurator {
     
-    var viewModel: FeedViewModel = FeedViewModel()
+    var viewModel: FeedViewModel
     
-    init() {
-        
+    init(viewModel: FeedViewModel = FeedViewModel()
+    ) {
+        self.viewModel = viewModel
     }
     
     func configure() -> FeedView {

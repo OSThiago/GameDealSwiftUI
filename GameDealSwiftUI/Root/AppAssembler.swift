@@ -15,9 +15,14 @@ struct AppAssembler: Assembler {
     func injectionRules() {
         DependencyInjectionContainer.register(type: WebScrapingUseCaseProtocol.self,
                                               WebScrapingUseCaseImplementation())
+        
         DependencyInjectionContainer.register(type: MetacriticServiceProtocol.self,
                                               MetacriticServiceImplementation())
+        
         DependencyInjectionContainer.register(type: CheapSharkServiceProtocol.self,
                                               CheapSharkServiceImplementation())
+        
+        DependencyInjectionContainer.register(type: FormatterProcol.self,
+                                              FormatterUseCaseImplementation())
     }
 }

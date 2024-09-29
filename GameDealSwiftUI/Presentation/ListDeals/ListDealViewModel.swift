@@ -7,20 +7,23 @@
 
 import SwiftUI
 
-final class ListDealViewModel: ObservableObject, FormatterDealData {
+final class ListDealViewModel: ObservableObject {
     
     @Injected var serviceCheapShark: CheapSharkServiceProtocol
+    @Injected var formatterUseCase: FormatterProcol
     
     @Published var dealList = [FeedGameDealModel]()
     @Published var viewState: ViewState = .loading
+
+    let store: StoresCheapShark
     
-    var storesInformations: [StoresCheapShark] = []
-    
-    var store: StoresCheapShark?
+    init(
+        store: StoresCheapShark
+    ) {
+        self.store = store
+    }
     
     func fetchDeals() {
-        guard let store = self.store else { return }
-        
         let endpoint = EndpointCasesCheapShark.getDealsList(pageNumber: 0,
                                                             pageSize: 30,
                                                             sortList: .DEALRATING,

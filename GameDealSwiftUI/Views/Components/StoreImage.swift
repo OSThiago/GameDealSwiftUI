@@ -22,6 +22,7 @@ struct StoreImage: View {
             switch phase  {
             case .empty:
                 ProgressView()
+                    .frame(width: size, height: size)
             case .success(let image):
                 image
                     .resizable()
@@ -30,9 +31,14 @@ struct StoreImage: View {
                     .clipped()
                     
             case .failure(_):
-                EmptyView()
+                // TODO: Criar ou adicionar em um token de simbolos
+                Image(systemName: "photo.artframe")
+                    .foregroundStyle(Tokens.color.neutral.primary)
+                    .frame(width: size, height: size)
             @unknown default:
-                EmptyView()
+                Image(systemName: "photo.artframe")
+                    .foregroundStyle(Tokens.color.neutral.primary)
+                    .frame(width: size, height: size)
             }
         }
     }

@@ -30,9 +30,9 @@ extension FeedView {
                         VStack(spacing: Tokens.padding.quarck) {
                             
                             Button {
-                                router.push(.listDeal(store: store, storesInformations: self.viewModel.storesInformations))
+                                router.push(.listDeal(store: store))
                             } label: {
-                                StoreCell(storeName: store.storeName, storeBanner: viewModel.getStoreImage(storeID: store.storeID))
+                                StoreCell(storeName: store.storeName, storeBanner: viewModel.storeImage(storeID: store.storeID))
                             }
 
                             Divider()

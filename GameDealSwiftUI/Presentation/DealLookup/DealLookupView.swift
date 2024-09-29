@@ -10,7 +10,6 @@ import SwiftUI
 struct DealLookupView: View {
     // MARK: - PROPERTIES
     @StateObject var viewModel: DealLookupViewModel
-    @Environment (\.presentationMode) var presentation
     @EnvironmentObject var router: Router
 
     let feedGameDealModel: FeedGameDealModel
@@ -96,9 +95,15 @@ extension DealLookupView {
     }
 }
 
-//struct DealLookupView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        DealLookupView(feedGameDealModel: FeedGameDealModel.riseOfIndustryMock,
-//                       viewModel: DealLookupViewModel())
-//    }
-//}
+struct DealLookupView_Previews: PreviewProvider {
+    static var previews: some View {
+        lazy var viewModel: DealLookupViewModel = {
+            let viewModel = DealLookupViewModel()
+            viewModel.viewState = .loaded
+            return viewModel
+        }()
+        
+        DealLookupConfigurator(feedGameDealModel: FeedGameDealModel.riseOfIndustryMock,
+                               viewModel: viewModel).configure()
+    }
+}

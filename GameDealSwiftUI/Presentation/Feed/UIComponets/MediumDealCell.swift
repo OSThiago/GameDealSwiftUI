@@ -90,6 +90,7 @@ extension MediumDealCell {
             switch phase  {
             case .empty:
                 ProgressView()
+                    .frame(width: cellWidth, height: imageHight)
             case .success(let image):
                 image
                     .resizable()
@@ -107,9 +108,14 @@ extension MediumDealCell {
                     }
                     
             case .failure(_):
-                EmptyView()
+                // TODO: Criar ou adicionar em um token de simbolos
+                Image(systemName: "photo.artframe")
+                    .foregroundStyle(Tokens.color.neutral.primary)
+                    .frame(width: cellWidth, height: imageHight)
             @unknown default:
-                EmptyView()
+                Image(systemName: "photo.artframe")
+                    .foregroundStyle(Tokens.color.neutral.primary)
+                    .frame(width: cellWidth, height: imageHight)
             }
         }
     }

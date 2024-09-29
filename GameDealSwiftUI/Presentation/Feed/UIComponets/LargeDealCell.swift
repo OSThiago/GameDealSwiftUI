@@ -129,6 +129,7 @@ extension LargeDealCell {
             switch phase  {
             case .empty:
                 ProgressView()
+                    .frame(width: cellWidth, height: cellHight)
             case .success(let image):
                 image
                     .resizable()
@@ -148,9 +149,14 @@ extension LargeDealCell {
                             endPoint: .bottom)
                     }
             case .failure(_):
-                EmptyView()
+                // TODO: Criar ou adicionar em um token de simbolos
+                Image(systemName: "photo.artframe")
+                    .foregroundStyle(Tokens.color.neutral.primary)
+                    .frame(width: cellWidth, height: cellHight)
             @unknown default:
-                EmptyView()
+                Image(systemName: "photo.artframe")
+                    .foregroundStyle(Tokens.color.neutral.primary)
+                    .frame(width: cellWidth, height: cellHight)
             }
         }
     }

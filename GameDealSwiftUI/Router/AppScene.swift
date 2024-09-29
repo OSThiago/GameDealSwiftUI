@@ -9,7 +9,7 @@ import SwiftUI
 
 enum AppScene {
     case feed
-    case listDeal(store: StoresCheapShark, storesInformations: [StoresCheapShark])
+    case listDeal(store: StoresCheapShark)
     case dealDetail(feedGameDealModel: FeedGameDealModel)
 }
 
@@ -20,7 +20,7 @@ extension AppScene: Hashable {
         switch self {
         case .feed:
             hasher.combine("")
-        case .listDeal(_, _):
+        case .listDeal(_):
             hasher.combine("")
         case .dealDetail(_):
             hasher.combine("")

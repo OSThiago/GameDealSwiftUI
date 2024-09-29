@@ -59,7 +59,7 @@ struct ListDealCell: View {
     // MARK: - Sale price
     @ViewBuilder
     func salePriceText() -> some View {
-        Text(salePrice)
+        Text("$\(salePrice)")
             .font(.headline)
             .fontWeight(.semibold)
             .foregroundStyle(Tokens.color.positive.secondary)
@@ -68,7 +68,7 @@ struct ListDealCell: View {
     // MARK: - Normal Price
     @ViewBuilder
     func normalPriceText() -> some View {
-        Text(normalPrice)
+        Text("$\(normalPrice)")
             .font(.footnote)
             .fontWeight(.medium)
             .strikethrough()
@@ -82,6 +82,7 @@ struct ListDealCell: View {
             switch phase  {
             case .empty:
                 ProgressView()
+                    .frame(width: imageWidth, height: imageHeight)
             case .success(let image):
                 image
                     .resizable()
@@ -91,9 +92,14 @@ struct ListDealCell: View {
                     .cornerRadius(Tokens.borderRadius.sm)
                     
             case .failure(_):
-                EmptyView()
+                // TODO: Criar ou adicionar em um token de simbolos
+                Image(systemName: "photo.artframe")
+                    .frame(width: imageWidth, height: imageHeight)
+                    .foregroundStyle(Tokens.color.neutral.primary)
             @unknown default:
-                EmptyView()
+                Image(systemName: "photo.artframe")
+                    .frame(width: imageWidth, height: imageHeight)
+                    .foregroundStyle(Tokens.color.neutral.primary)
             }
         }
     }

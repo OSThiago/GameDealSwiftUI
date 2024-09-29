@@ -12,7 +12,7 @@ extension DealLookupView {
     @ViewBuilder
     var gameImage: some View {
         
-        let url = viewModel.getHightQualityImage(url: viewModel.gameLookupModel?.info?.thumb ?? "")
+        let url = viewModel.FormatterUseCase.getHightQualityImage(url: viewModel.feedGameDealModel.thumb)
         
         let imageHeight = constants.gameImageHeight
         
@@ -81,21 +81,18 @@ extension DealLookupView {
                 
                 Spacer()
                 
-                StoreImage(storeImage: viewModel.getStoreImage(storeID: feedGameDealModel.storeID),
+                StoreImage(storeImage: viewModel.FormatterUseCase.getStoreImage(store: viewModel.store),
                            size: constants.storeImageSize)
             }
             .padding(.bottom, Tokens.padding.xs)
 
             
             HStack(alignment: .bottom) {
-//                Savings(savings: viewModel.formatSavings(feedGameDealModel.savings),
-//                        font: .body,
-//                        padding: 8)
                 
                 salePrice
 
                 normalPrice
-                                                
+
                 Spacer()
                 
                 buyButton(dealID: "game id")
@@ -113,7 +110,7 @@ extension DealLookupView {
 extension DealLookupView {
     @ViewBuilder
     var gameTitle: some View {
-        Text(viewModel.gameLookupModel?.info?.title ?? constants.error)
+        Text(viewModel.feedGameDealModel.title)
             .font(.title2)
             .fontWeight(.semibold)
     }
@@ -123,7 +120,7 @@ extension DealLookupView {
 extension DealLookupView {
     @ViewBuilder
     var salePrice: some View {
-        Text("$\(feedGameDealModel.salePrice)")
+        Text("$\(viewModel.feedGameDealModel.salePrice)")
             .font(.title2)
             .fontWeight(.bold)
             .foregroundStyle(Tokens.color.positive.secondary)
@@ -134,7 +131,7 @@ extension DealLookupView {
 extension DealLookupView {
     @ViewBuilder
     var normalPrice: some View {
-        Text("$\(feedGameDealModel.normalPrice)")
+        Text("$\(viewModel.feedGameDealModel.normalPrice)")
             .font(.subheadline)
             .fontWeight(.regular)
             .strikethrough()
@@ -145,7 +142,7 @@ extension DealLookupView {
 // MARK: - Store Name
 extension DealLookupView {
     var storeName: some View {
-        Text(viewModel.getStore(id: feedGameDealModel.storeID)?.storeName ?? constants.error)
+        Text(viewModel.store.storeName)
             .font(.body)
             .fontWeight(.medium)
             .foregroundStyle(Tokens.color.neutral.primary)

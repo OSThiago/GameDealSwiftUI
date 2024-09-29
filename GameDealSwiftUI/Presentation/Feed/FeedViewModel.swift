@@ -143,4 +143,8 @@ final class FeedViewModel: ObservableObject {
         guard let store = self.storesInformations.first(where: { $0.storeID == storeID }) else { return "" }
         return formatterUseCase.getStoreImage(store: store)
     }
+    
+    func getStore(storeID: String) -> StoresCheapShark? {
+        return self.storesInformations.first(where: {$0.storeID == storeID})
+    }
 }

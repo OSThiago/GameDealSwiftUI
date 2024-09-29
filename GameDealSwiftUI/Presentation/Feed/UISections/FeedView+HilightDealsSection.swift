@@ -24,7 +24,10 @@ extension FeedView {
                         let dealFormatted = viewModel.setupDealCell(deal)
                         
                         Button {
-                            router.push(.dealDetail(feedGameDealModel: deal))
+                            if let store = viewModel.getStore(storeID: deal.storeID) {
+                                router.push(.dealDetail(feedGameDealModel: deal,
+                                                        store: store))
+                            }
                         } label: {
                             LargeDealCell(title: dealFormatted.title, salePrice: dealFormatted.salePrice, normalPrice: dealFormatted.normalPrice, savings: dealFormatted.savings, thumb: dealFormatted.thumb, storeThumb: dealFormatted.storeID, store: viewModel.storeName(storeID: deal.storeID))
                                 .padding(.horizontal)

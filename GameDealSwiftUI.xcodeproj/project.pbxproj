@@ -77,7 +77,6 @@
 		DBD9989C2A47484700D1D587 /* ListDealsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBD9989B2A47484700D1D587 /* ListDealsView.swift */; };
 		DBD9989E2A474BAC00D1D587 /* ListDealCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBD9989D2A474BAC00D1D587 /* ListDealCell.swift */; };
 		DBD998A02A48BFCD00D1D587 /* ListDealViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBD9989F2A48BFCD00D1D587 /* ListDealViewModel.swift */; };
-		DBD998A32A49E2CB00D1D587 /* FormatterDealData.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBD998A22A49E2CB00D1D587 /* FormatterDealData.swift */; };
 		DBD998A62A4A2C7900D1D587 /* TestGameLookUp.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBD998A52A4A2C7900D1D587 /* TestGameLookUp.swift */; };
 		DBD998A92A4A30DE00D1D587 /* GameLookupModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBD998A82A4A30DE00D1D587 /* GameLookupModel.swift */; };
 		DBD998AC2A4B8EF100D1D587 /* DealLookupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBD998AB2A4B8EF100D1D587 /* DealLookupView.swift */; };
@@ -178,7 +177,6 @@
 		DBD9989B2A47484700D1D587 /* ListDealsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListDealsView.swift; sourceTree = "<group>"; };
 		DBD9989D2A474BAC00D1D587 /* ListDealCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListDealCell.swift; sourceTree = "<group>"; };
 		DBD9989F2A48BFCD00D1D587 /* ListDealViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListDealViewModel.swift; sourceTree = "<group>"; };
-		DBD998A22A49E2CB00D1D587 /* FormatterDealData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormatterDealData.swift; sourceTree = "<group>"; };
 		DBD998A52A4A2C7900D1D587 /* TestGameLookUp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestGameLookUp.swift; sourceTree = "<group>"; };
 		DBD998A82A4A30DE00D1D587 /* GameLookupModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameLookupModel.swift; sourceTree = "<group>"; };
 		DBD998AB2A4B8EF100D1D587 /* DealLookupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DealLookupView.swift; sourceTree = "<group>"; };
@@ -628,7 +626,6 @@
 				DB2A108C2C6F833700D1C879 /* DependencyInjection */,
 				DBCF02D22C51364600DCE264 /* DesignSystem */,
 				DBD998952A472B0F00D1D587 /* ScreenSize.swift */,
-				DBD998A22A49E2CB00D1D587 /* FormatterDealData.swift */,
 				DB80A9142A699ED2005489AD /* View+onBackSwipe.swift */,
 				DB40304C2C45A75A000DCFD1 /* ViewState.swift */,
 				DB49372D2C64EAAD005FF688 /* ScrollOffsetPreferenceKey.swift */,
@@ -858,7 +855,6 @@
 				DB2A108B2C6D4A9500D1C879 /* FeedConfigurator.swift in Sources */,
 				DB95FDC42A40D997006EB578 /* FeedView.swift in Sources */,
 				DB49372E2C64EAAD005FF688 /* ScrollOffsetPreferenceKey.swift in Sources */,
-				DBD998A32A49E2CB00D1D587 /* FormatterDealData.swift in Sources */,
 				DB4937352C65013C005FF688 /* WebScrapingUseCaseProtocol.swift in Sources */,
 				DBCF02CF2C51264000DCE264 /* DealsByStoreSection.swift in Sources */,
 				DB2A10802C6D1AA600D1C879 /* AppScene.swift in Sources */,

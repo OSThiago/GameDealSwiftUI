@@ -9,29 +9,34 @@ import SwiftUI
 
 // TODO: - adicionar use case de formatação
 
-final class DealLookupViewModel: ObservableObject, FormatterDealData {
+final class DealLookupViewModel: ObservableObject {
     
     @Injected var ServiceMetacritic: MetacriticServiceProtocol
     @Injected var ServiceCheapShark: CheapSharkServiceProtocol
+    @Injected var FormatterUseCase: FormatterProcol
     
-    var storesInformations: [StoresCheapShark] = []
+    let feedGameDealModel: FeedGameDealModel
+    let store: StoresCheapShark
     
-    // To fetch when get gameID
     @Published var gameLookupModel: GameLookupModel?
-    
-    // To recive from feed
-    @Published var feedGameDealModel: FeedGameDealModel?
+    @Published var storesInformations: [StoresCheapShark] = []
     @Published var metacriticDetailModel: MetacriticDetailModel?
     @Published var viewState: ViewState = .loading
-    
     @Published var scrollPosition: CGPoint = .zero
     @Published var showNavigationTitle = false
     
-    @MainActor
-    func setupView(feedGameDealModel: FeedGameDealModel) async {
+    init(
+        feedGameDealModel: FeedGameDealModel,
+        store: StoresCheapShark
+    ) {
         self.feedGameDealModel = feedGameDealModel
+        self.store = store
+    }
+    
+    @MainActor
+    func viewDidLoad() async {
         fetchStoresInformations()
-        fetchDealLookup(gameID: feedGameDealModel.gameID)
+        fetchDealLookup(gameID: self.feedGameDealModel.gameID)
         self.metacriticDetailModel = await fetchMetacriticDetailsInformation(metacriticLink: feedGameDealModel.metacriticLink ?? "")
     }
     
@@ -39,7 +44,7 @@ final class DealLookupViewModel: ObservableObject, FormatterDealData {
         if showNavigationBar() {
             return ""
         }
-        return feedGameDealModel?.title ?? "Unknown"
+        return feedGameDealModel.title
     }
     
     func showNavigationBar() -> Bool {
@@ -82,19 +87,7 @@ final class DealLookupViewModel: ObservableObject, FormatterDealData {
             }
         }
     }
-    
-//    func formatSavings(_ savings: String) -> String {
-//        var savingFormatted = ""
-//        
-//        let index = savings.firstIndex(of: ".") ?? savings.endIndex
-//        
-//        let beginning = savings[..<index]
-//        
-//        savingFormatted = String(beginning)
-//        
-//        return savingFormatted
-//    }
-    
+
     func isCheaper(chepeast: String?, value: String?) -> Bool {
         guard let cheapestDouble = Double(chepeast!) else { return false }
         guard let valueDouble = Double(value!) else { return false }
@@ -104,6 +97,10 @@ final class DealLookupViewModel: ObservableObject, FormatterDealData {
         }
         
         return false
+    }
+    
+    func getStore(storeID: String) -> StoresCheapShark? {
+        return storesInformations.first(where: { $0.storeID == storeID })
     }
     
     // MARK: - Metacritic

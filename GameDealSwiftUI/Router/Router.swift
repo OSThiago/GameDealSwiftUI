@@ -32,8 +32,9 @@ extension Router {
             FeedConfigurator().configure()
         case .listDeal(let store):
             ListDealsConfigurator(store: store).configure()
-        case .dealDetail(let feedGameDealModel):
-            DealLookupConfigurator(feedGameDealModel: feedGameDealModel).configure()
+        case .dealDetail(let feedGameDealModel, let store):
+            DealLookupConfigurator(feedGameDealModel: feedGameDealModel,
+                                   store: store).configure()
         }
     }
 }

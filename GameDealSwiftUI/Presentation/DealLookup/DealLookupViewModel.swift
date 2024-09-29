@@ -7,6 +7,8 @@
 
 import SwiftUI
 
+// TODO: - adicionar use case de formatação
+
 final class DealLookupViewModel: ObservableObject, FormatterDealData {
     
     @Injected var ServiceMetacritic: MetacriticServiceProtocol

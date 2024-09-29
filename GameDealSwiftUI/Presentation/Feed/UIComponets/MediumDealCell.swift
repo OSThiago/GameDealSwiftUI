@@ -90,6 +90,7 @@ extension MediumDealCell {
             switch phase  {
             case .empty:
                 ProgressView()
+                    .frame(width: cellWidth, height: imageHight)
             case .success(let image):
                 image
                     .resizable()
@@ -108,8 +109,10 @@ extension MediumDealCell {
                     
             case .failure(_):
                 EmptyView()
+                    .frame(width: cellWidth, height: imageHight)
             @unknown default:
                 EmptyView()
+                    .frame(width: cellWidth, height: imageHight)
             }
         }
     }

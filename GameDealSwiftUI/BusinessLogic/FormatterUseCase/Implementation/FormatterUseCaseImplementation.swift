@@ -8,6 +8,9 @@
 import Foundation
 
 struct FormatterUseCaseImplementation: FormatterProcol {
+    
+    // TODO: - Adicionar forma para colocar imagens de outras fontes também
+    
     /// Replace url to another url with hight quality image
     /// - Parameter url: `String` with url with original quality
     /// - Returns: `String` url with hight quality image

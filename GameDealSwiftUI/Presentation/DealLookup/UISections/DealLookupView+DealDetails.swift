@@ -20,6 +20,7 @@ extension DealLookupView {
             switch phase  {
             case .empty:
                 ProgressView()
+                    .frame(width: ScreenSize.width, height: imageHeight)
             case .success(let image):
                 GeometryReader { reader in
                     let offsetY = reader.frame(in: .global).minY

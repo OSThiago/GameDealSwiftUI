@@ -82,6 +82,7 @@ struct ListDealCell: View {
             switch phase  {
             case .empty:
                 ProgressView()
+                    .frame(width: imageWidth, height: imageHeight)
             case .success(let image):
                 image
                     .resizable()
@@ -92,8 +93,10 @@ struct ListDealCell: View {
                     
             case .failure(_):
                 EmptyView()
+                    .frame(width: imageWidth, height: imageHeight)
             @unknown default:
                 EmptyView()
+                    .frame(width: imageWidth, height: imageHeight)
             }
         }
     }

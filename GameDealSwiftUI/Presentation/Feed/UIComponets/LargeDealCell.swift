@@ -129,6 +129,7 @@ extension LargeDealCell {
             switch phase  {
             case .empty:
                 ProgressView()
+                    .frame(width: cellWidth, height: cellHight)
             case .success(let image):
                 image
                     .resizable()
@@ -149,8 +150,10 @@ extension LargeDealCell {
                     }
             case .failure(_):
                 EmptyView()
+                    .frame(width: cellWidth, height: cellHight)
             @unknown default:
                 EmptyView()
+                    .frame(width: cellWidth, height: cellHight)
             }
         }
     }

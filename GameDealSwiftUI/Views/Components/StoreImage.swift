@@ -22,6 +22,7 @@ struct StoreImage: View {
             switch phase  {
             case .empty:
                 ProgressView()
+                    .frame(width: size, height: size)
             case .success(let image):
                 image
                     .resizable()
@@ -31,8 +32,10 @@ struct StoreImage: View {
                     
             case .failure(_):
                 EmptyView()
+                    .frame(width: size, height: size)
             @unknown default:
                 EmptyView()
+                    .frame(width: size, height: size)
             }
         }
     }

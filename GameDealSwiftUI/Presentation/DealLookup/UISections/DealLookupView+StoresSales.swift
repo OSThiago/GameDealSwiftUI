@@ -28,16 +28,14 @@ extension DealLookupView {
                     LazyHGrid(rows: rows, spacing: 0) {
                         ForEach(viewModel.gameLookupModel?.deals ?? [], id: \.dealID) { deal in
                             VStack {
-
-                                let storeInformation = viewModel.getStore(id: deal.storeID ?? "0")
-                                
-                                let storeImage = viewModel.getStoreImage(storeID: storeInformation?.storeID ?? "0")
-                                
-                                LookupDealStoreCell(storeImage: storeImage, 
-                                                    storeTitle: storeInformation?.storeName,
-                                                    dealPrice: deal.price,
-                                                    isCheaper: viewModel.isCheaper(chepeast: viewModel.feedGameDealModel?.salePrice, 
-                                                                                   value: deal.price))
+                                if let store = viewModel.getStore(storeID: deal.storeID ?? "") {
+                                    let storeImage = viewModel.FormatterUseCase.getStoreImage(store: store)
+                                    LookupDealStoreCell(storeImage: storeImage,
+                                                        storeTitle: store.storeName,
+                                                        dealPrice: deal.price,
+                                                        isCheaper: viewModel.isCheaper(chepeast: viewModel.feedGameDealModel.salePrice,
+                                                                                       value: deal.price))
+                                }
 
                                 Divider()
                                     .padding(.leading)
@@ -52,13 +50,13 @@ extension DealLookupView {
 
 struct StoresDealsSection_Previews: PreviewProvider {
     static var previews: some View {
-        lazy var viewModel: DealLookupViewModel = {
-            let viewModel = DealLookupViewModel()
-            viewModel.viewState = .loaded
-            return viewModel
-        }()
-        
+//        lazy var viewModel: DealLookupViewModel = {
+//            let viewModel = DealLookupViewModel(feedGameDealModel: <#FeedGameDealModel#>, store: <#StoresCheapShark#>)
+//            viewModel.viewState = .loaded
+//            return viewModel
+//        }()
+//        
         DealLookupConfigurator(feedGameDealModel: FeedGameDealModel.riseOfIndustryMock,
-                               viewModel: viewModel).configure()
+                               store: .steamMock).configure()
     }
 }

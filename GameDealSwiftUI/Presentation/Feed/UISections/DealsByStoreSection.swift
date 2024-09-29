@@ -50,9 +50,12 @@ extension FeedView {
                     ForEach(deals, id: \.dealID) { deal in
                         
                         let dealFormatted = viewModel.setupDealCell(deal)
-
+                        
                         Button {
-                            router.push(.dealDetail(feedGameDealModel: deal))
+                            if let store = viewModel.getStore(storeID: deal.storeID) {
+                                router.push(.dealDetail(feedGameDealModel: deal,
+                                                        store: store))
+                            }
                         } label: {
                             MediumDealCell(title: dealFormatted.title, salePrice: dealFormatted.salePrice, normalPrice: dealFormatted.normalPrice, savings: dealFormatted.savings, thumb: dealFormatted.thumb, storeThumb: dealFormatted.storeID)
                                 .padding(.leading)

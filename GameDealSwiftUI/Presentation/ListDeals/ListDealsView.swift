@@ -61,7 +61,8 @@ extension ListDealsView {
                 VStack(spacing: Tokens.padding.nano) {
                     ForEach(viewModel.dealList, id: \.dealID) { deal in
                         Button {
-                            router.push(.dealDetail(feedGameDealModel: deal))
+                            router.push(.dealDetail(feedGameDealModel: deal,
+                                                    store: viewModel.store))
                         } label: {
                             ListDealCell(title: deal.title,
                                          salePrice: deal.salePrice,

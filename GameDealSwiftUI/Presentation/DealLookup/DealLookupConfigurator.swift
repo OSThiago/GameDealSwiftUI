@@ -10,18 +10,21 @@ import Foundation
 final class DealLookupConfigurator {
     
     let feedGameDealModel: FeedGameDealModel
+    let store: StoresCheapShark
     
-    var viewModel: DealLookupViewModel
+    lazy var viewModel: DealLookupViewModel = {
+        return .init(feedGameDealModel: self.feedGameDealModel,
+                     store: store)
+    }()
     
     init(feedGameDealModel: FeedGameDealModel,
-         viewModel: DealLookupViewModel = .init()
+         store: StoresCheapShark
     ) {
         self.feedGameDealModel = feedGameDealModel
-        self.viewModel = viewModel
+        self.store = store
     }
     
     func configure() -> DealLookupView {
-        return .init(feedGameDealModel: self.feedGameDealModel,
-                     viewModel: self.viewModel)
+        return .init(viewModel: self.viewModel)
     }
 }

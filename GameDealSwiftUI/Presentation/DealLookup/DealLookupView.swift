@@ -12,11 +12,9 @@ struct DealLookupView: View {
     @StateObject var viewModel: DealLookupViewModel
     @EnvironmentObject var router: Router
 
-    let feedGameDealModel: FeedGameDealModel
     let constants = DealLookupConstants()
     
-    init(feedGameDealModel: FeedGameDealModel, viewModel: DealLookupViewModel) {
-        self.feedGameDealModel = feedGameDealModel
+    init(viewModel: DealLookupViewModel) {
         self._viewModel = StateObject(wrappedValue: viewModel)
     }
     
@@ -25,7 +23,7 @@ struct DealLookupView: View {
         buildedContent
             .onAppear {
                 Task {
-                    await viewModel.setupView(feedGameDealModel: self.feedGameDealModel)
+                    await viewModel.viewDidLoad()
                 }
             }
             .onBackSwipe {
@@ -59,7 +57,7 @@ extension DealLookupView {
                 ZStack(alignment: .bottomTrailing) {
                     gameImage
                     
-                    Savings(savings: viewModel.formatSavings(feedGameDealModel.savings),
+                    Savings(savings: viewModel.FormatterUseCase.formatSavings(viewModel.feedGameDealModel.savings),
                             font: .body,
                             padding: Tokens.padding.nano)
                     .padding(Tokens.padding.nano)
@@ -98,12 +96,13 @@ extension DealLookupView {
 struct DealLookupView_Previews: PreviewProvider {
     static var previews: some View {
         lazy var viewModel: DealLookupViewModel = {
-            let viewModel = DealLookupViewModel()
+            let viewModel = DealLookupViewModel(feedGameDealModel: .riseOfIndustryMock,
+                                                store: .steamMock)
             viewModel.viewState = .loaded
             return viewModel
         }()
         
         DealLookupConfigurator(feedGameDealModel: FeedGameDealModel.riseOfIndustryMock,
-                               viewModel: viewModel).configure()
+                               store: .steamMock).configure()
     }
 }

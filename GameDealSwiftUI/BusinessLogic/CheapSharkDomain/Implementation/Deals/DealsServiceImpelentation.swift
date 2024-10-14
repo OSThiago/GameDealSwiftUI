@@ -6,7 +6,7 @@
 //
 import Foundation
 
-struct CSDealsServiceImpelentation: DealsProtocol {
+struct DealsServiceImpelentation: DealsProtocol {
     func dealsList(endPoint: EndPointProtocol) async throws -> [DealModel] {
         return try await getRequest(endpoint: endPoint)
     }

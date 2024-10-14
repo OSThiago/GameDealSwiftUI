@@ -89,7 +89,7 @@
 		DBEBE62A2CAB3DEE00F155D8 /* DealsQuery.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBEBE6292CAB3DE600F155D8 /* DealsQuery.swift */; };
 		DBEBE62D2CAB54CE00F155D8 /* EndPointProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBEBE62C2CAB54CE00F155D8 /* EndPointProtocol.swift */; };
 		DBEBE6312CAB566400F155D8 /* DealsEndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBEBE6302CAB566400F155D8 /* DealsEndPoint.swift */; };
-		DBEBE6362CAB5D0800F155D8 /* CSDealsServiceImpelentation.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBEBE6352CAB5CBD00F155D8 /* CSDealsServiceImpelentation.swift */; };
+		DBEBE6362CAB5D0800F155D8 /* DealsServiceImpelentation.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBEBE6352CAB5CBD00F155D8 /* DealsServiceImpelentation.swift */; };
 		DBEBE6392CAC43A400F155D8 /* GamesEndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBEBE6382CAC439F00F155D8 /* GamesEndPoint.swift */; };
 		DBEBE63B2CAC446100F155D8 /* GameQuery.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBEBE63A2CAC445800F155D8 /* GameQuery.swift */; };
 		DBEBE63E2CAC46BE00F155D8 /* GameModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBEBE63D2CAC463700F155D8 /* GameModel.swift */; };
@@ -202,7 +202,7 @@
 		DBEBE6292CAB3DE600F155D8 /* DealsQuery.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DealsQuery.swift; sourceTree = "<group>"; };
 		DBEBE62C2CAB54CE00F155D8 /* EndPointProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndPointProtocol.swift; sourceTree = "<group>"; };
 		DBEBE6302CAB566400F155D8 /* DealsEndPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DealsEndPoint.swift; sourceTree = "<group>"; };
-		DBEBE6352CAB5CBD00F155D8 /* CSDealsServiceImpelentation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CSDealsServiceImpelentation.swift; sourceTree = "<group>"; };
+		DBEBE6352CAB5CBD00F155D8 /* DealsServiceImpelentation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DealsServiceImpelentation.swift; sourceTree = "<group>"; };
 		DBEBE6382CAC439F00F155D8 /* GamesEndPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GamesEndPoint.swift; sourceTree = "<group>"; };
 		DBEBE63A2CAC445800F155D8 /* GameQuery.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameQuery.swift; sourceTree = "<group>"; };
 		DBEBE63D2CAC463700F155D8 /* GameModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameModel.swift; sourceTree = "<group>"; };
@@ -769,7 +769,7 @@
 		DBEBE6282CAB3DBA00F155D8 /* Deals */ = {
 			isa = PBXGroup;
 			children = (
-				DBEBE6352CAB5CBD00F155D8 /* CSDealsServiceImpelentation.swift */,
+				DBEBE6352CAB5CBD00F155D8 /* DealsServiceImpelentation.swift */,
 				DBEBE6292CAB3DE600F155D8 /* DealsQuery.swift */,
 				DBEBE6302CAB566400F155D8 /* DealsEndPoint.swift */,
 			);
@@ -947,7 +947,7 @@
 				DB6964EA2C6FE5EF00D48837 /* CheapSharkServiceProtocol.swift in Sources */,
 				DB80A9132A6998A0005489AD /* DealLookupView+DealDetails.swift in Sources */,
 				DBD998A92A4A30DE00D1D587 /* GameLookupModel.swift in Sources */,
-				DBEBE6362CAB5D0800F155D8 /* CSDealsServiceImpelentation.swift in Sources */,
+				DBEBE6362CAB5D0800F155D8 /* DealsServiceImpelentation.swift in Sources */,
 				DBCF02CD2C5040BD00DCE264 /* FeedView+HilightDealsSection.swift in Sources */,
 				DB421C702C73D8600061C530 /* FormatterUseCaseImplementation.swift in Sources */,
 				DB92BC022A3B6882009630E0 /* CheapestPriceEver.swift in Sources */,

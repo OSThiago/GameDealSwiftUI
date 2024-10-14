@@ -14,7 +14,7 @@ struct DealsServiceImpelentation: DealsProtocol {
         return try await serviceUseCase.fetch(endpoint: endPoint)
     }
     
-    func dealLookup(endPoint: DealsEndPoint) async throws -> DealModel {
+    func dealLookup(endPoint: DealsEndPoint) async throws -> DealLookup {
         return try await serviceUseCase.fetch(endpoint: endPoint)
     }
 }

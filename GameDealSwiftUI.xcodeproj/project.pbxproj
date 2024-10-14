@@ -391,8 +391,6 @@
 			isa = PBXGroup;
 			children = (
 				DB92BBF42A3B671C009630E0 /* FeedGameDealModel */,
-				DB92BBF72A3B676C009630E0 /* StoresCheapSharkModel */,
-				DB92BBFC2A3B6834009630E0 /* DealLookupModel */,
 				DBD998A72A4A30AA00D1D587 /* GameLookup */,
 				DB92BC032A3B6959009630E0 /* Mock */,
 			);
@@ -410,9 +408,7 @@
 		DB6964EB2C6FE64E00D48837 /* Service */ = {
 			isa = PBXGroup;
 			children = (
-				DB92BBE42A3B602D009630E0 /* BaseURL.swift */,
 				DB92BBE62A3B60AF009630E0 /* Endpoint.swift */,
-				DB92BBE82A3B60F1009630E0 /* ServiceError.swift */,
 				DB92BBEA2A3B610C009630E0 /* Response.swift */,
 				DB92BBED2A3B6595009630E0 /* EndpointCasesCheapShark.swift */,
 				DB92BBF12A3B65E4009630E0 /* CheapSharkSortDeals.swift */,
@@ -433,6 +429,8 @@
 			isa = PBXGroup;
 			children = (
 				DB6A8ABC2CBD7067001E1581 /* ServiceImplementation.swift */,
+				DB92BBE42A3B602D009630E0 /* BaseURL.swift */,
+				DB92BBE82A3B60F1009630E0 /* ServiceError.swift */,
 			);
 			path = Implementation;
 			sourceTree = "<group>";
@@ -806,7 +804,9 @@
 			isa = PBXGroup;
 			children = (
 				DBEBE6252CAB395D00F155D8 /* DealModel */,
+				DB92BBFC2A3B6834009630E0 /* DealLookupModel */,
 				DBEBE63C2CAC462200F155D8 /* GamesModel */,
+				DB92BBF72A3B676C009630E0 /* StoresCheapSharkModel */,
 			);
 			path = Data;
 			sourceTree = "<group>";

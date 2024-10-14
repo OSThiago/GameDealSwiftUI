@@ -27,5 +27,14 @@ struct AppAssembler: Assembler {
         
         DependencyInjectionContainer.register(type: ServiceProtocol.self,
                                               ServiceImplementation())
+        
+        DependencyInjectionContainer.register(type: DealsProtocol.self,
+                                              DealsServiceImpelentation())
+        
+        DependencyInjectionContainer.register(type: GamesProtocol.self,
+                                              GamesServiceImplementation())
+        
+        DependencyInjectionContainer.register(type: StoresProtocol.self,
+                                              StoresImplementation())
     }
 }

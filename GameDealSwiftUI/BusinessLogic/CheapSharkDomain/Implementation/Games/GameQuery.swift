@@ -24,3 +24,18 @@ enum GameQuery {
     /// Flag to allow only exact string match for title parameter
     case exact(isActive: Bool)
 }
+
+extension GameQuery {
+    var queryItem: URLQueryItem {
+        switch self {
+        case .title(let title):
+            URLQueryItem(name: "title", value: title)
+        case .limit(let limit):
+            URLQueryItem(name: "limit", value: limit.description)
+        case .steamAppID(let id):
+            URLQueryItem(name: "steamAppID", value: id.description)
+        case .exact(let isActive):
+            URLQueryItem(name: "exact", value: isActive.stringValue)
+        }
+    }
+}

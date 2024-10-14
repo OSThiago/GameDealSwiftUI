@@ -10,5 +10,6 @@ import Foundation
 struct StoresCheapShark: Codable {
     let storeID: String
     let storeName: String
+    let isActive: Bool
     let images: StoreImagesCheapShark
 }

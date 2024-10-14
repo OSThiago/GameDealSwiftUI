@@ -24,5 +24,8 @@ struct AppAssembler: Assembler {
         
         DependencyInjectionContainer.register(type: FormatterProcol.self,
                                               FormatterUseCaseImplementation())
+        
+        DependencyInjectionContainer.register(type: ServiceProtocol.self,
+                                              ServiceImplementation())
     }
 }

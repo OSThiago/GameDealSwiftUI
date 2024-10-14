@@ -7,6 +7,6 @@
 import Foundation
 
 protocol DealsProtocol {
-    func dealsList(endPoint: EndPointProtocol) async throws -> [DealModel]
-    func dealLookup(endPoint: EndPointProtocol) async throws -> DealModel
+    func dealsList(endPoint: DealsEndPoint) async throws -> [DealModel]
+    func dealLookup(endPoint: DealsEndPoint) async throws -> DealModel
 }

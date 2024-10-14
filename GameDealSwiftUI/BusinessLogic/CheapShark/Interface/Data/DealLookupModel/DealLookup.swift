@@ -15,6 +15,6 @@ struct DealLookup: Codable {
     let retailPrice: String
     let thumb: String
     let cheaperStores: [CheaperStores]
-    let cheapestPrice: CheapestPrice
+    let cheapestPrice: CheapestPriceEver
     let metacriticLink: String
 }

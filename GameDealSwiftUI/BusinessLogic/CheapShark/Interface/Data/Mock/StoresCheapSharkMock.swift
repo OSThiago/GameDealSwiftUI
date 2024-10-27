@@ -11,7 +11,7 @@ extension StoresCheapShark {
     static let steamMock: Self = .init(
         storeID: "1",
         storeName: "Steam",
-//        isActive: true,
+        isActive: 1,
         images: StoreImagesCheapShark.steamMockImages)
 }
 

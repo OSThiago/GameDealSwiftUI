@@ -8,8 +8,7 @@
 import SwiftUI
 
 final class FeedViewModel: ObservableObject {
-    
-//    @Injected var serviceCheapShark: CheapSharkServiceProtocol
+
     @Injected var storesUseCase: StoresProtocol
     @Injected var dealsUseCase: DealsProtocol
     @Injected var formatterUseCase: FormatterProcol
@@ -29,16 +28,15 @@ final class FeedViewModel: ObservableObject {
         await displayDealsStores()
     }
     
-    // Funcs
+    // MARK: - Stores
     private func fetchStores() async {
-        if !storesInformations.isEmpty {
-            return
-        }
         do {
             let stores = try await storesUseCase.storesInformation(endpoint: .storesInformation)
             
+            let activeStores = stores.filter { $0.isActive == 1 }
+            
             DispatchQueue.main.async {
-                self.storesInformations = stores
+                self.storesInformations = activeStores
             }
         } catch {
             // TODO: - Tratar erro
@@ -46,6 +44,7 @@ final class FeedViewModel: ObservableObject {
         }
     }
     
+    // MARK: - Best Deals
     private func displayDealsAAA() async {
         
         if !dealsAAA.isEmpty {
@@ -56,7 +55,7 @@ final class FeedViewModel: ObservableObject {
             .pageNumber(number: 0),
             .pageSize(size: 8),
             .sortBy(option: CheapSharkSortDeals.DEALRATING.rawValue),
-            .AAA(isActive: true)
+            .AAA(isActive: true),
         ])
 
         do {
@@ -101,6 +100,8 @@ final class FeedViewModel: ObservableObject {
         }
     }
     
+    
+    // MARK: - Deals by stores
     private func displayDealsStores() async {
         let selectedStores = ["Steam", "Epic Games Store", "GreenManGaming" , "GOG"]
         

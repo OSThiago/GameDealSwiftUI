@@ -23,7 +23,10 @@ struct ListDealsView: View {
     var body: some View {
         buildedContent
         .onAppear {
-            viewModel.fetchDeals()
+//            viewModel.fetchDeals()
+            Task {
+                await viewModel.fetchDealsTest()
+            }
         }
         .navigationTitle(viewModel.store.storeName)
         .navigationBarTitleDisplayMode(.inline)

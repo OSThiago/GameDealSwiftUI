@@ -46,4 +46,47 @@ final class ListDealViewModel: ObservableObject {
             }
         }
     }
+    
+    @MainActor
+    func fetchDealsTest() async {
+        
+        let service: DealsProtocol = DealsServiceImpelentation()
+        
+        let query:[DealsQuery] = [
+            .pageNumber(number: 0),
+            .pageSize(size: 30),
+            .sortBy(option: CheapSharkSortDeals.DEALRATING.rawValue),
+            .AAA(isActive: true),
+            .storeID(id: store.storeID),
+            .metacritic(rating: 50)
+        ]
+        
+        let endpoint: DealsEndPoint = .dealsList(queryItens: query)
+        
+        do {
+            let deals = try await service.dealsList(endPoint: endpoint)
+            
+            let result = deals.map { dealModel in
+                FeedGameDealModel(gameID: dealModel.gameID ?? "unknown",
+                                  dealID: dealModel.dealID ?? "unknown",
+                                  storeID: dealModel.storeID ?? "unknown",
+                                  title: dealModel.title ?? "unknown",
+                                  salePrice: dealModel.salePrice ?? "unknown",
+                                  normalPrice: dealModel.normalPrice ?? "unknown",
+                                  savings: dealModel.savings ?? "unknown",
+                                  thumb: dealModel.thumb ?? "unknown",
+                                  metacriticLink: dealModel.metacriticLink ?? "unknown")
+            }
+            
+            self.dealList = result
+            
+            withAnimation(.linear) {
+                self.viewState = .loaded
+            }
+
+        } catch {
+            print(error)
+            self.viewState = .error
+        }
+    }
 }

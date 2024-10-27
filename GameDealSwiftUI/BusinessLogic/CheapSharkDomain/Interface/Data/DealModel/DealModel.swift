@@ -5,7 +5,7 @@
 //  Created by Thiago de Oliveira Sousa on 30/09/24.
 //
 
-struct DealModel: Codable {
+struct DealModel: Codable, Hashable {
     let internalName: String?
     let title: String?
     let metacriticLink: String?

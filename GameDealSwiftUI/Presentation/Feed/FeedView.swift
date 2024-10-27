@@ -21,11 +21,14 @@ struct FeedView: View {
     
     var body: some View {
         buildedContent
-            .onAppear {
-                Task {
-                    viewModel.viewDidLoad()
-                }
+            .task {
+                await viewModel.viewDidLoad()
             }
+//            .onAppear {
+//                Task {
+//                    viewModel.viewDidLoad()
+//                }
+//            }
     }
 }
 

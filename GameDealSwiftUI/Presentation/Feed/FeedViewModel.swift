@@ -9,7 +9,9 @@ import SwiftUI
 
 final class FeedViewModel: ObservableObject {
     
-    @Injected var serviceCheapShark: CheapSharkServiceProtocol
+//    @Injected var serviceCheapShark: CheapSharkServiceProtocol
+    @Injected var storesUseCase: StoresProtocol
+    @Injected var dealsUseCase: DealsProtocol
     @Injected var formatterUseCase: FormatterProcol
     
     // Data
@@ -21,68 +23,83 @@ final class FeedViewModel: ObservableObject {
     @Published var isLoadedAAAGames = false
     @Published var isLoadedStoreGames = false
 
-    func viewDidLoad() {
-        fetchStores()
-        displayDealsAAA()
+    func viewDidLoad() async {
+        await fetchStores()
+        await displayDealsAAA()
+        await displayDealsStores()
     }
     
     // Funcs
-    private func fetchStores() {
+    private func fetchStores() async {
         if !storesInformations.isEmpty {
             return
         }
-        
-        serviceCheapShark.getStores { result in
-            switch result {
-            case .success(let stores):
-                DispatchQueue.main.async {
-                    self.storesInformations = stores
-                    self.displayDealsStores()
-                }
-            case .failure(let failure):
-                // TODO: - Tratar erro
-                print(" erro ao baixar store image - \(failure)")
+        do {
+            let stores = try await storesUseCase.storesInformation(endpoint: .storesInformation)
+            
+            DispatchQueue.main.async {
+                self.storesInformations = stores
             }
+        } catch {
+            // TODO: - Tratar erro
+            print(" erro ao baixar store image - \(error)")
         }
     }
     
-    private func displayDealsAAA() {
+    private func displayDealsAAA() async {
         
         if !dealsAAA.isEmpty {
             return
         }
         
-        let endpoint = EndpointCasesCheapShark.getDealsList(pageNumber: 0,
-                                                            pageSize: 8,
-                                                            sortList: .DEALRATING,
-                                                            AAA: true,
-                                                            storeID: nil)
-        
-        serviceCheapShark.getDealsList(endpoint: endpoint) { result in
-            switch result {
-            case .success(let deals):
-                DispatchQueue.main.async { [weak self] in
-                    
-                    var filtered = [FeedGameDealModel]()
-                    
-                    for deal in deals {
-                        if !filtered.contains(where: { $0.title == deal.title }) {
-                            filtered.append(deal)
-                        }
-                    }
-                    
-                    self?.dealsAAA = filtered
-                    self?.isLoadedAAAGames = true
-                    self?.checkIsLoadedInfos()
-                }
-            case .failure(let failure):
-                // TODO: - Tratar erro
-                print(failure)
+        let endpoint = DealsEndPoint.dealsList(queryItens: [
+            .pageNumber(number: 0),
+            .pageSize(size: 8),
+            .sortBy(option: CheapSharkSortDeals.DEALRATING.rawValue),
+            .AAA(isActive: true)
+        ])
+
+        do {
+            let deals = try await dealsUseCase.dealsList(endPoint: endpoint)
+            
+            DispatchQueue.main.async {
+                self.dealsAAA = self.parseDealsModel(deals: deals).uniqued()
+                self.isLoadedAAAGames = true
+                self.checkIsLoadedInfos()
             }
+            
+        } catch {
+            // TODO: - Tratar erro
+            print(error)
         }
     }
     
-    private func displayDealsStores() {
+    func unrepeatedFilter(deals: [DealModel]) async -> [DealModel] {
+        var unrepeatedFilter = [DealModel]()
+        
+        for deal in deals {
+            if !unrepeatedFilter.contains(where: { $0.title == deal.title }) {
+                unrepeatedFilter.append(deal)
+            }
+        }
+        return unrepeatedFilter
+    }
+    
+    private func parseDealsModel(deals: [DealModel]) -> [FeedGameDealModel] {
+        return deals.compactMap { deal in
+            FeedGameDealModel(gameID: deal.gameID ?? "",
+                              dealID: deal.dealID ?? "",
+                              storeID: deal.storeID ?? "",
+                              title: deal.title ?? "",
+                              salePrice: deal.salePrice ?? "",
+                              normalPrice: deal.normalPrice ?? "",
+                              savings: deal.savings ?? "",
+                              thumb: deal.thumb ?? "",
+                              metacriticLink: deal.metacriticLink ?? "")
+        }
+    }
+    
+    private func displayDealsStores() async {
         let selectedStores = ["Steam", "Epic Games Store", "GreenManGaming" , "GOG"]
         
         if !storesDeals.isEmpty {
@@ -93,21 +110,26 @@ final class FeedViewModel: ObservableObject {
             
             guard let store = storesInformations.first(where: {$0.storeName == selectedStore}) else { return }
             
-            let endpoint = EndpointCasesCheapShark.getDealsList(pageNumber: 0, pageSize: 10, sortList: .DEALRATING, AAA: false, storeID: store.storeID)
+            let endpoint = DealsEndPoint.dealsList(queryItens: [
+                .pageNumber(number: 0),
+                .pageSize(size: 10),
+                .sortBy(option: CheapSharkSortDeals.DEALRATING.rawValue),
+                .AAA(isActive: false),
+                .storeID(id: store.storeID)
+            ])
             
-            serviceCheapShark.getDealsList(endpoint: endpoint) { result in
-                switch result {
-                case .success(let deals):
-                    DispatchQueue.main.async {
-                        self.storesDeals.append((store: store, dealsList: deals))
-                        self.isLoadedStoreGames = true
-                        self.checkIsLoadedInfos()
-                    }
-                case .failure(let failure):
-                    // TODO: - Tratar erro
-                    print(failure)
+            do {
+                let deals = try await dealsUseCase.dealsList(endPoint: endpoint)
+                DispatchQueue.main.async {
+                    self.storesDeals.append((store: store, dealsList: self.parseDealsModel(deals: deals)))
                 }
+            } catch {
+                print(error)
             }
+        }
+        DispatchQueue.main.async {
+            self.isLoadedStoreGames = true
+            self.checkIsLoadedInfos()
         }
     }
     
@@ -129,7 +151,9 @@ final class FeedViewModel: ObservableObject {
     private func checkIsLoadedInfos() {
         if isLoadedAAAGames == true  && isLoadedStoreGames == true {
             withAnimation(.easeIn) {
-                self.viewState = .loaded
+                DispatchQueue.main.async {
+                    self.viewState = .loaded
+                }
             }
         }
     }

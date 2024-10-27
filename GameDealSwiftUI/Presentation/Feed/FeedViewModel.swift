@@ -56,6 +56,7 @@ final class FeedViewModel: ObservableObject {
             .pageSize(size: 8),
             .sortBy(option: CheapSharkSortDeals.DEALRATING.rawValue),
             .AAA(isActive: true),
+            .metacritic(rating: 50)
         ])
 
         do {
@@ -103,7 +104,7 @@ final class FeedViewModel: ObservableObject {
     
     // MARK: - Deals by stores
     private func displayDealsStores() async {
-        let selectedStores = ["Steam", "Epic Games Store", "GreenManGaming" , "GOG"]
+        let selectedStores = ["Steam", "Epic Games Store", "Uplay" , "GOG"]
         
         if !storesDeals.isEmpty {
             return
@@ -118,7 +119,8 @@ final class FeedViewModel: ObservableObject {
                 .pageSize(size: 10),
                 .sortBy(option: CheapSharkSortDeals.DEALRATING.rawValue),
                 .AAA(isActive: false),
-                .storeID(id: store.storeID)
+                .storeID(id: store.storeID),
+                .metacritic(rating: 50)
             ])
             
             do {

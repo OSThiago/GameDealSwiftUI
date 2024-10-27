@@ -21,10 +21,8 @@ struct DealLookupView: View {
     // MARK: - BODY
     var body: some View {
         buildedContent
-            .onAppear {
-                Task {
-                    await viewModel.viewDidLoad()
-                }
+            .task {
+                await viewModel.viewDidLoad()
             }
             .onBackSwipe {
                 router.pop()

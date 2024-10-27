@@ -11,7 +11,6 @@ struct ListDealsView: View {
     
     @StateObject var viewModel: ListDealViewModel
     @EnvironmentObject var router: Router
-    @State var isShowDatail = false
     private let constants = ListDealConstants()
     
     init(
@@ -22,18 +21,18 @@ struct ListDealsView: View {
     
     var body: some View {
         buildedContent
-        .onAppear {
-            viewModel.fetchDeals()
-        }
-        .navigationTitle(viewModel.store.storeName)
-        .navigationBarTitleDisplayMode(.inline)
-        .toolbar {
-            ToolbarItem(placement: .topBarTrailing) {
-                let image = viewModel.formatterUseCase.getStoreImage(store: viewModel.store)
-                StoreImage(storeImage: image,
-                           size: constants.storeImageSize)
+            .task {
+                await viewModel.fetchDeals()
             }
-        }
+            .navigationTitle(viewModel.store.storeName)
+            .navigationBarTitleDisplayMode(.inline)
+            .toolbar {
+                ToolbarItem(placement: .topBarTrailing) {
+                    let image = viewModel.formatterUseCase.getStoreImage(store: viewModel.store)
+                    StoreImage(storeImage: image,
+                               size: constants.storeImageSize)
+                }
+            }
     }
 }
 

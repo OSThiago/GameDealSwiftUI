@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct CheapestPrice: Codable {
+struct CheapestPriceEver: Codable {
     let price: String
     let date: Int
 }

@@ -11,8 +11,9 @@ import SwiftUI
 
 final class DealLookupViewModel: ObservableObject {
     
-    @Injected var ServiceMetacritic: MetacriticServiceProtocol
-    @Injected var ServiceCheapShark: CheapSharkServiceProtocol
+    @Injected var serviceMetacritic: MetacriticServiceProtocol
+    @Injected var serviceGameInfo: GamesProtocol
+    @Injected var serviceStores: StoresProtocol
     @Injected var FormatterUseCase: FormatterProcol
     
     let feedGameDealModel: FeedGameDealModel
@@ -35,8 +36,8 @@ final class DealLookupViewModel: ObservableObject {
     
     @MainActor
     func viewDidLoad() async {
-        fetchStoresInformations()
-        fetchDealLookup(gameID: self.feedGameDealModel.gameID)
+        await fetchStoresInformations()
+        await fetchDealLookup(gameID: self.feedGameDealModel.gameID)
         self.metacriticDetailModel = await fetchMetacriticDetailsInformation(metacriticLink: feedGameDealModel.metacriticLink ?? "")
     }
     
@@ -54,37 +55,27 @@ final class DealLookupViewModel: ObservableObject {
         return false
     }
     
-    func fetchDealLookup(gameID: String) {
-        
-        let endpoint = EndpointCasesCheapShark.getGameLookup(gameID)
-        
-        ServiceCheapShark.getGameLookup(endpoint: endpoint) { result in
-            switch result {
-            case .success(let gameData):
-                DispatchQueue.main.async {
-                    self.gameLookupModel = gameData
-                }
-            case .failure(let error):
-                print(error)
+    func fetchDealLookup(gameID: String) async {
+        do {
+            let endpoint = GamesEndPoint.gameLookup(id: gameID)
+            let gameInfo = try await serviceGameInfo.gameLookup(endpoint: endpoint)
+            DispatchQueue.main.async {
+                self.gameLookupModel = gameInfo
             }
+        } catch {
+            print(error)
         }
     }
-    
-    func fetchStoresInformations() {
-        if !storesInformations.isEmpty {
-            return
-        }
-        
-        ServiceCheapShark.getStores { result in
-            switch result {
-            case .success(let stores):
-                DispatchQueue.main.async {
-                    self.storesInformations = stores
-                }
-            case .failure(let failure):
-                // TODO: - Tratar erro
-                print(" erro ao baixar store image - \(failure)")
+
+    func fetchStoresInformations() async {
+        do {
+            let endpoint = StoresEndpoint.storesInformation
+            let storesInfo = try await serviceStores.storesInformation(endpoint: endpoint)
+            DispatchQueue.main.async {
+                self.storesInformations = storesInfo
             }
+        } catch {
+            print(error)
         }
     }
 
@@ -110,7 +101,7 @@ final class DealLookupViewModel: ObservableObject {
         
         let url = baseURL + metacriticLink
         
-        let data = await ServiceMetacritic.fetchDetailsInformation(metacriticLink: url)
+        let data = await serviceMetacritic.fetchDetailsInformation(metacriticLink: url)
         
         self.viewState = .loaded
         return data

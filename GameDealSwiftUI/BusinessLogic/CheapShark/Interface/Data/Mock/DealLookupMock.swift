@@ -28,7 +28,7 @@ extension CheaperStores {
         retailPrice: "19.99")
 }
 
-extension CheapestPrice {
+extension CheapestPriceEver {
     static let theWitcher2: Self = .init(
         price: "2.49",
         date: 1524419835)

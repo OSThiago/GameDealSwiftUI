@@ -34,7 +34,9 @@ extension FeedView {
                         }
                     }
                 }
+                .scrollTargetLayout()
             }
+            .scrollTargetBehavior(.viewAligned)
         }
     }
 }

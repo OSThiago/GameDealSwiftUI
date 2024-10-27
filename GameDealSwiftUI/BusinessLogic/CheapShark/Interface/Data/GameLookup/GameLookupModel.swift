@@ -9,7 +9,7 @@ import Foundation
 
 struct GameLookupModel: Codable {
     let info: InfoGameLookupModel?
-    let cheapestPriceEver: CheapestPrice?
+    let cheapestPriceEver: CheapestPriceEver?
     let deals: [DealsGameLookupModel]?
     
 }

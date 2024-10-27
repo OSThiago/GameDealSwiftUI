@@ -9,7 +9,7 @@ import Foundation
 
 struct FeedConstants {
     // MARK: - Feed Main
-    let navigationTitle: String = "Feed"
+    let navigationTitle: String = "Today"
     let viewErrorMensage: String = "Error"
     
     // MARK: - Highlight Section

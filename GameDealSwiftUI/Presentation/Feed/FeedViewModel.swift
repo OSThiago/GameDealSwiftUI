@@ -62,8 +62,10 @@ final class FeedViewModel: ObservableObject {
         do {
             let deals = try await dealsUseCase.dealsList(endPoint: endpoint)
             
+            let filtered = await unrepeatedFilter(deals: deals)
+            
             DispatchQueue.main.async {
-                self.dealsAAA = self.parseDealsModel(deals: deals).uniqued()
+                self.dealsAAA = self.parseDealsModel(deals: filtered).uniqued()
                 self.isLoadedAAAGames = true
                 self.checkIsLoadedInfos()
             }

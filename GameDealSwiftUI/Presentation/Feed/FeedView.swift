@@ -24,11 +24,6 @@ struct FeedView: View {
             .task {
                 await viewModel.viewDidLoad()
             }
-//            .onAppear {
-//                Task {
-//                    viewModel.viewDidLoad()
-//                }
-//            }
     }
 }
 

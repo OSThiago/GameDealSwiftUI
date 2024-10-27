@@ -7,9 +7,15 @@
 
 import SwiftUI
 
+protocol ListDealsViewModelProtocol {
+    var dealsList: [FeedGameDealModel] { get set }
+    var viewState: ViewState { get set }
+    func fetchDeals() async
+}
+
 final class ListDealViewModel: ObservableObject {
-    
-    @Injected var serviceCheapShark: CheapSharkServiceProtocol
+
+    @Injected var dealsService: DealsProtocol
     @Injected var formatterUseCase: FormatterProcol
     
     @Published var dealList = [FeedGameDealModel]()
@@ -23,34 +29,8 @@ final class ListDealViewModel: ObservableObject {
         self.store = store
     }
     
-    func fetchDeals() {
-        let endpoint = EndpointCasesCheapShark.getDealsList(pageNumber: 0,
-                                                            pageSize: 30,
-                                                            sortList: .DEALRATING,
-                                                            AAA: false,
-                                                            storeID: store.storeID)
-        
-        serviceCheapShark.getDealsList(endpoint: endpoint) { result in
-            switch result {
-            case .success(let deals):
-                DispatchQueue.main.async {
-                    self.dealList = deals
-                    withAnimation(.linear) {
-                        self.viewState = .loaded
-                    }
-                }
-            case .failure(let failure):
-                // TODO: - Tratar erro
-                print(failure)
-                self.viewState = .error
-            }
-        }
-    }
-    
     @MainActor
-    func fetchDealsTest() async {
-        
-        let service: DealsProtocol = DealsServiceImpelentation()
+    func fetchDeals() async {
         
         let query:[DealsQuery] = [
             .pageNumber(number: 0),
@@ -64,21 +44,9 @@ final class ListDealViewModel: ObservableObject {
         let endpoint: DealsEndPoint = .dealsList(queryItens: query)
         
         do {
-            let deals = try await service.dealsList(endPoint: endpoint)
-            
-            let result = deals.map { dealModel in
-                FeedGameDealModel(gameID: dealModel.gameID ?? "unknown",
-                                  dealID: dealModel.dealID ?? "unknown",
-                                  storeID: dealModel.storeID ?? "unknown",
-                                  title: dealModel.title ?? "unknown",
-                                  salePrice: dealModel.salePrice ?? "unknown",
-                                  normalPrice: dealModel.normalPrice ?? "unknown",
-                                  savings: dealModel.savings ?? "unknown",
-                                  thumb: dealModel.thumb ?? "unknown",
-                                  metacriticLink: dealModel.metacriticLink ?? "unknown")
-            }
-            
-            self.dealList = result
+            let deals = try await dealsService.dealsList(endPoint: endpoint)
+
+            self.dealList = parse(deals: deals)
             
             withAnimation(.linear) {
                 self.viewState = .loaded
@@ -87,6 +55,20 @@ final class ListDealViewModel: ObservableObject {
         } catch {
             print(error)
             self.viewState = .error
+        }
+    }
+    
+    private func parse(deals: [DealModel]) -> [FeedGameDealModel] {
+        return deals.map { dealModel in
+            FeedGameDealModel(gameID: dealModel.gameID ?? "unknown",
+                              dealID: dealModel.dealID ?? "unknown",
+                              storeID: dealModel.storeID ?? "unknown",
+                              title: dealModel.title ?? "unknown",
+                              salePrice: dealModel.salePrice ?? "unknown",
+                              normalPrice: dealModel.normalPrice ?? "unknown",
+                              savings: dealModel.savings ?? "unknown",
+                              thumb: dealModel.thumb ?? "unknown",
+                              metacriticLink: dealModel.metacriticLink ?? "unknown")
         }
     }
 }

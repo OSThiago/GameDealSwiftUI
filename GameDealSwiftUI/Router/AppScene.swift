@@ -12,6 +12,7 @@ enum AppScene {
     case listDeal(store: StoresCheapShark)
     case dealDetail(feedGameDealModel: FeedGameDealModel,
                     store: StoresCheapShark)
+    case search
 }
 
 // MARK: - Hashble
@@ -24,6 +25,8 @@ extension AppScene: Hashable {
         case .listDeal(_):
             hasher.combine("")
         case .dealDetail(_,_):
+            hasher.combine("")
+        case .search:
             hasher.combine("")
         }
     }

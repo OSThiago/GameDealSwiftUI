@@ -87,6 +87,9 @@
 		DBD998A92A4A30DE00D1D587 /* GameLookupModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBD998A82A4A30DE00D1D587 /* GameLookupModel.swift */; };
 		DBD998AC2A4B8EF100D1D587 /* DealLookupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBD998AB2A4B8EF100D1D587 /* DealLookupView.swift */; };
 		DBD998AE2A4B90E000D1D587 /* DealLookupViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBD998AD2A4B90E000D1D587 /* DealLookupViewModel.swift */; };
+		DBE44FF12CD93BF6000D2ECB /* SearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBE44FF02CD93BF6000D2ECB /* SearchView.swift */; };
+		DBE44FF32CD93C3D000D2ECB /* SearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBE44FF22CD93C35000D2ECB /* SearchViewModel.swift */; };
+		DBE44FF52CD93D86000D2ECB /* SearchConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBE44FF42CD93D78000D2ECB /* SearchConfigurator.swift */; };
 		DBEBE61D2CAB384200F155D8 /* DealsProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBEBE61C2CAB382B00F155D8 /* DealsProtocol.swift */; };
 		DBEBE61F2CAB387400F155D8 /* GamesProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBEBE61E2CAB386700F155D8 /* GamesProtocol.swift */; };
 		DBEBE6212CAB388400F155D8 /* StoresProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBEBE6202CAB387C00F155D8 /* StoresProtocol.swift */; };
@@ -206,6 +209,9 @@
 		DBD998A82A4A30DE00D1D587 /* GameLookupModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameLookupModel.swift; sourceTree = "<group>"; };
 		DBD998AB2A4B8EF100D1D587 /* DealLookupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DealLookupView.swift; sourceTree = "<group>"; };
 		DBD998AD2A4B90E000D1D587 /* DealLookupViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DealLookupViewModel.swift; sourceTree = "<group>"; };
+		DBE44FF02CD93BF6000D2ECB /* SearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchView.swift; sourceTree = "<group>"; };
+		DBE44FF22CD93C35000D2ECB /* SearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewModel.swift; sourceTree = "<group>"; };
+		DBE44FF42CD93D78000D2ECB /* SearchConfigurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchConfigurator.swift; sourceTree = "<group>"; };
 		DBEBE61C2CAB382B00F155D8 /* DealsProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DealsProtocol.swift; sourceTree = "<group>"; };
 		DBEBE61E2CAB386700F155D8 /* GamesProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GamesProtocol.swift; sourceTree = "<group>"; };
 		DBEBE6202CAB387C00F155D8 /* StoresProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoresProtocol.swift; sourceTree = "<group>"; };
@@ -475,6 +481,16 @@
 			path = Utils;
 			sourceTree = "<group>";
 		};
+		DB6C10D22CCE0C6A00E7C96C /* Search */ = {
+			isa = PBXGroup;
+			children = (
+				DBE44FF42CD93D78000D2ECB /* SearchConfigurator.swift */,
+				DBE44FF22CD93C35000D2ECB /* SearchViewModel.swift */,
+				DBE44FF02CD93BF6000D2ECB /* SearchView.swift */,
+			);
+			path = Search;
+			sourceTree = "<group>";
+		};
 		DB80A9112A6997BF005489AD /* UISections */ = {
 			isa = PBXGroup;
 			children = (
@@ -538,6 +554,7 @@
 		DB95FDC12A40D8FD006EB578 /* Presentation */ = {
 			isa = PBXGroup;
 			children = (
+				DB6C10D22CCE0C6A00E7C96C /* Search */,
 				DBD998AA2A4B8ECE00D1D587 /* DealLookup */,
 				DBD9989A2A47480700D1D587 /* ListDeals */,
 				DB95FDC22A40D946006EB578 /* Feed */,
@@ -995,6 +1012,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DBE44FF52CD93D86000D2ECB /* SearchConfigurator.swift in Sources */,
 				DB92BBE92A3B60F1009630E0 /* ServiceError.swift in Sources */,
 				DB6A8ABD2CBD708F001E1581 /* ServiceImplementation.swift in Sources */,
 				DBD9989C2A47484700D1D587 /* ListDealsView.swift in Sources */,
@@ -1027,6 +1045,7 @@
 				DBCF02DF2C5166F900DCE264 /* BorderRadius.swift in Sources */,
 				DB40304B2C455D3D000DCFD1 /* MetacriticDetailModel.swift in Sources */,
 				DBD9989E2A474BAC00D1D587 /* ListDealCell.swift in Sources */,
+				DBE44FF32CD93C3D000D2ECB /* SearchViewModel.swift in Sources */,
 				DB80A9152A699ED2005489AD /* View+onBackSwipe.swift in Sources */,
 				DBCF02E12C516A3A00DCE264 /* Shadow.swift in Sources */,
 				DBEBE6232CAB389900F155D8 /* AlertsProtocol.swift in Sources */,
@@ -1071,6 +1090,7 @@
 				DBEBE63E2CAC46BE00F155D8 /* GameModel.swift in Sources */,
 				DBEBE6272CAB396A00F155D8 /* DealModel.swift in Sources */,
 				DBCF02D72C51566000DCE264 /* Tokens.swift in Sources */,
+				DBE44FF12CD93BF6000D2ECB /* SearchView.swift in Sources */,
 				DBD998AE2A4B90E000D1D587 /* DealLookupViewModel.swift in Sources */,
 				DB92BBF62A3B6732009630E0 /* FeedGameDealModel.swift in Sources */,
 				DBFDE3112C59288F00310FF9 /* Color.swift in Sources */,

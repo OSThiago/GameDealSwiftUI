@@ -35,6 +35,8 @@ extension Router {
         case .dealDetail(let feedGameDealModel, let store):
             DealLookupConfigurator(feedGameDealModel: feedGameDealModel,
                                    store: store).configure()
+        case .search:
+            SearchConfigurator().configure()
         }
     }
 }

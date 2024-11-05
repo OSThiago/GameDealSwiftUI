@@ -46,19 +46,18 @@ extension FeedView {
 extension FeedView {
     @ViewBuilder
     var content: some View {
-        NavigationView {
-            ScrollView {
-                VStack(spacing: Tokens.padding.xxxs) {
-                    highlightDealSection(deals: viewModel.dealsAAA, title: constants.highlightTitle)
-                    
-                    storeList(title: constants.storeSectionTitle, stores: viewModel.storesInformations)
-                    
-                    dealsByStoreSection
-                }
+        ScrollView {
+            VStack(spacing: Tokens.padding.xxxs) {
+                highlightDealSection(deals: viewModel.dealsAAA, title: constants.highlightTitle)
+                
+                storeList(title: constants.storeSectionTitle, stores: viewModel.storesInformations)
+                
+                dealsByStoreSection
             }
-            .foregroundStyle(Color(uiColor: colorScheme == .light ? .darkText : .lightText))
-            .navigationTitle(constants.navigationTitle)
         }
+        .foregroundStyle(Color(uiColor: colorScheme == .light ? .darkText : .lightText))
+        .navigationTitle(constants.navigationTitle)
+        .navigationBarTitleDisplayMode(.automatic)
     }
 }
 

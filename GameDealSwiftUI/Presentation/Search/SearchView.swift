@@ -16,10 +16,117 @@ struct SearchView: View {
     }
     
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        buildedContent
+            .task {
+                await viewModel.viewDidLoad()
+            }
+            .searchable(text: $viewModel.searchText, prompt: "Search games")
+            .onChange(of: viewModel.searchText) {
+                viewModel.viewState = .loading
+                viewModel.checkEmptyState()
+            }
+            .navigationTitle("Search")
+    }
+}
+
+// MARK: - BuildedContent
+extension SearchView {
+    @ViewBuilder
+    var buildedContent: some View {
+        switch viewModel.viewState {
+        case .loading:
+            ProgressView()
+        case .loaded:
+            content
+        case .error:
+            Text("Error")
+        }
+    }
+}
+
+// MARK: - Content
+extension SearchView {
+    @ViewBuilder
+    var content: some View {
+        if viewModel.isEmptyState {
+            emptyState(title: "Search for Games",
+                       description: "try searching for Game name")
+        } else if viewModel.isNoResult {
+            emptyState(title: "No Results",
+                       description: "No results were found for '\(viewModel.searchText)'")
+        } else {
+            ScrollView {
+                LazyVStack {
+                    ForEach(viewModel.games, id: \.gameID) { game in
+                        gameCell(thumb: viewModel.formatterUsecase.getHightQualityImage(url: game.thumb ?? "" ),
+                                 name: game.external ?? "")
+                    }
+                }
+            }
+        }
+    }
+}
+
+// MARK: - Game Cell
+extension SearchView {
+    func gameCell(thumb: String, name: String) -> some View {
+        HStack(spacing: Tokens.padding.nano) {
+            gameImage(thumb: thumb)
+            
+            Text(name)
+                .frame(maxWidth: .infinity, alignment: .leading)
+                .lineLimit(2)
+        }
+        .padding(.horizontal, Tokens.padding.xxxs)
+    }
+    
+    @ViewBuilder
+    func gameImage(thumb: String) -> some View {
+        let imageWidth: CGFloat = 60 * 16/9
+        let imageHeight: CGFloat = 60
+        
+        AsyncImage(url: URL(string: thumb)) { phase in
+            switch phase  {
+            case .empty:
+                ProgressView()
+                    .frame(width: imageWidth, height: imageHeight)
+            case .success(let image):
+                image
+                    .resizable()
+                    .scaledToFill()
+                    .frame(width: imageWidth, height: imageHeight)
+                    .clipped()
+                    .cornerRadius(Tokens.borderRadius.sm)
+                    
+            case .failure(_):
+                // TODO: Criar ou adicionar em um token de simbolos
+                Image(systemName: "photo.artframe")
+                    .frame(width: imageWidth, height: imageHeight)
+                    .foregroundStyle(Tokens.color.neutral.primary)
+            @unknown default:
+                Image(systemName: "photo.artframe")
+                    .frame(width: imageWidth, height: imageHeight)
+                    .foregroundStyle(Tokens.color.neutral.primary)
+            }
+        }
+    }
+}
+
+extension SearchView {
+    func emptyState(title: String, description: String?) -> some View {
+        VStack {
+            Text(title)
+
+            if let description = description {
+                Text(description)
+            }
+        }
     }
 }
 
 #Preview {
-    SearchConfigurator().configure()
+    var viewModel = SearchViewModel()
+    viewModel.viewState = .loaded
+    viewModel.games = [.witcher2Mock]
+    return SearchView(viewModel: viewModel)
 }

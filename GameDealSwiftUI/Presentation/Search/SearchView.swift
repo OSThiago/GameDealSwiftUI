@@ -11,6 +11,8 @@ struct SearchView: View {
     
     @StateObject var viewModel: SearchViewModel
     
+    private var constants = SearchConstants()
+    
     init(viewModel: SearchViewModel) {
         self._viewModel = StateObject(wrappedValue: viewModel)
     }
@@ -20,12 +22,12 @@ struct SearchView: View {
             .task {
                 await viewModel.viewDidLoad()
             }
-            .searchable(text: $viewModel.searchText, prompt: "Search games")
+            .searchable(text: $viewModel.searchText, prompt: constants.searchbarPlaceholder)
             .onChange(of: viewModel.searchText) {
                 viewModel.viewState = .loading
-                viewModel.checkEmptyState()
+                viewModel.updateEmptyState()
             }
-            .navigationTitle("Search")
+            .navigationTitle(constants.navigationTitle)
     }
 }
 
@@ -49,11 +51,11 @@ extension SearchView {
     @ViewBuilder
     var content: some View {
         if viewModel.isEmptyState {
-            emptyState(title: "Search for Games",
-                       description: "try searching for Game name")
+            emptyState(title: constants.emptyTitle,
+                       description: constants.emptyDescription)
         } else if viewModel.isNoResult {
-            emptyState(title: "No Results",
-                       description: "No results were found for '\(viewModel.searchText)'")
+            emptyState(title: constants.emptyResultTitle,
+                       description: constants.emptyResultDescription(text: viewModel.searchText))
         } else {
             ScrollView {
                 LazyVStack {
@@ -63,6 +65,7 @@ extension SearchView {
                     }
                 }
             }
+            .redacted(reason: viewModel.viewState == .loading ? .placeholder: [])
         }
     }
 }
@@ -74,6 +77,7 @@ extension SearchView {
             gameImage(thumb: thumb)
             
             Text(name)
+                .fontWeight(.semibold)
                 .frame(maxWidth: .infinity, alignment: .leading)
                 .lineLimit(2)
         }
@@ -116,9 +120,13 @@ extension SearchView {
     func emptyState(title: String, description: String?) -> some View {
         VStack {
             Text(title)
+                .fontWeight(.semibold)
 
             if let description = description {
                 Text(description)
+                    .font(.subheadline)
+                    .foregroundStyle(.gray)
+                    
             }
         }
     }

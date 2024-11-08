@@ -90,6 +90,7 @@
 		DBE44FF12CD93BF6000D2ECB /* SearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBE44FF02CD93BF6000D2ECB /* SearchView.swift */; };
 		DBE44FF32CD93C3D000D2ECB /* SearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBE44FF22CD93C35000D2ECB /* SearchViewModel.swift */; };
 		DBE44FF52CD93D86000D2ECB /* SearchConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBE44FF42CD93D78000D2ECB /* SearchConfigurator.swift */; };
+		DBE44FF72CDBEC2B000D2ECB /* SearchConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBE44FF62CDBEC1C000D2ECB /* SearchConstants.swift */; };
 		DBEBE61D2CAB384200F155D8 /* DealsProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBEBE61C2CAB382B00F155D8 /* DealsProtocol.swift */; };
 		DBEBE61F2CAB387400F155D8 /* GamesProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBEBE61E2CAB386700F155D8 /* GamesProtocol.swift */; };
 		DBEBE6212CAB388400F155D8 /* StoresProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBEBE6202CAB387C00F155D8 /* StoresProtocol.swift */; };
@@ -212,6 +213,7 @@
 		DBE44FF02CD93BF6000D2ECB /* SearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchView.swift; sourceTree = "<group>"; };
 		DBE44FF22CD93C35000D2ECB /* SearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewModel.swift; sourceTree = "<group>"; };
 		DBE44FF42CD93D78000D2ECB /* SearchConfigurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchConfigurator.swift; sourceTree = "<group>"; };
+		DBE44FF62CDBEC1C000D2ECB /* SearchConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchConstants.swift; sourceTree = "<group>"; };
 		DBEBE61C2CAB382B00F155D8 /* DealsProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DealsProtocol.swift; sourceTree = "<group>"; };
 		DBEBE61E2CAB386700F155D8 /* GamesProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GamesProtocol.swift; sourceTree = "<group>"; };
 		DBEBE6202CAB387C00F155D8 /* StoresProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoresProtocol.swift; sourceTree = "<group>"; };
@@ -484,6 +486,7 @@
 		DB6C10D22CCE0C6A00E7C96C /* Search */ = {
 			isa = PBXGroup;
 			children = (
+				DBE44FF62CDBEC1C000D2ECB /* SearchConstants.swift */,
 				DBE44FF42CD93D78000D2ECB /* SearchConfigurator.swift */,
 				DBE44FF22CD93C35000D2ECB /* SearchViewModel.swift */,
 				DBE44FF02CD93BF6000D2ECB /* SearchView.swift */,
@@ -1037,6 +1040,7 @@
 				DB92BBF22A3B65E4009630E0 /* CheapSharkSortDeals.swift in Sources */,
 				DBCF02D92C515A3E00DCE264 /* FeedConstants.swift in Sources */,
 				DBD998962A472B0F00D1D587 /* ScreenSize.swift in Sources */,
+				DBE44FF72CDBEC2B000D2ECB /* SearchConstants.swift in Sources */,
 				DB6A8AB52CBD619E001E1581 /* GamesServiceImplementation.swift in Sources */,
 				DBEBE62A2CAB3DEE00F155D8 /* DealsQuery.swift in Sources */,
 				DB40304D2C45A75A000DCFD1 /* ViewState.swift in Sources */,

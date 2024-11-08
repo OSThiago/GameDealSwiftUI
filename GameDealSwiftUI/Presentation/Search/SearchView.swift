@@ -65,7 +65,6 @@ extension SearchView {
                     }
                 }
             }
-            .redacted(reason: viewModel.viewState == .loading ? .placeholder: [])
         }
     }
 }

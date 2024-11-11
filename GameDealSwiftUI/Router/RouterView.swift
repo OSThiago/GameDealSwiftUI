@@ -23,6 +23,12 @@ struct RouterView: View {
                 .navigationDestination(for: AppScene.self) { scene in
                     router.buildedView(scene: scene)
                 }
+                .sheet(item: $router.sheet) { sheet in
+                    router.buildedView(sheet: sheet)
+                }
+                .fullScreenCover(item: $router.fullScreenCover) { fullScreenCover in
+                    router.buildedView(fullScreenCover: fullScreenCover)
+                }
         }
         .environmentObject(router)
     }

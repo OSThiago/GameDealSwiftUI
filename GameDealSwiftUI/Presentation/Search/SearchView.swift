@@ -9,6 +9,7 @@ import SwiftUI
 
 struct SearchView: View {
     
+    @EnvironmentObject var router: Router
     @StateObject var viewModel: SearchViewModel
     
     private var constants = SearchConstants()
@@ -62,6 +63,9 @@ extension SearchView {
                     ForEach(viewModel.games, id: \.gameID) { game in
                         gameCell(thumb: viewModel.formatterUsecase.getHightQualityImage(url: game.thumb ?? "" ),
                                  name: game.external ?? "")
+                        .onTapGesture {
+                            router.present(fullScreenCover: .gameDetail(gameID: game.gameID ?? ""))
+                        }
                     }
                 }
             }

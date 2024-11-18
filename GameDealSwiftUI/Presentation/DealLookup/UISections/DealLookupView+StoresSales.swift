@@ -34,7 +34,8 @@ extension DealLookupView {
                                                         storeTitle: store.storeName,
                                                         dealPrice: deal.price,
                                                         isCheaper: viewModel.isCheaper(chepeast: viewModel.feedGameDealModel.salePrice,
-                                                                                       value: deal.price))
+                                                                                       value: deal.price),
+                                                        cellWidth: 340)
                                 }
 
                                 Divider()

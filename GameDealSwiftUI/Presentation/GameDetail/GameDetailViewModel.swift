@@ -18,8 +18,11 @@ protocol GameDetailViewModelProtocol {
 final class GameDetailViewModel: ObservableObject, GameDetailViewModelProtocol {
     
     @Injected var gamesService: GamesProtocol
+    @Injected var serviceStores: StoresProtocol
+    @Injected var formatterUseCase: FormatterProcol
     
     @Published var gameLookupModel: GameLookupModel?
+    @Published var storesInformations: [StoresCheapShark] = []
     
     var gameId: String
     
@@ -29,6 +32,7 @@ final class GameDetailViewModel: ObservableObject, GameDetailViewModelProtocol {
     
     func viewDidLoad() async {
         await fetchGameDetails()
+        await fetchStoresInformations()
     }
     
     func fetchGameDetails() async {
@@ -41,5 +45,21 @@ final class GameDetailViewModel: ObservableObject, GameDetailViewModelProtocol {
         } catch {
             print(error)
         }
+    }
+    
+    func fetchStoresInformations() async {
+        do {
+            let endpoint = StoresEndpoint.storesInformation
+            let storesInfo = try await serviceStores.storesInformation(endpoint: endpoint)
+            DispatchQueue.main.async {
+                self.storesInformations = storesInfo
+            }
+        } catch {
+            print(error)
+        }
+    }
+    
+    func getStore(storeID: String) -> StoresCheapShark? {
+        return storesInformations.first(where: { $0.storeID == storeID })
     }
 }

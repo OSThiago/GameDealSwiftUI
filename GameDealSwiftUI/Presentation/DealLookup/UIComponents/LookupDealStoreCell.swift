@@ -14,10 +14,22 @@ struct LookupDealStoreCell: View {
     let dealPrice: String?
     let isCheaper: Bool
     
-    private let cellWidth: CGFloat = 330
-    private let cellHeignt: CGFloat = 50
+    private let cellWidth: CGFloat
+    private let cellHeight: CGFloat = 50
     private let unknown: String = "unknown"
     private let storeImageSize: CGFloat = 40
+    
+    init(storeImage: String?,
+         storeTitle: String?,
+         dealPrice: String?,
+         isCheaper: Bool = false,
+         cellWidth: CGFloat) {
+        self.storeImage = storeImage
+        self.storeTitle = storeTitle
+        self.dealPrice = dealPrice
+        self.isCheaper = isCheaper
+        self.cellWidth = cellWidth
+    }
     
     // MARK: - BODY
     var body: some View {
@@ -27,8 +39,8 @@ struct LookupDealStoreCell: View {
             Spacer()
             dealPriceComponent
         }
-        .frame(width: cellWidth, height: cellHeignt)
-        .padding(.leading)
+        .frame(width: cellWidth, height: cellHeight)
+        .padding(.horizontal)
     }
 }
 
@@ -78,6 +90,6 @@ extension LookupDealStoreCell {
 
 struct LookupDealStoreCell_Previews: PreviewProvider {
     static var previews: some View {
-        LookupDealStoreCell(storeImage: StoreImagesCheapShark.steamMockImages.banner, storeTitle: StoresCheapShark.steamMock.storeName, dealPrice: "0.00", isCheaper: true)
+        LookupDealStoreCell(storeImage: StoreImagesCheapShark.steamMockImages.banner, storeTitle: StoresCheapShark.steamMock.storeName, dealPrice: "0.00", isCheaper: true, cellWidth: 330)
     }
 }

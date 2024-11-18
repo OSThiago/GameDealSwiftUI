@@ -14,7 +14,7 @@ struct LookupDealStoreCell: View {
     let dealPrice: String?
     let isCheaper: Bool
     
-    private let cellWidth: CGFloat
+    private let cellWidth: CGFloat?
     private let cellHeight: CGFloat = 50
     private let unknown: String = "unknown"
     private let storeImageSize: CGFloat = 40
@@ -23,7 +23,7 @@ struct LookupDealStoreCell: View {
          storeTitle: String?,
          dealPrice: String?,
          isCheaper: Bool = false,
-         cellWidth: CGFloat) {
+         cellWidth: CGFloat? = nil) {
         self.storeImage = storeImage
         self.storeTitle = storeTitle
         self.dealPrice = dealPrice
@@ -51,7 +51,7 @@ extension LookupDealStoreCell {
         Text("$\(dealPrice ?? "")")
             .font(.title3)
             .fontWeight(.semibold)
-            .foregroundStyle(Color.primary )
+            .foregroundStyle(isCheaper ? Tokens.color.positive.secondary : Color.primary)
     }
 }
 

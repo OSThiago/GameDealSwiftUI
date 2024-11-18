@@ -10,6 +10,7 @@ import Foundation
 protocol GameDetailViewModelProtocol {
     func viewDidLoad() async
     func fetchGameDetails() async
+    func isCheaper(value: String?) -> Bool
     
     var gameId: String { get }
     var gameLookupModel: GameLookupModel? { get set }
@@ -61,5 +62,27 @@ final class GameDetailViewModel: ObservableObject, GameDetailViewModelProtocol {
     
     func getStore(storeID: String) -> StoresCheapShark? {
         return storesInformations.first(where: { $0.storeID == storeID })
+    }
+    
+    func isCheaper(value: String?) -> Bool {
+        guard let valueDouble = Double(value!) else { return false }
+        
+        let deals = gameLookupModel?.deals
+        
+        let prices = deals.map { deal in
+            deal.map { gamelookup in
+                return gamelookup.price
+            }
+        }
+        
+        guard let prices else { return false }
+        
+        for price in prices {
+            guard let priceDouble = Double(price!) else { return false }
+            if valueDouble < priceDouble {
+                return true
+            }
+        }
+        return false
     }
 }

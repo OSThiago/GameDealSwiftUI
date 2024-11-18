@@ -50,6 +50,9 @@ extension GameDetailView {
                     
 //                    storesDeals
                     verticalList
+                    
+                    GameDetailsSection(metacriticData: viewModel.metacriticDetailModel)
+                        .padding(.horizontal, 16)
                 }
                 
                 dismissButton

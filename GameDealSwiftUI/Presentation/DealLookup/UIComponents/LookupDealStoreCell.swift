@@ -90,6 +90,10 @@ extension LookupDealStoreCell {
 
 struct LookupDealStoreCell_Previews: PreviewProvider {
     static var previews: some View {
-        LookupDealStoreCell(storeImage: StoreImagesCheapShark.steamMockImages.banner, storeTitle: StoresCheapShark.steamMock.storeName, dealPrice: "0.00", isCheaper: true, cellWidth: 330)
+        VStack {
+            LookupDealStoreCell(storeImage: StoreImagesCheapShark.steamMockImages.logo, storeTitle: StoresCheapShark.steamMock.storeName, dealPrice: "0.00", isCheaper: false, cellWidth: nil)
+            
+            LookupDealStoreCell(storeImage: StoreImagesCheapShark.steamMockImages.logo, storeTitle: StoresCheapShark.steamMock.storeName, dealPrice: "0.00", isCheaper: true, cellWidth: nil)
+        }
     }
 }

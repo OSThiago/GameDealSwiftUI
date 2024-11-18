@@ -66,8 +66,11 @@ extension DealLookupView {
                             
                 storesDealsSection
                 
-                gameDetailsSection
+//                gameDetailsSection
+                GameDetailsSection(metacriticData: viewModel.metacriticDetailModel)
+                    .padding(.horizontal, 16)
             }
+            .padding(.bottom, 100)
             .background(GeometryReader { geometry in
                 Color.clear
                     .preference(key: ScrollOffsetPreferenceKey.self, value: geometry.frame(in: .named(constants.scrollkey)).origin)

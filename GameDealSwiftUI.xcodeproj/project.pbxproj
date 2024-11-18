@@ -110,6 +110,9 @@
 		DBFDE30F2C53D25D00310FF9 /* ListDealConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBFDE30E2C53D25D00310FF9 /* ListDealConstants.swift */; };
 		DBFDE3112C59288F00310FF9 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBFDE3102C59288F00310FF9 /* Color.swift */; };
 		DBFDE3132C5986F700310FF9 /* Savings.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBFDE3122C5986F700310FF9 /* Savings.swift */; };
+		E6ACA17C2CEBC2080042D326 /* GameDetailsSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6ACA17B2CEBC2080042D326 /* GameDetailsSection.swift */; };
+		E6ACA17E2CEBD0C60042D326 /* GameDetailItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6ACA17D2CEBD0C60042D326 /* GameDetailItem.swift */; };
+		E6ACA1802CEBDBEC0042D326 /* GameDetailDescription.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6ACA17F2CEBDBEC0042D326 /* GameDetailDescription.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -236,6 +239,9 @@
 		DBFDE30E2C53D25D00310FF9 /* ListDealConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListDealConstants.swift; sourceTree = "<group>"; };
 		DBFDE3102C59288F00310FF9 /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
 		DBFDE3122C5986F700310FF9 /* Savings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Savings.swift; sourceTree = "<group>"; };
+		E6ACA17B2CEBC2080042D326 /* GameDetailsSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameDetailsSection.swift; sourceTree = "<group>"; };
+		E6ACA17D2CEBD0C60042D326 /* GameDetailItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameDetailItem.swift; sourceTree = "<group>"; };
+		E6ACA17F2CEBDBEC0042D326 /* GameDetailDescription.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameDetailDescription.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -734,8 +740,9 @@
 		DBCF02DB2C51614300DCE264 /* Components */ = {
 			isa = PBXGroup;
 			children = (
-				DBCF02DC2C51617000DCE264 /* StoreImage.swift */,
-				DBFDE3122C5986F700310FF9 /* Savings.swift */,
+				E6ACA17A2CEBBED40042D326 /* GameDetails */,
+				E6ACA1792CEBBECA0042D326 /* Savings */,
+				E6ACA1782CEBBEB50042D326 /* StoreImages */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -896,6 +903,32 @@
 			path = GamesModel;
 			sourceTree = "<group>";
 		};
+		E6ACA1782CEBBEB50042D326 /* StoreImages */ = {
+			isa = PBXGroup;
+			children = (
+				DBCF02DC2C51617000DCE264 /* StoreImage.swift */,
+			);
+			path = StoreImages;
+			sourceTree = "<group>";
+		};
+		E6ACA1792CEBBECA0042D326 /* Savings */ = {
+			isa = PBXGroup;
+			children = (
+				DBFDE3122C5986F700310FF9 /* Savings.swift */,
+			);
+			path = Savings;
+			sourceTree = "<group>";
+		};
+		E6ACA17A2CEBBED40042D326 /* GameDetails */ = {
+			isa = PBXGroup;
+			children = (
+				E6ACA17B2CEBC2080042D326 /* GameDetailsSection.swift */,
+				E6ACA17D2CEBD0C60042D326 /* GameDetailItem.swift */,
+				E6ACA17F2CEBDBEC0042D326 /* GameDetailDescription.swift */,
+			);
+			path = GameDetails;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -1037,6 +1070,7 @@
 				DB92BBE92A3B60F1009630E0 /* ServiceError.swift in Sources */,
 				DB6A8ABD2CBD708F001E1581 /* ServiceImplementation.swift in Sources */,
 				DBD9989C2A47484700D1D587 /* ListDealsView.swift in Sources */,
+				E6ACA17C2CEBC2080042D326 /* GameDetailsSection.swift in Sources */,
 				DBEBE62D2CAB54CE00F155D8 /* EndPointProtocol.swift in Sources */,
 				DB6A8AC02CBDB4F3001E1581 /* StoresImplementation.swift in Sources */,
 				DBD998942A464C5000D1D587 /* StoreCell.swift in Sources */,
@@ -1067,6 +1101,7 @@
 				DB2A10822C6D247100D1C879 /* Router.swift in Sources */,
 				DBCF02DF2C5166F900DCE264 /* BorderRadius.swift in Sources */,
 				DB40304B2C455D3D000DCFD1 /* MetacriticDetailModel.swift in Sources */,
+				E6ACA1802CEBDBEC0042D326 /* GameDetailDescription.swift in Sources */,
 				DBD9989E2A474BAC00D1D587 /* ListDealCell.swift in Sources */,
 				DBE44FF32CD93C3D000D2ECB /* SearchViewModel.swift in Sources */,
 				DB80A9152A699ED2005489AD /* View+onBackSwipe.swift in Sources */,
@@ -1074,6 +1109,7 @@
 				DBEBE6232CAB389900F155D8 /* AlertsProtocol.swift in Sources */,
 				DBCF02E32C5170C000DCE264 /* Opacity.swift in Sources */,
 				DB6A8AC22CBDB54F001E1581 /* StoresEndpoint.swift in Sources */,
+				E6ACA17E2CEBD0C60042D326 /* GameDetailItem.swift in Sources */,
 				DB92BBFE2A3B685C009630E0 /* DealLookup.swift in Sources */,
 				DB95FDCA2A40E774006EB578 /* LargeDealCell.swift in Sources */,
 				DB92BC092A3B69A2009630E0 /* FeedGameDealMock.swift in Sources */,

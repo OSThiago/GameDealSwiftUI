@@ -14,15 +14,18 @@ protocol GameDetailViewModelProtocol {
     
     var gameId: String { get }
     var gameLookupModel: GameLookupModel? { get set }
+    var metacriticDetailModel: MetacriticDetailModel? { get set }
 }
 
 final class GameDetailViewModel: ObservableObject, GameDetailViewModelProtocol {
     
     @Injected var gamesService: GamesProtocol
     @Injected var serviceStores: StoresProtocol
+    @Injected var serviceMetacritic: MetacriticServiceProtocol
     @Injected var formatterUseCase: FormatterProcol
     
     @Published var gameLookupModel: GameLookupModel?
+    @Published var metacriticDetailModel: MetacriticDetailModel?
     @Published var storesInformations: [StoresCheapShark] = []
     
     var gameId: String
@@ -34,6 +37,9 @@ final class GameDetailViewModel: ObservableObject, GameDetailViewModelProtocol {
     func viewDidLoad() async {
         await fetchGameDetails()
         await fetchStoresInformations()
+        if let gameName = gameLookupModel?.info?.title {
+            await fetchMetacriticDetailsInformation(metacriticLink: tryGenerateMetacriticName(gameName: gameName))
+        }
     }
     
     func fetchGameDetails() async {
@@ -84,5 +90,23 @@ final class GameDetailViewModel: ObservableObject, GameDetailViewModelProtocol {
             }
         }
         return false
+    }
+    
+    func fetchMetacriticDetailsInformation(metacriticLink: String) async {
+        let baseURL = "https://www.metacritic.com/game"
+        
+        let url = baseURL + metacriticLink
+
+        let data = await serviceMetacritic.fetchDetailsInformation(metacriticLink: url)
+        
+        DispatchQueue.main.async {
+            self.metacriticDetailModel = data
+        }
+    }
+    
+    func tryGenerateMetacriticName(gameName: String) -> String {
+        let removeSpaces = gameName.replacingOccurrences(of: " ", with: "-")
+        let newName = removeSpaces.replacingOccurrences(of: ":", with: "")
+        return "/\(newName.lowercased())/"
     }
 }

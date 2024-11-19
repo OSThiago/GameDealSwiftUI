@@ -34,9 +34,13 @@ struct LookupDealStoreCell: View {
     // MARK: - BODY
     var body: some View {
         HStack(alignment: .center) {
-            storeImageComponent
-            storeTitleComponent
+            StoreImage(storeImage: storeImage ?? unknown,
+                       size: storeImageSize)
+
+            titleComponent
+
             Spacer()
+
             dealPriceComponent
         }
         .frame(width: cellWidth, height: cellHeight)
@@ -58,33 +62,10 @@ extension LookupDealStoreCell {
 // MARK: - STORE TITLE
 extension LookupDealStoreCell {
     @ViewBuilder
-    var storeTitleComponent: some View {
+    var titleComponent: some View {
         Text(storeTitle ?? unknown)
             .font(.body)
             .fontWeight(.medium)
-    }
-}
-
-// MARK: - STORE IMAGE
-extension LookupDealStoreCell {
-    @ViewBuilder
-    var storeImageComponent: some View {
-        AsyncImage(url: URL(string: storeImage ?? unknown)) { phase in
-            switch phase  {
-            case .empty:
-                ProgressView()
-            case .success(let image):
-                image
-                    .resizable()
-                    .scaledToFill()
-                    .frame(width: storeImageSize, height: storeImageSize)
-                    
-            case .failure(_):
-                EmptyView()
-            @unknown default:
-                EmptyView()
-            }
-        }
     }
 }
 

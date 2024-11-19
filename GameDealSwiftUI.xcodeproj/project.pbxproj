@@ -29,7 +29,6 @@
 		DB4937352C65013C005FF688 /* WebScrapingUseCaseProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB4937342C65013C005FF688 /* WebScrapingUseCaseProtocol.swift */; };
 		DB4937372C6A8AB9005FF688 /* DealLookupConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB4937362C6A8AB8005FF688 /* DealLookupConstants.swift */; };
 		DB5D134C2C62CD07000B2E94 /* DealLookupView+StoresSales.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB5D134B2C62CD07000B2E94 /* DealLookupView+StoresSales.swift */; };
-		DB5D134E2C62CEC5000B2E94 /* DealLookupView+GameDetailSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB5D134D2C62CEC5000B2E94 /* DealLookupView+GameDetailSection.swift */; };
 		DB6964EA2C6FE5EF00D48837 /* CheapSharkServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB6964E92C6FE5EF00D48837 /* CheapSharkServiceProtocol.swift */; };
 		DB6A8AB52CBD619E001E1581 /* GamesServiceImplementation.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB6A8AB42CBD618B001E1581 /* GamesServiceImplementation.swift */; };
 		DB6A8ABB2CBD6FA1001E1581 /* ServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB6A8ABA2CBD6F9B001E1581 /* ServiceProtocol.swift */; };
@@ -156,7 +155,6 @@
 		DB4937342C65013C005FF688 /* WebScrapingUseCaseProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebScrapingUseCaseProtocol.swift; sourceTree = "<group>"; };
 		DB4937362C6A8AB8005FF688 /* DealLookupConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DealLookupConstants.swift; sourceTree = "<group>"; };
 		DB5D134B2C62CD07000B2E94 /* DealLookupView+StoresSales.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DealLookupView+StoresSales.swift"; sourceTree = "<group>"; };
-		DB5D134D2C62CEC5000B2E94 /* DealLookupView+GameDetailSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DealLookupView+GameDetailSection.swift"; sourceTree = "<group>"; };
 		DB6964E92C6FE5EF00D48837 /* CheapSharkServiceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheapSharkServiceProtocol.swift; sourceTree = "<group>"; };
 		DB6A8AB42CBD618B001E1581 /* GamesServiceImplementation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GamesServiceImplementation.swift; sourceTree = "<group>"; };
 		DB6A8ABA2CBD6F9B001E1581 /* ServiceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceProtocol.swift; sourceTree = "<group>"; };
@@ -513,7 +511,6 @@
 			children = (
 				DB80A9122A6998A0005489AD /* DealLookupView+DealDetails.swift */,
 				DB5D134B2C62CD07000B2E94 /* DealLookupView+StoresSales.swift */,
-				DB5D134D2C62CEC5000B2E94 /* DealLookupView+GameDetailSection.swift */,
 			);
 			path = UISections;
 			sourceTree = "<group>";
@@ -1162,7 +1159,6 @@
 				DBC8C1152C3CE1680094865F /* MetacriticWebScrapingImplementation.swift in Sources */,
 				DB92BBE52A3B602D009630E0 /* BaseURL.swift in Sources */,
 				DB4937372C6A8AB9005FF688 /* DealLookupConstants.swift in Sources */,
-				DB5D134E2C62CEC5000B2E94 /* DealLookupView+GameDetailSection.swift in Sources */,
 				DBD998922A45FC5500D1D587 /* MediumDealCell.swift in Sources */,
 				DBD998A02A48BFCD00D1D587 /* ListDealViewModel.swift in Sources */,
 				DB92BC072A3B698D009630E0 /* StoresCheapSharkMock.swift in Sources */,

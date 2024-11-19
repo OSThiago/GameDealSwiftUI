@@ -17,7 +17,7 @@ class MetacriticServiceImplementation: MetacriticServiceProtocol {
         self.webScrapingUseCase = WebScrapingUseCaseImplementation()
     }
     
-    func fetchDetailsInformation(metacriticLink: String) async -> MetacriticDetailModel {
+    func fetchDetailsInformation(metacriticLink: String) async -> MetacriticDetailModel? {
         let details = "details/"
         let url = metacriticLink + details
         
@@ -29,7 +29,11 @@ class MetacriticServiceImplementation: MetacriticServiceProtocol {
         let platforms = getPlatforms(htmlContent: htmlContent)
         let developers = getDevelopers(htmlContent: htmlContent)
         let genres = getGenres(htmlContent: htmlContent)
-
+        
+        if description == nil || releaseDate == nil || publisher == nil || platforms == nil || developers == nil || genres == nil {
+            return nil
+        }
+        
         return MetacriticDetailModel(description: description,
                                      releaseDate: releaseDate,
                                      publisher: publisher,
@@ -40,24 +44,24 @@ class MetacriticServiceImplementation: MetacriticServiceProtocol {
 }
 
 extension MetacriticServiceImplementation {
-    private func getMetacriticDescription(htmlContent: String) -> String {
+    private func getMetacriticDescription(htmlContent: String) -> String? {
         let className = "c-pageProductDetails_description"
         return webScrapingUseCase.getContent(htmlContent: htmlContent, byClass: className)
     }
     
-    private func getReleaseDate(htmlContent: String) -> String {
+    private func getReleaseDate(htmlContent: String) -> String? {
         let className = "c-gameDetails_ReleaseDate"
         let release = webScrapingUseCase.getContent(htmlContent: htmlContent, byClass: className)
-        return release.replacingOccurrences(of: "Initial Release Date: ", with: "")
+        return release?.replacingOccurrences(of: "Initial Release Date: ", with: "")
     }
     
-    private func getPublisher(htmlContent: String) -> String {
+    private func getPublisher(htmlContent: String) -> String? {
         let className = "c-gameDetails_Distributor"
         let publisher = webScrapingUseCase.getContent(htmlContent: htmlContent, byClass: className)
-        return publisher.replacingOccurrences(of: "Publisher: ", with: "")
+        return publisher?.replacingOccurrences(of: "Publisher: ", with: "")
     }
     
-    private func getPlatforms(htmlContent: String) -> [String] {
+    private func getPlatforms(htmlContent: String) -> [String]? {
         let className = "c-gameDetails_Platforms"
         let tag = "li"
         
@@ -65,7 +69,7 @@ extension MetacriticServiceImplementation {
         return webScrapingUseCase.getContents(htmlContent: classContent, byElementsTag: tag)
     }
     
-    private func getDevelopers(htmlContent: String) -> [String] {
+    private func getDevelopers(htmlContent: String) -> [String]? {
         let className = "c-gameDetails_Developer"
         let tag = "li"
         
@@ -73,7 +77,7 @@ extension MetacriticServiceImplementation {
         return webScrapingUseCase.getContents(htmlContent: classContent, byElementsTag: tag)
     }
     
-    private func getGenres(htmlContent: String) -> [String] {
+    private func getGenres(htmlContent: String) -> [String]? {
         let className = "c-genreList"
         let tag = "span"
         

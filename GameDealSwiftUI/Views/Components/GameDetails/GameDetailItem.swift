@@ -76,7 +76,7 @@ extension GameDetailItem {
 }
 
 #Preview {
-    GameDetailItem(items: MetacriticDetailModel.thewitcher3.platforms,
+    GameDetailItem(items: MetacriticDetailModel.thewitcher3.platforms ?? [],
                    title: "Plarforms")
     .padding(.horizontal, 16)
 }

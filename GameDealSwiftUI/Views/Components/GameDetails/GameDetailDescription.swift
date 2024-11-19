@@ -32,6 +32,6 @@ struct GameDetailDescription: View {
 }
 
 #Preview {
-    GameDetailDescription(description: MetacriticDetailModel.thewitcher3.description)
+    GameDetailDescription(description: MetacriticDetailModel.thewitcher3.description ?? "")
         .padding(.horizontal, 16)
 }

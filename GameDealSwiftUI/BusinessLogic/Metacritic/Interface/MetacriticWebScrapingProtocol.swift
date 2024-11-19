@@ -8,5 +8,5 @@
 import Foundation
 
 protocol MetacriticServiceProtocol {
-    func fetchDetailsInformation(metacriticLink: String) async -> MetacriticDetailModel
+    func fetchDetailsInformation(metacriticLink: String) async -> MetacriticDetailModel?
 }

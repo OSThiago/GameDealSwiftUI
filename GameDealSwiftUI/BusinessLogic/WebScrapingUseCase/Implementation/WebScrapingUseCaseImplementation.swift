@@ -9,7 +9,7 @@ import Foundation
 import SwiftSoup
 
 struct WebScrapingUseCaseImplementation: WebScrapingUseCaseProtocol {
-    func getContent(htmlContent: String, byClass className: String) -> String {
+    func getContent(htmlContent: String, byClass className: String) -> String? {
         do {
             let document: Document = try SwiftSoup.parse(htmlContent)
             
@@ -17,7 +17,7 @@ struct WebScrapingUseCaseImplementation: WebScrapingUseCaseProtocol {
 
             let contents = try body.getElementsByClass(className).first()
             
-            let formatted = try contents?.text() ?? ""
+            let formatted = try contents?.text() ?? nil
 
             return formatted
         } catch {
@@ -41,21 +41,25 @@ struct WebScrapingUseCaseImplementation: WebScrapingUseCaseProtocol {
         }
     }
     
-    func getContents(htmlContent: String, byElementsTag tag: String) -> [String] {
+    func getContents(htmlContent: String, byElementsTag tag: String) -> [String]? {
         do {
             let document: Document = try SwiftSoup.parse(htmlContent)
-            guard let body = document.body() else { return [] }
+            guard let body = document.body() else { return nil }
             let contents = try body.getElementsByTag(tag)
             
             var platforms = [String]()
             for content in contents {
                 platforms.append(try content.text())
             }
-            
+
+            if platforms.isEmpty {
+                return nil
+            }
+
             return platforms
         } catch {
             print("Error Parsing: " + String(describing: error))
-            return []
+            return nil
         }
     }
     

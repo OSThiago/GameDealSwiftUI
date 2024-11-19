@@ -96,7 +96,7 @@ final class DealLookupViewModel: ObservableObject {
     
     // MARK: - Metacritic
     @MainActor
-    func fetchMetacriticDetailsInformation(metacriticLink: String) async -> MetacriticDetailModel{
+    func fetchMetacriticDetailsInformation(metacriticLink: String) async -> MetacriticDetailModel? {
         let baseURL = "https://www.metacritic.com"
         
         let url = baseURL + metacriticLink

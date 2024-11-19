@@ -22,37 +22,37 @@ extension GameDetailsSection {
         VStack(spacing: 8) {
             if let metacriticData {
                 // Platforms
-                GameDetailItem(items: metacriticData.platforms,
+                GameDetailItem(items: metacriticData.platforms ?? [],
                                title: "Platforms")
                 
                 Divider()
                 
                 // Release Date
-                GameDetailItem(items: [metacriticData.releaseDate],
+                GameDetailItem(items: [metacriticData.releaseDate ?? ""],
                                title: "Release Date")
                 
                 Divider()
                 
                 // Developers
-                GameDetailItem(items: metacriticData.developers,
+                GameDetailItem(items: metacriticData.developers ?? [],
                                title: "Developers")
                 
                 Divider()
                 
                 // Publisher
-                GameDetailItem(items: [metacriticData.publisher],
+                GameDetailItem(items: [metacriticData.publisher ?? ""],
                                title: "publisher")
                 
                 Divider()
                 
                 // Genres
-                GameDetailItem(items: metacriticData.genres,
+                GameDetailItem(items: metacriticData.genres ?? [],
                                title: "Release Date")
                 
                 Divider()
                 
                 // Description
-                GameDetailDescription(description: metacriticData.description)
+                GameDetailDescription(description: metacriticData.description ?? "")
             }
         }
     }

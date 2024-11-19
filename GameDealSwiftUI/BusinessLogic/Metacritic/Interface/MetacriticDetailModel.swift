@@ -8,12 +8,12 @@
 import Foundation
 
 struct MetacriticDetailModel {
-    let description: String
-    let releaseDate: String
-    let publisher: String
-    let platforms: [String]
-    let developers: [String]
-    let genres: [String]
+    let description: String?
+    let releaseDate: String?
+    let publisher: String?
+    let platforms: [String]?
+    let developers: [String]?
+    let genres: [String]?
 }
 
 

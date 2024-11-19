@@ -17,27 +17,28 @@ extension DealLookupView {
             
             if let metacriticModel = viewModel.metacriticDetailModel {
                 // Platforms
-                gameDescriptionItem(items: metacriticModel.platforms,
+
+                gameDescriptionItem(items: metacriticModel.platforms ?? [],
                                     title: constants.platforms)
                 
                 // Release Date
-                gameDescriptionItem(item: metacriticModel.releaseDate,
+                gameDescriptionItem(item: metacriticModel.releaseDate ?? "",
                                     title: constants.releaseDate)
 
                 // Developers
-                gameDescriptionItem(items: metacriticModel.developers,
+                gameDescriptionItem(items: metacriticModel.developers ?? [],
                                     title: constants.developers)
                 
                 // Publisher
-                gameDescriptionItem(item: metacriticModel.publisher,
+                gameDescriptionItem(item: metacriticModel.publisher ?? "",
                                     title: constants.publisher)
 
                 // Genres
-                gameDescriptionItem(items: metacriticModel.genres,
+                gameDescriptionItem(items: metacriticModel.genres ?? [],
                                     title: constants.genres)
                 
                 // Description
-                gameDescription(description: metacriticModel.description.replacingOccurrences(of: "Description:", with: ""),
+                gameDescription(description: metacriticModel.description?.replacingOccurrences(of: "Description:", with: "") ?? "",
                                 title: constants.description)
             } else {
                 Text(constants.emptyMessage)

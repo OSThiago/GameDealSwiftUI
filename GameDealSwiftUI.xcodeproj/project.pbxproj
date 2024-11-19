@@ -113,6 +113,7 @@
 		E6ACA17C2CEBC2080042D326 /* GameDetailsSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6ACA17B2CEBC2080042D326 /* GameDetailsSection.swift */; };
 		E6ACA17E2CEBD0C60042D326 /* GameDetailItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6ACA17D2CEBD0C60042D326 /* GameDetailItem.swift */; };
 		E6ACA1802CEBDBEC0042D326 /* GameDetailDescription.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6ACA17F2CEBDBEC0042D326 /* GameDetailDescription.swift */; };
+		E6ACA1842CED1EC00042D326 /* GameImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6ACA1832CED1EC00042D326 /* GameImage.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -242,6 +243,7 @@
 		E6ACA17B2CEBC2080042D326 /* GameDetailsSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameDetailsSection.swift; sourceTree = "<group>"; };
 		E6ACA17D2CEBD0C60042D326 /* GameDetailItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameDetailItem.swift; sourceTree = "<group>"; };
 		E6ACA17F2CEBDBEC0042D326 /* GameDetailDescription.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameDetailDescription.swift; sourceTree = "<group>"; };
+		E6ACA1832CED1EC00042D326 /* GameImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameImage.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -742,7 +744,7 @@
 			children = (
 				E6ACA17A2CEBBED40042D326 /* GameDetails */,
 				E6ACA1792CEBBECA0042D326 /* Savings */,
-				E6ACA1782CEBBEB50042D326 /* StoreImages */,
+				E6ACA1782CEBBEB50042D326 /* Images */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -903,12 +905,13 @@
 			path = GamesModel;
 			sourceTree = "<group>";
 		};
-		E6ACA1782CEBBEB50042D326 /* StoreImages */ = {
+		E6ACA1782CEBBEB50042D326 /* Images */ = {
 			isa = PBXGroup;
 			children = (
 				DBCF02DC2C51617000DCE264 /* StoreImage.swift */,
+				E6ACA1832CED1EC00042D326 /* GameImage.swift */,
 			);
-			path = StoreImages;
+			path = Images;
 			sourceTree = "<group>";
 		};
 		E6ACA1792CEBBECA0042D326 /* Savings */ = {
@@ -1086,6 +1089,7 @@
 				DBE44FFE2CDEA068000D2ECB /* GameDetailConfigurator.swift in Sources */,
 				DB92BC022A3B6882009630E0 /* CheapestPriceEver.swift in Sources */,
 				DBFDE3132C5986F700310FF9 /* Savings.swift in Sources */,
+				E6ACA1842CED1EC00042D326 /* GameImage.swift in Sources */,
 				DB2A108E2C6F839D00D1C879 /* DependencyInjectionContainer.swift in Sources */,
 				DB92BBEE2A3B6595009630E0 /* EndpointCasesCheapShark.swift in Sources */,
 				DBEBE61D2CAB384200F155D8 /* DealsProtocol.swift in Sources */,

@@ -37,7 +37,10 @@ extension GameDetailView {
 
                     let hightQualityImage = viewModel.formatterUseCase.getHightQualityImage(url: viewModel.gameLookupModel?.info?.thumb ?? "error")
                     
-                    gameImage(url: hightQualityImage)
+                    GameImage(url: hightQualityImage,
+                              width: ScreenSize.width,
+                              height: ScreenSize.width / 16*9,
+                              placeholder: "photo.artframe")
                     
                     VStack(alignment: .leading, spacing: 4) {
                         Text(viewModel.gameLookupModel?.info?.title ?? "error")
@@ -114,39 +117,6 @@ extension GameDetailView {
                                         dealPrice: deal.price,
                                         isCheaper: viewModel.isCheaper(value: deal.price))
                 }
-            }
-        }
-    }
-}
-
-extension GameDetailView {
-    @ViewBuilder
-    func gameImage(url: String) -> some View {
-
-        let cellWidth = ScreenSize.width
-        let cellHeight = cellWidth / 16*9
-        
-        AsyncImage(url: URL(string: url)) { phase in
-            switch phase  {
-            case .empty:
-                ProgressView()
-                    .frame(width: cellWidth, height: cellHeight)
-            case .success(let image):
-                image
-                    .resizable()
-                    .scaledToFill()
-                    .frame(width: cellWidth, height: cellHeight)
-                    .clipped()
-
-            case .failure(_):
-                // TODO: Criar ou adicionar em um token de simbolos
-                Image(systemName: "photo.artframe")
-                    .foregroundStyle(Tokens.color.neutral.primary)
-                    .frame(width: cellWidth, height: cellHeight)
-            @unknown default:
-                Image(systemName: "photo.artframe")
-                    .foregroundStyle(Tokens.color.neutral.primary)
-                    .frame(width: cellWidth, height: cellHeight)
             }
         }
     }

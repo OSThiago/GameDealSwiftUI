@@ -86,37 +86,19 @@ extension MediumDealCell {
 extension MediumDealCell {
     @ViewBuilder
     func gameImage() -> some View {
-        AsyncImage(url: URL(string: thumb)) { phase in
-            switch phase  {
-            case .empty:
-                ProgressView()
-                    .frame(width: cellWidth, height: imageHight)
-            case .success(let image):
-                image
-                    .resizable()
-                    .scaledToFill()
-                    .frame(width: cellWidth, height: imageHight)
-                    .clipped()
-                    .overlay {
-                        LinearGradient(
-                            gradient:
-                                Gradient(
-                                    colors: [Color.black.opacity(Tokens.opacity.transparent),
-                                             Color.black.opacity(Tokens.opacity.intense)]),
-                            startPoint: .top,
-                            endPoint: .bottom)
-                    }
-                    
-            case .failure(_):
-                // TODO: Criar ou adicionar em um token de simbolos
-                Image(systemName: "photo.artframe")
-                    .foregroundStyle(Tokens.color.neutral.primary)
-                    .frame(width: cellWidth, height: imageHight)
-            @unknown default:
-                Image(systemName: "photo.artframe")
-                    .foregroundStyle(Tokens.color.neutral.primary)
-                    .frame(width: cellWidth, height: imageHight)
-            }
+        GameImage(url: thumb,
+                  width: cellWidth,
+                  height: imageHight,
+                  placeholder: "photo.artframe")
+        .clipped()
+        .overlay {
+            LinearGradient(
+                gradient:
+                    Gradient(
+                        colors: [Color.black.opacity(Tokens.opacity.transparent),
+                                 Color.black.opacity(Tokens.opacity.intense)]),
+                startPoint: .top,
+                endPoint: .bottom)
         }
     }
 }

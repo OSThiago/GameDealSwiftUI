@@ -16,40 +16,19 @@ extension DealLookupView {
         
         let imageHeight = constants.gameImageHeight
         
-        AsyncImage(url: URL(string: url)) { phase in
-            switch phase  {
-            case .empty:
-                ProgressView()
-                    .frame(width: ScreenSize.width, height: imageHeight)
-            case .success(let image):
-                GeometryReader { reader in
-                    let offsetY = reader.frame(in: .global).minY
-                    let isScrolled = offsetY > 0
-                    
-                    image
-                        .resizable()
-                        .scaledToFill()
-                        .frame(width: ScreenSize.width, height: isScrolled ? offsetY + imageHeight : imageHeight)
-                        .clipped()
-                        
-                        .offset(y: isScrolled ? -offsetY : 0)
-                        .scaleEffect(isScrolled ? offsetY / 2000 + 1 : 1)
-                }
-                // Default frame
-                .frame(height: imageHeight)
-                    
-            case .failure(_):
-                // TODO: Criar ou adicionar em um token de simbolos
-                Image(systemName: "photo.artframe")
-                    .foregroundStyle(Tokens.color.neutral.primary)
-                    .scaleEffect(2)
-                    .frame(width: ScreenSize.width, height: imageHeight)
-            @unknown default:
-                Image(systemName: "photo.artframe")
-                    .frame(width: ScreenSize.width, height: imageHeight)
-                    .foregroundStyle(Tokens.color.neutral.primary)
-            }
+        GeometryReader { reader in
+            let offsetY = reader.frame(in: .global).minY
+            let isScrolled = offsetY > 0
+            
+            GameImage(url: url,
+                      width: ScreenSize.width,
+                      height: isScrolled ? offsetY + imageHeight : imageHeight,
+                      placeholder: "photo.artframe")
+            .clipped()
+            .offset(y: isScrolled ? -offsetY : 0)
+            .scaleEffect(isScrolled ? offsetY / 2000 + 1 : 1)
         }
+        .frame(height: imageHeight)
     }
 }
 

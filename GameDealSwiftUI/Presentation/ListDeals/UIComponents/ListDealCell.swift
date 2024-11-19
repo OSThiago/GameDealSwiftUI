@@ -26,7 +26,7 @@ struct ListDealCell: View {
     
     var body: some View {
         HStack {
-            gameImage()
+            gameImage
             
             VStack(alignment: .leading) {
                 HStack {
@@ -76,32 +76,13 @@ struct ListDealCell: View {
     }
     
     // MARK: - Game Image
-    @ViewBuilder
-    func gameImage() -> some View {
-        AsyncImage(url: URL(string: thumb)) { phase in
-            switch phase  {
-            case .empty:
-                ProgressView()
-                    .frame(width: imageWidth, height: imageHeight)
-            case .success(let image):
-                image
-                    .resizable()
-                    .scaledToFill()
-                    .frame(width: imageWidth, height: imageHeight)
-                    .clipped()
-                    .cornerRadius(Tokens.borderRadius.sm)
-                    
-            case .failure(_):
-                // TODO: Criar ou adicionar em um token de simbolos
-                Image(systemName: "photo.artframe")
-                    .frame(width: imageWidth, height: imageHeight)
-                    .foregroundStyle(Tokens.color.neutral.primary)
-            @unknown default:
-                Image(systemName: "photo.artframe")
-                    .frame(width: imageWidth, height: imageHeight)
-                    .foregroundStyle(Tokens.color.neutral.primary)
-            }
-        }
+    var gameImage: some View {
+        GameImage(url: thumb,
+                  width: imageWidth,
+                  height: imageHeight,
+                  placeholder: "photo.artframe")
+        .clipped()
+        .cornerRadius(Tokens.borderRadius.sm)
     }
 }
 

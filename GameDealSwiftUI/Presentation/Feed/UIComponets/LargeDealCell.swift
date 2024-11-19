@@ -125,39 +125,23 @@ extension LargeDealCell {
 extension LargeDealCell {
     @ViewBuilder
     func gameImage() -> some View {
-        AsyncImage(url: URL(string: thumb)) { phase in
-            switch phase  {
-            case .empty:
-                ProgressView()
-                    .frame(width: cellWidth, height: cellHight)
-            case .success(let image):
-                image
-                    .resizable()
-                    .scaledToFill()
-                    .frame(width: cellWidth, height: cellHight)
-                    .clipped()
-                    .clipShape(.rect(
-                        topLeadingRadius: Tokens.borderRadius.md,
-                        topTrailingRadius: Tokens.borderRadius.md))
-                    .overlay {
-                        LinearGradient(
-                            gradient: Gradient(
-                                colors: [Color.white.opacity(Tokens.opacity.transparent),
-                                         Color.black.opacity(Tokens.opacity.intense)
-                                        ]),
-                            startPoint: .top,
-                            endPoint: .bottom)
-                    }
-            case .failure(_):
-                // TODO: Criar ou adicionar em um token de simbolos
-                Image(systemName: "photo.artframe")
-                    .foregroundStyle(Tokens.color.neutral.primary)
-                    .frame(width: cellWidth, height: cellHight)
-            @unknown default:
-                Image(systemName: "photo.artframe")
-                    .foregroundStyle(Tokens.color.neutral.primary)
-                    .frame(width: cellWidth, height: cellHight)
-            }
+        
+        GameImage(url: thumb,
+                  width: cellWidth,
+                  height: cellHight,
+                  placeholder: "photo.artframe")
+        .clipped()
+        .clipShape(.rect(
+            topLeadingRadius: Tokens.borderRadius.md,
+            topTrailingRadius: Tokens.borderRadius.md))
+        .overlay {
+            LinearGradient(
+                gradient: Gradient(
+                    colors: [Color.white.opacity(Tokens.opacity.transparent),
+                             Color.black.opacity(Tokens.opacity.intense)
+                            ]),
+                startPoint: .top,
+                endPoint: .bottom)
         }
     }
 }

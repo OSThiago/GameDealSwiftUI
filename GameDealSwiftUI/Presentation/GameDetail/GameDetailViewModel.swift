@@ -15,6 +15,7 @@ protocol GameDetailViewModelProtocol {
     var gameId: String { get }
     var gameLookupModel: GameLookupModel? { get set }
     var metacriticDetailModel: MetacriticDetailModel? { get set }
+    var isLoading: Bool { get set }
 }
 
 final class GameDetailViewModel: ObservableObject, GameDetailViewModelProtocol {
@@ -27,6 +28,7 @@ final class GameDetailViewModel: ObservableObject, GameDetailViewModelProtocol {
     @Published var gameLookupModel: GameLookupModel?
     @Published var metacriticDetailModel: MetacriticDetailModel?
     @Published var storesInformations: [StoresCheapShark] = []
+    @Published var isLoading: Bool = true
     
     var gameId: String
     
@@ -39,6 +41,9 @@ final class GameDetailViewModel: ObservableObject, GameDetailViewModelProtocol {
         await fetchStoresInformations()
         if let gameName = gameLookupModel?.info?.title {
             await fetchMetacriticDetailsInformation(metacriticLink: tryGenerateMetacriticName(gameName: gameName))
+        }
+        DispatchQueue.main.async {
+            self.isLoading = false
         }
     }
     
@@ -108,5 +113,19 @@ final class GameDetailViewModel: ObservableObject, GameDetailViewModelProtocol {
         let removeSpaces = gameName.replacingOccurrences(of: " ", with: "-")
         let newName = removeSpaces.replacingOccurrences(of: ":", with: "")
         return "/\(newName.lowercased())/"
+    }
+    
+    func dateFormatted(dateInt: Int) -> String {
+        
+        guard let timeInterval = TimeInterval(dateInt.description) else { return "error" }
+        
+        let date = Date(timeIntervalSince1970: timeInterval)
+        
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "MMM dd, yyyy"
+        
+        let dateFormatted = dateFormatter.string(from: date)
+        
+        return dateFormatted.description
     }
 }

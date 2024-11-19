@@ -69,9 +69,11 @@ extension GameDetailItem {
 
 extension GameDetailItem {
     var expanded: some View {
-        VStack {
+//        VStack {
             Text(items.joined(separator: ", "))
-        }
+            .frame(height: 80, alignment: .topLeading)
+//        }
+//        .frame(maxHeight: 100)
     }
 }
 

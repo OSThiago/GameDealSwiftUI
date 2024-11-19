@@ -43,13 +43,16 @@ extension GameDetailView {
                         Text(viewModel.gameLookupModel?.info?.title ?? "error")
                             .font(.title3)
                             .fontWeight(.bold)
-                        
+
                         cheapestPriceEver
+                            .padding(.top, 24)
+                        
                     }
                     .padding(.horizontal, 16)
                     
-//                    storesDeals
-                    verticalList
+                    Divider()
+
+                    StoresDeals
                     
                     GameDetailsSection(metacriticData: viewModel.metacriticDetailModel)
                         .padding(.horizontal, 16)
@@ -59,6 +62,7 @@ extension GameDetailView {
                     .padding(24)
                     .padding(.top, 16)
             }
+            .redacted(reason: viewModel.isLoading == true ? .placeholder : [])
         }
         .ignoresSafeArea(edges: .top)
     }
@@ -76,56 +80,31 @@ extension GameDetailView {
     
     @ViewBuilder
     var cheapestPriceEver: some View {
-        if let cheapeastPrice =  viewModel.gameLookupModel?.cheapestPriceEver?.price {
-            HStack {
-                Text(viewModel.gameLookupModel?.cheapestPriceEver?.date.description ?? "nil")
-                
-                Spacer()
-                
-                Text("$\(cheapeastPrice)")
-                    
-            }
-            .font(.body)
-            .foregroundStyle(.gray)
-        }
-    }
-    
-    @ViewBuilder
-    var storesDeals: some View {
-        if let deals = viewModel.gameLookupModel?.deals {
-            let rows = [
-                GridItem(.fixed(50)),
-                GridItem(.fixed(50)),
-                GridItem(.fixed(50))
-            ]
-            
-            VStack(alignment: .leading, spacing: 8) {
-                Text("Stores Deals")
+        if let cheapestPriceEver =  viewModel.gameLookupModel?.cheapestPriceEver?.price {
+            VStack(alignment: .leading) {
+                // Title
+                Text("Cheapest Price Ever")
                     .font(.body)
-                    .fontWeight(.bold)
-                    .padding(.leading)
+                    .fontWeight(.medium)
+                    .fontDesign(.rounded)
+                    .foregroundStyle(.gray)
                 
-                ScrollView(.horizontal, showsIndicators: false) {
-                    LazyHGrid(rows: rows, spacing: 0) {
-                        ForEach(deals, id: \.dealID) { deal in
-                            if let store = viewModel.getStore(storeID: deal.storeID ?? "") {
-                                let storeImage = viewModel.formatterUseCase.getStoreImage(store: store)
-                                LookupDealStoreCell(storeImage: storeImage,
-                                                    storeTitle: store.storeName,
-                                                    dealPrice: deal.price,
-                                                    isCheaper: false,
-                                                    cellWidth: 340)
-                            }
-                        }
-                    }
-                    .scrollTargetLayout()
+                HStack {
+
+                    Text(viewModel.dateFormatted(dateInt: viewModel.gameLookupModel?.cheapestPriceEver?.date ?? 0))
+                    
+                    Spacer()
+                    
+                    Text("$\(cheapestPriceEver)")
+                        .fontWeight(.bold)
+                        .foregroundStyle(.gray)
+                        .strikethrough()
                 }
-                .scrollTargetBehavior(.viewAligned)
             }
         }
     }
     
-    var verticalList: some View {
+    var StoresDeals: some View {
         VStack {
             ForEach(viewModel.gameLookupModel?.deals ?? [], id: \.dealID) { deal in
                 if let store = viewModel.getStore(storeID: deal.storeID ?? "") {

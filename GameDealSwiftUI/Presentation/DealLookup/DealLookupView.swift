@@ -20,7 +20,8 @@ struct DealLookupView: View {
     
     // MARK: - BODY
     var body: some View {
-        buildedContent
+//        buildedContent
+        contentView
             .task {
                 await viewModel.viewDidLoad()
             }
@@ -79,6 +80,7 @@ extension DealLookupView {
                 self.viewModel.scrollPosition = value
             }
         }
+        .redacted(reason: viewModel.viewState == .loading ? .placeholder : [])
         .coordinateSpace(name: constants.scrollkey)
         .navigationTitle(viewModel.showNavigationTitleDescription())
         .ignoresSafeArea()

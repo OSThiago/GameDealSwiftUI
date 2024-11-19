@@ -13,7 +13,7 @@ struct GameDetailView: View {
     
     @StateObject var viewModel: GameDetailViewModel
 
-    private let constants = GameDetailConstants()
+    let constants = GameDetailConstants()
     
     init(viewModel: GameDetailViewModel) {
         self._viewModel = StateObject(wrappedValue: viewModel)
@@ -32,7 +32,7 @@ extension GameDetailView {
     var content: some View {
         ScrollView {
             ZStack(alignment: .topTrailing) {
-                VStack(alignment: .leading, spacing: 16) {
+                VStack(alignment: .leading, spacing: Tokens.padding.xxxs) {
                     headerSection
                     
                     Divider()
@@ -40,12 +40,12 @@ extension GameDetailView {
                     storesDealsSection
                     
                     GameDetailsSection(metacriticData: viewModel.metacriticDetailModel)
-                        .padding(.horizontal, 16)
+                        .padding(.horizontal, Tokens.padding.xxxs)
                 }
                 
                 dismissButton
-                    .padding(24)
-                    .padding(.top, 16)
+                    .padding(Tokens.padding.xxs)
+                    .padding(.top, Tokens.padding.xxxs)
             }
             .redacted(reason: viewModel.isLoading == true ? .placeholder : [])
         }

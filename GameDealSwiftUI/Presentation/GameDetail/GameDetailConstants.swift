@@ -8,5 +8,15 @@
 import Foundation
 
 struct GameDetailConstants {
+    // Game Image
+    let gameImageHeight = ScreenSize.width / 16*9
+    let imagePlaceholder = "photo.artframe"
+    let error = "Error"
     
+    // Chepeast Price Section
+    let chepeastPriceTitle = "Cheapest Price Ever"
+    
+    // Dismiss Button
+    let dismissButtonImage = "x.circle.fill"
+    let dismissButtonScaleEffect = 1.5
 }

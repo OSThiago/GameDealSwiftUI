@@ -12,10 +12,10 @@ extension GameDetailView {
         Button {
             router.dismissFullScreenCover()
         } label: {
-            Image(systemName: "x.circle.fill")
+            Image(systemName: constants.dismissButtonImage)
                 .tint(.white)
-                .shadow(color: .black, radius: 4)
-                .scaleEffect(1.5)
+                .shadow(color: .black, radius: Tokens.borderRadius.sm)
+                .scaleEffect(constants.dismissButtonScaleEffect)
         }
     }
 }

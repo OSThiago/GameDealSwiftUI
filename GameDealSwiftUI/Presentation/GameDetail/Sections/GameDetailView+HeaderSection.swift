@@ -9,24 +9,24 @@ import SwiftUI
 
 extension GameDetailView {
     var headerSection: some View {
-        VStack(alignment: .leading, spacing: 16) {
-            let hightQualityImage = viewModel.formatterUseCase.getHightQualityImage(url: viewModel.gameLookupModel?.info?.thumb ?? "error")
+        VStack(alignment: .leading, spacing: Tokens.padding.xxxs) {
+            let hightQualityImage = viewModel.formatterUseCase.getHightQualityImage(url: viewModel.gameLookupModel?.info?.thumb ?? constants.error)
             
             GameImage(url: hightQualityImage,
                       width: ScreenSize.width,
-                      height: ScreenSize.width / 16*9,
-                      placeholder: "photo.artframe")
+                      height: constants.gameImageHeight,
+                      placeholder: constants.imagePlaceholder)
             
-            VStack(alignment: .leading, spacing: 4) {
-                Text(viewModel.gameLookupModel?.info?.title ?? "error")
+            VStack(alignment: .leading, spacing: Tokens.padding.quarck) {
+                Text(viewModel.gameLookupModel?.info?.title ?? constants.error)
                     .font(.title3)
                     .fontWeight(.bold)
 
                 cheapestPriceEver
-                    .padding(.top, 24)
+                    .padding(.top, Tokens.padding.xxs)
                 
             }
-            .padding(.horizontal, 16)
+            .padding(.horizontal, Tokens.padding.xxxs)
         }
     }
 }

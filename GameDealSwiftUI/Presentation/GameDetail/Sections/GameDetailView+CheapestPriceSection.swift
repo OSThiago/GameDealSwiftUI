@@ -13,7 +13,7 @@ extension GameDetailView {
         if let cheapestPriceEver =  viewModel.gameLookupModel?.cheapestPriceEver?.price {
             VStack(alignment: .leading) {
                 // Title
-                Text("Cheapest Price Ever")
+                Text(constants.chepeastPriceTitle)
                     .font(.body)
                     .fontWeight(.medium)
                     .fontDesign(.rounded)

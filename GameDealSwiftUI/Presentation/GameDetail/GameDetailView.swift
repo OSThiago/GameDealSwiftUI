@@ -12,9 +12,8 @@ struct GameDetailView: View {
     @EnvironmentObject var router: Router
     
     @StateObject var viewModel: GameDetailViewModel
-    
-    @State var width: CGFloat = 0
-    @State var height: CGFloat = 0
+
+    private let constants = GameDetailConstants()
     
     init(viewModel: GameDetailViewModel) {
         self._viewModel = StateObject(wrappedValue: viewModel)
@@ -34,28 +33,11 @@ extension GameDetailView {
         ScrollView {
             ZStack(alignment: .topTrailing) {
                 VStack(alignment: .leading, spacing: 16) {
-
-                    let hightQualityImage = viewModel.formatterUseCase.getHightQualityImage(url: viewModel.gameLookupModel?.info?.thumb ?? "error")
-                    
-                    GameImage(url: hightQualityImage,
-                              width: ScreenSize.width,
-                              height: ScreenSize.width / 16*9,
-                              placeholder: "photo.artframe")
-                    
-                    VStack(alignment: .leading, spacing: 4) {
-                        Text(viewModel.gameLookupModel?.info?.title ?? "error")
-                            .font(.title3)
-                            .fontWeight(.bold)
-
-                        cheapestPriceEver
-                            .padding(.top, 24)
-                        
-                    }
-                    .padding(.horizontal, 16)
+                    headerSection
                     
                     Divider()
 
-                    StoresDeals
+                    storesDealsSection
                     
                     GameDetailsSection(metacriticData: viewModel.metacriticDetailModel)
                         .padding(.horizontal, 16)
@@ -68,57 +50,6 @@ extension GameDetailView {
             .redacted(reason: viewModel.isLoading == true ? .placeholder : [])
         }
         .ignoresSafeArea(edges: .top)
-    }
-    
-    var dismissButton: some View {
-        Button {
-            router.dismissFullScreenCover()
-        } label: {
-            Image(systemName: "x.circle.fill")
-                .tint(.white)
-                .shadow(color: .black, radius: 4)
-                .scaleEffect(1.5)
-        }
-    }
-    
-    @ViewBuilder
-    var cheapestPriceEver: some View {
-        if let cheapestPriceEver =  viewModel.gameLookupModel?.cheapestPriceEver?.price {
-            VStack(alignment: .leading) {
-                // Title
-                Text("Cheapest Price Ever")
-                    .font(.body)
-                    .fontWeight(.medium)
-                    .fontDesign(.rounded)
-                    .foregroundStyle(.gray)
-                
-                HStack {
-
-                    Text(viewModel.dateFormatted(dateInt: viewModel.gameLookupModel?.cheapestPriceEver?.date ?? 0))
-                    
-                    Spacer()
-                    
-                    Text("$\(cheapestPriceEver)")
-                        .fontWeight(.bold)
-                        .foregroundStyle(.gray)
-                        .strikethrough()
-                }
-            }
-        }
-    }
-    
-    var StoresDeals: some View {
-        VStack {
-            ForEach(viewModel.gameLookupModel?.deals ?? [], id: \.dealID) { deal in
-                if let store = viewModel.getStore(storeID: deal.storeID ?? "") {
-                    let storeImage = viewModel.formatterUseCase.getStoreImage(store: store)
-                    LookupDealStoreCell(storeImage: storeImage,
-                                        storeTitle: store.storeName,
-                                        dealPrice: deal.price,
-                                        isCheaper: viewModel.isCheaper(value: deal.price))
-                }
-            }
-        }
     }
 }
 

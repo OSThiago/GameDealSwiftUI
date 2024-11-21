@@ -29,6 +29,7 @@ final class GameDetailViewModel: ObservableObject, GameDetailViewModelProtocol {
     @Published var metacriticDetailModel: MetacriticDetailModel?
     @Published var storesInformations: [StoresCheapShark] = []
     @Published var isLoading: Bool = true
+    @Published var scrollPosition: CGPoint = .zero
     
     var gameId: String
     

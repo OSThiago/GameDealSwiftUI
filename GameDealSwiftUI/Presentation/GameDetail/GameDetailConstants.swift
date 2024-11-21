@@ -19,6 +19,4 @@ struct GameDetailConstants {
     // Dismiss Button
     let dismissButtonImage = "x.circle.fill"
     let dismissButtonScaleEffect = 1.5
-    
-    let scrollkey: String = "scroll"
 }

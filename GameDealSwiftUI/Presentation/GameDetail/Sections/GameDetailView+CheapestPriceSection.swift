@@ -25,7 +25,7 @@ extension GameDetailView {
                     Spacer()
 
                     Text("$\(cheapestPriceEver)")
-                        .fontWeight(.bold)
+                        .fontWeight(.semibold)
                         .foregroundStyle(.gray)
                         .strikethrough()
                 }

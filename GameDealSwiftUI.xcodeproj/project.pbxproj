@@ -118,9 +118,6 @@
 		E6ACA18B2CED34410042D326 /* GameDetailView+CheapestPriceSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6ACA18A2CED342B0042D326 /* GameDetailView+CheapestPriceSection.swift */; };
 		E6ACA18E2CED34F60042D326 /* GameDetailView+DismissButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6ACA18D2CED34E50042D326 /* GameDetailView+DismissButton.swift */; };
 		E6ACA1902CED35690042D326 /* GameDetailView+HeaderSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6ACA18F2CED355C0042D326 /* GameDetailView+HeaderSection.swift */; };
-		E6ACA1962CEFBFE20042D326 /* CoreDataContainer.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E6ACA1942CEFBFE20042D326 /* CoreDataContainer.xcdatamodeld */; };
-		E6ACA1A12CF0AE350042D326 /* FavoriteGame+EntityName.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6ACA1A02CF0AE150042D326 /* FavoriteGame+EntityName.swift */; };
-		E6ACA1A32CF0B33F0042D326 /* CoreDataUseCaseImplementation.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6ACA1A22CF0B33F0042D326 /* CoreDataUseCaseImplementation.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -255,9 +252,6 @@
 		E6ACA18A2CED342B0042D326 /* GameDetailView+CheapestPriceSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "GameDetailView+CheapestPriceSection.swift"; sourceTree = "<group>"; };
 		E6ACA18D2CED34E50042D326 /* GameDetailView+DismissButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "GameDetailView+DismissButton.swift"; sourceTree = "<group>"; };
 		E6ACA18F2CED355C0042D326 /* GameDetailView+HeaderSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "GameDetailView+HeaderSection.swift"; sourceTree = "<group>"; };
-		E6ACA1952CEFBFE20042D326 /* CoreDataContainer.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = CoreDataContainer.xcdatamodel; sourceTree = "<group>"; };
-		E6ACA1A02CF0AE150042D326 /* FavoriteGame+EntityName.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FavoriteGame+EntityName.swift"; sourceTree = "<group>"; };
-		E6ACA1A22CF0B33F0042D326 /* CoreDataUseCaseImplementation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataUseCaseImplementation.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -534,7 +528,6 @@
 		DB92BBE22A3B5E82009630E0 /* BusinessLogic */ = {
 			isa = PBXGroup;
 			children = (
-				E6ACA19B2CEFC2AF0042D326 /* CoreData */,
 				DB6A8AB62CBD6F1A001E1581 /* ServiceUseCase */,
 				DBEBE6182CAB356D00F155D8 /* CheapSharkDomain */,
 				DB421C6A2C73BE300061C530 /* FormatterUseCase */,
@@ -967,16 +960,6 @@
 			path = Components;
 			sourceTree = "<group>";
 		};
-		E6ACA19B2CEFC2AF0042D326 /* CoreData */ = {
-			isa = PBXGroup;
-			children = (
-				E6ACA1A02CF0AE150042D326 /* FavoriteGame+EntityName.swift */,
-				E6ACA1942CEFBFE20042D326 /* CoreDataContainer.xcdatamodeld */,
-				E6ACA1A22CF0B33F0042D326 /* CoreDataUseCaseImplementation.swift */,
-			);
-			path = CoreData;
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -1113,7 +1096,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E6ACA1A12CF0AE350042D326 /* FavoriteGame+EntityName.swift in Sources */,
 				DBE44FF52CD93D86000D2ECB /* SearchConfigurator.swift in Sources */,
 				DBE44FFC2CDE992B000D2ECB /* GameDetailViewModel.swift in Sources */,
 				DB92BBE92A3B60F1009630E0 /* ServiceError.swift in Sources */,
@@ -1159,7 +1141,6 @@
 				DB80A9152A699ED2005489AD /* View+onBackSwipe.swift in Sources */,
 				DBCF02E12C516A3A00DCE264 /* Shadow.swift in Sources */,
 				DBEBE6232CAB389900F155D8 /* AlertsProtocol.swift in Sources */,
-				E6ACA1A32CF0B33F0042D326 /* CoreDataUseCaseImplementation.swift in Sources */,
 				DBCF02E32C5170C000DCE264 /* Opacity.swift in Sources */,
 				DB6A8AC22CBDB54F001E1581 /* StoresEndpoint.swift in Sources */,
 				E6ACA18E2CED34F60042D326 /* GameDetailView+DismissButton.swift in Sources */,
@@ -1183,7 +1164,6 @@
 				DB4937352C65013C005FF688 /* WebScrapingUseCaseProtocol.swift in Sources */,
 				DBCF02CF2C51264000DCE264 /* DealsByStoreSection.swift in Sources */,
 				DB2A10802C6D1AA600D1C879 /* AppScene.swift in Sources */,
-				E6ACA1962CEFBFE20042D326 /* CoreDataContainer.xcdatamodeld in Sources */,
 				DBCF02D52C51368A00DCE264 /* Padding.swift in Sources */,
 				DBCF02D12C512FC800DCE264 /* StoreListSection.swift in Sources */,
 				DB3931D22A53CC5C00CF0218 /* LookupDealStoreCell.swift in Sources */,
@@ -1564,19 +1544,6 @@
 			productName = SwiftSoup;
 		};
 /* End XCSwiftPackageProductDependency section */
-
-/* Begin XCVersionGroup section */
-		E6ACA1942CEFBFE20042D326 /* CoreDataContainer.xcdatamodeld */ = {
-			isa = XCVersionGroup;
-			children = (
-				E6ACA1952CEFBFE20042D326 /* CoreDataContainer.xcdatamodel */,
-			);
-			currentVersion = E6ACA1952CEFBFE20042D326 /* CoreDataContainer.xcdatamodel */;
-			path = CoreDataContainer.xcdatamodeld;
-			sourceTree = "<group>";
-			versionGroupType = wrapper.xcdatamodel;
-		};
-/* End XCVersionGroup section */
 	};
 	rootObject = DBAE72DF2A3B491000AB9E5F /* Project object */;
 }

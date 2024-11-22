@@ -36,8 +36,5 @@ struct AppAssembler: Assembler {
         
         DependencyInjectionContainer.register(type: StoresProtocol.self,
                                               StoresImplementation())
-        
-        DependencyInjectionContainer.register(type: CoreDataUseCaseProtocol.self,
-                                              CoreDataUseCaseImplementation())
     }
 }

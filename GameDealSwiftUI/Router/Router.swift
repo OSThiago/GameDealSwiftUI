@@ -60,6 +60,8 @@ extension Router {
             SearchConfigurator().configure()
         case .gameDetail(gameID: let gameID):
             GameDetailConfigurator(gameId: gameID).configure()
+        case .profile:
+            ProfileConfigurator().configure()
         }
     }
     

@@ -56,6 +56,16 @@ struct TabBarView: View {
                             .resizable()
                     }
                 }
+            
+            RouterView(initialScene: .profile)
+                .tabItem {
+                    Label {
+                        Text("Profile")
+                    } icon: {
+                        Image(systemName: "person.crop.circle")
+                            .resizable()
+                    }
+                }
         }
     }
 }

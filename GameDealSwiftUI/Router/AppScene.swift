@@ -14,6 +14,7 @@ enum AppScene {
                     store: StoresCheapShark)
     case search
     case gameDetail(gameID: String)
+    case profile
 }
 
 // MARK: - Hashble
@@ -29,7 +30,9 @@ extension AppScene: Hashable {
             hasher.combine("")
         case .search:
             hasher.combine("")
-        case .gameDetail(gameID: let gameID):
+        case .gameDetail(_):
+            hasher.combine("")
+        case .profile:
             hasher.combine("")
         }
     }
@@ -46,7 +49,7 @@ enum Sheet: Hashable, Identifiable {
     
     var id: String {
         switch self {
-        case .gameDetail(let gameID):
+        case .gameDetail(_):
             "gameDetail"
         }
     }
@@ -66,7 +69,7 @@ enum FullScreenCover: Hashable, Identifiable {
     
     var id: String {
         switch self {
-        case .gameDetail(let gameID):
+        case .gameDetail(_):
             "gameDetail"
         }
     }

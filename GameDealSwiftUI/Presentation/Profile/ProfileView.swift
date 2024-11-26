@@ -18,7 +18,13 @@ struct ProfileView: View {
     }
     
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        VStack {
+            Button {
+                viewModel.tryBiometricAuthentication()
+            } label: {
+                Text("Try Biometric")
+            }
+        }
     }
 }
 

@@ -22,9 +22,23 @@ extension GameDetailView {
                     .font(.title3)
                     .fontWeight(.bold)
 
-                cheapestPriceEver
-                    .padding(.top, Tokens.padding.xxs)
-                
+                HStack {
+                    cheapestPriceEver
+                        .padding(.top, Tokens.padding.xxs)
+                    
+                    Spacer()
+                    
+                    Button {
+                        do {
+                            try CoreDataProvider.shared.addFavoriteGame(gameID: viewModel.gameId)
+                        } catch {
+                            print(error)
+                        }
+                    } label: {
+                        Image(systemName: "heart")
+                    }
+
+                }
             }
             .padding(.horizontal, Tokens.padding.xxxs)
         }

@@ -18,7 +18,7 @@ struct GamesServiceImplementation: GamesProtocol {
         return try await serviceUseCase.fetch(endpoint: endpoint)
     }
     
-    func multipleGameLookup(endpoint: GamesEndPoint) async throws -> [GameLookupModel] {
+    func multipleGameLookup(endpoint: GamesEndPoint) async throws -> [String : GameLookup] {
         return try await serviceUseCase.fetch(endpoint: endpoint)
     }
 }

@@ -34,7 +34,7 @@ extension GamesEndPoint: EndPointProtocol {
             return [URLQueryItem(name: "id", value: id)]
         case .multipleGameLookup(let ids):
             let value = ids.joined(separator: ",")
-            return [URLQueryItem(name: "id", value: value)]
+            return [URLQueryItem(name: "ids", value: value)]
         }
     }
 }

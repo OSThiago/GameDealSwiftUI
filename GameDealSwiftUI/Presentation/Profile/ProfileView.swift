@@ -18,7 +18,26 @@ struct ProfileView: View {
     }
     
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        VStack {
+            Text("Favorite Games")
+            
+            ForEach(viewModel.gamesDetails?.games.sorted(by: { $0.key < $1.key }) ?? [], id: \.key) { id, game in
+                Text(game.info.title ?? "Error")
+            }
+        }
+        .task {
+            viewModel.fetchFavoriteGames { result in
+                switch result {
+                case .success(let success):
+                    viewModel.favoriteGames.append(contentsOf: success)
+                    Task {
+                        await viewModel.fetchGamesDetails()
+                    }
+                case .failure(let failure):
+                    print(failure)
+                }
+            }
+        }
     }
 }
 

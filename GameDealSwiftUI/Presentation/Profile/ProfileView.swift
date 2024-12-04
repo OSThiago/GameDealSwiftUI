@@ -9,6 +9,8 @@ import SwiftUI
 
 struct ProfileView: View {
     
+    @EnvironmentObject var router: Router
+    
     @StateObject var viewModel: ProfileViewModel
     
     let constants = ProfileConstants()
@@ -18,17 +20,36 @@ struct ProfileView: View {
     }
     
     var body: some View {
-        VStack {
-            Text("Favorite Games")
-            
-            ForEach(viewModel.gamesDetails?.games.sorted(by: { $0.key < $1.key }) ?? [], id: \.key) { id, game in
-                Text(game.info.title ?? "Error")
+        ScrollView {
+            VStack(alignment: .leading) {
+                
+                Text(constants.title)
+                    .font(.title2)
+                
+                ForEach(viewModel.gamesDetails?.games.sorted(by: { $0.key < $1.key }) ?? [], id: \.key) { id, game in
+                    
+                    Button(action: {
+                        router.present(fullScreenCover: .gameDetail(gameID: id))
+                    }, label: {
+                        FavoriteGameCell(image: game.info.thumb ?? "",
+                                         name: game.info.title ?? "",
+                                         price: game.deals.first?.price ?? "",
+                                         savings: game.deals.first?.savings ?? "",
+                                         originalPrice: game.deals.first?.retailPrice ?? "",
+                                         notificationIsActive: .constant(false)) {
+                            // TODO: - Notification Action
+                            print("")
+                        }
+                    })
+                }
             }
         }
-        .task {
+        .padding(.horizontal, 16)
+        .onAppear {
             viewModel.fetchFavoriteGames { result in
                 switch result {
                 case .success(let success):
+                    viewModel.resetData()
                     viewModel.favoriteGames.append(contentsOf: success)
                     Task {
                         await viewModel.fetchGamesDetails()

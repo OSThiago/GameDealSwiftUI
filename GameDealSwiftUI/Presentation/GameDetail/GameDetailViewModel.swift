@@ -29,8 +29,9 @@ final class GameDetailViewModel: ObservableObject, GameDetailViewModelProtocol {
     @Published var metacriticDetailModel: MetacriticDetailModel?
     @Published var storesInformations: [StoresCheapShark] = []
     @Published var isLoading: Bool = true
+    @Published var isFavorite: Bool = false
     
-    var gameId: String
+    let gameId: String
     
     init(gameid: String) {
         self.gameId = gameid
@@ -45,6 +46,7 @@ final class GameDetailViewModel: ObservableObject, GameDetailViewModelProtocol {
         DispatchQueue.main.async {
             self.isLoading = false
         }
+        updateIsFavorite()
     }
     
     func fetchGameDetails() async {
@@ -127,5 +129,11 @@ final class GameDetailViewModel: ObservableObject, GameDetailViewModelProtocol {
         let dateFormatted = dateFormatter.string(from: date)
         
         return dateFormatted.description
+    }
+    
+    func updateIsFavorite() {
+        DispatchQueue.main.async {
+            self.isFavorite = CoreDataUseCase.shared.containsFavoriteGame(gameID: self.gameId)
+        }
     }
 }

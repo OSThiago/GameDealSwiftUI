@@ -122,11 +122,11 @@
 		E6ACA1AF2CF10CE80042D326 /* ProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6ACA1AE2CF10CE80042D326 /* ProfileViewModel.swift */; };
 		E6ACA1B12CF10D000042D326 /* ProfileConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6ACA1B02CF10D000042D326 /* ProfileConfigurator.swift */; };
 		E6ACA1B32CF10D100042D326 /* ProfileConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6ACA1B22CF10D100042D326 /* ProfileConstants.swift */; };
-		E6ACA1B62CF1188B0042D326 /* CoreDataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6ACA1B52CF1188B0042D326 /* CoreDataProvider.swift */; };
+		E6ACA1B62CF1188B0042D326 /* CoreDataUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6ACA1B52CF1188B0042D326 /* CoreDataUseCase.swift */; };
 		E6ACA1B92CF1193A0042D326 /* CoreDataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E6ACA1B72CF1193A0042D326 /* CoreDataModel.xcdatamodeld */; };
 		E6ACA1BE2CF11ED80042D326 /* FavoriteGame+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6ACA1BD2CF11ECD0042D326 /* FavoriteGame+CoreDataClass.swift */; };
 		E6ACA1C02CF11F9A0042D326 /* FavoriteGame+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6ACA1BF2CF11F9A0042D326 /* FavoriteGame+CoreDataProperties.swift */; };
-		E6ACA1C22CF1215C0042D326 /* CoreDataImplementation.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6ACA1C12CF1214D0042D326 /* CoreDataImplementation.swift */; };
+		E6ACA1C52CFF4F180042D326 /* FavoriteGameCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6ACA1C42CFF4F180042D326 /* FavoriteGameCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -265,11 +265,11 @@
 		E6ACA1AE2CF10CE80042D326 /* ProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewModel.swift; sourceTree = "<group>"; };
 		E6ACA1B02CF10D000042D326 /* ProfileConfigurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileConfigurator.swift; sourceTree = "<group>"; };
 		E6ACA1B22CF10D100042D326 /* ProfileConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileConstants.swift; sourceTree = "<group>"; };
-		E6ACA1B52CF1188B0042D326 /* CoreDataProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataProvider.swift; sourceTree = "<group>"; };
+		E6ACA1B52CF1188B0042D326 /* CoreDataUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataUseCase.swift; sourceTree = "<group>"; };
 		E6ACA1B82CF1193A0042D326 /* CoreDataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = CoreDataModel.xcdatamodel; sourceTree = "<group>"; };
 		E6ACA1BD2CF11ECD0042D326 /* FavoriteGame+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FavoriteGame+CoreDataClass.swift"; sourceTree = "<group>"; };
 		E6ACA1BF2CF11F9A0042D326 /* FavoriteGame+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FavoriteGame+CoreDataProperties.swift"; sourceTree = "<group>"; };
-		E6ACA1C12CF1214D0042D326 /* CoreDataImplementation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataImplementation.swift; sourceTree = "<group>"; };
+		E6ACA1C42CFF4F180042D326 /* FavoriteGameCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteGameCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -988,6 +988,7 @@
 				E6ACA1AE2CF10CE80042D326 /* ProfileViewModel.swift */,
 				E6ACA1B02CF10D000042D326 /* ProfileConfigurator.swift */,
 				E6ACA1B22CF10D100042D326 /* ProfileConstants.swift */,
+				E6ACA1C32CFF4EFE0042D326 /* Components */,
 			);
 			path = Profile;
 			sourceTree = "<group>";
@@ -1012,8 +1013,7 @@
 		E6ACA1BB2CF119A60042D326 /* Implementation */ = {
 			isa = PBXGroup;
 			children = (
-				E6ACA1C12CF1214D0042D326 /* CoreDataImplementation.swift */,
-				E6ACA1B52CF1188B0042D326 /* CoreDataProvider.swift */,
+				E6ACA1B52CF1188B0042D326 /* CoreDataUseCase.swift */,
 			);
 			path = Implementation;
 			sourceTree = "<group>";
@@ -1025,6 +1025,14 @@
 				E6ACA1BF2CF11F9A0042D326 /* FavoriteGame+CoreDataProperties.swift */,
 			);
 			path = Data;
+			sourceTree = "<group>";
+		};
+		E6ACA1C32CFF4EFE0042D326 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				E6ACA1C42CFF4F180042D326 /* FavoriteGameCell.swift */,
+			);
+			path = Components;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -1218,7 +1226,6 @@
 				DB92BBFE2A3B685C009630E0 /* DealLookup.swift in Sources */,
 				DB95FDCA2A40E774006EB578 /* LargeDealCell.swift in Sources */,
 				DB92BC092A3B69A2009630E0 /* FeedGameDealMock.swift in Sources */,
-				E6ACA1C22CF1215C0042D326 /* CoreDataImplementation.swift in Sources */,
 				DBEBE6392CAC43A400F155D8 /* GamesEndPoint.swift in Sources */,
 				DB2A10872C6D47D900D1C879 /* DealLookupConfigurator.swift in Sources */,
 				DBEBE6312CAB566400F155D8 /* DealsEndPoint.swift in Sources */,
@@ -1236,7 +1243,7 @@
 				DB4937352C65013C005FF688 /* WebScrapingUseCaseProtocol.swift in Sources */,
 				DBCF02CF2C51264000DCE264 /* DealsByStoreSection.swift in Sources */,
 				DB2A10802C6D1AA600D1C879 /* AppScene.swift in Sources */,
-				E6ACA1B62CF1188B0042D326 /* CoreDataProvider.swift in Sources */,
+				E6ACA1B62CF1188B0042D326 /* CoreDataUseCase.swift in Sources */,
 				DBCF02D52C51368A00DCE264 /* Padding.swift in Sources */,
 				DBCF02D12C512FC800DCE264 /* StoreListSection.swift in Sources */,
 				E6ACA1C02CF11F9A0042D326 /* FavoriteGame+CoreDataProperties.swift in Sources */,
@@ -1252,6 +1259,7 @@
 				DB95FDC72A40D9BE006EB578 /* FeedViewModel.swift in Sources */,
 				E6ACA1B12CF10D000042D326 /* ProfileConfigurator.swift in Sources */,
 				DBAE72ED2A3B491100AB9E5F /* ContentView.swift in Sources */,
+				E6ACA1C52CFF4F180042D326 /* FavoriteGameCell.swift in Sources */,
 				DB4030492C453F94000DCFD1 /* MetacriticWebScrapingProtocol.swift in Sources */,
 				DB92BC052A3B6974009630E0 /* DealLookupMock.swift in Sources */,
 				DBEBE63B2CAC446100F155D8 /* GameQuery.swift in Sources */,

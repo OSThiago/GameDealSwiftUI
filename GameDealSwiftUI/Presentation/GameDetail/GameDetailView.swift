@@ -13,6 +13,8 @@ struct GameDetailView: View {
     
     @StateObject var viewModel: GameDetailViewModel
 
+    @State private var offset: CGFloat = 0
+    
     let constants = GameDetailConstants()
     
     init(viewModel: GameDetailViewModel) {
@@ -25,6 +27,13 @@ struct GameDetailView: View {
             .task {
                 await viewModel.viewDidLoad()
             }
+            .onAppear {
+                UIScrollView.appearance().bounces = false
+            }
+            .onDisappear {
+                UIScrollView.appearance().bounces = true
+            }
+            
     }
 }
 
@@ -50,6 +59,7 @@ extension GameDetailView {
             .redacted(reason: viewModel.isLoading == true ? .placeholder : [])
         }
         .ignoresSafeArea(edges: .top)
+        .scrollIndicators(.hidden)
     }
 }
 

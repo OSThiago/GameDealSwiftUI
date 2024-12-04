@@ -30,12 +30,18 @@ extension GameDetailView {
                     
                     Button {
                         do {
-                            try CoreDataProvider.shared.addFavoriteGame(gameID: viewModel.gameId)
+                            if viewModel.isFavorite {
+                                try CoreDataUseCase.shared.deleteFavoriteGame(gameID: viewModel.gameId)
+                            } else {
+                                try CoreDataUseCase.shared.addFavoriteGame(gameID: viewModel.gameId)
+                            }
                         } catch {
                             print(error)
                         }
+                        
+                        viewModel.updateIsFavorite()
                     } label: {
-                        Image(systemName: "heart")
+                        Image(systemName: viewModel.isFavorite ? "heart.fill" :"heart")
                     }
 
                 }

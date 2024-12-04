@@ -8,5 +8,5 @@
 import Foundation
 
 struct ProfileConstants {
-
+    let title = "Favorite Games"
 }

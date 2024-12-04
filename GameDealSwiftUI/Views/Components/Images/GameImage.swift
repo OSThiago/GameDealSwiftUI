@@ -17,7 +17,7 @@ struct GameImage: View {
     init(url: String,
           width: CGFloat,
           height: CGFloat,
-          placeholder: String
+          placeholder: String = "photo.artframe"
     ) {
         self.url = url
         self.width = width

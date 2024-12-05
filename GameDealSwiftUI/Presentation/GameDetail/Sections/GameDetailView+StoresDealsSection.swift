@@ -24,5 +24,5 @@ extension GameDetailView {
 }
 
 #Preview {
-    GameDetailConfigurator(gameId: "206126").configure()
+    GameDetailConfigurator(gameId: "206126", onDisappear: nil).configure()
 }

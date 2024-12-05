@@ -64,7 +64,7 @@ extension SearchView {
                         gameCell(thumb: viewModel.formatterUsecase.getHightQualityImage(url: game.thumb ?? "" ),
                                  name: game.external ?? "")
                         .onTapGesture {
-                            router.present(fullScreenCover: .gameDetail(gameID: game.gameID ?? ""))
+                            router.present(fullScreenCover: .gameDetail(gameID: game.gameID ?? "", onDisappear: nil))
                         }
                     }
                 }

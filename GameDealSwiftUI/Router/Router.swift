@@ -58,8 +58,8 @@ extension Router {
                                    store: store).configure()
         case .search:
             SearchConfigurator().configure()
-        case .gameDetail(gameID: let gameID):
-            GameDetailConfigurator(gameId: gameID).configure()
+        case .gameDetail(gameID: let gameID, onDisappear: let onDisappear):
+            GameDetailConfigurator(gameId: gameID, onDisappear: onDisappear).configure()
         case .profile:
             ProfileConfigurator().configure()
         }
@@ -68,16 +68,16 @@ extension Router {
     @ViewBuilder
     func buildedView(sheet: Sheet) -> some View {
         switch sheet {
-        case .gameDetail(let gameID):
-            GameDetailConfigurator(gameId: gameID).configure()
+        case .gameDetail(gameID: let gameID, onDisappear: let onDisappear):
+            GameDetailConfigurator(gameId: gameID, onDisappear: onDisappear).configure()
         }
     }
     
     @ViewBuilder
     func buildedView(fullScreenCover: FullScreenCover) -> some View {
         switch fullScreenCover {
-        case .gameDetail(let gameID):
-            GameDetailConfigurator(gameId: gameID).configure()
+        case .gameDetail(gameID: let gameID, onDisappear: let onDisappear):
+            GameDetailConfigurator(gameId: gameID, onDisappear: onDisappear).configure()
         }
     }
 }

@@ -13,7 +13,7 @@ enum AppScene {
     case dealDetail(feedGameDealModel: FeedGameDealModel,
                     store: StoresCheapShark)
     case search
-    case gameDetail(gameID: String)
+    case gameDetail(gameID: String, onDisappear: (() -> Void)?)
     case profile
 }
 
@@ -30,7 +30,7 @@ extension AppScene: Hashable {
             hasher.combine("")
         case .search:
             hasher.combine("")
-        case .gameDetail(_):
+        case .gameDetail(_,_):
             hasher.combine("")
         case .profile:
             hasher.combine("")
@@ -45,11 +45,11 @@ extension AppScene: Hashable {
 // MARK: - Sheet
 enum Sheet: Hashable, Identifiable {
 
-    case gameDetail(gameID: String)
+    case gameDetail(gameID: String, onDisappear: (() -> Void)?)
     
     var id: String {
         switch self {
-        case .gameDetail(_):
+        case .gameDetail(_,_):
             "gameDetail"
         }
     }
@@ -65,11 +65,11 @@ enum Sheet: Hashable, Identifiable {
 
 // MARK: - FullScreenCover
 enum FullScreenCover: Hashable, Identifiable {
-    case gameDetail(gameID: String)
+    case gameDetail(gameID: String, onDisappear: (() -> Void)?)
     
     var id: String {
         switch self {
-        case .gameDetail(_):
+        case .gameDetail(_,_):
             "gameDetail"
         }
     }

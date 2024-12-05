@@ -47,6 +47,28 @@ final class ProfileViewModel: ObservableObject {
         }
     }
     
+    func setNotification(to: Bool, gameID: String) {
+        do {
+            try CoreDataUseCase.shared.updateAlertStatus(for: gameID, isActive: to)
+        } catch {
+            print("Error setting notification: \(error)")
+        }
+    }
+    
+    func notificationStatus(for gameID: String) -> Bool {
+        do {
+            guard let game = try CoreDataUseCase.shared.getFavoriteGame(for: gameID) else { return false }
+            return game.notificationIsActive
+        } catch {
+            print("Error getting notification status: \(error)")
+        }
+        return false
+    }
+    
+    func favoriteGameIdex(for gameID: String) -> Int? {
+        return favoriteGames.firstIndex(where: { $0.gameID == gameID })
+    }
+    
     func resetData() {
         self.gamesDetails = nil
         self.favoriteGames.removeAll()

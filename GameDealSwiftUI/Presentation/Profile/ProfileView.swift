@@ -21,43 +21,45 @@ struct ProfileView: View {
     
     var body: some View {
         ScrollView {
-            VStack(alignment: .leading) {
+            VStack {
+                profileInfoSection
+                    .padding(.bottom, 24)
                 
-                Text(constants.title)
-                    .font(.title2)
-                
-                ForEach(viewModel.gamesDetails?.games.sorted(by: { $0.key < $1.key }) ?? [], id: \.key) { id, game in
-                    
-                    Button(action: {
-                        router.present(fullScreenCover: .gameDetail(gameID: id))
-                    }, label: {
-                        FavoriteGameCell(image: game.info.thumb ?? "",
-                                         name: game.info.title ?? "",
-                                         price: game.deals.first?.price ?? "",
-                                         savings: game.deals.first?.savings ?? "",
-                                         originalPrice: game.deals.first?.retailPrice ?? "",
-                                         notificationIsActive: .constant(false)) {
-                            // TODO: - Notification Action
-                            print("")
-                        }
-                    })
-                }
+                favoriteGamesSection
             }
         }
         .padding(.horizontal, 16)
+        .navigationTitle("Profile")
+        .navigationBarTitleDisplayMode(.inline)
         .onAppear {
-            viewModel.fetchFavoriteGames { result in
-                switch result {
-                case .success(let success):
-                    viewModel.resetData()
-                    viewModel.favoriteGames.append(contentsOf: success)
-                    Task {
-                        await viewModel.fetchGamesDetails()
-                    }
-                case .failure(let failure):
-                    print(failure)
+            configure()
+        }
+    }
+    
+    func configure() {
+        viewModel.fetchFavoriteGames { result in
+            switch result {
+            case .success(let success):
+                viewModel.resetData()
+                viewModel.favoriteGames.append(contentsOf: success)
+                Task {
+                    await viewModel.fetchGamesDetails()
                 }
+            case .failure(let failure):
+                print(failure)
             }
+        }
+    }
+}
+
+extension ProfileView {
+    var profileInfoSection: some View {
+        VStack {
+            Image(systemName: "person.fill")
+                .frame(width: 150, height: 150)
+                .scaleEffect(5)
+                .background(Color.gray)
+                .clipShape(.circle)
         }
     }
 }

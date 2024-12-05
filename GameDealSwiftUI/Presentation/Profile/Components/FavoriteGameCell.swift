@@ -16,7 +16,7 @@ struct FavoriteGameCell: View {
     let price: String
     let savings: String
     let originalPrice: String
-    @Binding var notificationIsActive: Bool    
+    var notificationIsActive: Bool
     var notificationAction: () -> Void
     
     var body: some View {
@@ -102,7 +102,8 @@ extension FavoriteGameCell {
                      price: "4.99",
                      savings: "75.037519",
                      originalPrice: "19.99",
-                     notificationIsActive: $notificationIsActive, notificationAction: {
+                     notificationIsActive: $notificationIsActive.wrappedValue
+                     , notificationAction: {
             notificationIsActive.toggle()
     })
     .padding(.horizontal, 16)

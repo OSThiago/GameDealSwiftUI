@@ -17,8 +17,13 @@ struct GameDetailView: View {
     
     let constants = GameDetailConstants()
     
-    init(viewModel: GameDetailViewModel) {
+    var onDisappear: (() -> Void)?
+    
+    init(viewModel: GameDetailViewModel,
+         onDisappear: (() -> Void)? = nil
+    ) {
         self._viewModel = StateObject(wrappedValue: viewModel)
+        self.onDisappear = onDisappear
     }
     
     var body: some View {
@@ -32,6 +37,9 @@ struct GameDetailView: View {
             }
             .onDisappear {
                 UIScrollView.appearance().bounces = true
+                if let onDisappear {
+                    onDisappear()
+                }
             }
             
     }
@@ -64,5 +72,5 @@ extension GameDetailView {
 }
 
 #Preview {
-    GameDetailConfigurator(gameId: "206126").configure()
+    GameDetailConfigurator(gameId: "206126", onDisappear: nil).configure()
 }

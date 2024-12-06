@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import PhotosUI
 
 struct ProfileView: View {
     
@@ -55,11 +56,24 @@ struct ProfileView: View {
 extension ProfileView {
     var profileInfoSection: some View {
         VStack {
-            Image(systemName: "person.fill")
-                .frame(width: 150, height: 150)
-                .scaleEffect(5)
-                .background(Color.gray)
-                .clipShape(.circle)
+            
+            PhotosPicker(selection: $viewModel.imageSelection, matching: .images) {
+                if let image = viewModel.userImage {
+                    Image(uiImage: image)
+                        .resizable()
+                        .frame(width: 100, height: 100)
+                        .scaledToFit()
+                        .background(Color.gray)
+                        .clipShape(.circle)
+                } else {
+                    Image(systemName: "person.fill")
+                        .frame(width: 100, height: 100)
+                        .scaleEffect(2)
+                        .scaledToFit()
+                        .background(Color.gray)
+                        .clipShape(.circle)
+                }
+            }
         }
     }
 }

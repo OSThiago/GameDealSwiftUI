@@ -5,15 +5,40 @@
 //  Created by Thiago de Oliveira Sousa - TOI on 22/11/24.
 //
 
-import Foundation
+import SwiftUI
+import PhotosUI
 
-final class ProfileViewModel: ObservableObject {
+protocol ProfileViewModelProtocol {
+    
+}
+
+final class ProfileViewModel: ObservableObject, ProfileViewModelProtocol {
     
     @Injected var gamesService: GamesProtocol
     @Injected var formatterUseCase: FormatterProcol
     
     @Published var favoriteGames: [FavoriteGame] = []
     @Published var gamesDetails: MultipleGameLookup?
+    @Published private(set) var userImage: UIImage? = nil
+    @Published var imageSelection: PhotosPickerItem? = nil {
+        didSet {
+            setImage(imageSelection)
+        }
+    }
+    
+    private func setImage(_ image: PhotosPickerItem?) {
+        guard let image else { return }
+        
+        Task {
+            if let data = try? await image.loadTransferable(type: Data.self) {
+                if let uiImage = UIImage(data: data) {
+                    DispatchQueue.main.async {
+                        self.userImage = uiImage
+                    }
+                }
+            }
+        }
+    }
     
     func fetchFavoriteGames(completion: @escaping (Result<[FavoriteGame], Error>) -> Void) {
         do {

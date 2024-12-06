@@ -26,21 +26,35 @@ struct FavoriteGameCell: View {
             VStack(alignment: .leading) {
                 gameNameView
                 
+                Spacer()
+                
                 HStack(alignment: .bottom) {
                     currentPriceView
                     
-                    originalPriceView
-                    
-                    Savings(savings: formatterUseCase.formatSavings(savings),
-                            font: .subheadline,
-                            padding: Tokens.padding.quarck)
+                    if isOnSale() {
+                        originalPriceView
+                        
+                        Savings(savings: formatterUseCase.formatSavings(savings),
+                                font: .subheadline,
+                                padding: Tokens.padding.quarck)
+                        .padding(.leading, 4)
+                    } else {
+                        Text("no deals")
+                            .font(.caption)
+                            .foregroundStyle(.gray)
+                    }
                 }
+                .padding(.vertical, 4)
             }
             
             Spacer()
             
             notificationButton
         }
+    }
+    
+    func isOnSale() -> Bool {
+        return originalPrice != price
     }
 }
 
@@ -70,7 +84,7 @@ extension FavoriteGameCell {
         Text("$\(price)")
             .font(.callout)
             .fontWeight(.semibold)
-            .foregroundStyle(Tokens.color.positive.secondary)
+            .foregroundStyle(isOnSale() ? Tokens.color.positive.secondary : .primary)
     }
 }
 

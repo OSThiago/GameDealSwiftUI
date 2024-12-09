@@ -11,6 +11,8 @@ protocol GameDetailViewModelProtocol {
     func viewDidLoad() async
     func fetchGameDetails() async
     func isCheaper(value: String?) -> Bool
+    func updateIsFavorite()
+    func favoriteAction()
     
     var gameId: String { get }
     var gameLookupModel: GameLookupModel? { get set }
@@ -134,6 +136,19 @@ final class GameDetailViewModel: ObservableObject, GameDetailViewModelProtocol {
     func updateIsFavorite() {
         DispatchQueue.main.async {
             self.isFavorite = CoreDataUseCase.shared.containsFavoriteGame(gameID: self.gameId)
+        }
+    }
+    
+    func favoriteAction() {
+        do {
+            if isFavorite {
+                try CoreDataUseCase.shared.deleteFavoriteGame(gameID: gameId)
+            } else {
+                try CoreDataUseCase.shared.addFavoriteGame(gameID: gameId)
+            }
+            updateIsFavorite()
+        } catch {
+            print(error)
         }
     }
 }

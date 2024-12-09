@@ -29,21 +29,10 @@ extension GameDetailView {
                     Spacer()
                     
                     Button {
-                        do {
-                            if viewModel.isFavorite {
-                                try CoreDataUseCase.shared.deleteFavoriteGame(gameID: viewModel.gameId)
-                            } else {
-                                try CoreDataUseCase.shared.addFavoriteGame(gameID: viewModel.gameId)
-                            }
-                        } catch {
-                            print(error)
-                        }
-                        
-                        viewModel.updateIsFavorite()
+                        viewModel.favoriteAction()
                     } label: {
-                        Image(systemName: viewModel.isFavorite ? "heart.fill" :"heart")
+                        Image(systemName: viewModel.isFavorite ? constants.favoriteFillImage : constants.favoriteImage)
                     }
-
                 }
             }
             .padding(.horizontal, Tokens.padding.xxxs)

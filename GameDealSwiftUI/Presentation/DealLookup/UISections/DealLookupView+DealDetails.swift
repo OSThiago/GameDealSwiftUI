@@ -74,7 +74,10 @@ extension DealLookupView {
 
                 Spacer()
                 
-                buyButton(dealID: "game id")
+                HStack {
+                    buyButton(dealID: "game id")
+                    favoriteButton
+                }
             }
             
             Divider()
@@ -144,5 +147,16 @@ extension DealLookupView {
         }
         .background(Color.blue)
         .clipShape(.rect(cornerRadius: Tokens.borderRadius.lg))
+    }
+}
+
+// MARK: - Favorite Button
+extension DealLookupView {
+    var favoriteButton: some View {
+        Button {
+            viewModel.favoriteAction()
+        } label: {
+            Image(systemName: viewModel.isFavorite ? "heart.fill" : "heart")
+        }
     }
 }

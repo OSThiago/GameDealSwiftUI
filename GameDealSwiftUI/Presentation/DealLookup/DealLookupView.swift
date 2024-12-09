@@ -66,8 +66,7 @@ extension DealLookupView {
                 dealDetailSection
                             
                 storesDealsSection
-                
-//                gameDetailsSection
+
                 GameDetailsSection(metacriticData: viewModel.metacriticDetailModel)
                     .padding(.horizontal, 16)
             }

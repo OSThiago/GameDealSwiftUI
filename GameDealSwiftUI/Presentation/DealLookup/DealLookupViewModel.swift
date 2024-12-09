@@ -25,6 +25,7 @@ final class DealLookupViewModel: ObservableObject {
     @Published var viewState: ViewState = .loading
     @Published var scrollPosition: CGPoint = .zero
     @Published var showNavigationTitle = false
+    @Published var isFavorite: Bool = false
     
     init(
         feedGameDealModel: FeedGameDealModel,
@@ -39,6 +40,7 @@ final class DealLookupViewModel: ObservableObject {
         await fetchStoresInformations()
         await fetchDealLookup(gameID: self.feedGameDealModel.gameID)
         self.metacriticDetailModel = await fetchMetacriticDetailsInformation(metacriticLink: feedGameDealModel.metacriticLink ?? "")
+        updateIsFavorite()
     }
     
     func showNavigationTitleDescription() -> String {
@@ -105,5 +107,24 @@ final class DealLookupViewModel: ObservableObject {
         
         self.viewState = .loaded
         return data
+    }
+    
+    func updateIsFavorite() {
+        DispatchQueue.main.async {
+            self.isFavorite = CoreDataUseCase.shared.containsFavoriteGame(gameID: self.feedGameDealModel.gameID)
+        }
+    }
+    
+    func favoriteAction() {
+        do {
+            if isFavorite {
+                try CoreDataUseCase.shared.deleteFavoriteGame(gameID: feedGameDealModel.gameID)
+            } else {
+                try CoreDataUseCase.shared.addFavoriteGame(gameID: feedGameDealModel.gameID)
+            }
+            updateIsFavorite()
+        } catch {
+            print(error)
+        }
     }
 }

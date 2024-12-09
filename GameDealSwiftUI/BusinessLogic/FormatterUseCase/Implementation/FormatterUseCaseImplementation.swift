@@ -50,4 +50,15 @@ struct FormatterUseCaseImplementation: FormatterProcol {
         
         return savingFormatted
     }
+    
+    /// Compare original and current price to check is on sale
+    /// - Parameters:
+    ///   - originalPrice: `String` originial price
+    ///   - currentPrice: `String` current price
+    /// - Returns: is on sale
+    func isOnSale(originalPrice: String?, currentPrice: String?) -> Bool {
+        guard let original = Double(originalPrice!) else { return false }
+        guard let current = Double(currentPrice!) else { return false }
+        return current < original
+    }
 }

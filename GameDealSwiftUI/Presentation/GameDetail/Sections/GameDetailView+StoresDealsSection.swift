@@ -16,7 +16,7 @@ extension GameDetailView {
                     LookupDealStoreCell(storeImage: storeImage,
                                         storeTitle: store.storeName,
                                         dealPrice: deal.price,
-                                        isCheaper: viewModel.isCheaper(value: deal.price))
+                                        isOnSale: viewModel.formatterUseCase.isOnSale(originalPrice: deal.retailPrice, currentPrice: deal.price))
                 }
             }
         }

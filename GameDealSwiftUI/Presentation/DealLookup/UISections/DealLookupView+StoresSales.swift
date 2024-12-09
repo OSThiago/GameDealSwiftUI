@@ -33,8 +33,7 @@ extension DealLookupView {
                                     LookupDealStoreCell(storeImage: storeImage,
                                                         storeTitle: store.storeName,
                                                         dealPrice: deal.price,
-                                                        isCheaper: viewModel.isCheaper(chepeast: viewModel.feedGameDealModel.salePrice,
-                                                                                       value: deal.price),
+                                                        isOnSale: viewModel.FormatterUseCase.isOnSale(originalPrice: deal.retailPrice, currentPrice: deal.price),
                                                         cellWidth: 340)
                                 }
 

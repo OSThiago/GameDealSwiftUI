@@ -11,4 +11,5 @@ protocol FormatterProcol {
     func getHightQualityImage(url: String) -> String
     func getStoreImage(store: StoresCheapShark) -> String
     func formatSavings(_ savings: String) -> String
+    func isOnSale(originalPrice: String?, currentPrice: String?) -> Bool
 }

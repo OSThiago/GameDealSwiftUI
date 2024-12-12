@@ -20,13 +20,20 @@ final class ProfileViewModel: ObservableObject, ProfileViewModelProtocol {
     @Published var favoriteGames: [FavoriteGame] = []
     @Published var gamesDetails: MultipleGameLookup?
     @Published private(set) var userImage: UIImage? = nil
-    @Published var imageSelection: PhotosPickerItem? = nil {
+    @Published private(set) var coverImage: UIImage? = nil
+    @Published var userImageSelection: PhotosPickerItem? = nil {
         didSet {
-            setImage(imageSelection)
+            setUserImage(userImageSelection)
         }
     }
     
-    private func setImage(_ image: PhotosPickerItem?) {
+    @Published var coverImageSelection: PhotosPickerItem? = nil {
+        didSet {
+            setCoverImage(coverImageSelection)
+        }
+    }
+    
+    private func setUserImage(_ image: PhotosPickerItem?) {
         guard let image else { return }
         
         Task {
@@ -34,6 +41,20 @@ final class ProfileViewModel: ObservableObject, ProfileViewModelProtocol {
                 if let uiImage = UIImage(data: data) {
                     DispatchQueue.main.async {
                         self.userImage = uiImage
+                    }
+                }
+            }
+        }
+    }
+    
+    private func setCoverImage(_ image: PhotosPickerItem?) {
+        guard let image else { return }
+        
+        Task {
+            if let data = try? await image.loadTransferable(type: Data.self) {
+                if let uiImage = UIImage(data: data) {
+                    DispatchQueue.main.async {
+                        self.coverImage = uiImage
                     }
                 }
             }

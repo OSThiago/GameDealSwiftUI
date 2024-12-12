@@ -26,10 +26,11 @@ struct ProfileView: View {
                 profileInfoSection
                     .padding(.bottom, 24)
                 
+                
                 favoriteGamesSection
             }
         }
-        .padding(.horizontal, 16)
+        .ignoresSafeArea()
         .navigationTitle("Profile")
         .navigationBarTitleDisplayMode(.inline)
         .onAppear {
@@ -55,24 +56,61 @@ struct ProfileView: View {
 
 extension ProfileView {
     var profileInfoSection: some View {
-        VStack {
+        // MARK: - Body
+        ZStack(alignment: .bottomLeading) {
+            coverImage
             
-            PhotosPicker(selection: $viewModel.imageSelection, matching: .images) {
-                if let image = viewModel.userImage {
-                    Image(uiImage: image)
-                        .resizable()
-                        .frame(width: 100, height: 100)
-                        .scaledToFit()
-                        .background(Color.gray)
-                        .clipShape(.circle)
-                } else {
-                    Image(systemName: "person.fill")
-                        .frame(width: 100, height: 100)
-                        .scaleEffect(2)
-                        .scaledToFit()
-                        .background(Color.gray)
-                        .clipShape(.circle)
-                }
+            profileImage
+                .padding(.bottom, -64)
+                .padding(.leading, 16)
+        }
+        .padding(.bottom, 64)
+    }
+    
+    // MARK: - Profile image
+    @ViewBuilder
+    private var profileImage: some View {
+        
+        let size: CGFloat = 100
+        
+        PhotosPicker(selection: $viewModel.userImageSelection, matching: .images) {
+            if let image = viewModel.userImage {
+                Image(uiImage: image)
+                    .resizable()
+                    .frame(width: size, height: size)
+                    .scaledToFit()
+                    .background(Color.gray)
+                    .clipShape(.circle)
+            } else {
+                Image(systemName: "person.fill")
+                    .frame(width: size, height: size)
+                    .scaleEffect(2)
+                    .scaledToFit()
+                    .background(Color.gray)
+                    .clipShape(.circle)
+            }
+        }
+    }
+    
+    // MARK: - Cover  image
+    @ViewBuilder
+    private var coverImage: some View {
+        
+        let width: CGFloat = ScreenSize.width
+        let height: CGFloat = ScreenSize.width * 9/16
+        
+        PhotosPicker(selection: $viewModel.coverImageSelection, matching: .images) {
+            if let image = viewModel.coverImage {
+                Image(uiImage: image)
+                    .resizable()
+                    .frame(width: width, height: height)
+                    .scaledToFit()
+            } else {
+                Image(systemName: "photo.artframe")
+                    .frame(width: width, height: height)
+                    .scaleEffect(2)
+                    .scaledToFit()
+                    .background(Color.gray.opacity(0.4))
             }
         }
     }

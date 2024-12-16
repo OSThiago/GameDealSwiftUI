@@ -29,6 +29,7 @@ struct ProfileView: View {
                 
                 favoriteGamesSection
             }
+            .padding(.bottom, 100)
         }
         .ignoresSafeArea()
         .navigationTitle("Profile")

@@ -17,8 +17,13 @@ final class ProfileViewModel: ObservableObject, ProfileViewModelProtocol {
     @Injected var gamesService: GamesProtocol
     @Injected var formatterUseCase: FormatterProcol
     
+    // Data
     @Published var favoriteGames: [FavoriteGame] = []
     @Published var gamesDetails: MultipleGameLookup?
+    // Favorite games
+    @Published var onSaleGames: [String : GameLookup] = [:]
+    @Published var noDealsGames: [String : GameLookup] = [:]
+    // Images
     @Published private(set) var userImage: UIImage? = nil
     @Published private(set) var coverImage: UIImage? = nil
     @Published var userImageSelection: PhotosPickerItem? = nil {
@@ -87,6 +92,8 @@ final class ProfileViewModel: ObservableObject, ProfileViewModelProtocol {
             DispatchQueue.main.async {
                 let dictionary = Dictionary(uniqueKeysWithValues: result.compactMap{ $0 })
                 self.gamesDetails = MultipleGameLookup(games: dictionary)
+                self.updateOnSale()
+                self.updateNoDeals()
             }
         } catch {
             print("Error fetching games details: \(error)")
@@ -118,5 +125,39 @@ final class ProfileViewModel: ObservableObject, ProfileViewModelProtocol {
     func resetData() {
         self.gamesDetails = nil
         self.favoriteGames.removeAll()
+    }
+    
+    func updateOnSale() {
+        guard let games = self.gamesDetails?.games else { return }
+        
+        self.onSaleGames.removeAll()
+        
+        let filtered = games.filter { id, game in
+            if let first = game.deals.first {
+                return first.retailPrice != first.price
+            }
+            return false
+        }
+        
+        DispatchQueue.main.async {
+            self.onSaleGames = filtered
+        }
+    }
+    
+    func updateNoDeals() {
+        guard let games = self.gamesDetails?.games else { return }
+        
+        self.noDealsGames.removeAll()
+        
+        let filtered = games.filter { id, game in
+            if let first = game.deals.first {
+                return first.retailPrice == first.price
+            }
+            return false
+        }
+        
+        DispatchQueue.main.async {
+            self.noDealsGames = filtered
+        }
     }
 }

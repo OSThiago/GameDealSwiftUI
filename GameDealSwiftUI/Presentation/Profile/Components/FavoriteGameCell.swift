@@ -20,19 +20,19 @@ struct FavoriteGameCell: View {
     var notificationAction: () -> Void
     
     var body: some View {
-        HStack {
+        HStack(alignment: .top) {
             gameImageView
             
-            VStack(alignment: .leading) {
+            VStack(alignment: .leading, spacing: 0) {
                 gameNameView
-                
-                Spacer()
                 
                 HStack(alignment: .bottom) {
                     currentPriceView
                     
                     if isOnSale() {
                         originalPriceView
+
+                        Spacer()
                         
                         Savings(savings: formatterUseCase.formatSavings(savings),
                                 font: .subheadline,
@@ -44,13 +44,14 @@ struct FavoriteGameCell: View {
                             .foregroundStyle(.gray)
                     }
                 }
-                .padding(.vertical, 4)
+                .frame(maxWidth: 185, alignment: .leading)
             }
             
             Spacer()
             
             notificationButton
         }
+        .frame(height: 70)
     }
     
     func isOnSale() -> Bool {
@@ -63,7 +64,8 @@ extension FavoriteGameCell {
     var gameImageView: some View {
         GameImage(url: formatterUseCase.getHightQualityImage(url: image),
                   width: 60 * 16/9,
-                  height: 60)
+                  height: 70)
+        .background(.gray.opacity(0.2))
         .clipShape(.rect(cornerRadius: Tokens.borderRadius.sm))
     }
 }
@@ -73,8 +75,10 @@ extension FavoriteGameCell {
     var gameNameView: some View {
         Text(name)
             .foregroundStyle(.black)
-            .font(.headline)
+            .font(.body)
+            .fontWeight(.semibold)
             .lineLimit(2)
+            .frame(height: 45, alignment: .topLeading)
     }
 }
 
@@ -111,14 +115,49 @@ extension FavoriteGameCell {
 
 #Preview {
     @Previewable @State var notificationIsActive: Bool = false
-    FavoriteGameCell(image: "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/7670/capsule_sm_120.jpg?t=1730172622",
-                     name: "BioShock",
-                     price: "4.99",
-                     savings: "75.037519",
-                     originalPrice: "19.99",
-                     notificationIsActive: $notificationIsActive.wrappedValue
-                     , notificationAction: {
-            notificationIsActive.toggle()
-    })
+    
+    VStack {
+        FavoriteGameCell(image: "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/7670/capsule_sm_120.jpg?t=1730172622",
+                         name: "BioShock",
+                         price: "4.99",
+                         savings: "75.037519",
+                         originalPrice: "19.99",
+                         notificationIsActive: $notificationIsActive.wrappedValue
+                         , notificationAction: {
+                notificationIsActive.toggle()
+        })
+        
+        FavoriteGameCell(image: "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/315210/672afecc3038d133ad819dc76599c80179fcc8ea/capsule_sm_120_alt_assets_5.jpg?t=1733850022",
+                         name: "Suicide Squad: Kill the Justice League - Digital Deluxe Edition",
+                         price: "25.00",
+                         savings: "50.00",
+                         originalPrice: "50.00",
+                         notificationIsActive: $notificationIsActive.wrappedValue
+                         , notificationAction: {
+                notificationIsActive.toggle()
+        })
+        
+        FavoriteGameCell(image: "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1677350/capsule_sm_120.jpg?t=1713879504",
+                         name: "EA SPORTS PGA TOUR",
+                         price: "200.00",
+                         savings: "50.0",
+                         originalPrice: "100.00",
+                         notificationIsActive: $notificationIsActive.wrappedValue
+                         , notificationAction: {
+                notificationIsActive.toggle()
+        })
+        
+        FavoriteGameCell(image: "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/7670/capsule_sm_120.jpg?t=1730172622",
+                         name: "BioShock",
+                         price: "19.99",
+                         savings: "0.0",
+                         originalPrice: "19.99",
+                         notificationIsActive: $notificationIsActive.wrappedValue
+                         , notificationAction: {
+                notificationIsActive.toggle()
+        })
+    }
+    
+    
     .padding(.horizontal, 16)
 }

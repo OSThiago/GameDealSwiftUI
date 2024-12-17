@@ -23,6 +23,8 @@ final class ProfileViewModel: ObservableObject, ProfileViewModelProtocol {
     // Favorite games
     @Published var onSaleGames: [String : GameLookup] = [:]
     @Published var noDealsGames: [String : GameLookup] = [:]
+    // Profile Info
+    @Published var userName: String = "Your Name"
     // Images
     @Published private(set) var userImage: UIImage? = nil
     @Published private(set) var coverImage: UIImage? = nil
@@ -31,7 +33,6 @@ final class ProfileViewModel: ObservableObject, ProfileViewModelProtocol {
             setUserImage(userImageSelection)
         }
     }
-    
     @Published var coverImageSelection: PhotosPickerItem? = nil {
         didSet {
             setCoverImage(coverImageSelection)

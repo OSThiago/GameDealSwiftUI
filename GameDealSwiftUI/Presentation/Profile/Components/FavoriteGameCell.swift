@@ -20,7 +20,7 @@ struct FavoriteGameCell: View {
     var notificationAction: () -> Void
     
     var body: some View {
-        HStack(alignment: .top) {
+        HStack(alignment: .center) {
             gameImageView
             
             VStack(alignment: .leading, spacing: 0) {

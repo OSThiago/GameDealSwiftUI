@@ -11,38 +11,19 @@ import PhotosUI
 extension ProfileView {
     var profileInfoSection: some View {
         // MARK: - Body
-        ZStack(alignment: .bottomLeading) {
+        ZStack(alignment: .center) {
             coverImage
+                .padding(.horizontal, 16)
             
-            HStack {
+            VStack(spacing: 8) {
+                
+                Spacer()
+                
                 profileImage
                 
-                VStack(alignment: .leading) {
-                    
-                    TextField("User name", text: $viewModel.userName) {
-//                        Text("\($viewModel.userName)")
-                    }
-                    
-                    HStack {
-                        Text("\(viewModel.favoriteGames.count)")
-                            .fontWeight(.semibold)
-                        
-                        Text("Games")
-                            .foregroundStyle(.gray)
-                        
-                        Text("•")
-                        
-                        Text("\(viewModel.onSaleGames.count)")
-                            .fontWeight(.semibold)
-                        
-                        Text("Deals")
-                            .foregroundStyle(.gray)
-                    }
-                }
-                .padding(.top, 24)
+                userInfoView
             }
-            .padding(.bottom, -64)
-            .padding(.leading, 16)
+            .padding(.bottom, -95)
         }
         .padding(.bottom, 64)
     }
@@ -51,7 +32,7 @@ extension ProfileView {
     @ViewBuilder
     private var profileImage: some View {
         
-        let size: CGFloat = 100
+        let size: CGFloat = 80
         
         PhotosPicker(selection: $viewModel.userImageSelection, matching: .images) {
             if let image = viewModel.userImage {
@@ -76,8 +57,8 @@ extension ProfileView {
     @ViewBuilder
     private var coverImage: some View {
         
-        let width: CGFloat = ScreenSize.width
-        let height: CGFloat = ScreenSize.width * 9/16
+        let width: CGFloat = ScreenSize.width - 24
+        let height: CGFloat = width * 9/18
         
         PhotosPicker(selection: $viewModel.coverImageSelection, matching: .images) {
             if let image = viewModel.coverImage {
@@ -85,13 +66,44 @@ extension ProfileView {
                     .resizable()
                     .frame(width: width, height: height)
                     .scaledToFit()
+                    .clipShape(.rect(cornerRadius: 12))
             } else {
                 Image(systemName: "photo.artframe")
                     .frame(width: width, height: height)
                     .scaleEffect(2)
                     .scaledToFit()
                     .background(Color.gray.opacity(0.4))
+                    .clipShape(.rect(cornerRadius: 12))
             }
         }
     }
+    
+    var userInfoView: some View {
+        VStack(alignment: .center, spacing: 4) {
+            TextField("User name", text: $viewModel.userName)
+                .frame(width: 200, alignment: .center)
+                .multilineTextAlignment(.center)
+                .lineLimit(2)
+            
+            HStack {
+                Text("\(viewModel.gamesDetails?.games.count ?? 0)")
+                    .fontWeight(.semibold)
+                
+                Text("Games")
+                    .foregroundStyle(.gray)
+                
+                Text("•")
+                
+                Text("\(viewModel.onSaleGames.count)")
+                    .fontWeight(.semibold)
+                
+                Text("Deals")
+                    .foregroundStyle(.gray)
+            }
+        }
+    }
+}
+
+#Preview {
+    ProfileConfigurator().configure()
 }

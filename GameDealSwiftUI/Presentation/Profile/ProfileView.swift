@@ -31,8 +31,8 @@ struct ProfileView: View {
             }
             .padding(.bottom, 100)
         }
-        .ignoresSafeArea()
-        .toolbar(.hidden)
+//        .ignoresSafeArea()
+//        .toolbar(.hidden)
         .onAppear {
             configure()
         }

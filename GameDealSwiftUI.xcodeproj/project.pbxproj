@@ -77,6 +77,7 @@
 		DBCF02E12C516A3A00DCE264 /* Shadow.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBCF02E02C516A3A00DCE264 /* Shadow.swift */; };
 		DBCF02E32C5170C000DCE264 /* Opacity.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBCF02E22C5170C000DCE264 /* Opacity.swift */; };
 		DBD450AA2D11CA8B00E94CBB /* ProfileInfoSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBD450A92D11CA7B00E94CBB /* ProfileInfoSection.swift */; };
+		DBD450AF2D14A25E00E94CBB /* EmptyState.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBD450AE2D14A25E00E94CBB /* EmptyState.swift */; };
 		DBD998922A45FC5500D1D587 /* MediumDealCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBD998912A45FC5500D1D587 /* MediumDealCell.swift */; };
 		DBD998942A464C5000D1D587 /* StoreCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBD998932A464C5000D1D587 /* StoreCell.swift */; };
 		DBD998962A472B0F00D1D587 /* ScreenSize.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBD998952A472B0F00D1D587 /* ScreenSize.swift */; };
@@ -222,6 +223,7 @@
 		DBCF02E02C516A3A00DCE264 /* Shadow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Shadow.swift; sourceTree = "<group>"; };
 		DBCF02E22C5170C000DCE264 /* Opacity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Opacity.swift; sourceTree = "<group>"; };
 		DBD450A92D11CA7B00E94CBB /* ProfileInfoSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileInfoSection.swift; sourceTree = "<group>"; };
+		DBD450AE2D14A25E00E94CBB /* EmptyState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyState.swift; sourceTree = "<group>"; };
 		DBD998912A45FC5500D1D587 /* MediumDealCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediumDealCell.swift; sourceTree = "<group>"; };
 		DBD998932A464C5000D1D587 /* StoreCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreCell.swift; sourceTree = "<group>"; };
 		DBD998952A472B0F00D1D587 /* ScreenSize.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScreenSize.swift; sourceTree = "<group>"; };
@@ -774,11 +776,20 @@
 		DBCF02DB2C51614300DCE264 /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				DBD450AB2D14A23900E94CBB /* EmptyState */,
 				E6ACA17A2CEBBED40042D326 /* GameDetails */,
 				E6ACA1792CEBBECA0042D326 /* Savings */,
 				E6ACA1782CEBBEB50042D326 /* Images */,
 			);
 			path = Components;
+			sourceTree = "<group>";
+		};
+		DBD450AB2D14A23900E94CBB /* EmptyState */ = {
+			isa = PBXGroup;
+			children = (
+				DBD450AE2D14A25E00E94CBB /* EmptyState.swift */,
+			);
+			path = EmptyState;
 			sourceTree = "<group>";
 		};
 		DBD998902A45F55800D1D587 /* Utilities */ = {
@@ -1218,6 +1229,7 @@
 				DB92BBF22A3B65E4009630E0 /* CheapSharkSortDeals.swift in Sources */,
 				DBCF02D92C515A3E00DCE264 /* FeedConstants.swift in Sources */,
 				DBD998962A472B0F00D1D587 /* ScreenSize.swift in Sources */,
+				DBD450AF2D14A25E00E94CBB /* EmptyState.swift in Sources */,
 				DBE44FF72CDBEC2B000D2ECB /* SearchConstants.swift in Sources */,
 				DB6A8AB52CBD619E001E1581 /* GamesServiceImplementation.swift in Sources */,
 				DBEBE62A2CAB3DEE00F155D8 /* DealsQuery.swift in Sources */,

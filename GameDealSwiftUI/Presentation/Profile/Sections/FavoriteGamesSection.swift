@@ -10,29 +10,59 @@ import SwiftUI
 extension ProfileView {
     var favoriteGamesSection: some View {
         VStack(alignment: .leading, spacing: Tokens.padding.xxxs) {
-            // Title
-            Text(constants.favoriteTitle)
-                .font(.title2)
-                .fontWeight(.bold)
-
-            // On Sale List
-            VStack(alignment: .leading, spacing: Tokens.padding.nano) {
-                Text(constants.onSale)
-                    .fontWeight(.semibold)
-                favoriteList(games: viewModel.onSaleGames)
-            }
-
-            // No Deals List
-            VStack(alignment: .leading, spacing: Tokens.padding.nano) {
-                Text(constants.noDeals)
-                    .fontWeight(.semibold)
-                favoriteList(games: viewModel.noDealsGames)
+            if !viewModel.favoriteGames.isEmpty {
+                favoriteTitle
+                
+                if !viewModel.onSaleGames.isEmpty {
+                    onSaleList
+                }
+                
+                if !viewModel.noDealsGames.isEmpty {
+                    noDealsList
+                }
+                
+            } else {
+                EmptyState(title: "No Games",
+                           description: "Add games to your favorite list",
+                           icon: "gamecontroller.fill")
             }
         }
         .padding(.horizontal, Tokens.padding.xxxs)
     }
 }
 
+// MARK: - Title
+extension ProfileView {
+    var favoriteTitle: some View {
+        Text(constants.favoriteTitle)
+            .font(.title2)
+            .fontWeight(.bold)
+    }
+}
+
+// MARK: - On Sale List
+extension ProfileView {
+    var onSaleList: some View {
+        VStack(alignment: .leading, spacing: Tokens.padding.nano) {
+            Text(constants.onSale)
+                .fontWeight(.semibold)
+            favoriteList(games: viewModel.onSaleGames)
+        }
+    }
+}
+
+// MARK: - No Deals List
+extension ProfileView {
+    var noDealsList: some View {
+        VStack(alignment: .leading, spacing: Tokens.padding.nano) {
+            Text(constants.noDeals)
+                .fontWeight(.semibold)
+            favoriteList(games: viewModel.noDealsGames)
+        }
+    }
+}
+
+// MARK: - Games List component
 extension ProfileView {
     func favoriteList(games: [String : GameLookup]) -> some View {
         ForEach(games.sorted(by: { $0.key < $1.key }), id: \.key) { id, game in

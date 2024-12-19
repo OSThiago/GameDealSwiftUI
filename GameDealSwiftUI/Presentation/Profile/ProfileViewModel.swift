@@ -17,6 +17,8 @@ final class ProfileViewModel: ObservableObject, ProfileViewModelProtocol {
     @Injected var gamesService: GamesProtocol
     @Injected var formatterUseCase: FormatterProcol
     
+    // State
+    @Published var isRedected = true
     // Data
     @Published var favoriteGames: [FavoriteGame] = []
     @Published var gamesDetails: MultipleGameLookup?
@@ -126,6 +128,8 @@ final class ProfileViewModel: ObservableObject, ProfileViewModelProtocol {
     func resetData() {
         self.gamesDetails = nil
         self.favoriteGames.removeAll()
+        self.onSaleGames.removeAll()
+        self.noDealsGames.removeAll()
     }
     
     func updateOnSale() {
@@ -159,6 +163,14 @@ final class ProfileViewModel: ObservableObject, ProfileViewModelProtocol {
         
         DispatchQueue.main.async {
             self.noDealsGames = filtered
+        }
+    }
+    
+    func updateRedectedState() -> Bool {
+        if gamesDetails == nil {
+            return true
+        } else {
+            return false
         }
     }
 }

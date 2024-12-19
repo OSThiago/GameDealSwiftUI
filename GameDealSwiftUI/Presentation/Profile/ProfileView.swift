@@ -32,7 +32,7 @@ struct ProfileView: View {
         .onAppear {
             configure()
         }
-        .redacted(reason: viewModel.gamesDetails == nil ? .placeholder : [])
+        .redacted(reason: (viewModel.gamesDetails == nil && !viewModel.favoriteGames.isEmpty) ? .placeholder : [])
         .navigationTitle("Profile")
         .toolbarTitleDisplayMode(.inline)
     }

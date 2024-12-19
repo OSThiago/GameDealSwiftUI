@@ -22,17 +22,13 @@ struct ProfileView: View {
     
     var body: some View {
         ScrollView {
-            VStack {
+            VStack(spacing: Tokens.padding.xxxs) {
                 profileInfoSection
-                    .padding(.bottom, 24)
                 
                 
                 favoriteGamesSection
             }
-            .padding(.bottom, 100)
         }
-//        .ignoresSafeArea()
-//        .toolbar(.hidden)
         .onAppear {
             configure()
         }

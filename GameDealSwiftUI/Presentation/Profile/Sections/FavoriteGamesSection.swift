@@ -9,15 +9,27 @@ import SwiftUI
 
 extension ProfileView {
     var favoriteGamesSection: some View {
-        VStack(alignment: .leading, spacing: 16) {
-            Section("On Sale") {
+        VStack(alignment: .leading, spacing: Tokens.padding.xxxs) {
+            // Title
+            Text(constants.favoriteTitle)
+                .font(.title2)
+                .fontWeight(.bold)
+
+            // On Sale List
+            VStack(alignment: .leading, spacing: Tokens.padding.nano) {
+                Text(constants.onSale)
+                    .fontWeight(.semibold)
                 favoriteList(games: viewModel.onSaleGames)
             }
-            Section("No Deals") {
+
+            // No Deals List
+            VStack(alignment: .leading, spacing: Tokens.padding.nano) {
+                Text(constants.noDeals)
+                    .fontWeight(.semibold)
                 favoriteList(games: viewModel.noDealsGames)
             }
         }
-        .padding(.horizontal, 16)
+        .padding(.horizontal, Tokens.padding.xxxs)
     }
 }
 

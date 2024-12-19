@@ -8,14 +8,14 @@
 import SwiftUI
 import PhotosUI
 
+// MARK: - Body Section
 extension ProfileView {
     var profileInfoSection: some View {
-        // MARK: - Body
         ZStack(alignment: .center) {
             coverImage
-                .padding(.horizontal, 16)
+                .padding(.horizontal, Tokens.padding.xxxs)
             
-            VStack(spacing: 8) {
+            VStack(spacing: Tokens.padding.nano) {
                 
                 Spacer()
                 
@@ -23,16 +23,18 @@ extension ProfileView {
                 
                 userInfoView
             }
-            .padding(.bottom, -95)
+            .padding(.bottom, -constants.profileBottomPadding)
         }
-        .padding(.bottom, 64)
+        .padding(.bottom, constants.profileBottomPadding)
     }
-    
-    // MARK: - Profile image
+}
+
+// MARK: - Profile image
+extension ProfileView {
     @ViewBuilder
     private var profileImage: some View {
         
-        let size: CGFloat = 80
+        let size = constants.profileImageSize
         
         PhotosPicker(selection: $viewModel.userImageSelection, matching: .images) {
             if let image = viewModel.userImage {
@@ -43,7 +45,7 @@ extension ProfileView {
                     .background(Color.gray)
                     .clipShape(.circle)
             } else {
-                Image(systemName: "person.fill")
+                Image(systemName: constants.profilePlaceholderIcon)
                     .frame(width: size, height: size)
                     .scaleEffect(2)
                     .scaledToFit()
@@ -52,13 +54,15 @@ extension ProfileView {
             }
         }
     }
-    
-    // MARK: - Cover  image
+}
+
+// MARK: - Cover  image
+extension ProfileView {
     @ViewBuilder
     private var coverImage: some View {
         
-        let width: CGFloat = ScreenSize.width - 24
-        let height: CGFloat = width * 9/18
+        let width = constants.coverWidth
+        let height = constants.coverHeight
         
         PhotosPicker(selection: $viewModel.coverImageSelection, matching: .images) {
             if let image = viewModel.coverImage {
@@ -66,38 +70,42 @@ extension ProfileView {
                     .resizable()
                     .frame(width: width, height: height)
                     .scaledToFit()
-                    .clipShape(.rect(cornerRadius: 12))
+                    .clipShape(.rect(cornerRadius: constants.coverRadius))
             } else {
-                Image(systemName: "photo.artframe")
+                Image(systemName: constants.profilePlaceholderIcon)
                     .frame(width: width, height: height)
                     .scaleEffect(2)
                     .scaledToFit()
                     .background(Color.gray.opacity(0.4))
-                    .clipShape(.rect(cornerRadius: 12))
+                    .clipShape(.rect(cornerRadius: constants.coverRadius))
             }
         }
     }
-    
+}
+
+// MARK: - User Info
+extension ProfileView {
     var userInfoView: some View {
-        VStack(alignment: .center, spacing: 4) {
-            TextField("User name", text: $viewModel.userName)
-                .frame(width: 200, alignment: .center)
+        VStack(alignment: .center, spacing: Tokens.padding.quarck) {
+            TextField(constants.userNamePlaceholder, text: $viewModel.userName)
+                .frame(width: constants.userNameWidth, alignment: .center)
                 .multilineTextAlignment(.center)
                 .lineLimit(2)
+                .fontWeight(.semibold)
             
             HStack {
                 Text("\(viewModel.gamesDetails?.games.count ?? 0)")
                     .fontWeight(.semibold)
                 
-                Text("Games")
+                Text(constants.gamesCountTitle)
                     .foregroundStyle(.gray)
                 
-                Text("•")
+                Text(constants.userInfoSeparator)
                 
                 Text("\(viewModel.onSaleGames.count)")
                     .fontWeight(.semibold)
                 
-                Text("Deals")
+                Text(constants.dealsCountTitle)
                     .foregroundStyle(.gray)
             }
         }

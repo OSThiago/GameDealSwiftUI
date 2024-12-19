@@ -33,6 +33,8 @@ struct ProfileView: View {
             configure()
         }
         .redacted(reason: viewModel.gamesDetails == nil ? .placeholder : [])
+        .navigationTitle("Profile")
+        .toolbarTitleDisplayMode(.inline)
     }
     
     func configure() {

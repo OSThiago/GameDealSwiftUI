@@ -25,6 +25,7 @@ extension ProfileView {
                 EmptyState(title: "No Games",
                            description: "Add games to your favorite list",
                            icon: "gamecontroller.fill")
+                .padding(.top, 50)
             }
         }
         .padding(.horizontal, Tokens.padding.xxxs)

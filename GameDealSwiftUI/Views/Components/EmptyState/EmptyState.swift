@@ -27,13 +27,13 @@ struct EmptyState: View {
             if let icon = icon {
                 ZStack {
                     Circle()
-                        .frame(width: 150)
+                        .frame(width: 100)
                         .foregroundStyle(.gray.opacity(0.2))
                     
                     Image(systemName: icon)
                         .resizable()
                         .aspectRatio(contentMode: .fit)
-                        .frame(width: 100, height: 100)
+                        .frame(width: 50, height: 50)
                 }
                 .padding(.bottom, 16)
             }

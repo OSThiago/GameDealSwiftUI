@@ -52,11 +52,18 @@ extension SearchView {
     @ViewBuilder
     var content: some View {
         if viewModel.isEmptyState {
-            emptyState(title: constants.emptyTitle,
-                       description: constants.emptyDescription)
+            EmptyState(title: constants.emptyTitle,
+                       description: constants.emptyDescription,
+                       icon: "magnifyingglass")
+            
+//            emptyState(title: constants.emptyTitle,
+//                       description: constants.emptyDescription)
         } else if viewModel.isNoResult {
-            emptyState(title: constants.emptyResultTitle,
+            EmptyState(title: constants.emptyResultTitle,
                        description: constants.emptyResultDescription(text: viewModel.searchText))
+            
+//            emptyState(title: constants.emptyResultTitle,
+//                       description: constants.emptyResultDescription(text: viewModel.searchText))
         } else {
             ScrollView {
                 LazyVStack {

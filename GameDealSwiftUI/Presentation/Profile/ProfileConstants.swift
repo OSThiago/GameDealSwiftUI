@@ -8,6 +8,8 @@
 import Foundation
 
 struct ProfileConstants {
+    // Toolbar
+    let navigationTitle = "Profile"
     // Favorite Section
     let favoriteTitle = "Favorite Games"
     let onSale = "On Sale"
@@ -20,7 +22,7 @@ struct ProfileConstants {
     let coverWidth: CGFloat = ScreenSize.width - 24
     let coverHeight: CGFloat = (ScreenSize.width - 24) * 9/18
     let coverRadius: CGFloat = 12
-    let coverPlaceholderIcon = "photo.artframe"
+    let coverPlaceholderIcon = "gamecontroller.circle.fill"
     // User Info
     let userNamePlaceholder = "User Name"
     let gamesCountTitle = "Games"

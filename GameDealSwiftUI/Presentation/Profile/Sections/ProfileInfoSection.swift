@@ -49,7 +49,7 @@ extension ProfileView {
                     .frame(width: size, height: size)
                     .scaleEffect(2)
                     .scaledToFit()
-                    .background(Color.gray)
+                    .background(Color.black)
                     .clipShape(.circle)
             }
         }
@@ -72,7 +72,7 @@ extension ProfileView {
                     .scaledToFit()
                     .clipShape(.rect(cornerRadius: constants.coverRadius))
             } else {
-                Image(systemName: constants.profilePlaceholderIcon)
+                Image(systemName: constants.coverPlaceholderIcon)
                     .frame(width: width, height: height)
                     .scaleEffect(2)
                     .scaledToFit()

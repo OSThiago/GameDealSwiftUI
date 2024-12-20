@@ -33,8 +33,13 @@ struct ProfileView: View {
             configure()
         }
         .redacted(reason: (viewModel.gamesDetails == nil && !viewModel.favoriteGames.isEmpty) ? .placeholder : [])
-        .navigationTitle("Profile")
+        .navigationTitle(constants.navigationTitle)
         .toolbarTitleDisplayMode(.inline)
+        .sheet(isPresented: $viewModel.showImageSelector) {
+            EditImageView(selectPhotoAction: {},
+                          deletePhotoAction: {})
+            .presentationDetents([.height(200)])
+        }
     }
     
     func configure() {

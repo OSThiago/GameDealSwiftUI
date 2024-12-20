@@ -19,6 +19,7 @@ final class ProfileViewModel: ObservableObject, ProfileViewModelProtocol {
     
     // State
     @Published var isRedected = true
+    @Published var showImageSelector = false
     // Data
     @Published var favoriteGames: [FavoriteGame] = []
     @Published var gamesDetails: MultipleGameLookup?

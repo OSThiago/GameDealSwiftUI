@@ -14,12 +14,18 @@ extension ProfileView {
         ZStack(alignment: .center) {
             coverImage
                 .padding(.horizontal, Tokens.padding.xxxs)
+                .onTapGesture {
+                    viewModel.activeSheet = .cover
+                }
             
             VStack(spacing: Tokens.padding.nano) {
                 
                 Spacer()
                 
                 profileImage
+                    .onTapGesture {
+                        viewModel.activeSheet = .profile
+                    }
                 
                 userInfoView
             }
@@ -36,22 +42,20 @@ extension ProfileView {
         
         let size = constants.profileImageSize
         
-        PhotosPicker(selection: $viewModel.userImageSelection, matching: .images) {
-            if let image = viewModel.userImage {
-                Image(uiImage: image)
-                    .resizable()
-                    .frame(width: size, height: size)
-                    .scaledToFit()
-                    .background(Color.gray)
-                    .clipShape(.circle)
-            } else {
-                Image(systemName: constants.profilePlaceholderIcon)
-                    .frame(width: size, height: size)
-                    .scaleEffect(2)
-                    .scaledToFit()
-                    .background(Color.black)
-                    .clipShape(.circle)
-            }
+        if let image = viewModel.userImage {
+            Image(uiImage: image)
+                .resizable()
+                .frame(width: size, height: size)
+                .scaledToFit()
+                .background(Color.gray)
+                .clipShape(.circle)
+        } else {
+            Image(systemName: constants.profilePlaceholderIcon)
+                .frame(width: size, height: size)
+                .scaleEffect(2)
+                .scaledToFit()
+                .background(Tokens.color.neutral.secondary)
+                .clipShape(.circle)
         }
     }
 }
@@ -64,21 +68,23 @@ extension ProfileView {
         let width = constants.coverWidth
         let height = constants.coverHeight
         
-        PhotosPicker(selection: $viewModel.coverImageSelection, matching: .images) {
-            if let image = viewModel.coverImage {
-                Image(uiImage: image)
-                    .resizable()
-                    .frame(width: width, height: height)
-                    .scaledToFit()
-                    .clipShape(.rect(cornerRadius: constants.coverRadius))
-            } else {
+        if let image = viewModel.coverImage {
+            Image(uiImage: image)
+                .resizable()
+                .frame(width: width, height: height)
+                .scaledToFit()
+                .clipShape(.rect(cornerRadius: constants.coverRadius))
+        } else {
+            VStack {
                 Image(systemName: constants.coverPlaceholderIcon)
-                    .frame(width: width, height: height)
-                    .scaleEffect(2)
+                    .resizable()
+                    .foregroundStyle(.white)
                     .scaledToFit()
-                    .background(Color.gray.opacity(0.4))
-                    .clipShape(.rect(cornerRadius: constants.coverRadius))
+                    .frame(width: 70)
             }
+            .frame(width: width, height: height)
+            .background(Tokens.color.background.primary)
+            .clipShape(.rect(cornerRadius: constants.coverRadius))
         }
     }
 }

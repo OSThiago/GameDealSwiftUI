@@ -11,6 +11,7 @@ import SwiftUI
 struct SystemColor {
     let positive = Positive()
     let neutral = Neutral()
+    let background = Background()
 }
 
 struct Positive {
@@ -21,7 +22,13 @@ struct Positive {
 
 struct Neutral {
     let primary = Color(hex: "A6A6A6")
+    let secondary = Color(hex: "EBEBEB")
 }
+
+struct Background {
+    let primary = Color(hex: "2F2F2F")
+}
+
 
 extension Color {
     init(hex: String) {

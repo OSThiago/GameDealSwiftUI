@@ -35,10 +35,27 @@ struct ProfileView: View {
         .redacted(reason: (viewModel.gamesDetails == nil && !viewModel.favoriteGames.isEmpty) ? .placeholder : [])
         .navigationTitle(constants.navigationTitle)
         .toolbarTitleDisplayMode(.inline)
-        .sheet(isPresented: $viewModel.showImageSelector) {
-            EditImageView(selectPhotoAction: {},
-                          deletePhotoAction: {})
-            .presentationDetents([.height(200)])
+        .sheet(item: $viewModel.activeSheet) { item in
+            switch item {
+            case .profile:
+                EditImageView(deletePhotoAction: {
+                    viewModel.removeProfileImage()
+                },
+                              pickerSelector: $viewModel.userImageSelection)
+                .presentationDetents([.height(200)])
+                .onDisappear {
+                    viewModel.activeSheet = nil
+                }
+            case .cover:
+                EditImageView(deletePhotoAction: {
+                    viewModel.removeCoverImage()
+                },
+                              pickerSelector: $viewModel.coverImageSelection)
+                .presentationDetents([.height(200)])
+                .onDisappear {
+                    viewModel.activeSheet = nil
+                }
+            }
         }
     }
     

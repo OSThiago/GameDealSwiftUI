@@ -22,7 +22,7 @@ struct ProfileConstants {
     let coverWidth: CGFloat = ScreenSize.width - 24
     let coverHeight: CGFloat = (ScreenSize.width - 24) * 9/18
     let coverRadius: CGFloat = 12
-    let coverPlaceholderIcon = "gamecontroller.circle.fill"
+    let coverPlaceholderIcon = "gamecontroller.fill"
     // User Info
     let userNamePlaceholder = "User Name"
     let gamesCountTitle = "Games"

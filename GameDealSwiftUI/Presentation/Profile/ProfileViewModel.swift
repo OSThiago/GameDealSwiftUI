@@ -12,6 +12,14 @@ protocol ProfileViewModelProtocol {
     
 }
 
+enum ProfileSheet: Identifiable {
+    case profile, cover
+    
+    var id: Int {
+        hashValue
+    }
+}
+
 final class ProfileViewModel: ObservableObject, ProfileViewModelProtocol {
     
     @Injected var gamesService: GamesProtocol
@@ -19,7 +27,7 @@ final class ProfileViewModel: ObservableObject, ProfileViewModelProtocol {
     
     // State
     @Published var isRedected = true
-    @Published var showImageSelector = false
+    @Published var activeSheet: ProfileSheet?
     // Data
     @Published var favoriteGames: [FavoriteGame] = []
     @Published var gamesDetails: MultipleGameLookup?
@@ -68,6 +76,16 @@ final class ProfileViewModel: ObservableObject, ProfileViewModelProtocol {
                 }
             }
         }
+    }
+    
+    func removeProfileImage() {
+        self.userImageSelection = nil
+        self.userImage = nil
+    }
+    
+    func removeCoverImage() {
+        self.coverImageSelection = nil
+        self.coverImage = nil
     }
     
     func fetchFavoriteGames(completion: @escaping (Result<[FavoriteGame], Error>) -> Void) {

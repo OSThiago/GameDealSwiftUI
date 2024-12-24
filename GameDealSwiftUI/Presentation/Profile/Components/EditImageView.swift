@@ -6,11 +6,13 @@
 //
 
 import SwiftUI
+import PhotosUI
 
 struct EditImageView: View {
 
-    var selectPhotoAction: ()-> Void
     var deletePhotoAction: ()-> Void
+    
+    @Binding var pickerSelector: PhotosPickerItem?
     
     var body: some View {
         VStack(alignment: .leading, spacing: 0) {
@@ -23,18 +25,18 @@ struct EditImageView: View {
 
             List {
                 Section {
-                    listItem(title: "Choose photo",
-                             icon: "photo.artframe",
-                             action: {
-                        
-                    })
+                    PhotosPicker(selection: $pickerSelector) {
+                        listItem(title: "Choose photo",
+                                 icon: "photo.artframe")
+                    }
 
-                    listItem(title: "Delete photo",
-                             icon: "trash",
-                             color: .red,
-                             action: {
-                        
-                    })
+                    Button {
+                        deletePhotoAction()
+                    } label: {
+                        listItem(title: "Delete photo",
+                                 icon: "trash",
+                                 color: .red)
+                    }
                 }
             }
             .scrollContentBackground(.hidden)
@@ -46,23 +48,20 @@ struct EditImageView: View {
 }
 
 extension EditImageView {
-    func listItem(title: String, icon: String, color: Color? = nil, action: @escaping ()-> Void) -> some View {
-        Button {
-            action()
-        } label: {
-            HStack {
-                Text(title)
-                Spacer()
-                Image(systemName: icon)
-            }
-            .foregroundStyle(color ?? .black)
+    func listItem(title: String, icon: String, color: Color? = nil) -> some View {
+        HStack {
+            Text(title)
+            Spacer()
+            Image(systemName: icon)
         }
+        .foregroundStyle(color ?? .black)
     }
 }
 
 fileprivate struct BackView: View {
 
     @State var showModal = true
+    @State var picker: PhotosPickerItem? = nil
 
     var body: some View {
         VStack {
@@ -73,8 +72,8 @@ fileprivate struct BackView: View {
             }
         }
         .sheet(isPresented: $showModal) {
-            EditImageView(selectPhotoAction: {},
-                          deletePhotoAction: {})
+            EditImageView(deletePhotoAction: {},
+                          pickerSelector: $picker)
                 .presentationDetents([.height(200)])
         }
     }

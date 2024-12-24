@@ -80,7 +80,7 @@ extension ProfileView {
                     .resizable()
                     .foregroundStyle(.white)
                     .scaledToFit()
-                    .frame(width: 70)
+                    .frame(width: constants.coverIconSize)
             }
             .frame(width: width, height: height)
             .background(Tokens.color.background.primary)

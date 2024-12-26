@@ -61,4 +61,15 @@ struct FormatterUseCaseImplementation: FormatterProcol {
         guard let current = Double(currentPrice!) else { return false }
         return current < original
     }
+    
+    /// Remove all 'description' title from original description
+    /// - Parameter description: original description
+    /// - Returns: description formatted
+    func descriptionFormatted(description: String) -> String {
+        var formatted = description
+        formatted = formatted.replacingOccurrences(of: "Description:", with: "")
+        formatted = formatted.replacingOccurrences(of: "DESCRIPTION:", with: "")
+        formatted = formatted.trimmingCharacters(in: .whitespacesAndNewlines)
+        return formatted
+    }
 }

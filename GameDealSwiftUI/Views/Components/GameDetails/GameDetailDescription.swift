@@ -9,24 +9,36 @@ import SwiftUI
 
 struct GameDetailDescription: View {
     
+    @Injected private var formatterUseCase: FormatterProcol
+    
     let description: String
     
     @State var isExpanded: Bool = false
 
     var body: some View {
         VStack(spacing: 4) {
-            Text(description.replacingOccurrences(of: "DESCRIPTION:", with: ""))
-                .frame(height: isExpanded ? nil : 100)
-
             HStack {
+                Text("Description")
+                    .font(.body)
+                    .fontWeight(.medium)
+                    .fontDesign(.rounded)
+                    .foregroundStyle(.gray)
+                
                 Spacer()
-                // Expand Button
-                Button {
-                    isExpanded.toggle()
-                } label: {
-                    Text(isExpanded ? "Show Less" : "Show More")
+                
+                HStack {
+                    Spacer()
+                    // Expand Button
+                    Button {
+                        isExpanded.toggle()
+                    } label: {
+                        Text(isExpanded ? "Less" : "More")
+                    }
                 }
             }
+            
+            Text(formatterUseCase.descriptionFormatted(description: description))
+                .frame(maxWidth: .infinity, maxHeight: isExpanded ? nil : 100, alignment: .topLeading)
         }
     }
 }

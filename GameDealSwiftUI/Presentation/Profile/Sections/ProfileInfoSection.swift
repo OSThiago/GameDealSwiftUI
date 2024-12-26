@@ -45,8 +45,8 @@ extension ProfileView {
         if let image = viewModel.userImage {
             Image(uiImage: image)
                 .resizable()
+                .aspectRatio(image.size, contentMode: .fill)
                 .frame(width: size, height: size)
-                .scaledToFit()
                 .background(Color.gray)
                 .clipShape(.circle)
         } else {
@@ -71,8 +71,8 @@ extension ProfileView {
         if let image = viewModel.coverImage {
             Image(uiImage: image)
                 .resizable()
+                .aspectRatio(image.size, contentMode: .fill)
                 .frame(width: width, height: height)
-                .scaledToFit()
                 .clipShape(.rect(cornerRadius: constants.coverRadius))
         } else {
             VStack {

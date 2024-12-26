@@ -24,8 +24,7 @@ struct ProfileView: View {
         ScrollView {
             VStack(spacing: Tokens.padding.xxxs) {
                 profileInfoSection
-                
-                
+
                 favoriteGamesSection
             }
         }
@@ -60,6 +59,7 @@ struct ProfileView: View {
     }
     
     func configure() {
+        viewModel.configure()
         viewModel.fetchFavoriteGames { result in
             switch result {
             case .success(let success):

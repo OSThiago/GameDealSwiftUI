@@ -98,6 +98,9 @@ extension ProfileView {
                 .multilineTextAlignment(.center)
                 .lineLimit(2)
                 .fontWeight(.semibold)
+                .onSubmit {
+                    viewModel.userDefault.saveUserName(userName: viewModel.userName)
+                }
             
             HStack {
                 Text("\(viewModel.gamesDetails?.games.count ?? 0)")

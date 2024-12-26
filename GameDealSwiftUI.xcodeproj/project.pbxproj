@@ -79,6 +79,8 @@
 		DBD450AA2D11CA8B00E94CBB /* ProfileInfoSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBD450A92D11CA7B00E94CBB /* ProfileInfoSection.swift */; };
 		DBD450AF2D14A25E00E94CBB /* EmptyState.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBD450AE2D14A25E00E94CBB /* EmptyState.swift */; };
 		DBD450B22D15E5BA00E94CBB /* EditImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBD450B12D15E5BA00E94CBB /* EditImageView.swift */; };
+		DBD450B82D1B020B00E94CBB /* UserDefaultProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBD450B72D1B020200E94CBB /* UserDefaultProtocol.swift */; };
+		DBD450BA2D1B058F00E94CBB /* UserDefaultImplementation.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBD450B92D1B058800E94CBB /* UserDefaultImplementation.swift */; };
 		DBD998922A45FC5500D1D587 /* MediumDealCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBD998912A45FC5500D1D587 /* MediumDealCell.swift */; };
 		DBD998942A464C5000D1D587 /* StoreCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBD998932A464C5000D1D587 /* StoreCell.swift */; };
 		DBD998962A472B0F00D1D587 /* ScreenSize.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBD998952A472B0F00D1D587 /* ScreenSize.swift */; };
@@ -226,6 +228,8 @@
 		DBD450A92D11CA7B00E94CBB /* ProfileInfoSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileInfoSection.swift; sourceTree = "<group>"; };
 		DBD450AE2D14A25E00E94CBB /* EmptyState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyState.swift; sourceTree = "<group>"; };
 		DBD450B12D15E5BA00E94CBB /* EditImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditImageView.swift; sourceTree = "<group>"; };
+		DBD450B72D1B020200E94CBB /* UserDefaultProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultProtocol.swift; sourceTree = "<group>"; };
+		DBD450B92D1B058800E94CBB /* UserDefaultImplementation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultImplementation.swift; sourceTree = "<group>"; };
 		DBD998912A45FC5500D1D587 /* MediumDealCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediumDealCell.swift; sourceTree = "<group>"; };
 		DBD998932A464C5000D1D587 /* StoreCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreCell.swift; sourceTree = "<group>"; };
 		DBD998952A472B0F00D1D587 /* ScreenSize.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScreenSize.swift; sourceTree = "<group>"; };
@@ -554,6 +558,7 @@
 		DB92BBE22A3B5E82009630E0 /* BusinessLogic */ = {
 			isa = PBXGroup;
 			children = (
+				DBD450B32D1B016300E94CBB /* UserDefault */,
 				E6ACA1B42CF117930042D326 /* CoreDataUseCase */,
 				DB6A8AB62CBD6F1A001E1581 /* ServiceUseCase */,
 				DBEBE6182CAB356D00F155D8 /* CheapSharkDomain */,
@@ -792,6 +797,39 @@
 				DBD450AE2D14A25E00E94CBB /* EmptyState.swift */,
 			);
 			path = EmptyState;
+			sourceTree = "<group>";
+		};
+		DBD450B32D1B016300E94CBB /* UserDefault */ = {
+			isa = PBXGroup;
+			children = (
+				DBD450B42D1B017C00E94CBB /* Implementation */,
+				DBD450B52D1B01CD00E94CBB /* Interface */,
+			);
+			path = UserDefault;
+			sourceTree = "<group>";
+		};
+		DBD450B42D1B017C00E94CBB /* Implementation */ = {
+			isa = PBXGroup;
+			children = (
+				DBD450B92D1B058800E94CBB /* UserDefaultImplementation.swift */,
+			);
+			path = Implementation;
+			sourceTree = "<group>";
+		};
+		DBD450B52D1B01CD00E94CBB /* Interface */ = {
+			isa = PBXGroup;
+			children = (
+				DBD450B62D1B01F100E94CBB /* Protocol */,
+			);
+			path = Interface;
+			sourceTree = "<group>";
+		};
+		DBD450B62D1B01F100E94CBB /* Protocol */ = {
+			isa = PBXGroup;
+			children = (
+				DBD450B72D1B020200E94CBB /* UserDefaultProtocol.swift */,
+			);
+			path = Protocol;
 			sourceTree = "<group>";
 		};
 		DBD998902A45F55800D1D587 /* Utilities */ = {
@@ -1218,6 +1256,7 @@
 				E6ACA1B92CF1193A0042D326 /* CoreDataModel.xcdatamodeld in Sources */,
 				DBD998A92A4A30DE00D1D587 /* GameLookupModel.swift in Sources */,
 				DBEBE6362CAB5D0800F155D8 /* DealsServiceImpelentation.swift in Sources */,
+				DBD450BA2D1B058F00E94CBB /* UserDefaultImplementation.swift in Sources */,
 				DBCF02CD2C5040BD00DCE264 /* FeedView+HilightDealsSection.swift in Sources */,
 				DB421C702C73D8600061C530 /* FormatterUseCaseImplementation.swift in Sources */,
 				DBE44FFE2CDEA068000D2ECB /* GameDetailConfigurator.swift in Sources */,
@@ -1293,6 +1332,7 @@
 				DBAE72ED2A3B491100AB9E5F /* ContentView.swift in Sources */,
 				E6ACA1C52CFF4F180042D326 /* FavoriteGameCell.swift in Sources */,
 				DB4030492C453F94000DCFD1 /* MetacriticWebScrapingProtocol.swift in Sources */,
+				DBD450B82D1B020B00E94CBB /* UserDefaultProtocol.swift in Sources */,
 				DB92BC052A3B6974009630E0 /* DealLookupMock.swift in Sources */,
 				DBEBE63B2CAC446100F155D8 /* GameQuery.swift in Sources */,
 				DB2A10922C6F89DD00D1C879 /* AppAssembler.swift in Sources */,

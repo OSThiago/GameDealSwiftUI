@@ -24,6 +24,7 @@ final class ProfileViewModel: ObservableObject, ProfileViewModelProtocol {
     
     @Injected var gamesService: GamesProtocol
     @Injected var formatterUseCase: FormatterProcol
+    @Injected var userDefault: UserDefaultProtocol
     
     // State
     @Published var isRedected = true
@@ -50,6 +51,12 @@ final class ProfileViewModel: ObservableObject, ProfileViewModelProtocol {
         }
     }
     
+    func configure() {
+        self.userName = userDefault.getUserName()
+        self.userImage = userDefault.getImage(key: .userImage)
+        self.coverImage = userDefault.getImage(key: .coverImage)
+    }
+    
     private func setUserImage(_ image: PhotosPickerItem?) {
         guard let image else { return }
         
@@ -58,6 +65,8 @@ final class ProfileViewModel: ObservableObject, ProfileViewModelProtocol {
                 if let uiImage = UIImage(data: data) {
                     DispatchQueue.main.async {
                         self.userImage = uiImage
+                        self.userDefault.saveImage(key: .userImage,
+                                                   image: uiImage)
                     }
                 }
             }
@@ -72,6 +81,8 @@ final class ProfileViewModel: ObservableObject, ProfileViewModelProtocol {
                 if let uiImage = UIImage(data: data) {
                     DispatchQueue.main.async {
                         self.coverImage = uiImage
+                        self.userDefault.saveImage(key: .coverImage,
+                                                   image: uiImage)
                     }
                 }
             }
@@ -81,11 +92,15 @@ final class ProfileViewModel: ObservableObject, ProfileViewModelProtocol {
     func removeProfileImage() {
         self.userImageSelection = nil
         self.userImage = nil
+        self.userDefault.saveImage(key: .userImage,
+                                   image: nil)
     }
     
     func removeCoverImage() {
         self.coverImageSelection = nil
         self.coverImage = nil
+        self.userDefault.saveImage(key: .coverImage,
+                                   image: nil)
     }
     
     func fetchFavoriteGames(completion: @escaping (Result<[FavoriteGame], Error>) -> Void) {

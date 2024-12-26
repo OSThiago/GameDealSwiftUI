@@ -36,5 +36,8 @@ struct AppAssembler: Assembler {
         
         DependencyInjectionContainer.register(type: StoresProtocol.self,
                                               StoresImplementation())
+        
+        DependencyInjectionContainer.register(type: UserDefaultProtocol.self,
+                                              UserDefaultImplementation())
     }
 }

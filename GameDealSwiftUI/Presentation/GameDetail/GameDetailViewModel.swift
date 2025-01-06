@@ -39,18 +39,24 @@ final class GameDetailViewModel: ObservableObject, GameDetailViewModelProtocol {
         self.gameId = gameid
     }
     
+    @MainActor
     func viewDidLoad() async {
         await fetchGameDetails()
+        
         await fetchStoresInformations()
+        
         if let gameName = gameLookupModel?.info?.title {
             await fetchMetacriticDetailsInformation(metacriticLink: tryGenerateMetacriticName(gameName: gameName))
         }
+        
         DispatchQueue.main.async {
             self.isLoading = false
         }
+        
         updateIsFavorite()
     }
     
+    @MainActor
     func fetchGameDetails() async {
         do {
             let endpoint = GamesEndPoint.gameLookup(id: gameId)
@@ -63,6 +69,7 @@ final class GameDetailViewModel: ObservableObject, GameDetailViewModelProtocol {
         }
     }
     
+    @MainActor
     func fetchStoresInformations() async {
         do {
             let endpoint = StoresEndpoint.storesInformation

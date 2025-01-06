@@ -67,7 +67,7 @@ extension ListDealsView {
                                          salePrice: deal.salePrice,
                                          normalPrice: deal.normalPrice,
                                          savings: viewModel.formatterUseCase.formatSavings(deal.savings),
-                                         thumb: viewModel.formatterUseCase.getHightQualityImage(url: deal.thumb),
+                                         thumb: deal.thumb,
                                          storeThumb: viewModel.formatterUseCase.getStoreImage(store: viewModel.store))
                         }
 

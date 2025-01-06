@@ -147,7 +147,7 @@ final class FeedViewModel: ObservableObject {
             salePrice: "$\(model.salePrice)",
             normalPrice: "$\(model.normalPrice)",
             savings: formatterUseCase.formatSavings(model.savings),
-            thumb: formatterUseCase.getHightQualityImage(url: model.thumb),
+            thumb: model.thumb,
             metacriticLink: model.metacriticLink
         )
         return model

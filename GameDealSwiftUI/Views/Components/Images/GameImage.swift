@@ -9,10 +9,14 @@ import SwiftUI
 
 struct GameImage: View {
     
+    @Injected private var formatterUseCase: FormatterProcol
+    
     let url: String
     let width: CGFloat
     let height: CGFloat
     let placeholder: String
+    
+    @State private var imageURL = ""
     
     init(url: String,
           width: CGFloat,
@@ -23,10 +27,11 @@ struct GameImage: View {
         self.width = width
         self.height = height
         self.placeholder = placeholder
+        imageURL = url
     }
     
     var body: some View {
-        AsyncImage(url: URL(string: url)) { phase in
+        AsyncImage(url: URL(string: imageURL)) { phase in
             switch phase  {
             case .empty:
                 ProgressView()
@@ -49,7 +54,24 @@ struct GameImage: View {
                     .frame(width: width, height: height)
             }
         }
+        .task {
+            self.imageURL = await formatterUseCase.getHightQualityImage(url: url)
+        }
     }
+}
+
+extension GameImage {
+//    private func managedImage() -> String {
+//        var result = url
+//        var heightQuality = formatterUseCase.getHightQualityImage(url: url)
+//        formatterUseCase.verificarConteudoDeLink(urlString: heightQuality) { hascontent in
+//            if hascontent {
+//                result = heightQuality
+//            }
+//        }
+//        print("resultado: \(result)")
+//        return result
+//    }
 }
 
 #Preview {

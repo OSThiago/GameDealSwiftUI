@@ -11,16 +11,14 @@ import SwiftUI
 extension DealLookupView {
     @ViewBuilder
     var gameImage: some View {
-        
-        let url = viewModel.FormatterUseCase.getHightQualityImage(url: viewModel.feedGameDealModel.thumb)
-        
+
         let imageHeight = constants.gameImageHeight
         
         GeometryReader { reader in
             let offsetY = reader.frame(in: .global).minY
             let isScrolled = offsetY > 0
             
-            GameImage(url: url,
+            GameImage(url: viewModel.feedGameDealModel.thumb,
                       width: ScreenSize.width,
                       height: isScrolled ? offsetY + imageHeight : imageHeight,
                       placeholder: "photo.artframe")

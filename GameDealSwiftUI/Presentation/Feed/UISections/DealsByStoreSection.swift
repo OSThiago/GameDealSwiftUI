@@ -57,7 +57,12 @@ extension FeedView {
                                                         store: store))
                             }
                         } label: {
-                            MediumDealCell(title: dealFormatted.title, salePrice: dealFormatted.salePrice, normalPrice: dealFormatted.normalPrice, savings: dealFormatted.savings, thumb: dealFormatted.thumb, storeThumb: dealFormatted.storeID)
+                            MediumDealCell(title: dealFormatted.title,
+                                           salePrice: dealFormatted.salePrice,
+                                           normalPrice: dealFormatted.normalPrice,
+                                           savings: dealFormatted.savings,
+                                           thumb: deal.thumb,
+                                           storeThumb: dealFormatted.storeID)
                                 .padding(.leading)
                         }
                     }

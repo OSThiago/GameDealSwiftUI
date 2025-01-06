@@ -62,7 +62,7 @@ struct FavoriteGameCell: View {
 // MARK: - Image
 extension FavoriteGameCell {
     var gameImageView: some View {
-        GameImage(url: formatterUseCase.getHightQualityImage(url: image),
+        GameImage(url: image,
                   width: 60 * 16/9,
                   height: 70)
         .background(.gray.opacity(0.2))

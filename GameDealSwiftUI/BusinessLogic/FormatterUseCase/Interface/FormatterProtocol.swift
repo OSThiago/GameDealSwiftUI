@@ -8,9 +8,11 @@
 import Foundation
 
 protocol FormatterProcol {
-    func getHightQualityImage(url: String) -> String
+    func getHightQualityImage(url: String) async -> String
     func getStoreImage(store: StoresCheapShark) -> String
     func formatSavings(_ savings: String) -> String
     func isOnSale(originalPrice: String?, currentPrice: String?) -> Bool
     func descriptionFormatted(description: String) -> String
+//    func verificarConteudoDeLink(urlString: String, completion: @escaping (Bool) -> Void)
+    func checkUrlHasContent(_ urlString: String) async -> Bool
 }

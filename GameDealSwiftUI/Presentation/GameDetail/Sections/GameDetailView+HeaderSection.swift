@@ -8,14 +8,15 @@
 import SwiftUI
 
 extension GameDetailView {
+    @ViewBuilder
     var headerSection: some View {
         VStack(alignment: .leading, spacing: Tokens.padding.xxxs) {
-            let hightQualityImage = viewModel.formatterUseCase.getHightQualityImage(url: viewModel.gameLookupModel?.info?.thumb ?? constants.error)
-            
-            GameImage(url: hightQualityImage,
-                      width: ScreenSize.width,
-                      height: constants.gameImageHeight,
-                      placeholder: constants.imagePlaceholder)
+            if let thumb = viewModel.gameLookupModel?.info?.thumb {
+                GameImage(url: thumb,
+                          width: ScreenSize.width,
+                          height: constants.gameImageHeight,
+                          placeholder: constants.imagePlaceholder)
+            }
             
             VStack(alignment: .leading, spacing: Tokens.padding.quarck) {
                 Text(viewModel.gameLookupModel?.info?.title ?? constants.error)

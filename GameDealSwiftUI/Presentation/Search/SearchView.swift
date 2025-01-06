@@ -55,20 +55,14 @@ extension SearchView {
             EmptyState(title: constants.emptyTitle,
                        description: constants.emptyDescription,
                        icon: "magnifyingglass")
-            
-//            emptyState(title: constants.emptyTitle,
-//                       description: constants.emptyDescription)
         } else if viewModel.isNoResult {
             EmptyState(title: constants.emptyResultTitle,
                        description: constants.emptyResultDescription(text: viewModel.searchText))
-            
-//            emptyState(title: constants.emptyResultTitle,
-//                       description: constants.emptyResultDescription(text: viewModel.searchText))
         } else {
             ScrollView {
                 LazyVStack {
                     ForEach(viewModel.games, id: \.gameID) { game in
-                        gameCell(thumb: viewModel.formatterUsecase.getHightQualityImage(url: game.thumb ?? "" ),
+                        gameCell(thumb: game.thumb ?? "",
                                  name: game.external ?? "")
                         .onTapGesture {
                             router.present(fullScreenCover: .gameDetail(gameID: game.gameID ?? "", onDisappear: nil))

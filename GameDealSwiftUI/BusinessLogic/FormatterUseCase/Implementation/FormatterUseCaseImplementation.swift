@@ -14,12 +14,15 @@ struct FormatterUseCaseImplementation: FormatterProcol {
     /// Replace url to another url with hight quality image
     /// - Parameter url: `String` with url with original quality
     /// - Returns: `String` url with hight quality image
-    func getHightQualityImage(url: String) -> String {
+    func getHightQualityImage(url: String) async -> String {
         if url.contains("capsule_sm_120") {
-            return url.replacingOccurrences(of: "capsule_sm_120", with: "header")
-        } else {
-            return url
+            let highImage = url.replacingOccurrences(of: "capsule_sm_120", with: "header")
+
+            if await checkUrlHasContent(highImage) {
+                return highImage
+            }
         }
+        return url
     }
     
     /// Get store banner
@@ -71,5 +74,24 @@ struct FormatterUseCaseImplementation: FormatterProcol {
         formatted = formatted.replacingOccurrences(of: "DESCRIPTION:", with: "")
         formatted = formatted.trimmingCharacters(in: .whitespacesAndNewlines)
         return formatted
+    }
+
+    func checkUrlHasContent(_ urlString: String) async -> Bool {
+        guard let url = URL(string: urlString) else {
+            return false
+        }
+
+        do {
+            let (data, response) = try await URLSession.shared.data(from: url)
+            
+            if let httpResponse = response as? HTTPURLResponse, httpResponse.statusCode == 200, !data.isEmpty {
+                return true
+            } else {
+                return false
+            }
+        } catch {
+            print("URL access error: \(error.localizedDescription)")
+            return false
+        }
     }
 }

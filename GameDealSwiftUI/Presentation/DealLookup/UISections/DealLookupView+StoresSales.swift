@@ -29,11 +29,11 @@ extension DealLookupView {
                         ForEach(viewModel.gameLookupModel?.deals ?? [], id: \.dealID) { deal in
                             VStack {
                                 if let store = viewModel.getStore(storeID: deal.storeID ?? "") {
-                                    let storeImage = viewModel.FormatterUseCase.getStoreImage(store: store)
+                                    let storeImage = viewModel.formatterUseCase.getStoreImage(store: store)
                                     LookupDealStoreCell(storeImage: storeImage,
                                                         storeTitle: store.storeName,
                                                         dealPrice: deal.price,
-                                                        isOnSale: viewModel.FormatterUseCase.isOnSale(originalPrice: deal.retailPrice, currentPrice: deal.price),
+                                                        isOnSale: viewModel.formatterUseCase.isOnSale(originalPrice: deal.retailPrice, currentPrice: deal.price),
                                                         cellWidth: 340)
                                 }
 

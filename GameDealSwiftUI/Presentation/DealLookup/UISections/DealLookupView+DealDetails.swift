@@ -58,7 +58,7 @@ extension DealLookupView {
                 
                 Spacer()
                 
-                StoreImage(storeImage: viewModel.FormatterUseCase.getStoreImage(store: viewModel.store),
+                StoreImage(storeImage: viewModel.formatterUseCase.getStoreImage(store: viewModel.store),
                            size: constants.storeImageSize)
             }
             .padding(.bottom, Tokens.padding.xs)

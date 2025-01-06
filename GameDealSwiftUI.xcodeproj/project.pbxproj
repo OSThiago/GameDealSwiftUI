@@ -58,6 +58,9 @@
 		DB95FDC72A40D9BE006EB578 /* FeedViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB95FDC62A40D9BE006EB578 /* FeedViewModel.swift */; };
 		DB95FDCA2A40E774006EB578 /* LargeDealCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB95FDC92A40E774006EB578 /* LargeDealCell.swift */; };
 		DBA0033D2D2708630072E99B /* FormatterUseCaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBA0033C2D2708630072E99B /* FormatterUseCaseTests.swift */; };
+		DBA003402D2C12250072E99B /* RedirectEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBA0033F2D2C121A0072E99B /* RedirectEndpoint.swift */; };
+		DBA003422D2C18D90072E99B /* RedirectServiceImplementation.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBA003412D2C18C40072E99B /* RedirectServiceImplementation.swift */; };
+		DBA003442D2C1BF00072E99B /* RedirectProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBA003432D2C1BF00072E99B /* RedirectProtocol.swift */; };
 		DBAE72EB2A3B491100AB9E5F /* GameDealSwiftUIApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBAE72EA2A3B491100AB9E5F /* GameDealSwiftUIApp.swift */; };
 		DBAE72ED2A3B491100AB9E5F /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBAE72EC2A3B491100AB9E5F /* ContentView.swift */; };
 		DBAE72EF2A3B491300AB9E5F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DBAE72EE2A3B491300AB9E5F /* Assets.xcassets */; };
@@ -206,6 +209,9 @@
 		DB95FDC82A40E4FF006EB578 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		DB95FDC92A40E774006EB578 /* LargeDealCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LargeDealCell.swift; sourceTree = "<group>"; };
 		DBA0033C2D2708630072E99B /* FormatterUseCaseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormatterUseCaseTests.swift; sourceTree = "<group>"; };
+		DBA0033F2D2C121A0072E99B /* RedirectEndpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RedirectEndpoint.swift; sourceTree = "<group>"; };
+		DBA003412D2C18C40072E99B /* RedirectServiceImplementation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RedirectServiceImplementation.swift; sourceTree = "<group>"; };
+		DBA003432D2C1BF00072E99B /* RedirectProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RedirectProtocol.swift; sourceTree = "<group>"; };
 		DBAE72E72A3B491100AB9E5F /* GameDealSwiftUI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GameDealSwiftUI.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DBAE72EA2A3B491100AB9E5F /* GameDealSwiftUIApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameDealSwiftUIApp.swift; sourceTree = "<group>"; };
 		DBAE72EC2A3B491100AB9E5F /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -653,6 +659,15 @@
 			path = FormatterUseCaseTests;
 			sourceTree = "<group>";
 		};
+		DBA0033E2D2C0E590072E99B /* Redirect */ = {
+			isa = PBXGroup;
+			children = (
+				DBA003412D2C18C40072E99B /* RedirectServiceImplementation.swift */,
+				DBA0033F2D2C121A0072E99B /* RedirectEndpoint.swift */,
+			);
+			path = Redirect;
+			sourceTree = "<group>";
+		};
 		DBAE72DE2A3B491000AB9E5F = {
 			isa = PBXGroup;
 			children = (
@@ -936,6 +951,7 @@
 		DBEBE61A2CAB358800F155D8 /* Implementation */ = {
 			isa = PBXGroup;
 			children = (
+				DBA0033E2D2C0E590072E99B /* Redirect */,
 				DBEBE6282CAB3DBA00F155D8 /* Deals */,
 				DBEBE6372CAC438000F155D8 /* Games */,
 				DB6A8ABE2CBDB49D001E1581 /* Stores */,
@@ -950,6 +966,7 @@
 				DBEBE61E2CAB386700F155D8 /* GamesProtocol.swift */,
 				DBEBE6202CAB387C00F155D8 /* StoresProtocol.swift */,
 				DBEBE6222CAB389400F155D8 /* AlertsProtocol.swift */,
+				DBA003432D2C1BF00072E99B /* RedirectProtocol.swift */,
 			);
 			path = Protocol;
 			sourceTree = "<group>";
@@ -1248,6 +1265,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DBA003402D2C12250072E99B /* RedirectEndpoint.swift in Sources */,
 				DBE44FF52CD93D86000D2ECB /* SearchConfigurator.swift in Sources */,
 				DBE44FFC2CDE992B000D2ECB /* GameDetailViewModel.swift in Sources */,
 				DB92BBE92A3B60F1009630E0 /* ServiceError.swift in Sources */,
@@ -1290,6 +1308,7 @@
 				DB40304D2C45A75A000DCFD1 /* ViewState.swift in Sources */,
 				DB92BBFB2A3B67BC009630E0 /* StoreImagesCheapShark.swift in Sources */,
 				DB2A10822C6D247100D1C879 /* Router.swift in Sources */,
+				DBA003422D2C18D90072E99B /* RedirectServiceImplementation.swift in Sources */,
 				E6ACA1AD2CF10C920042D326 /* ProfileView.swift in Sources */,
 				DBCF02DF2C5166F900DCE264 /* BorderRadius.swift in Sources */,
 				DB40304B2C455D3D000DCFD1 /* MetacriticDetailModel.swift in Sources */,
@@ -1299,6 +1318,7 @@
 				DB80A9152A699ED2005489AD /* View+onBackSwipe.swift in Sources */,
 				DBCF02E12C516A3A00DCE264 /* Shadow.swift in Sources */,
 				DBEBE6232CAB389900F155D8 /* AlertsProtocol.swift in Sources */,
+				DBA003442D2C1BF00072E99B /* RedirectProtocol.swift in Sources */,
 				DBCF02E32C5170C000DCE264 /* Opacity.swift in Sources */,
 				DB6A8AC22CBDB54F001E1581 /* StoresEndpoint.swift in Sources */,
 				E6ACA18E2CED34F60042D326 /* GameDetailView+DismissButton.swift in Sources */,

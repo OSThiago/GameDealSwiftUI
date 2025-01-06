@@ -56,7 +56,7 @@ extension DealLookupView {
                 ZStack(alignment: .bottomTrailing) {
                     gameImage
                     
-                    Savings(savings: viewModel.FormatterUseCase.formatSavings(viewModel.feedGameDealModel.savings),
+                    Savings(savings: viewModel.formatterUseCase.formatSavings(viewModel.feedGameDealModel.savings),
                             font: .body,
                             padding: Tokens.padding.nano)
                     .padding(Tokens.padding.nano)

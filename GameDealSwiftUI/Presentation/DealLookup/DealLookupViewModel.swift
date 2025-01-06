@@ -14,7 +14,8 @@ final class DealLookupViewModel: ObservableObject {
     @Injected var serviceMetacritic: MetacriticServiceProtocol
     @Injected var serviceGameInfo: GamesProtocol
     @Injected var serviceStores: StoresProtocol
-    @Injected var FormatterUseCase: FormatterProcol
+    @Injected var formatterUseCase: FormatterProcol
+
     
     let feedGameDealModel: FeedGameDealModel
     let store: StoresCheapShark

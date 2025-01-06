@@ -11,7 +11,8 @@ struct DealLookupView: View {
     // MARK: - PROPERTIES
     @StateObject var viewModel: DealLookupViewModel
     @EnvironmentObject var router: Router
-
+    @Environment(\.openURL) var openURL
+    
     let constants = DealLookupConstants()
     
     init(viewModel: DealLookupViewModel) {

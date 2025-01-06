@@ -128,4 +128,9 @@ final class DealLookupViewModel: ObservableObject {
             print(error)
         }
     }
+    
+    func getRedirectLink() -> String {
+        let baseURL = "https://www.cheapshark.com/redirect?dealID="
+        return baseURL + feedGameDealModel.dealID
+    }
 }

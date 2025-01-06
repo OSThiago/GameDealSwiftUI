@@ -73,7 +73,7 @@ extension DealLookupView {
                 Spacer()
                 
                 HStack {
-                    buyButton(dealID: "game id")
+                    buyButton
                     favoriteButton
                 }
             }
@@ -131,10 +131,9 @@ extension DealLookupView {
 
 // MARK: - Buy Button
 extension DealLookupView {
-    @ViewBuilder
-    func buyButton(dealID: String) -> some View {
+    var buyButton: some View {
         Button {
-            print("\(constants.buy) - \(dealID)")
+            openURL(URL(string: viewModel.getRedirectLink())!)
         } label: {
             Text(constants.buy)
                 .font(.body)

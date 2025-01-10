@@ -17,6 +17,10 @@ extension GameDetailView {
                                         storeTitle: store.storeName,
                                         dealPrice: deal.price,
                                         isOnSale: viewModel.formatterUseCase.isOnSale(originalPrice: deal.retailPrice, currentPrice: deal.price))
+                    .onTapGesture {
+                        let feedModel = viewModel.reuseFeedGameDealModel(dealModel: deal)
+                        router.push(.dealDetail(feedGameDealModel: feedModel, store: store))
+                    }
                 }
             }
         }

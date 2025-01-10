@@ -158,4 +158,16 @@ final class GameDetailViewModel: ObservableObject, GameDetailViewModelProtocol {
             print(error)
         }
     }
+    
+    func reuseFeedGameDealModel(dealModel: DealsGameLookupModel) -> FeedGameDealModel {
+        return FeedGameDealModel(gameID: gameId,
+                                 dealID: dealModel.dealID ?? "error",
+                                 storeID: dealModel.storeID ?? "error",
+                                 title: gameLookupModel?.info?.title ?? "error",
+                                 salePrice: dealModel.price ?? "error",
+                                 normalPrice: dealModel.retailPrice ?? "error",
+                                 savings: dealModel.savings ?? "error",
+                                 thumb: gameLookupModel?.info?.thumb ?? "error",
+                                 metacriticLink: tryGenerateMetacriticName(gameName: "game/\(gameLookupModel?.info?.title ?? "")"))
+    }
 }

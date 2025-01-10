@@ -133,4 +133,16 @@ final class DealLookupViewModel: ObservableObject {
         let baseURL = "https://www.cheapshark.com/redirect?dealID="
         return baseURL + feedGameDealModel.dealID
     }
+    
+    func reuseFeedGameDealModel(feedGameDealmodel:  FeedGameDealModel, dealModel: DealsGameLookupModel) -> FeedGameDealModel {
+        return FeedGameDealModel(gameID: feedGameDealmodel.gameID,
+                                 dealID: dealModel.dealID ?? "error",
+                                 storeID: dealModel.storeID ?? "error",
+                                 title: feedGameDealmodel.title,
+                                 salePrice: dealModel.price ?? "error",
+                                 normalPrice: dealModel.retailPrice ?? "error",
+                                 savings: dealModel.savings ?? "error",
+                                 thumb: feedGameDealmodel.thumb,
+                                 metacriticLink: feedGameDealmodel.metacriticLink)
+    }
 }

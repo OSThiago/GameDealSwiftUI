@@ -32,11 +32,7 @@ struct GameDetailView: View {
             .task {
                 await viewModel.viewDidLoad()
             }
-            .onAppear {
-                UIScrollView.appearance().bounces = false
-            }
             .onDisappear {
-                UIScrollView.appearance().bounces = true
                 if let onDisappear {
                     onDisappear()
                 }
@@ -59,14 +55,11 @@ extension GameDetailView {
                     GameDetailsSection(metacriticData: viewModel.metacriticDetailModel)
                         .padding(.horizontal, Tokens.padding.xxxs)
                 }
-                
-                dismissButton
-                    .padding(Tokens.padding.xxs)
-                    .padding(.top, Tokens.padding.xxxs)
             }
             .redacted(reason: viewModel.isLoading == true ? .placeholder : [])
         }
-        .ignoresSafeArea(edges: .top)
+        .navigationTitle(viewModel.gameLookupModel?.info?.title ?? "")
+        .toolbarTitleDisplayMode(.inline)
         .scrollIndicators(.hidden)
     }
 }

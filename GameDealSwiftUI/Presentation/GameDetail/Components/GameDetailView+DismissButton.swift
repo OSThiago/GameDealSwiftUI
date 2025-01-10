@@ -7,6 +7,8 @@
 
 import SwiftUI
 
+// MARK: - Unused for now
+
 extension GameDetailView {
     var dismissButton: some View {
         Button {

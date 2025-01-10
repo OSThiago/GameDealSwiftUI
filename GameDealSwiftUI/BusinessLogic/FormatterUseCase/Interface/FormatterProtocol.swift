@@ -13,6 +13,5 @@ protocol FormatterProcol {
     func formatSavings(_ savings: String) -> String
     func isOnSale(originalPrice: String?, currentPrice: String?) -> Bool
     func descriptionFormatted(description: String) -> String
-//    func verificarConteudoDeLink(urlString: String, completion: @escaping (Bool) -> Void)
     func checkUrlHasContent(_ urlString: String) async -> Bool
 }

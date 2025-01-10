@@ -35,6 +35,12 @@ extension DealLookupView {
                                                         dealPrice: deal.price,
                                                         isOnSale: viewModel.formatterUseCase.isOnSale(originalPrice: deal.retailPrice, currentPrice: deal.price),
                                                         cellWidth: 340)
+                                    .onTapGesture {
+                                        if viewModel.feedGameDealModel.storeID != store.storeID {
+                                            let feedModel = viewModel.reuseFeedGameDealModel(feedGameDealmodel: viewModel.feedGameDealModel, dealModel: deal)
+                                            router.push(.dealDetail(feedGameDealModel: feedModel, store: store))
+                                        }
+                                    }
                                 }
 
                                 Divider()

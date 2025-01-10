@@ -65,7 +65,8 @@ extension SearchView {
                         gameCell(thumb: game.thumb ?? "",
                                  name: game.external ?? "")
                         .onTapGesture {
-                            router.present(fullScreenCover: .gameDetail(gameID: game.gameID ?? "", onDisappear: nil))
+                            router.push(.gameDetail(gameID: game.gameID ?? "",
+                                                    onDisappear: nil))
                         }
                     }
                 }

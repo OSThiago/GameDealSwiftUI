@@ -68,7 +68,9 @@ extension ProfileView {
     func favoriteList(games: [String : GameLookup]) -> some View {
         ForEach(games.sorted(by: { $0.key < $1.key }), id: \.key) { id, game in
             Button(action: {
-                router.present(fullScreenCover: .gameDetail(gameID: id, onDisappear: self.configure))
+                router.push(.gameDetail(gameID: id, onDisappear: {
+                    self.configure()
+                }))
             }, label: {
                 FavoriteGameCell(image: game.info.thumb ?? "",
                                  name: game.info.title ?? "",

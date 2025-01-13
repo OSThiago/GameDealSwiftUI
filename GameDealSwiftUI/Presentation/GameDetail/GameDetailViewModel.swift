@@ -18,6 +18,7 @@ protocol GameDetailViewModelProtocol {
     var gameLookupModel: GameLookupModel? { get set }
     var metacriticDetailModel: MetacriticDetailModel? { get set }
     var isLoading: Bool { get set }
+    var isLoadingMetacritic: Bool { get set }
 }
 
 final class GameDetailViewModel: ObservableObject, GameDetailViewModelProtocol {
@@ -32,6 +33,7 @@ final class GameDetailViewModel: ObservableObject, GameDetailViewModelProtocol {
     @Published var storesInformations: [StoresCheapShark] = []
     @Published var isLoading: Bool = true
     @Published var isFavorite: Bool = false
+    @Published var isLoadingMetacritic = true
     
     let gameId: String
     
@@ -45,12 +47,12 @@ final class GameDetailViewModel: ObservableObject, GameDetailViewModelProtocol {
         
         await fetchStoresInformations()
         
-        if let gameName = gameLookupModel?.info?.title {
-            await fetchMetacriticDetailsInformation(metacriticLink: tryGenerateMetacriticName(gameName: gameName))
-        }
-        
         DispatchQueue.main.async {
             self.isLoading = false
+        }
+        
+        if let gameName = gameLookupModel?.info?.title {
+            await fetchMetacriticDetailsInformation(metacriticLink: tryGenerateMetacriticName(gameName: gameName))
         }
         
         updateIsFavorite()
@@ -108,6 +110,7 @@ final class GameDetailViewModel: ObservableObject, GameDetailViewModelProtocol {
         return false
     }
     
+    @MainActor
     func fetchMetacriticDetailsInformation(metacriticLink: String) async {
         let baseURL = "https://www.metacritic.com/game"
         
@@ -117,6 +120,7 @@ final class GameDetailViewModel: ObservableObject, GameDetailViewModelProtocol {
         
         DispatchQueue.main.async {
             self.metacriticDetailModel = data
+            self.isLoadingMetacritic = false
         }
     }
     

@@ -27,6 +27,7 @@ final class DealLookupViewModel: ObservableObject {
     @Published var scrollPosition: CGPoint = .zero
     @Published var showNavigationTitle = false
     @Published var isFavorite: Bool = false
+    @Published var isLoadingMetacritic = true
     
     init(
         feedGameDealModel: FeedGameDealModel,
@@ -40,6 +41,7 @@ final class DealLookupViewModel: ObservableObject {
     func viewDidLoad() async {
         await fetchStoresInformations()
         await fetchDealLookup(gameID: self.feedGameDealModel.gameID)
+        self.viewState = .loaded
         self.metacriticDetailModel = await fetchMetacriticDetailsInformation(metacriticLink: feedGameDealModel.metacriticLink ?? "")
         updateIsFavorite()
     }
@@ -58,6 +60,7 @@ final class DealLookupViewModel: ObservableObject {
         return false
     }
     
+    @MainActor
     func fetchDealLookup(gameID: String) async {
         do {
             let endpoint = GamesEndPoint.gameLookup(id: gameID)
@@ -70,6 +73,7 @@ final class DealLookupViewModel: ObservableObject {
         }
     }
 
+    @MainActor
     func fetchStoresInformations() async {
         do {
             let endpoint = StoresEndpoint.storesInformation
@@ -105,8 +109,9 @@ final class DealLookupViewModel: ObservableObject {
         let url = baseURL + metacriticLink
         
         let data = await serviceMetacritic.fetchDetailsInformation(metacriticLink: url)
+
+        isLoadingMetacritic = false
         
-        self.viewState = .loaded
         return data
     }
     

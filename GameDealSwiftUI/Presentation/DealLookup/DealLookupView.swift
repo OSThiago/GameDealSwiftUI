@@ -68,8 +68,13 @@ extension DealLookupView {
                             
                 storesDealsSection
 
-                GameDetailsSection(metacriticData: viewModel.metacriticDetailModel)
-                    .padding(.horizontal, 16)
+                if viewModel.isLoadingMetacritic {
+                    ProgressView()
+                        .frame(maxWidth:  ScreenSize.width, alignment: .center)
+                } else {
+                    GameDetailsSection(metacriticData: viewModel.metacriticDetailModel)
+                        .padding(.horizontal, 16)
+                }
             }
             .padding(.bottom, 100)
             .background(GeometryReader { geometry in

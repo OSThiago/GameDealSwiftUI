@@ -52,8 +52,13 @@ extension GameDetailView {
 
                     storesDealsSection
                     
-                    GameDetailsSection(metacriticData: viewModel.metacriticDetailModel)
-                        .padding(.horizontal, Tokens.padding.xxxs)
+                    if viewModel.isLoadingMetacritic {
+                        ProgressView()
+                            .frame(maxWidth: ScreenSize.width, alignment: .center)
+                    } else {
+                        GameDetailsSection(metacriticData: viewModel.metacriticDetailModel)
+                            .padding(.horizontal, Tokens.padding.xxxs)
+                    }
                 }
             }
             .redacted(reason: viewModel.isLoading == true ? .placeholder : [])

@@ -20,7 +20,8 @@ struct ListDealsView: View {
     }
     
     var body: some View {
-        buildedContent
+//        buildedContent
+        content
             .task {
                 await viewModel.fetchDeals()
             }
@@ -55,7 +56,6 @@ extension ListDealsView {
 extension ListDealsView {
     @ViewBuilder
     var content: some View {
-        if !viewModel.dealList.isEmpty {
             ScrollView(.vertical, showsIndicators: false) {
                 VStack(spacing: Tokens.padding.nano) {
                     ForEach(viewModel.dealList, id: \.dealID) { deal in
@@ -76,9 +76,7 @@ extension ListDealsView {
                 }
             }
             .padding(.horizontal)
-        } else {
-            Text(constants.emptyMessage)
-        }
+            .redacted(reason: viewModel.viewState == .loading ? .placeholder: [])
     }
 }
 

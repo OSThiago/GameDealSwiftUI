@@ -10,6 +10,7 @@ import SwiftUI
 struct FavoriteGameCell: View {
     
     @Injected private var formatterUseCase: FormatterProcol
+    @Environment(\.colorScheme) private var colorScheme
     
     let image: String
     let name: String
@@ -74,7 +75,7 @@ extension FavoriteGameCell {
 extension FavoriteGameCell {
     var gameNameView: some View {
         Text(name)
-            .foregroundStyle(.black)
+            .foregroundStyle(colorScheme == .light ? .black : .white)
             .font(.body)
             .fontWeight(.semibold)
             .lineLimit(2)

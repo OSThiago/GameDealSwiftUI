@@ -36,6 +36,7 @@ extension FeedView {
                             }
 
                             Divider()
+                                .background(colorScheme == .dark ? .white.opacity(0.6) : .gray.opacity(0.15))
                                 .padding(.leading, Tokens.padding.xl)
                         }
                     }

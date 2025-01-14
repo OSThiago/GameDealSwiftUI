@@ -79,6 +79,7 @@ extension DealLookupView {
             }
             
             Divider()
+                .background(colorScheme == .dark ? .white.opacity(0.6) : .gray.opacity(0.15))
                 .padding(.top, Tokens.padding.nano)
         }
         .padding(.horizontal, Tokens.padding.xxxs)

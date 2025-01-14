@@ -9,6 +9,7 @@ import SwiftUI
 
 struct GameDetailsSection: View {
     
+    @Environment(\.colorScheme) var colorScheme
     let metacriticData: MetacriticDetailModel?
     
     var body: some View {
@@ -25,36 +26,43 @@ extension GameDetailsSection {
                 GameDetailItem(items: metacriticData.platforms ?? [],
                                title: "Platforms")
                 
-                Divider()
+                customDivider
                 
                 // Release Date
                 GameDetailItem(items: [metacriticData.releaseDate ?? ""],
                                title: "Release Date")
                 
-                Divider()
+                customDivider
                 
                 // Developers
                 GameDetailItem(items: metacriticData.developers ?? [],
                                title: "Developers")
                 
-                Divider()
+                customDivider
                 
                 // Publisher
                 GameDetailItem(items: [metacriticData.publisher ?? ""],
                                title: "publisher")
                 
-                Divider()
+                customDivider
                 
                 // Genres
                 GameDetailItem(items: metacriticData.genres ?? [],
                                title: "Release Date")
                 
-                Divider()
+                customDivider
                 
                 // Description
                 GameDetailDescription(description: metacriticData.description ?? "")
             }
         }
+    }
+}
+
+extension GameDetailsSection {
+    var customDivider: some View {
+        Divider()
+            .background(colorScheme == .dark ? .white.opacity(0.6) : .gray.opacity(0.15))
     }
 }
 

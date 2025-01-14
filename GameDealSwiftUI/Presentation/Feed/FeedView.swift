@@ -55,7 +55,7 @@ extension FeedView {
                 dealsByStoreSection
             }
         }
-        .foregroundStyle(Color(uiColor: colorScheme == .light ? .darkText : .lightText))
+        .foregroundStyle(Color(uiColor: colorScheme == .light ? .darkText : .white))
         .navigationTitle(constants.navigationTitle)
         .navigationBarTitleDisplayMode(.automatic)
     }

@@ -9,6 +9,8 @@ import SwiftUI
 
 struct LargeDealCell: View {
     
+    @Environment(\.colorScheme) private var colorScheme
+    
     let title: String
     let salePrice: String
     let normalPrice: String
@@ -57,7 +59,7 @@ struct LargeDealCell: View {
         }
         .frame(maxWidth: cellWidth)
         .background(RoundedRectangle(cornerRadius: Tokens.borderRadius.md)
-            .fill(Color(uiColor: UIColor.systemBackground))
+            .fill(colorScheme == .dark ? .gray.opacity(0.25) : .white)
             .shadow(ShadowLevel.level1)
         )
         .padding(.bottom, Tokens.padding.xxxs)

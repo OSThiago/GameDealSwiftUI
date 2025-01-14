@@ -12,6 +12,7 @@ struct DealLookupView: View {
     @StateObject var viewModel: DealLookupViewModel
     @EnvironmentObject var router: Router
     @Environment(\.openURL) var openURL
+    @Environment(\.colorScheme) var colorScheme
     
     let constants = DealLookupConstants()
     

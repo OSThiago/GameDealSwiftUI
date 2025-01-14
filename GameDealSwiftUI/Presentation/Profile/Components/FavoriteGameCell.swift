@@ -106,7 +106,7 @@ extension FavoriteGameCell {
 // MARK: - Notification Button
 extension FavoriteGameCell {
     var notificationButton: some View {
-        Image(systemName: notificationIsActive ? "bell.fill" : "bell")
+        Image(systemName: notificationIsActive ? "bell.fill" : "bell.slash")
             .scaleEffect(1.3)
             .onTapGesture {
                 self.notificationAction()

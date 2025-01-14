@@ -19,6 +19,7 @@ protocol GameDetailViewModelProtocol {
     var metacriticDetailModel: MetacriticDetailModel? { get set }
     var isLoading: Bool { get set }
     var isLoadingMetacritic: Bool { get set }
+    var hasPerformedAction: Bool { get set }
 }
 
 final class GameDetailViewModel: ObservableObject, GameDetailViewModelProtocol {
@@ -34,6 +35,7 @@ final class GameDetailViewModel: ObservableObject, GameDetailViewModelProtocol {
     @Published var isLoading: Bool = true
     @Published var isFavorite: Bool = false
     @Published var isLoadingMetacritic = true
+    @Published var hasPerformedAction = false
     
     let gameId: String
     
@@ -43,6 +45,9 @@ final class GameDetailViewModel: ObservableObject, GameDetailViewModelProtocol {
     
     @MainActor
     func viewDidLoad() async {
+        
+        updateIsFavorite()
+        
         await fetchGameDetails()
         
         await fetchStoresInformations()
@@ -54,8 +59,6 @@ final class GameDetailViewModel: ObservableObject, GameDetailViewModelProtocol {
         if let gameName = gameLookupModel?.info?.title {
             await fetchMetacriticDetailsInformation(metacriticLink: tryGenerateMetacriticName(gameName: gameName))
         }
-        
-        updateIsFavorite()
     }
     
     @MainActor
@@ -158,6 +161,7 @@ final class GameDetailViewModel: ObservableObject, GameDetailViewModelProtocol {
                 try CoreDataUseCase.shared.addFavoriteGame(gameID: gameId)
             }
             updateIsFavorite()
+            self.hasPerformedAction = true
         } catch {
             print(error)
         }

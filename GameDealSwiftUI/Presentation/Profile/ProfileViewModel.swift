@@ -115,17 +115,16 @@ final class ProfileViewModel: ObservableObject, ProfileViewModelProtocol {
     func fetchGamesDetails() async {
         do {
             let ids = favoriteGames.map { $0.gameID }
-            
+
             let endpoint = GamesEndPoint.multipleGameLookup(ids: ids)
-            
-            print(endpoint.getUrl())
+
             let result = try await gamesService.multipleGameLookup(endpoint: endpoint)
             
             if result.isEmpty {
                 self.gamesDetails = nil
                 return
             }
-            
+
             DispatchQueue.main.async {
                 let dictionary = Dictionary(uniqueKeysWithValues: result.compactMap{ $0 })
                 self.gamesDetails = MultipleGameLookup(games: dictionary)

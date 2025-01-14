@@ -34,7 +34,9 @@ struct GameDetailView: View {
             }
             .onDisappear {
                 if let onDisappear {
-                    onDisappear()
+                    if viewModel.hasPerformedAction {
+                        onDisappear()
+                    }
                 }
             }
             

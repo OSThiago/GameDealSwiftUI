@@ -25,13 +25,14 @@ final class SearchViewModel: ObservableObject, SearchViewModelProtocol {
     @Injected var formatterUsecase: FormatterProcol
 
     @Published var games: [GameModel] = []
-    @Published var viewState: ViewState = .loading
+    @Published var viewState: ViewState = .loaded
     @Published var searchText = ""
     @Published var isEmptyState = false
     @Published var isNoResult = false
 
     private var cancellables = Set<AnyCancellable>()
 
+    @MainActor
     func viewDidLoad() async {
         DispatchQueue.main.async {
             self.updateEmptyState()
@@ -49,7 +50,9 @@ final class SearchViewModel: ObservableObject, SearchViewModelProtocol {
             .store(in: &cancellables)
     }
 
+    @MainActor
     func searchGame(_ name: String) async {
+
         DispatchQueue.main.async {
             self.games.removeAll()
             self.viewState = .loading

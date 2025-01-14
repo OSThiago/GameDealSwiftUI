@@ -79,6 +79,7 @@ extension FavoriteGameCell {
             .fontWeight(.semibold)
             .lineLimit(2)
             .frame(height: 45, alignment: .topLeading)
+            .multilineTextAlignment(.leading)
     }
 }
 

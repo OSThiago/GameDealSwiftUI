@@ -33,6 +33,7 @@ extension GameDetailView {
                         viewModel.favoriteAction()
                     } label: {
                         Image(systemName: viewModel.isFavorite ? constants.favoriteFillImage : constants.favoriteImage)
+                            .foregroundStyle(viewModel.isFavorite ? .red : .gray)
                     }
                 }
             }

@@ -9,7 +9,7 @@ import SwiftUI
 
 extension ProfileView {
     var favoriteGamesSection: some View {
-        VStack(alignment: .leading, spacing: Tokens.padding.xxxs) {
+        VStack(alignment: .leading, spacing: Tokens.padding.micro) {
             if !viewModel.favoriteGames.isEmpty {
                 favoriteTitle
                 
@@ -36,8 +36,8 @@ extension ProfileView {
 extension ProfileView {
     var favoriteTitle: some View {
         Text(constants.favoriteTitle)
-            .font(.title2)
-            .fontWeight(.bold)
+            .font(.title3)
+            .fontWeight(.semibold)
     }
 }
 
@@ -46,7 +46,7 @@ extension ProfileView {
     var onSaleList: some View {
         VStack(alignment: .leading, spacing: Tokens.padding.nano) {
             Text(constants.onSale)
-                .fontWeight(.semibold)
+                .foregroundStyle(.gray)
             favoriteList(games: viewModel.onSaleGames)
         }
     }
@@ -57,7 +57,7 @@ extension ProfileView {
     var noDealsList: some View {
         VStack(alignment: .leading, spacing: Tokens.padding.nano) {
             Text(constants.noDeals)
-                .fontWeight(.semibold)
+                .foregroundStyle(.gray)
             favoriteList(games: viewModel.noDealsGames)
         }
     }

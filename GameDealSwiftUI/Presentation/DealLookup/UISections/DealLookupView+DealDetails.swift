@@ -154,6 +154,7 @@ extension DealLookupView {
             viewModel.favoriteAction()
         } label: {
             Image(systemName: viewModel.isFavorite ? "heart.fill" : "heart")
+                .foregroundStyle(viewModel.isFavorite ? .red : .gray)
         }
     }
 }

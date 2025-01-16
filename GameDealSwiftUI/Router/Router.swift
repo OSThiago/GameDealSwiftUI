@@ -62,6 +62,8 @@ extension Router {
             GameDetailConfigurator(gameId: gameID, onDisappear: onDisappear).configure()
         case .profile:
             ProfileConfigurator().configure()
+        case .settings:
+            SettingsConfigurator().configure()
         }
     }
     

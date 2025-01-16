@@ -34,30 +34,15 @@ struct ProfileView: View {
         .redacted(reason: (viewModel.gamesDetails == nil && !viewModel.favoriteGames.isEmpty) ? .placeholder : [])
         .navigationTitle(constants.navigationTitle)
         .toolbarTitleDisplayMode(.inline)
+        .toolbar { settingsButton }
         .sheet(item: $viewModel.activeSheet) { item in
-            switch item {
-            case .profile:
-                EditImageView(deletePhotoAction: {
-                    viewModel.removeProfileImage()
-                },
-                              pickerSelector: $viewModel.userImageSelection)
-                .presentationDetents([.height(200)])
-                .onDisappear {
-                    viewModel.activeSheet = nil
-                }
-            case .cover:
-                EditImageView(deletePhotoAction: {
-                    viewModel.removeCoverImage()
-                },
-                              pickerSelector: $viewModel.coverImageSelection)
-                .presentationDetents([.height(200)])
-                .onDisappear {
-                    viewModel.activeSheet = nil
-                }
-            }
+            sheetView(item: item)
         }
     }
-    
+}
+
+// MARK: - Life Cycle
+extension ProfileView {
     func configure() {
         viewModel.configure()
         viewModel.fetchFavoriteGames { result in
@@ -70,6 +55,46 @@ struct ProfileView: View {
                 }
             case .failure(let failure):
                 print(failure)
+            }
+        }
+    }
+}
+
+// MARK: - Toolbar Settings Button
+extension ProfileView {
+    var settingsButton: some ToolbarContent {
+        ToolbarItem(placement: .topBarTrailing) {
+            Button {
+                router.push(.settings)
+            } label: {
+                Image(systemName: "gearshape")
+                    .foregroundStyle(.gray)
+            }
+        }
+    }
+}
+
+// MARK: - Sheet View
+extension ProfileView {
+    func sheetView(item: ProfileSheet) -> some View {
+        switch item {
+        case .profile:
+            EditImageView(deletePhotoAction: {
+                viewModel.removeProfileImage()
+            },
+                          pickerSelector: $viewModel.userImageSelection)
+            .presentationDetents([.height(200)])
+            .onDisappear {
+                viewModel.activeSheet = nil
+            }
+        case .cover:
+            EditImageView(deletePhotoAction: {
+                viewModel.removeCoverImage()
+            },
+                          pickerSelector: $viewModel.coverImageSelection)
+            .presentationDetents([.height(200)])
+            .onDisappear {
+                viewModel.activeSheet = nil
             }
         }
     }

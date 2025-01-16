@@ -15,6 +15,7 @@ enum AppScene {
     case search
     case gameDetail(gameID: String, onDisappear: (() -> Void)?)
     case profile
+    case settings
 }
 
 // MARK: - Hashble
@@ -33,6 +34,8 @@ extension AppScene: Hashable {
         case .gameDetail(_,_):
             hasher.combine("")
         case .profile:
+            hasher.combine("")
+        case .settings:
             hasher.combine("")
         }
     }

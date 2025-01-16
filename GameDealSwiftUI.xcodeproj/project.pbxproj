@@ -61,6 +61,11 @@
 		DBA003402D2C12250072E99B /* RedirectEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBA0033F2D2C121A0072E99B /* RedirectEndpoint.swift */; };
 		DBA003422D2C18D90072E99B /* RedirectServiceImplementation.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBA003412D2C18C40072E99B /* RedirectServiceImplementation.swift */; };
 		DBA003442D2C1BF00072E99B /* RedirectProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBA003432D2C1BF00072E99B /* RedirectProtocol.swift */; };
+		DBA003472D36E7EE0072E99B /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBA003462D36E7EE0072E99B /* SettingsView.swift */; };
+		DBA003492D36E8010072E99B /* SettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBA003482D36E7FA0072E99B /* SettingsViewModel.swift */; };
+		DBA0034B2D36E8190072E99B /* SettingsConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBA0034A2D36E8100072E99B /* SettingsConstants.swift */; };
+		DBA0034D2D36E8250072E99B /* SettingsConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBA0034C2D36E81F0072E99B /* SettingsConfigurator.swift */; };
+		DBA003512D38349C0072E99B /* SettingsView+itensSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBA003502D38348E0072E99B /* SettingsView+itensSection.swift */; };
 		DBAE72EB2A3B491100AB9E5F /* GameDealSwiftUIApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBAE72EA2A3B491100AB9E5F /* GameDealSwiftUIApp.swift */; };
 		DBAE72ED2A3B491100AB9E5F /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBAE72EC2A3B491100AB9E5F /* ContentView.swift */; };
 		DBAE72EF2A3B491300AB9E5F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DBAE72EE2A3B491300AB9E5F /* Assets.xcassets */; };
@@ -68,6 +73,7 @@
 		DBAE72FC2A3B491300AB9E5F /* GameDealSwiftUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBAE72FB2A3B491300AB9E5F /* GameDealSwiftUITests.swift */; };
 		DBAE73062A3B491300AB9E5F /* GameDealSwiftUIUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBAE73052A3B491300AB9E5F /* GameDealSwiftUIUITests.swift */; };
 		DBAE73082A3B491300AB9E5F /* GameDealSwiftUIUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBAE73072A3B491300AB9E5F /* GameDealSwiftUIUITestsLaunchTests.swift */; };
+		DBC2F0592D394F510059D6D2 /* SettingsView+personalSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBC2F0582D394F470059D6D2 /* SettingsView+personalSection.swift */; };
 		DBC8C1152C3CE1680094865F /* MetacriticWebScrapingImplementation.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBC8C1142C3CE1680094865F /* MetacriticWebScrapingImplementation.swift */; };
 		DBC8C1182C3CE1CF0094865F /* SwiftSoup in Frameworks */ = {isa = PBXBuildFile; productRef = DBC8C1172C3CE1CF0094865F /* SwiftSoup */; };
 		DBCF02CD2C5040BD00DCE264 /* FeedView+HilightDealsSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBCF02CC2C5040BD00DCE264 /* FeedView+HilightDealsSection.swift */; };
@@ -212,6 +218,11 @@
 		DBA0033F2D2C121A0072E99B /* RedirectEndpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RedirectEndpoint.swift; sourceTree = "<group>"; };
 		DBA003412D2C18C40072E99B /* RedirectServiceImplementation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RedirectServiceImplementation.swift; sourceTree = "<group>"; };
 		DBA003432D2C1BF00072E99B /* RedirectProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RedirectProtocol.swift; sourceTree = "<group>"; };
+		DBA003462D36E7EE0072E99B /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		DBA003482D36E7FA0072E99B /* SettingsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewModel.swift; sourceTree = "<group>"; };
+		DBA0034A2D36E8100072E99B /* SettingsConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsConstants.swift; sourceTree = "<group>"; };
+		DBA0034C2D36E81F0072E99B /* SettingsConfigurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsConfigurator.swift; sourceTree = "<group>"; };
+		DBA003502D38348E0072E99B /* SettingsView+itensSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SettingsView+itensSection.swift"; sourceTree = "<group>"; };
 		DBAE72E72A3B491100AB9E5F /* GameDealSwiftUI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GameDealSwiftUI.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DBAE72EA2A3B491100AB9E5F /* GameDealSwiftUIApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameDealSwiftUIApp.swift; sourceTree = "<group>"; };
 		DBAE72EC2A3B491100AB9E5F /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -222,6 +233,7 @@
 		DBAE73012A3B491300AB9E5F /* GameDealSwiftUIUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GameDealSwiftUIUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		DBAE73052A3B491300AB9E5F /* GameDealSwiftUIUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameDealSwiftUIUITests.swift; sourceTree = "<group>"; };
 		DBAE73072A3B491300AB9E5F /* GameDealSwiftUIUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameDealSwiftUIUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		DBC2F0582D394F470059D6D2 /* SettingsView+personalSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SettingsView+personalSection.swift"; sourceTree = "<group>"; };
 		DBC8C1142C3CE1680094865F /* MetacriticWebScrapingImplementation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MetacriticWebScrapingImplementation.swift; sourceTree = "<group>"; };
 		DBCF02CC2C5040BD00DCE264 /* FeedView+HilightDealsSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FeedView+HilightDealsSection.swift"; sourceTree = "<group>"; };
 		DBCF02CE2C51264000DCE264 /* DealsByStoreSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DealsByStoreSection.swift; sourceTree = "<group>"; };
@@ -618,6 +630,7 @@
 		DB95FDC12A40D8FD006EB578 /* Presentation */ = {
 			isa = PBXGroup;
 			children = (
+				DBA003452D36E7C70072E99B /* Settings */,
 				E6ACA1AB2CF10C0F0042D326 /* Profile */,
 				DBE44FF82CDE5AD8000D2ECB /* GameDetail */,
 				DB6C10D22CCE0C6A00E7C96C /* Search */,
@@ -666,6 +679,27 @@
 				DBA0033F2D2C121A0072E99B /* RedirectEndpoint.swift */,
 			);
 			path = Redirect;
+			sourceTree = "<group>";
+		};
+		DBA003452D36E7C70072E99B /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				DBA0034C2D36E81F0072E99B /* SettingsConfigurator.swift */,
+				DBA0034A2D36E8100072E99B /* SettingsConstants.swift */,
+				DBA003482D36E7FA0072E99B /* SettingsViewModel.swift */,
+				DBA003462D36E7EE0072E99B /* SettingsView.swift */,
+				DBA0034E2D3828D60072E99B /* Sections */,
+			);
+			path = Settings;
+			sourceTree = "<group>";
+		};
+		DBA0034E2D3828D60072E99B /* Sections */ = {
+			isa = PBXGroup;
+			children = (
+				DBC2F0582D394F470059D6D2 /* SettingsView+personalSection.swift */,
+				DBA003502D38348E0072E99B /* SettingsView+itensSection.swift */,
+			);
+			path = Sections;
 			sourceTree = "<group>";
 		};
 		DBAE72DE2A3B491000AB9E5F = {
@@ -1270,6 +1304,7 @@
 				DBE44FFC2CDE992B000D2ECB /* GameDetailViewModel.swift in Sources */,
 				DB92BBE92A3B60F1009630E0 /* ServiceError.swift in Sources */,
 				DB6A8ABD2CBD708F001E1581 /* ServiceImplementation.swift in Sources */,
+				DBA0034D2D36E8250072E99B /* SettingsConfigurator.swift in Sources */,
 				DBD9989C2A47484700D1D587 /* ListDealsView.swift in Sources */,
 				E6ACA17C2CEBC2080042D326 /* GameDetailsSection.swift in Sources */,
 				DBD450AA2D11CA8B00E94CBB /* ProfileInfoSection.swift in Sources */,
@@ -1283,6 +1318,7 @@
 				DB6964EA2C6FE5EF00D48837 /* CheapSharkServiceProtocol.swift in Sources */,
 				DB80A9132A6998A0005489AD /* DealLookupView+DealDetails.swift in Sources */,
 				E6ACA1B92CF1193A0042D326 /* CoreDataModel.xcdatamodeld in Sources */,
+				DBC2F0592D394F510059D6D2 /* SettingsView+personalSection.swift in Sources */,
 				DBD998A92A4A30DE00D1D587 /* GameLookupModel.swift in Sources */,
 				DBEBE6362CAB5D0800F155D8 /* DealsServiceImpelentation.swift in Sources */,
 				DBD450BA2D1B058F00E94CBB /* UserDefaultImplementation.swift in Sources */,
@@ -1299,6 +1335,7 @@
 				E6ACA1862CED320A0042D326 /* GameDetailConstants.swift in Sources */,
 				DB92BBF22A3B65E4009630E0 /* CheapSharkSortDeals.swift in Sources */,
 				DBCF02D92C515A3E00DCE264 /* FeedConstants.swift in Sources */,
+				DBA0034B2D36E8190072E99B /* SettingsConstants.swift in Sources */,
 				DBD998962A472B0F00D1D587 /* ScreenSize.swift in Sources */,
 				DBD450AF2D14A25E00E94CBB /* EmptyState.swift in Sources */,
 				DBE44FF72CDBEC2B000D2ECB /* SearchConstants.swift in Sources */,
@@ -1330,6 +1367,7 @@
 				DB2A10872C6D47D900D1C879 /* DealLookupConfigurator.swift in Sources */,
 				DBEBE6312CAB566400F155D8 /* DealsEndPoint.swift in Sources */,
 				DBD998AC2A4B8EF100D1D587 /* DealLookupView.swift in Sources */,
+				DBA003472D36E7EE0072E99B /* SettingsView.swift in Sources */,
 				DBD450B22D15E5BA00E94CBB /* EditImageView.swift in Sources */,
 				DB2A10902C6F879900D1C879 /* Injected.swift in Sources */,
 				DB421C6E2C73BE990061C530 /* FormatterProtocol.swift in Sources */,
@@ -1363,6 +1401,7 @@
 				DBAE72ED2A3B491100AB9E5F /* ContentView.swift in Sources */,
 				E6ACA1C52CFF4F180042D326 /* FavoriteGameCell.swift in Sources */,
 				DB4030492C453F94000DCFD1 /* MetacriticWebScrapingProtocol.swift in Sources */,
+				DBA003492D36E8010072E99B /* SettingsViewModel.swift in Sources */,
 				DBD450B82D1B020B00E94CBB /* UserDefaultProtocol.swift in Sources */,
 				DB92BC052A3B6974009630E0 /* DealLookupMock.swift in Sources */,
 				DBEBE63B2CAC446100F155D8 /* GameQuery.swift in Sources */,
@@ -1385,6 +1424,7 @@
 				DBD998922A45FC5500D1D587 /* MediumDealCell.swift in Sources */,
 				DBD998A02A48BFCD00D1D587 /* ListDealViewModel.swift in Sources */,
 				DB92BC072A3B698D009630E0 /* StoresCheapSharkMock.swift in Sources */,
+				DBA003512D38349C0072E99B /* SettingsView+itensSection.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

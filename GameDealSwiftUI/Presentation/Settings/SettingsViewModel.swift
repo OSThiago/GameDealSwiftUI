@@ -8,10 +8,6 @@
 import SwiftUI
 import PhotosUI
 
-enum SettingsAlerts {
-    case userName, email, notification
-}
-
 final class SettingsViewModel: ObservableObject {
     
     // Dependency Injection
@@ -19,8 +15,8 @@ final class SettingsViewModel: ObservableObject {
     
     // MARK: - Data
     @Published private(set) var userImage: UIImage? = nil
-    @Published var userName: String?
-    @Published var userEmail: String?
+    @Published var userName: String = ""
+    @Published var userEmail: String = ""
     @Published var isActiveDarkMode = false
     @Published var userImageSelection: PhotosPickerItem? = nil {
         didSet {
@@ -29,17 +25,26 @@ final class SettingsViewModel: ObservableObject {
     }
     // Alerts
     @Published var isShowingAlert = false
-    @Published var activeAlert: SettingsAlerts? = nil
+    @Published var isShowingEmailAlert = false
+    @Published var userNameAux = ""
+    @Published var emailAux = ""
     
     // MARK: - Life Cyle
     func viewDidLoad() {
         loadUserDefaultsData()
+        configureAlertAuxTexts()
     }
     
     // MARK: - Functions
     private func loadUserDefaultsData() {
         self.userName = userDefault.getUserName()
         self.userImage = userDefault.getImage(key: .userImage)
+        self.userEmail = userDefault.getEmail()
+    }
+    
+    private func configureAlertAuxTexts() {
+        self.userNameAux = userName
+        self.emailAux = userEmail
     }
     
     private func setUserImage(_ image: PhotosPickerItem?) {
@@ -54,5 +59,24 @@ final class SettingsViewModel: ObservableObject {
                 }
             }
         }
+    }
+    
+    // MARK: - Alerts functions
+    // User Name
+    func saveUserNameAlert() {
+        userName = userNameAux
+        userDefault.saveUserName(userName: userName)
+    }
+    func cancelUserNameAlert() {
+        userNameAux = userName
+    }
+    
+    // User E-mail
+    func saveEmailAlert() {
+        userEmail = emailAux
+        userDefault.saveEmail(email: userEmail)
+    }
+    func cancelEmailAlert(){
+        emailAux = userEmail
     }
 }

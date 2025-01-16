@@ -34,6 +34,27 @@ extension SettingsView {
             personalInformationSection
             itensSection
         }
+        .alert("title", isPresented: $viewModel.isShowingAlert) {
+            TextField("", text: $viewModel.userNameAux)
+            
+            Button("Save", role: .none) {
+                viewModel.saveUserNameAlert()
+            }
+            Button("Cancel", role: .cancel) {
+                viewModel.cancelUserNameAlert()
+            }
+        }
+        .alert("title", isPresented: $viewModel.isShowingEmailAlert) {
+            TextField("", text: $viewModel.emailAux)
+                .textInputAutocapitalization(.never)
+            
+            Button("Save", role: .none) {
+                viewModel.saveEmailAlert()
+            }
+            Button("Cancel", role: .cancel) {
+                viewModel.cancelEmailAlert()
+            }
+        }
     }
 }
 

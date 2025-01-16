@@ -27,12 +27,12 @@ extension SettingsView {
         HStack {
             Text("Name")
             Spacer()
-            Text("\(viewModel.userName ?? "")")
+            Text("\(viewModel.userName)")
             Image(systemName: "chevron.right")
                 .foregroundStyle(.gray)
         }
         .onTapGesture {
-            
+            viewModel.isShowingAlert = true
         }
     }
     
@@ -41,12 +41,12 @@ extension SettingsView {
         HStack {
             Text("E-mail")
             Spacer()
-            Text("\(viewModel.userEmail ?? "")")
+            Text("\(viewModel.userEmail)")
             Image(systemName: "chevron.right")
                 .foregroundStyle(.gray)
         }
         .onTapGesture {
-
+            viewModel.isShowingEmailAlert = true
         }
     }
     

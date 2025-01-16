@@ -13,11 +13,11 @@ extension SettingsView {
             VStack {
                 profileImage
 
-                Text("User Name")
+                Text("\(viewModel.userName)")
                     .font(.title3)
                     .fontWeight(.semibold)
                 
-                Text("e-mail")
+                Text("\(viewModel.userEmail)")
                     .foregroundStyle(.gray)
             }
             .listRowBackground(Color(uiColor: .systemGray6))

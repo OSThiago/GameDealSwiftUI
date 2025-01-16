@@ -10,6 +10,7 @@ enum UserDefaultKeys: String {
     case userImage
     case coverImage
     case userName
+    case userEmail
 }
 
 protocol UserDefaultProtocol {
@@ -17,4 +18,6 @@ protocol UserDefaultProtocol {
     func saveUserName(userName: String)
     func getImage(key: UserDefaultKeys) -> UIImage?
     func getUserName() -> String
+    func saveEmail(email: String)
+    func getEmail() -> String
 }

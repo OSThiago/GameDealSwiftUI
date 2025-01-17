@@ -11,6 +11,7 @@ enum UserDefaultKeys: String {
     case coverImage
     case userName
     case userEmail
+    case theme
 }
 
 protocol UserDefaultProtocol {
@@ -20,4 +21,6 @@ protocol UserDefaultProtocol {
     func getUserName() -> String
     func saveEmail(email: String)
     func getEmail() -> String
+    func setDarkMode(isActive: Bool)
+    func getDarkMode() -> Bool
 }

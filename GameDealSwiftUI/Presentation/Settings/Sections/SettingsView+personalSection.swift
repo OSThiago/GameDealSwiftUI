@@ -20,7 +20,7 @@ extension SettingsView {
                 Text("\(viewModel.userEmail)")
                     .foregroundStyle(.gray)
             }
-            .listRowBackground(Color(uiColor: .systemGray6))
+            .listRowBackground(colorScheme == .light ? Color(uiColor: .systemGray6) : .black)
             .frame(maxWidth: ScreenSize.width, alignment: .center)
         }
     }

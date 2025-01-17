@@ -17,7 +17,11 @@ final class SettingsViewModel: ObservableObject {
     @Published private(set) var userImage: UIImage? = nil
     @Published var userName: String = ""
     @Published var userEmail: String = ""
-    @Published var isActiveDarkMode = false
+    @Published var isActiveDarkMode = false {
+        didSet {
+            userDefault.setDarkMode(isActive: isActiveDarkMode)
+        }
+    }
     @Published var userImageSelection: PhotosPickerItem? = nil {
         didSet {
             setUserImage(userImageSelection)
@@ -40,6 +44,7 @@ final class SettingsViewModel: ObservableObject {
         self.userName = userDefault.getUserName()
         self.userImage = userDefault.getImage(key: .userImage)
         self.userEmail = userDefault.getEmail()
+        self.isActiveDarkMode = userDefault.getDarkMode()
     }
     
     private func configureAlertAuxTexts() {

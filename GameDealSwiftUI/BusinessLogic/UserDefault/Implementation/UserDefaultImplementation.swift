@@ -8,9 +8,8 @@
 import SwiftUI
 
 final class UserDefaultImplementation: UserDefaultProtocol {
-    
+
     private let userDefault = UserDefaults.standard
-    
     
     // MARK: - User Image
     func saveImage(key: UserDefaultKeys, image: UIImage?) {
@@ -46,5 +45,14 @@ final class UserDefaultImplementation: UserDefaultProtocol {
     
     func getEmail() -> String {
         return userDefault.string(forKey: UserDefaultKeys.userEmail.rawValue) ?? ""
+    }
+    
+    // MARK: - Dark Mode
+    func setDarkMode(isActive: Bool) {
+        userDefault.set(isActive, forKey: UserDefaultKeys.theme.rawValue)
+    }
+    
+    func getDarkMode() -> Bool {
+        return userDefault.bool(forKey: UserDefaultKeys.theme.rawValue)
     }
 }

@@ -10,6 +10,7 @@ import SwiftUI
 struct SettingsView: View {
     
     @StateObject var viewModel: SettingsViewModel
+    @Environment(\.colorScheme) var colorScheme
     
     let constants = SettingsConstants()
     
@@ -20,7 +21,7 @@ struct SettingsView: View {
     var body: some View {
         content
             .navigationTitle("Settings")
-            .navigationBarTitleDisplayMode(.large)
+            .navigationBarTitleDisplayMode(.inline)
             .task {
                 viewModel.viewDidLoad()
             }

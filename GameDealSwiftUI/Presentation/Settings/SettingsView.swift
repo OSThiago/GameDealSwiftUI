@@ -20,7 +20,7 @@ struct SettingsView: View {
     
     var body: some View {
         content
-            .navigationTitle("Settings")
+            .navigationTitle(constants.navigationTitle)
             .navigationBarTitleDisplayMode(.inline)
             .task {
                 viewModel.viewDidLoad()
@@ -35,24 +35,24 @@ extension SettingsView {
             personalInformationSection
             itensSection
         }
-        .alert("title", isPresented: $viewModel.isShowingAlert) {
+        .alert(constants.userNameTitle, isPresented: $viewModel.isShowingAlert) {
             TextField("", text: $viewModel.userNameAux)
             
-            Button("Save", role: .none) {
+            Button(constants.save, role: .none) {
                 viewModel.saveUserNameAlert()
             }
-            Button("Cancel", role: .cancel) {
+            Button(constants.cancel, role: .cancel) {
                 viewModel.cancelUserNameAlert()
             }
         }
-        .alert("title", isPresented: $viewModel.isShowingEmailAlert) {
+        .alert(constants.emailTitle, isPresented: $viewModel.isShowingEmailAlert) {
             TextField("", text: $viewModel.emailAux)
                 .textInputAutocapitalization(.never)
             
-            Button("Save", role: .none) {
+            Button(constants.save, role: .none) {
                 viewModel.saveEmailAlert()
             }
-            Button("Cancel", role: .cancel) {
+            Button(constants.cancel, role: .cancel) {
                 viewModel.cancelEmailAlert()
             }
         }

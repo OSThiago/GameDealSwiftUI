@@ -18,17 +18,17 @@ extension SettingsView {
             
             notificationItem
         } footer: {
-            Text("When you change your e-mail address, all notifications will be removed from the old e-mail address and you will need to manually add notifications to the new e-mail address.")
+            Text(constants.footerText)
         }
     }
     
     // MARK: - User Name
     private var userNameItem: some View {
         HStack {
-            Text("Name")
+            Text(constants.nameTitle)
             Spacer()
             Text("\(viewModel.userName)")
-            Image(systemName: "chevron.right")
+            Image(systemName: constants.iconChevron)
                 .foregroundStyle(.gray)
         }
         .onTapGesture {
@@ -39,10 +39,10 @@ extension SettingsView {
     // MARK: - E-mail
     private var emailItem: some View {
         HStack {
-            Text("E-mail")
+            Text(constants.emailTitle)
             Spacer()
             Text("\(viewModel.userEmail)")
-            Image(systemName: "chevron.right")
+            Image(systemName: constants.iconChevron)
                 .foregroundStyle(.gray)
         }
         .onTapGesture {
@@ -53,7 +53,7 @@ extension SettingsView {
     // MARK: - Dark Mode
     private var darkModeItem: some View {
         HStack {
-            Text("Dark Mode")
+            Text(constants.darkModeTitle)
             Spacer()
             Toggle("", isOn: $viewModel.isActiveDarkMode)
         }
@@ -62,10 +62,10 @@ extension SettingsView {
     // MARK: - Notifications
     private var notificationItem: some View {
         HStack {
-            Text("Remove all notifications")
+            Text(constants.notificationTitle)
                 .foregroundStyle(.red)
             Spacer()
-            Image(systemName: "chevron.right")
+            Image(systemName: constants.iconChevron)
                 .foregroundStyle(.gray)
         }
         .onTapGesture {

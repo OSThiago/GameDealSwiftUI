@@ -32,4 +32,25 @@ struct ServiceImplementation: ServiceProtocol {
             throw ServiceError.network(error)
         }
     }
+    
+    func set(endpoint: any EndPointProtocol) async throws -> String {
+        let session = URLSession.shared
+        
+        guard let url = URL(string: endpoint.getUrl()) else {
+            throw ServiceError.invalidURL
+        }
+        
+        var urlRequest = URLRequest(url: url)
+        
+        urlRequest.httpMethod = endpoint.httpMethod
+        urlRequest.setValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
+        
+        let (data, response) = try await session.data(for: urlRequest)
+        
+        guard let response = response as? HTTPURLResponse, response.statusCode == 200 else {
+            throw ServiceError.invalidResponse
+        }
+        
+        return String(decoding: data, as: UTF8.self)
+    }
 }

@@ -42,5 +42,8 @@ struct AppAssembler: Assembler {
         
         DependencyInjectionContainer.register(type: RedirectProtocol.self,
                                               RedirectServiceImplementation())
+        
+        DependencyInjectionContainer.register(type: AlertsProtocol.self,
+                                              AlertsServiceImplementation())
     }
 }

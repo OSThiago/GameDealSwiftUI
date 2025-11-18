@@ -27,7 +27,8 @@ struct EditImageView: View {
                 Section {
                     PhotosPicker(selection: $pickerSelector) {
                         listItem(title: "Choose photo",
-                                 icon: "photo.artframe")
+                                 icon: "photo.artframe",
+                                 color: .primary)
                     }
 
                     Button {
